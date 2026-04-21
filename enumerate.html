@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bit‑string enumeration</title>
+<style>
+  body { font-family: monospace; padding: 1rem; }
+  #output { white-space: pre; }
+</style>
+</head>
+<body>
+
+<h2>Bit strings (n = <span id="nVal"></span>)</h2>
+<div id="output"></div>
+
+<script>
+/* ---------- configuration ---------- */
+const n        = 8;   // length of each string
+const minOnes  = 2;   // inclusive lower bound
+const maxOnes  = 4;   // inclusive upper bound
+/* ----------------------------------- */
+
+document.getElementById('nVal').textContent = n;
+
+/* ----- next‑combination for a given k ----- */
+function nextCombination(comb, n) {
+    const k = comb.length;
+    for (let i = k - 1; i >= 0; i--) {
+        if (comb[i] !== i + n - k) {
+            comb[i]++;                     // bump this position
+            for (let j = i + 1; j < k; j++) {
+                comb[j] = comb[j - 1] + 1; // reset following positions
+            }
+            return true;                   // another combination exists
+        }
+    }
+    return false;                          // reached the last one
+}
+
+/* ----- turn a combination into a bit string ----- */
+function comboToBits(comb, n) {
+    const bits = new Array(n).fill('0');
+    for (const idx of comb) bits[idx] = '1';
+    return bits.join('');
+}
+
+/* ----- main generator ----- */
+function* enumerateBitStrings(n, minOnes, maxOnes) {
+    for (let k = minOnes; k <= maxOnes; k++) {
+        // start with the smallest combination of size k: [0,1,…,k‑1]
+        const comb = Array.from({length: k}, (_, i) => i);
+        while (true) {
+            yield comboToBits(comb, n);
+            if (!nextCombination(comb, n)) break;
+        }
+    }
+}
+
+/* ----- render to the page ----- */
+const outDiv = document.getElementById('output');
+let html = '';
+for (const s of enumerateBitStrings(n, minOnes, maxOnes)) {
+    html += s + '\n';
+}
+outDiv.textContent = html;
+</script>
+
+<script>
+// ----- main thread -----
+{
+const n = 20, minOnes = 3, maxOnes = 5;
+const cpuCores = navigator.hardwareConcurrency || 4;   // fallback
+const workers = [];
+
+// create a worker script blob
+const workerBlob = new Blob([`(${workerCode.toString()})()`], {type:'application/javascript'});
+const workerURL = URL.createObjectURL(workerBlob);
+
+for (let k = minOnes; k <= maxOnes; k++) {
+    const total = binom(n, k);
+    const chunks = Math.min(cpuCores, total);   // split this k into at most cpuCores parts
+    const chunkSize = Math.ceil(total / chunks);
+    for (let i = 0; i < chunks; i++) {
+        const start = i * chunkSize;
+        const end   = Math.min(start + chunkSize, total);
+        const w = new Worker(workerURL);
+        w.postMessage({n, k, start, end});
+        w.onmessage = e => {
+            // e.data is an array of generated strings for this chunk
+            for (const s of e.data) outputDiv.textContent += s + '\n';
+        };
+        workers.push(w);
+    }
+}
+
+// ----- worker code (function that will be stringified) -----
+function workerCode() {
+    onmessage = function(e) {
+        const {n, k, start, end} = e.data;
+        const result = [];
+        for (let idx = start; idx < end; idx++) {
+            const comb = unrankCombination(idx, n, k);
+            result.push(comboToBits(comb, n));
+        }
+        postMessage(result);
+    };
+
+    // ----- helpers (same as in the main thread) -----
+    const binomCache = new Map();
+    function binom(n, k) {
+        const key = n + ',' + k;
+        if (binomCache.has(key)) return binomCache.get(key);
+        if (k < 0 || k > n) return 0;
+        if (k === 0 || k === n) return 1;
+        const val = binom(n - 1, k - 1) + binom(n - 1, k);
+        binomCache.set(key, val);
+        return val;
+    }
+
+    function unrankCombination(idx, n, k) {
+        const comb = [];
+        let x = idx;
+        let largest = n;
+        for (let i = k; i > 0; i--) {
+            let v = largest - 1;
+            while (binom(v, i) > x) v--;
+            comb.unshift(v);
+            x -= binom(v, i);
+            largest = v;
+        }
+        return comb.reverse();
+    }
+
+    function comboToBits(comb, n) {
+        const bits = new Array(n).fill('0');
+        for (const p of comb) bits[p] = '1';
+        return bits.join('');
+    }
+}
+
+}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/gpu.js@latest/dist/gpu.min.js"></script>
+<script>
+{
+const n = 20;          // length of each string
+const k = 4;           // exact number of 1's we are generating
+const total = binom(n, k); // C_k
+
+// ---------- pre‑compute binomial table ----------
+const maxN = n;
+const binomTable = Array.from({length: maxN+1}, (_, i) =>
+  Array.from({length: i+1}, (_, j) => {
+    if (j===0 || j===i) return 1;
+    return binomTable[i-1][j-1] + binomTable[i-1][j];
+  })
+);
+
+// ---------- texture size (nearest power‑of‑2) ----------
+const WIDTH  = Math.pow(2, Math.ceil(Math.log2(Math.sqrt(total))));
+const HEIGHT = Math.pow(2, Math.ceil(Math.log2(Math.ceil(total / WIDTH))));
+
+// ---------- GPU kernel ----------
+const gpu = new GPU();
+
+const kernel = gpu.createKernel(function(idxBase, n, k, binom) {
+  const idx = this.thread.y * this.constants.WIDTH + this.thread.x;
+  if (idx >= idxBase) return [0,0,0,0]; // out‑of‑range sentinel
+
+  // ---- unranking ----
+  let x = idx;
+  let largest = n;
+  const comb = new Array(k);
+  for (let i = k; i > 0; i--) {
+    let v = largest - 1;
+    // linear search; k is tiny so this is cheap
+    while (binom[v][i] > x) v--;
+    comb[k - i] = v;
+    x -= binom[v][i];
+    largest = v;
+  }
+
+  // ---- pack bits into 4 bytes ----
+  const mask = [0,0,0,0];
+  for (let p = 0; p < k; p++) {
+    const pos = comb[p];
+    const byteIdx = Math.floor(pos / 8);
+    const bitPos  = pos % 8;
+    mask[byteIdx] = mask[byteIdx] | (1 << bitPos);
+  }
+  return mask; // [r,g,b,a] each 0‑255
+})
+.setOutput([WIDTH, HEIGHT])
+.setConstants({WIDTH})
+.setPipeline(true)          // keep result as texture for fast readback
+.setImmutable(true);
+
+const resultTexture = kernel(total, n, k, binomTable);
+const resultArray   = gpu.canvas
+                         .getContext('webgl')
+                         .readPixels(0,0,WIDTH,HEIGHT,new Uint8Array(WIDTH*HEIGHT*4));
+
+// ---------- decode to strings ----------
+function bitsFromMask(mask, n) {
+  const bits = new Array(n).fill('0');
+  for (let i = 0; i < mask.length; i++) {
+    const byte = mask[i];
+    for (let b = 0; b < 8; b++) {
+      const pos = i*8 + b;
+      if (pos >= n) break;
+      bits[pos] = (byte & (1<<b)) ? '1' : '0';
+    }
+  }
+  return bits.join('');
+}
+
+const strings = [];
+for (let i = 0; i < total; i++) {
+  const offset = i*4;
+  const mask = [
+    resultArray[offset],
+    resultArray[offset+1],
+    resultArray[offset+2],
+    resultArray[offset+3]
+  ];
+  strings.push(bitsFromMask(mask, n));
+}
+console.log(strings); // all C(n,k) strings with exactly k ones
+}
+</script>
+
+
+</body>
+</html>

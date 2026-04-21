@@ -1,0 +1,189 @@
+<html>
+
+<body>
+
+
+    <br>
+
+
+</body>
+
+<script type="module">
+
+const gcd = (a, b) => {
+    if (b > a) {var temp = a; a = b; b = temp;}
+    while (true) {
+        if (b === 0n) return a
+        a %= b
+        if (a === 0n) return b
+        b %= a
+    }
+}
+
+const show = (tag, msg) => {
+    if (tag !== "") {
+        document.getElementById(tag).innerText = msg
+    }
+}
+
+const br = () => {
+    document.body.appendChild(document.createElement("br"))
+}
+
+
+const declare = (tag, desc) => {
+    const descEl = document.createElement("span")
+    descEl.innerText = desc
+    document.body.appendChild(descEl)
+    const contentEl = document.createElement("span")
+    contentEl.id = tag
+    document.body.appendChild(contentEl)
+    br() 
+}
+
+const mod_inverse = (a, n) => {
+    let [t, newt] = [0n, 1n]
+    let [r, newr] = [n, a]
+
+    while (newr !== BigInt(0)) {
+        const quotient = r / newr
+        const t_ = newt
+        newt = t - quotient * newt
+        t = t_
+
+        const r_ = newr
+        newr = r - quotient * newr
+        r = r_
+        
+    }
+    
+    if (t < 0n) {
+        t = t + n
+    }   
+    
+    return t
+}
+
+const mod = (a) => (a % p + p) % p
+
+const modx = (a, x) => (a % x + x) % x
+
+const mul = (a, b) => mod (mod(a) * mod(b))
+
+const div = (a, b) => mod (mod(a) * mod_inverse(b, p))
+
+const exp = (x, k, tag = "stepsforward") => {
+    let y = 1n
+    let steps = 0
+
+    while (k > 1n) {
+        if (k % 2n === 1n) {
+            y = mul(x, y)
+            k = k - 1n
+            steps++
+        } 
+        x = mul(x, x)
+        k /= 2n
+        steps++
+        
+    }
+    show(tag, steps)
+    return mul(x, y) 
+}
+
+
+const intersection = (x, t) => {
+    const phase = modx(-t * mod_inverse(p, x), x)
+    const slope = x / gcd(p, x)
+
+    const phase2 = modx(-x * x * mod_inverse(p, t), t)
+    const slope2 = t / gcd(p, t)
+
+    if (slope === slope2) return false
+
+    return (phase2 - phase) % (slope - slope2) === 0
+    // if they cannot be intersected (because their l1 and l2 are different) then count amount of intersections between two groups of lines: l1 + l2 < 2xx/p
+}
+
+const possible_solutions_ahead = (x, t, N) => {
+    // evaluate amount of solutions to (t + lp) % x === 0, for l < xx/p
+    const phase = modx(-t * mod_inverse(p, x), x)
+    const slope = x / gcd(p, x)
+    return (N - phase) / slope 
+    
+}
+
+const log = (x, t, tag = "reversesteps") => {
+    const b = x
+    
+    let kacc = 0n
+    let xacc = 1n
+    let k = 1n
+
+    let steps = 0
+
+    while (x !== t) {
+        steps++
+        
+        const wx = mul(xacc, x)
+
+        //const N = xx / p // todo check
+        //const d = possible_solutions_ahead(xx, t, N) !== possible_solutions_ahead(wx, t, N) //should have same N to make sure that solution wasn't remove with new one introduced and net zero
+        const ii = intersection(wx, t)
+
+        const overshoot = ii // && k !== 1n 
+
+        if (overshoot) {
+            xacc = mul(xacc, x) 
+            kacc += k
+            //x = b 
+            k = 1n
+
+        } else {
+            x = mul(x, x)
+            k *= 2n
+        }
+        
+        if (steps > 30000) { 
+            throw "overflow"
+        }
+    }
+    show(tag, steps)
+    return k + kacc
+}
+
+declare("modulo", "modulo = ")
+const p = 93323n
+show("modulo", p)
+
+declare("base", "base = ")
+const b = 12n
+show("base", b)
+
+declare("k", "k = ")
+const k = 2456n
+show("k", k)
+br()
+
+declare("exp", "exp: ")
+declare("stepsforward", "steps: ")
+const e = exp(b, k)
+show("exp", e)
+
+
+br()
+
+declare("log", "log: ")
+declare("reversesteps", "steps: ")
+const lg = log(b, e)
+show("log", lg)
+
+br()
+declare("testlog", "test: ")
+const test = exp(b, k, "") === exp(b, lg, "")
+show("testlog", test)
+
+
+</script>
+
+</html>

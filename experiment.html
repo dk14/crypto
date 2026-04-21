@@ -1,0 +1,505 @@
+<html>
+
+<body>
+
+    <div id="encrypt"></div>
+    <div id="decrypt"></div>
+
+    <div id="count2"></div>
+
+
+    <div id="decrypt2"></div>
+    <br>
+
+    m=m :<span id="test1"></span><br>
+    d=d: <span id="test2"></span><br>
+    m=m=m: <span id="test3"></span><br>
+    boost: <span id="boost"></span>
+</body>
+
+
+<script>
+
+const gcd = (a,b) => {
+
+    if (b > a) {var temp = a; a = b; b = temp;}
+    while (true) {
+        if (b == BigInt(0)) return a
+        a %= b
+        if (a == BigInt(0)) return b
+        b %= a
+    }
+}
+
+
+const coprime = n => {
+    let k = BigInt("387869")
+    while (gcd(k, n) !== BigInt(1)) {
+        k++
+    
+    }
+    return k
+}
+
+const mod_inverse = (a, n) => {
+    let [t, newt] = [BigInt(0), BigInt(1)]
+    let [r, newr] = [n, a]
+
+    while (newr !== BigInt(0)) {
+        const quotient = r / newr
+        const t_ = newt
+        newt = t - quotient * newt
+        t = t_
+
+        const r_ = newr
+        newr = r - quotient * newr
+        r = r_
+        
+    }
+    
+    if (t < BigInt(0)) {
+        t = t + n
+    }   
+    
+    return t
+}
+
+const exponentiate = (x, k, n, log=true) => {
+    let y = BigInt(1)
+    let steps = 0
+    while (k > BigInt(1)) {
+        if (k % BigInt(2) === BigInt(1)) {
+            y = ((x % n) * (y % n)) % n
+            k = k - BigInt(1)
+            steps++
+        } 
+        x = ((x % n) * (x % n)) % n
+        k /= BigInt(2)
+        steps++
+        
+    }
+
+    if (log) {
+        console.log("steps(forward)=" + steps)
+    }
+    
+    return ((x % n) * (y % n)) % n
+
+      
+}
+
+const mul = (a, b, n) => {
+    return ((a % n) * (b % n)) % n
+}
+
+const div = (a, b, n) => {
+    return mul(a, mod_inverse(b, n), n)
+}
+
+const cmp = (a, b, n, x) => {
+    return gcd(a, n) === BigInt(1)// || (a > b && b % x === BigInt(0))
+}
+
+function bigintToBitPositions(bigint) {
+    const positions = [];
+    let index = 0;
+    while (bigint > 0n) {
+        if (bigint & 1n) {
+            positions.push(index);
+        }
+        bigint >>= 1n; // Shift right by 1
+        index++;
+    }
+    return positions;
+}
+
+const whichBitIsSingle = (x) => {
+    const pos = bigintToBitPositions(x)
+    if (pos.length > 1) {
+        return undefined
+    } else {
+        return pos[0]
+    }
+}
+
+/**
+ * 
+ * This algorithm represents novel DLP solution for integers (UNDER MULTIPLICATION!) adapted to cyclic groups
+ * 
+ * Original DLP solution for integers  is fully decidable and precise.
+ * It recovers every bit of k in polynomial time (3*n_bits).
+ * Same amount of time as computing exponent
+ * It depends on "less than" comparison.
+ * Not iterative, not approximation.
+ * 
+ * Meantime...
+ * Groups %n (as well as elliptic) erase information due to computing power limitations.
+ * They erase order as well.
+ * 
+ * This adaptation of original DLP solution attempts to recover info by making assumptions about basic characteristics of k
+ * e.g. bitlength and distribution (assumed random)
+ * 
+ * Comparison operation becomes implicit and here it is derived from equality.
+ * (algorithm ignores the fact that numbers are still comparable within first order, e.g. a < b in a%n,b%n , since it does not contribute much)
+ * 
+ * The adaptation is fully decidable, since it would go to brute-force worst-case.
+ * Since polynomial time can be assumed - resets and reparamitrizations are attempting to approximate it.
+ * 
+ */
+const exponentiate5 = (x, target, n, maxk = 0n, kacc = 0n) => {
+    const base = x
+    const sqrt = {}
+    const savetarget = target
+
+    let k = 1n
+
+    let i = 0
+    let ii = 0
+
+    let fast = 0
+    let slow = 0
+
+    // these put back the information that % n erased
+
+    // corresponds to highest significant bit in k estimate (size of k)
+    let kbound = 310n
+
+    // corresponds to amounts of zeroes and ones in k
+    let slowfactor = 2
+    let fastfactor = 1
+
+    // corresponds to grouping of ones in k
+    let groupingfactor = 1n
+
+    // todo: cross-reference targets
+    // todo: numeric stability -> check for [x, target] repeating
+    // then try to rebalance
+    while (x !== target) {
+        i++
+        ii++
+
+        // this should be estimate of steps for fastexp
+        const polynomial_t = 30000000000
+
+        if (ii > polynomial_t) {//todo: auto-rebalance parameters
+            ii = 0
+            kbound += 10n
+            k = 1n
+            kacc = 0n
+            target = savetarget
+            x = base
+            fast = 0
+            slow = 0
+        }
+
+        // these work better than math lemmas
+        const p6 = (k + kacc) > n / kbound
+        const p7 = groupingfactor * k < kacc
+
+        if (p6 || slowfactor * slow < fastfactor * fast) { //equivalent of x * x > target
+            slow++
+
+            target = div(target, x, n)
+            kacc += k
+
+            if (slow > fast) { //equivalent of x > target
+                while (sqrt[x] && p7) { //sqrt(x) memoized && equivalent of x > target
+                    i++
+                    x = sqrt[x]
+                    k = k / 2n
+                }
+
+                if (sqrt[x] === undefined) {
+                    x = base
+                    k = 1n
+                }
+            }
+            
+        } else {
+            fast++
+
+            const root = x
+            x = mul(x, x, n)
+
+            if (root !== x) {
+                sqrt[x] = root
+            }
+            k *= 2n
+        }
+        if (i > 7000000) {
+            //document.getElementById("boost").innerHTML = "overshoot"
+            throw "e"
+        }
+        
+    }
+
+    console.log("steps(fast)=" + i + `(${fast})`)
+    console.log("boost=" + Number(k + kacc) / i)
+    console.log(sqrt)
+    console.log(Object.keys(sqrt).length)
+    document.getElementById("boost").innerHTML = Number(window.d) / i
+    
+    return k + kacc
+}
+
+// https://www.andreaminini.net/math/hth-power-residue-modulo-n
+
+/**
+ *
+ * An integer m is an hth power residue modulo n
+
+if:
+
+m^(φ(n)/gcd(h,φ(n))) ≡ 1(mod n)
+
+Where:
+
+    n
+
+is a positive integer.
+m is coprime to n (check!)
+n=pk (where p is an odd prime and k is a positive integer)
+n=2pk (where p is an odd prime and k is a positive integer)
+
+semidicidable
+ */
+
+// point pairing for target relative to base
+const isrootk = (power, target, p, base, index) => {
+    // todo maybe have to check all roots up to k or up to maxbits
+    // also have to check gcd for number of roots       
+
+    
+    for (let shift = 0n; shift < 30n; shift += 10n) {
+        // move pair around subgroup
+        // todo move backwards
+        base = exponentiate(base, shift, p, false)
+        target = exponentiate(target, shift, p, false)
+        const nroots = gcd(power, p - 1n)
+        const predicate = exponentiate(target, (p - 1n) / nroots, p, false) % p === 1n 
+        
+        if (!predicate) {
+            return false
+        }
+        
+    }
+
+    return true
+    
+}
+
+
+/**
+ * if same primitive root is reached by reducing base's element order and reducing target's element order
+ * by a factor of j coprime to m
+ * 
+ * then k = steps_target / steps_base
+ * (division could have remainder)
+ * 
+ * when primitive root is reched - all roots will exist!!
+ * 
+ */
+const logPrime = (x, target, p) => {
+
+    let k = 0n
+    let i = 0
+
+    let index = 0n
+
+    while (target !== x) {
+        i++
+
+        index += 1n
+
+        const isbit = !isrootk(2n ** index, target, p, x, index)
+       
+        console.log(`target = ${target}, i = ${index} bit = ${isbit}`)
+
+
+        if (isbit) {
+            const divisor = exponentiate(x, 2n ** (index - 1n), p)
+            
+            target = div(target, divisor, p)
+            k += 2n ** index
+        }
+
+        if (i > 10) {
+            throw "overflow"
+        }
+    }
+    return k
+}
+
+const testPrime = () => {
+    //todo have to move base (together with target) to element where no k-roots exist
+    const base = 35n
+    const k = BigInt("0b00011")
+    console.log(`k mod 2 = ${k % 2n}`)
+    const p = 7919n
+    const m = exponentiate(base, k, p)
+    //const k_ = null
+    const k_ = logPrime(base, mod_inverse(m, p), p)
+    console.log(`PRIME: k=${k} k_=${k_}`)
+
+
+}
+
+const exponentiate2 = (x, target, n) => {
+    let k = BigInt(1)
+    const base = BigInt(x)
+
+    while ((x % n) !== (target % n)) {
+
+        x = (base * x) % n
+        k += BigInt(1)
+
+        if (k > 70000000) {
+            return 0
+        }
+        
+    }
+    console.log("steps(slow)=" + k)
+    return k
+      
+}
+
+const encrypt = (m, n, e) => {
+    return exponentiate(m, e, n, "encrypt")
+}
+
+const decrypt = (c, n, d, tag = "") => {
+    return exponentiate(c, d, n, "decrypt" + tag)
+}
+
+const recover_pk = (m, n, e, fast = false) => {
+    let d = 0 
+    const c = encrypt(m, n, e)
+    if (fast) {
+        d = exponentiate5(c, m, n, BigInt(2) ** BigInt(window.d.toString(2).length -4))
+        //d = exponentiate6(c, m, n)
+        //d = exponentiate5(c, BigInt(1), n) / e + BigInt(1)
+    } else {
+        d = exponentiate2(c, m, n) 
+    }
+    return d
+}
+    
+
+const test = () => {
+    //const p = BigInt(97)
+    const q = BigInt(103)
+    
+    const p = BigInt(939391)
+    //const q = BigInt(999331)
+
+    const n = p * q
+    const lambda = (p - BigInt(1)) * (q - BigInt(1))/ gcd(p - BigInt(1), q - BigInt(1))
+    const e = coprime(lambda)
+    window.d = mod_inverse(e, lambda)
+
+    console.log("n = " + n)
+    console.log("lambda = " + lambda)
+    
+    console.log("e = " + e)
+    console.log("d = " + d)
+
+
+    //const m = BigInt(2)
+    const m = decrypt(BigInt(2), n, d) // smaller base -> harder DLP -> faster solution & bigger target
+    console.log("m = " + m)
+    const c = encrypt(m, n, e)
+    console.log("c = " + c)
+    const m_ = decrypt(c, n, d)
+    document.getElementById("test1").innerHTML = (m === m_)
+    
+    //recover_pk(m, n, e, false)
+    const d_ = recover_pk(m, n, e, true)
+    console.log("d_ = " + d_)
+    const m__ = decrypt(c, n, d_, "2")
+    document.getElementById("test2").innerHTML = (d_ === d)
+    document.getElementById("test3").innerHTML = (m__ === m_)
+    
+
+    //console.log("res2=" + exponentiate6(BigInt(2), BigInt(1073741824) * BigInt(1073741824), BigInt(1073741827) * BigInt(1073741827))) //233, 1073741822
+    console.log("\n")
+
+}
+
+
+
+test()
+
+testPrime()
+
+// https://coingeek.com/bilinear-pairings-on-bitcoin-pairing-based-cryptography-part-1/
+
+// https://github.com/MikeMcl/bignumber.js/
+
+    const isroot2 = (t, p) => exponentiate(t, (p - 1n) / 2n, p, false) % p === 1n 
+
+    const p = 7919n
+    const c = exponentiate(2n, 245n, p)
+    const inv = mod_inverse(c, p)
+
+
+    console.log(`+1 == ${isroot2(c, p)}; -1 == ${isroot2(inv, p)}`)
+
+/**
+ * 
+ * forall x. exists an. (ax % 2n) % 2 !== (a(2n-x) % 2n) % 2
+ * solve for a and n
+ * 
+ * solve : (a*x mod 2*n) mod 5 = 1 and (a(2*n-x) mod 2*n) mod 5 = 0
+ */
+
+
+</script>
+
+<script>
+
+    // eccmagnitude = (a * x^p1 + b * y^p2 + c * x^p3 * y^p4) / (d * x^p5 + e * y^p6 + f * x^p7 * y^p8)
+    // maybe normalize, e.g. x = x + 100 or abs
+    // eccmagnitude would only hold inside a cycle, so can only be checked between xG and 2xG, i.e. xG < target <2xG
+
+    function sqrt(value) {
+        if (value < 0n) {
+            throw 'square root of negative numbers is not supported'
+        }
+
+        if (value < 2n) {
+            return value;
+        }
+
+        function newtonIteration(n, x0) {
+            const x1 = ((n / x0) + x0) >> 1n;
+            if (x0 === x1 || x0 === (x1 - 1n)) {
+                return x0;
+            }
+            return newtonIteration(n, x1);
+        }
+
+        return newtonIteration(value, 1n);
+    }
+
+    const curve = (x, a, b, p) => {
+        return sqrt(x^3 + a * x + b) % p
+    } 
+
+    const add = (p1, p2, a, p) => {
+        [x1, y1] = p1
+        [x2, y2] = p2
+
+        const lambda = x1 === x2 && y1 === y2 ? ((3 * x1 * x1 + a) / (2 * y1)) % p : ((y2 - y1) / (x2 - x1)) % p
+
+        const x3 = lambda * lambda - x1 - x2 % p
+        const y3 = lambda * (x1 - x3) - y1 % p
+    }
+
+    const double = (p, a) => add(p, p, a)
+
+
+
+</script>
+
+</html>
+

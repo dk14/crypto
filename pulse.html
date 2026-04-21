@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plotting Square Pulses</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="plot" width="800" height="400"></canvas>
+    <script>
+        // Parameters
+        const alpha = 2;         // Decay constant for frequency modulation
+        const maxFrequency = 55538888899   // Initial frequency of the first pulse (Hz)
+        const constantFrequency = 100000000; // Frequency of the constant pulse (Hz)
+        const height = 1;          // Height of the pulses
+        const width = 0.5;         // Width of each pulse (in seconds)
+        const dt = 0.01;           // Time step
+        const tMax = 20;           // Maximum time
+        const numPoints = Math.floor(tMax / dt);
+        const delay = 1004
+        
+        const fValues = [];
+
+        // Calculate the values of the combined function
+        for (let i = 0; i < numPoints; i++) {
+            const t = i * dt;
+
+            // Frequency decay
+            const currentFrequency = maxFrequency * Math.exp(-alpha * t);
+            
+            // Decaying frequency pulse
+            const pulse1 = (Math.floor(t * currentFrequency ) % 2 === 0) ? height : 0; 
+            // Constant frequency pulse
+            const pulse2 = (Math.floor(t * constantFrequency + delay) % 2 === 0) ? height : 0; 
+            
+            // Combined function
+            const f = pulse1 * pulse2;
+            fValues.push(f);
+        }
+
+        // Plotting the results
+        const canvas = document.getElementById('plot');
+        const ctx = canvas.getContext('2d');
+        const widthCanvas = canvas.width;
+        const heightCanvas = canvas.height;
+        
+        // Clear the canvas
+        ctx.clearRect(0, 0, widthCanvas, heightCanvas);
+        
+        // Normalize data for plotting
+        const normalize = (value, min, max, height) => {
+            return height - ((value - min) / (max - min)) * height;
+        };
+        
+        // Find min and max for normalization
+        const min = Math.min(...fValues);
+        const max = Math.max(...fValues);
+        
+        ctx.beginPath();
+        // Draw the combined function
+        for (let i = 0; i < numPoints; i++) {
+            const x = (i / numPoints) * widthCanvas;
+            const y = normalize(fValues[i], min, max, heightCanvas);
+            ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = 'blue';
+        ctx.stroke();
+        
+        // Add Labels
+        ctx.fillStyle = 'black';
+        ctx.fillText('Plot of Decaying Frequency Square Pulse * Constant Square Pulse', 10, 20);
+        ctx.fillText(`Max Frequency = ${maxFrequency}, Constant Frequency = ${constantFrequency}`, 10, 40);
+    </script>
+</body>
+</html>

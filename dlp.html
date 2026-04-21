@@ -1,0 +1,345 @@
+<html>
+
+<body>
+
+
+    <br>
+
+
+</body>
+
+<script type="module">
+
+const gcd = (a, b) => {
+    if (b > a) {var temp = a; a = b; b = temp;}
+    while (true) {
+        if (b === 0n) return a
+        a %= b
+        if (a === 0n) return b
+        b %= a
+    }
+}
+
+const show = (tag, msg) => {
+    if (tag !== "" && document.getElementById(tag)) {
+        document.getElementById(tag).innerText = msg
+    }
+}
+
+const br = () => {
+    document.body.appendChild(document.createElement("br"))
+}
+
+
+const declare = (tag, desc) => {
+    const descEl = document.createElement("span")
+    descEl.innerText = desc
+    document.body.appendChild(descEl)
+    const contentEl = document.createElement("span")
+    contentEl.id = tag
+    document.body.appendChild(contentEl)
+    br() 
+}
+
+const mod_inverse = (a, n) => {
+    let [t, newt] = [0n, 1n]
+    let [r, newr] = [n, a]
+
+    if (gcd(a,n) !== 1n) {
+        show("reversesteps", "Err: No Modinverse")
+        throw "err"
+    }
+
+    while (newr !== BigInt(0)) {
+        const quotient = r / newr
+        const t_ = newt
+        newt = t - quotient * newt
+        t = t_
+
+        const r_ = newr
+        newr = r - quotient * newr
+        r = r_
+        
+    }
+    
+    if (t < 0n) {
+        t = t + n
+    }   
+    
+    return t
+}
+
+const mod = (a) => (a % p + p) % p
+
+const mul = (a, b) => mod (mod(a) * mod(b))
+
+const div = (a, b) => mod (mod(a) * mod_inverse(b, p))
+
+const exp = (x, k, tag) => {
+    let y = 1n
+    let steps = 0
+
+    while (k > 1n) {
+        if (k % 2n === 1n) {
+            y = mul(x, y)
+            k = k - 1n
+            steps++
+        } 
+        x = mul(x, x)
+        k /= 2n
+        steps++
+        
+    }
+    show(tag, steps)
+    return mul(x, y) 
+}
+
+const exp_ = (x, k) => {
+    let y = 1n
+    let steps = 0n
+
+    while (k > 1n) {
+        if (k % 2n === 1n) {
+            y = mul(x, y)
+            k = k - 1n
+            steps++
+        } 
+        x = mul(x, x)
+        k /= 2n
+        steps++
+        
+    }
+    return [mul(x, y), steps] 
+}
+
+const findFirstIntersection = (a, p, t) => {
+    if (t === 0n) return lcm(a, p)
+    const d = gcd(a, p);
+    
+    if (t % d !== 0n) {
+        throw `no solution exists for t = ${t} and gcd(${a},${p}) = ${d}`
+        return null;
+    }
+
+    a /= d; p /= d; t /= d;
+    const aInv = mod_inverse(a, p);
+
+    if (aInv === 0n) {
+      throw "mod_inverse is zero"
+    }
+    let k = (t * aInv) % p;
+    let x = k * d * a; // Multiply by d to restore original scale   
+    // might need % (a * b), not really - its for subsequent intersections 
+    return x;
+}
+
+
+const perfect_power_log = (xacc, x, t, backups = [], sqrt = {}) => {
+    //console.log(xacc + "  ->  " + t)
+    const b = x
+    let kacc = 0n
+    let k = 1n
+    let steps = 0n
+
+    if (xacc * x > t) {
+        steps++
+        return [1n, xacc * x, steps]
+    }
+
+    while (xacc * x !== t) {
+        steps++
+
+
+
+        if (xacc * b > t) {
+            //console.log("overshoot: " + [kacc + k, xacc * x * b])
+            return [k + kacc + 1n, xacc * x * b, steps]
+        }
+
+        if (xacc * x * x > t) {
+            kacc += k
+            xacc *= x
+
+            while (sqrt[x] && xacc * x * x > t) {
+                x = sqrt[x]
+                k = k/2n
+                steps++
+            }
+
+            if (!sqrt[x]) {
+                x = b
+                k = 1n
+            }
+
+        } else {
+            sqrt[x * x] = x
+            x = x * x
+            k *= 2n
+        }
+
+        if (t % (xacc * x) !== 0n && backups.length !== 0) {
+            t = backups[0]
+            backups.splice(0,1)
+        }
+
+        if (steps > window.k) {
+            throw "perf: overflow " + x + "  " + t + "  " + b
+        }
+    }
+
+    //console.log("exact: " + [kacc + k, xacc * x])
+    return [kacc + k, xacc * x, steps]
+}
+
+const attemptFastStep = (x, y, p, t, b, kacc, deadline, sqrt = {}) => {
+    return undefined
+    let steps = 0n
+    const factorisationResult = factorise(x * y, deadline) //todo
+    if (!factorisationResult) return undefined
+    const [factors, steps_] = factorisationResult
+    steps += steps_
+
+    const divisorsResult = divise(factors, deadline) //todo
+    if (!divisorsResult) return undefined
+    const [divisors, steps__] = divisorsResult
+    steps += steps__
+
+    const candidates = []
+
+    for (d of divisors.sort()) {
+        if (d % p === t % p && d % x === 0n) {
+            candidates.push(d)
+        }
+    }
+
+    if (candidates.length !== 0n) {
+        const [k_, x_, steps___] = perfect_power_log(x, b, candidates[0], candidates.slice(1).append(x * y), sqrt)
+        steps += steps___
+        return [k_, x_, steps]
+    } else {
+        return [kacc, x * y, steps]
+    }
+    
+}
+
+const log = (x, t, steps = 0n, kacc = 0n, optimal = true, lattices = true, factorizationDeadline = 0n) => {
+    const sqrt = {}
+
+    if (x === 0n || x === 1n) {
+        throw "input"
+    }
+    
+    const b = x
+    x = 1n
+    
+    //todo: count steps on mod-inverse somehow;
+    while (x !== t) {   
+        if (!optimal && x !== 1n && x !== 0n) {
+            //this uses auxillary monotonic interval (powers of x itself up to target) to check for possibly non-optimal solution, but with only polynomial overhead: instead of order(b) - it does order(b)*log2(p)
+            const [k_, x_, steps_] = perfect_power_log(1n, x, t)
+            if (x_ % p === t) {
+                return [kacc * k_, steps - 1n]
+            }
+        }
+        if (lattices) { // todo: merge with perfect power
+            const intersection = findFirstIntersection(x, p, t)
+            if (intersection / x > 2n * b) {
+                const k_ = intersection / (b * x) 
+                const [exp__, steps__] = exp_(b, k_)
+                x *= exp__
+                x = x % p
+                kacc += k_
+                steps += steps__
+            }
+
+            // check if x is easily factorizable, if yes and no divisors are congruent to t -> fast step allowed
+            if (factorizationDeadline !== 0n && !optimal) { //todo optimal version (with some memory-friendly power of b chosen as upper bound)
+                const fastExpStepResult = attemptFastStep(x, x, p, t, b, kacc, factorizationDeadline, sqrt)
+
+                if (fastExpStepResult) {
+                    const [k_, x_, steps_] = fastExpStepResult
+                    if (x_ % p === t) {
+                        return [kacc + k_, steps + steps_]
+                    }
+                    x = x_ % p
+                    kacc += k_
+                    steps += steps_
+                }             
+            }
+
+            //todo school-log lattice-search attempt bounded by x*x
+        }
+
+
+
+        const predicate = x < t && t % x === 0n
+
+        const [k_, x_, steps_] = 
+            predicate ? 
+                perfect_power_log(x, b, t, [p], sqrt) : 
+                perfect_power_log(x, b, p, [], sqrt)
+
+        steps += steps_
+        kacc += k_
+
+        //todo: check explicitly wether x_ > p && x_ > b actually gives room for fastexp
+        if (x_ > p && x_ > b && div(t, x_ % p) > t && (x_ % p) !== t) {
+            //todo reduction might lead to overflow; due to cyclicity?
+            console.log("reduction")
+            steps++
+            const t_ = div(t, x_ % p)
+            x = 1n
+            t = t_
+        } else {
+            x = x_ % p
+        }
+        
+        if (steps > window.k + 1n){ 
+            return [`overflow at x = ${x}, t' = ${t}`, 'Inf']
+        }
+    }
+    return [kacc, steps]
+}
+
+// todo: p = 19937, b = 1804, k is even -> overflow at 1
+// check b's order??
+
+declare("modulo", "p = ")
+const p = 999331n //7919n
+show("modulo", p)
+
+declare("base", "b = ")
+const b = 28899989899n % p
+show("base", b)
+
+declare("k", "k = ")
+const k = 284432434354334n % p
+window.k = k
+show("k", k)
+br()
+
+declare("t=", "t = ")
+declare("stepsforward", "steps: ")
+const t = exp(b, k, "stepsforward")
+show("t=", t)
+
+
+br()
+
+declare("log", "log: ")
+declare("reversesteps", "steps: ")
+const [lg, steps] = log(b, t) 
+show("log", lg)
+show("reversesteps", steps)
+
+br()
+declare("testlog", "test: ")
+const test = exp(b, k) === exp(b, lg)
+show("testlog", test)
+
+br()
+</script>
+
+
+
+</html>

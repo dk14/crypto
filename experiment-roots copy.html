@@ -1,0 +1,190 @@
+<html>
+
+<body>
+
+
+</body>
+
+<script type="module">
+
+const show = (tag, msg) => {
+    document.getElementById(tag).innerText = msg
+}
+
+const br = () => {
+    document.body.appendChild(document.createElement("br"))
+}
+
+const declare = (tag, desc) => {
+    const descEl = document.createElement("span")
+    descEl.innerText = desc
+    document.body.appendChild(descEl)
+    const contentEl = document.createElement("span")
+    contentEl.id = tag
+    document.body.appendChild(contentEl)
+    br() 
+}
+
+const mod = (a, p) => (a % p + p) % p
+
+const alg = p => ({
+    zero: 1n,
+    add: (a, b) => mod(mod(a, p) * mod(b, p), p),
+    neg: (a) => mod_inverse(mod(a, p), p),
+    sqrt: (a) => sqrt_tonelli(a, p),
+    neq: (a, b) => a !== b,
+    eq: (a, b) => a === b
+})
+
+const powerMod = (x, k, p) => exp(x, k, alg(p))
+
+const quadraticNonresidue = (p) => {
+  for (var x = 2n; x < p; x++) {
+    //if (jacobiSymbol(x, p) == -1n) { return x; }
+    if (powerMod(x, (p - 1n) / 2n, p) !== 1n) return x
+  }
+  return undefined;
+};
+
+const jacobiSymbol = (a, b) => {
+  if (b % 2n === 0n) { return undefined };
+  if (b < 0n) { return undefined };
+
+  // (a on b) is independent of equivalence class of a mod b
+  if (a < 0n) {
+    a = ((a % b) + b);
+  }
+
+  // flips just tracks parity, so I xor terms with it and end up looking at the
+  // low order bit
+  let flips = 0n;
+
+  while(true) {
+    a = a % b;
+
+    // (0 on b) = 0
+    if (a === 0n) { return 0n; }
+
+    // Calculation of (2 on b)
+  	while ((a % 2n) === 0n) {
+      // b could be so large that b*b overflows
+      flips ^= ((b % 8n)*(b % 8n) - 1n)/ 8n;
+      a /= 2n;
+  	}
+
+    // (1 on b) = 1
+    if (a === 1n) {
+	    // look at the low order bit of flips to extract parity of total flips
+	    return (flips & 1n) ? (-1n) : 1n;
+    }
+
+  	// Now a and b are coprime and odd, so "QR" applies
+  	// By reducing modulo 4, I avoid the possibility that (a-1)*(b-1) overflows
+    flips ^= ((a % 4n)-1n) * ((b % 4n)-1n) / 4n;
+
+    var temp = a;
+    a = b;
+    b = temp;
+  }
+
+  // Cannot get here
+  return undefined;
+};
+
+const squareRootModPrime = (n, p) => {
+  //if (jacobiSymbol(n, p) !== 1n) { return undefined; }
+  if (powerMod(n, (p - 1n) / 2n, p) !== 1n) {
+    return undefined;
+  }
+
+  var Q = p - 1n;
+  var S = 0n;
+  while( (Q % 2n) === 0n ) {
+    Q /= 2n;
+    S++;
+  }
+
+  // Now p - 1 = Q 2^S and Q is odd.
+  if ((p % 4n) == 3n) {
+  	return powerMod(n, (p+1n)/4n, p );
+  }
+
+  // So S != 1 (since in that case, p equiv 3 mod 4
+  var z = quadraticNonresidue(p);
+  var c = powerMod(z, Q, p);
+  var R = powerMod(n, (Q+1n)/2n, p);
+  var t = powerMod(n, Q, p);
+  var M = S;
+
+  while(true) {
+    if ((t % p) === 1n) return R;
+
+    // Find the smallest i (0 < i < M) such that t^{2^i} = 1
+    var u = t;
+    for(var i = 1n; i < M; i++) {
+	    u = (u * u) % p;
+	    if (u == 1n) break;
+    }
+
+    var minimum_i = i;
+    i++;
+
+    // Set b = c^{2^{M-i-1}}
+    var b = c;
+    while( i < M ) {
+	    b = (b * b) % p;
+	    i++;
+    }
+
+  	M = minimum_i;
+  	R = (R * b) % p;
+  	t = (t * b * b) % p;
+  	c = (b * b) % p;
+  }
+
+  return undefined;
+};
+
+const exp = (x, k, algebra) => {
+    let y = algebra.zero
+    while (k > 1n) {
+        if (k % 2n === 1n) {
+            y = algebra.add(x, y)
+            k = k - 1n
+        } 
+        x = algebra.add(x, x)
+        k /= 2n
+        
+    }
+    return algebra.add(x, y)  
+}
+
+const p = 13n
+
+const b = mod(7n, p)
+
+br()
+declare("base", "base: ")
+show("base", b)
+
+const square = exp(b, 2n, alg(p))
+
+br()
+declare("square", "square: ")
+show("square", square)
+
+
+br()
+declare("root", "root: ")
+show("root", squareRootModPrime(square, p, alg))
+
+br()
+declare("test", "test: ")
+show("test", squareRootModPrime(exp(b, 2n, alg(p)), p, alg) === b)
+
+
+
+</script>
+
+
+</html>

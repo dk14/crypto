@@ -1,0 +1,465 @@
+<html>
+
+<body>
+
+</body>
+
+<script>
+
+// drama: 
+// https://bitcoin.stackexchange.com/questions/113116/how-is-the-generator-point-g-chosen-in-the-secp256k1-curve-used-in-bitcoin
+
+// only for fields to find a primitive root
+
+window.sieve = (max) => {
+    const limit = BigInt(max);
+    const isPrime = new Map();
+
+    // Initialize all numbers as prime
+    for (let i = BigInt(2); i <= limit; i++) {
+        isPrime.set(i, true);
+    }
+
+    for (let i = BigInt(2); i * i <= limit; i++) {
+        if (isPrime.get(i)) {
+            for (let j = i * i; j <= limit; j += i) {
+                isPrime.set(j, false); // Mark multiples of i as non-prime
+            }
+        }
+    }
+
+    const primes = [];
+    for (let i = BigInt(2); i <= limit; i++) {
+        if (isPrime.get(i)) {
+            primes.push(i);
+        }
+    }
+
+    return primes;
+}
+
+let primes = sieve(100000n);
+
+window.factor = (n) => {
+  if ((!primes) || (primes[primes.length - 1] < n)) {
+    primes = sieve(n);
+  }
+
+  var factors = [];
+  for (let k = 0; k < primes.length && n > 1; k++) {
+    let p = primes[k];
+  	if (n % p === 0n) {
+	    var factor = { prime: p, power: 0n };
+	    while (n % p === 0n) {
+        factor.power++;
+        n /= p;
+      }
+      factors.push(factor);
+    }
+  }
+
+  if (n > 1n) {
+    // Whatever remains, if it is not 1, must be prime
+    factors.push( { prime: n, power: 1n } );
+  }
+  return factors;
+};
+
+window.primeFactors = (n) => {
+  return factor(n).map(function (f) { return f.prime });
+};
+
+window.eulerPhi = (n) => {
+  const product = function (list) {
+    return list.reduce(function (memo, number) {
+      return memo * number;
+    }, 1n);
+  };
+  const factors = primeFactors(n);
+  const N = product(factors.map(function (p) { return p - 1n; }))
+  const D = product(factors);
+  return n * N / D;
+};
+
+window.incMixed = (tuple, bases) => {
+  const result = tuple
+  result[0]++;
+  for (let k = 0; k < tuple.length; k++) {
+    if (result[k] <= bases[k]) {
+      break;
+    } else if (k !== tuple.length - 1){
+      result[k] = 0n;
+      result[k+1]++;
+    } else {
+      result[k] = 0n;
+    }
+  }
+  return result;
+};
+
+window.divisors = (n, p) => {
+  let factors = factor(n);
+  let powers = factors.map(_ => 0n);
+  const maxPowers = factors.map(x => x.power);
+
+  var divisors = [1n];
+  while (true) {
+    powers = incMixed(powers, maxPowers);
+    const d = powers.map((m, i) => {
+      return powerMod(factors[i].prime, m, p);
+    }).reduce((memo, curr) => {
+      return memo * curr;
+    }, 1n);
+
+    if (d === 1n) break;
+    divisors.push(d);
+  }
+
+  divisors.sort(function (a, b) {
+    return a > b ? +1 : -1
+  });
+  return divisors;
+};
+
+window.isInSameSubgroup = (a, b, p) => {
+   const phi_m = eulerPhi(p);
+   const factors = divisors(phi_m, p);
+   const aSubOrder = factors.filter(d => powerMod(a, phi_m/d, p) === 1n)
+
+   const intersect = aSubOrder.filter(suborder => powerMod(b, phi_m/suborder, p) === 1n)
+   return intersect.length > 0
+}
+
+window.listSubGroups = (a, p) => {
+   const phi_m = eulerPhi(p);
+   const factors = divisors(phi_m, p);
+   return factors
+    .filter(d => powerMod(a, phi_m/d, p) === 1n)
+    .map(d => phi_m/d)
+}
+
+window.primitiveRoot = (modulus) => {
+  var phi_m = eulerPhi(modulus);
+  var factors = primeFactors(phi_m);
+  for (var x = 2n; x < modulus; x++) {
+    var check = true;
+    var n = factors.length;
+    for (var i = 0; i < n; i++) {
+      if (powerMod(x, phi_m / factors[i], modulus) === 1n) {
+        check = false;
+        break;
+      }
+    }
+    if (check) { return x; }
+  }
+  return NaN;
+};
+
+</script>
+
+<script type="module">
+
+// https://github.com/rsandor/number-theory/blob/master/lib/square_root_mod.js
+
+const show = (tag, msg) => {
+    document.getElementById(tag).innerText = msg
+}
+
+const br = () => {
+    document.body.appendChild(document.createElement("br"))
+}
+
+const declare = (tag, desc) => {
+    const descEl = document.createElement("span")
+    descEl.innerText = desc
+    document.body.appendChild(descEl)
+    const contentEl = document.createElement("span")
+    contentEl.id = tag
+    document.body.appendChild(contentEl)
+    br() 
+}
+
+const gcd = (a,b) => {
+    if (b > a) {var temp = a; a = b; b = temp;}
+    while (true) {
+        if (b == BigInt(0)) return a
+        a %= b
+        if (a == BigInt(0)) return b
+        b %= a
+    }
+}
+
+const mod_inverse = (a, n) => {
+    let [t, newt] = [BigInt(0), BigInt(1)]
+    let [r, newr] = [n, a]
+
+    while (newr !== BigInt(0)) {
+        const quotient = r / newr
+        const t_ = newt
+        newt = t - quotient * newt
+        t = t_
+
+        const r_ = newr
+        newr = r - quotient * newr
+        r = r_
+        
+    }
+    
+    if (t < BigInt(0)) {
+        t = t + n
+    }   
+    
+    return t
+}
+
+
+const mod = (a, p) => (a % p + p) % p
+
+const alg = p => ({
+    zero: 1n,
+    add: (a, b) => mod(mod(a, p) * mod(b, p), p),
+    neg: (a) => mod_inverse(mod(a, p), p),
+    sqrt: (a) => squareRootModPrime(a, p),
+
+    neq: (a, b) => a !== b,
+    eq: (a, b) => a === b
+})
+
+window.powerMod = (x, k, p) => exp(x, k, alg(p))
+
+const squareRootModPrime = (n, p) => {
+
+    const quadraticNonresidue = (p) => {
+        for (var x = 2n; x < p; x++) {
+            //if (jacobiSymbol(x, p) == -1n) { return x; }
+            if (powerMod(x, (p - 1n) / 2n, p) !== 1n) return x
+        }
+        return undefined;
+    };
+
+    //if (jacobiSymbol(n, p) !== 1n) { return undefined; }
+    if (powerMod(n, (p - 1n) / 2n, p) !== 1n) {
+        return undefined;
+    }
+
+    var Q = p - 1n;
+    var S = 0n;
+    while( (Q % 2n) === 0n ) {
+        Q /= 2n;
+        S++;
+    }
+
+    // Now p - 1 = Q 2^S and Q is odd.
+    if ((p % 4n) == 3n) {
+        return powerMod(n, (p+1n)/4n, p );
+    }
+
+    // So S != 1 (since in that case, p equiv 3 mod 4
+    var z = quadraticNonresidue(p);
+    var c = powerMod(z, Q, p);
+    var R = powerMod(n, (Q + 1n) / 2n, p);
+    var t = powerMod(n, Q, p);
+    var M = S;
+
+    while(true) {
+        if ((t % p) === 1n) return R;
+
+        // Find the smallest i (0 < i < M) such that t^{2^i} = 1
+        var u = t;
+        for(var i = 1n; i < M; i++) {
+            u = (u * u) % p;
+            if (u === 1n) break;
+        }
+
+        var minimum_i = i;
+        i++;
+
+        // Set b = c^{2^{M-i-1}}
+        var b = c;
+        while( i < M ) {
+            b = (b * b) % p;
+            i++;
+        }
+
+        M = minimum_i;
+        R = (R * b) % p;
+        t = (t * b * b) % p;
+        c = (b * b) % p;
+    }
+
+    return undefined;
+};
+
+const exp = (x, k, algebra = alg(p)) => {
+    if (k === 0n) return algebra.zero
+    let y = algebra.zero
+    while (k > 1n) {
+        if (k % 2n === 1n) {
+            y = algebra.add(x, y)
+            k = k - 1n
+        } 
+        x = algebra.add(x, x)
+        k /= 2n
+        
+    }
+    return algebra.add(x, y)  
+}
+
+console.clear()
+
+const p = 993319n//13n, 3967n,  993319n
+console.log("p=" + p)
+
+const b = p -mod(16323n, p) //13011n
+
+
+const structurePrime = (b) => listSubGroups(b, p)
+  .filter(x => { 
+    return factor(x).length === 1 && factor(x)[0].prime !== 2n && factor(x)[0].power === 1n
+  })
+
+let found = 0n
+for (let i = 3n; i < 0n; i++) {
+  if (structurePrime(i).length > 1n) {
+    found ++
+    console.log("found:" + i + " s = " + structurePrime(i))
+  }
+  if (found > 20n){
+    break;
+  }
+}
+
+console.log("---------")
+console.log("\n\n\n\n\n")
+
+
+// https://stackoverflow.com/questions/6752374/cube-root-modulo-p-how-do-i-do-this
+
+br()
+declare("base", "base: ")
+show("base", b)
+
+const square = exp(b, 2n, alg(p))
+
+br()
+declare("square", "square: ")
+show("square", square)
+
+
+br()
+declare("root", "root: ")
+show("root", squareRootModPrime(square, p))
+
+declare("test", "test: ")
+show("test", exp(squareRootModPrime(exp(b, 2n, alg(p)), p, alg), 2n, alg(p)) === exp(b, 2n, alg(p)))
+
+
+const sqrt = squareRootModPrime(square, p)
+
+declare("test2", "is base: ")
+show("test2", sqrt === b)
+
+declare("test2b", "is -base: ")
+show("test2b", sqrt === p - b)
+
+br()
+declare("test3", "is same subgroup root: ") //should hold for squares
+show("test3", isInSameSubgroup(sqrt, b, p) && isInSameSubgroup(sqrt, p-sqrt, p))
+
+const al = alg(p)
+
+const k = BigInt("0b000011100100100101010")
+const e = exp(b, k, alg(p))
+
+
+br()
+declare("b", "b = ")
+show("b", b)
+declare("k", "k = ") 
+show("k", k)
+declare("e", "e = ")
+show("e", e)
+
+const G = primitiveRoot(p)
+declare("G", "G = ")
+show("G", "0b" + G.toString(2))
+
+window.kk = k
+
+// foreven  bstructure and bit = true, but previous bit = false -> reduction appropriate
+const log = (e, b, p, maxbits = 2n) => {
+
+  // if i can test for k % 4 === 0, then it's done
+
+  if (maxbits === 0n) return 0n
+
+  const lastbit = exp(e, (p - 1n)/2n) !== 1n
+  console.log("bit = " + lastbit)
+
+  let reduce = undefined
+  if (lastbit) {
+    console.log(listSubGroups(e, p))
+    const correct = al.add(e, al.neg(b))
+    console.log("==", listSubGroups(exp(e, 4n), p))
+    reduce = exp(correct, (1983n + 1n) / 2n)
+    console.log(listSubGroups(reduce, p))
+    if (al.add(reduce, reduce) !== correct) throw "err"
+    if (reduce !== exp(b, (k - 1n)/2n)) throw "reducewrong err"
+  } else {
+    console.log(listSubGroups(e, p))
+    reduce = exp(e, (1983n + 1n) / 2n)
+    console.log(listSubGroups(reduce, p))
+    if (al.add(reduce, reduce) !== e) throw "err"
+    if (reduce !== exp(b, k/2n)) throw "reducewrong err"
+  }
+
+  return (lastbit ? 1n : 0n) + 2n * log(reduce, b, p, maxbits - 1n)
+}
+
+
+
+console.log("bstructure = " + listSubGroups(b, p))
+console.log("bstructure (prime) = " + listSubGroups(b, p).map(x => primeFactors(x).join('-')))
+
+console.log("estructure = " + listSubGroups(e, p))
+//console.log(listSubGroups(al.add(e, al.neg(b)), p))
+
+console.log("\n\n\n\n========")
+console.log("========")
+console.log("========")
+
+br()
+declare("lg", "lg = ")
+
+const lg = log(e, b, p, 1n)
+
+
+console.log("========")
+console.log("========")
+console.log("========")
+
+
+show("lg", lg.toString(2))
+
+br()
+declare("b^lg", "b^lg = ")
+show("b^lg", exp(b, lg))
+
+
+br()
+
+
+br()
+declare("test66", "r1 = ")
+show("test66", (k % 2n !== 0n )|| squareRootModPrime(exp(b, k), p) === exp(b, k/2n))
+
+br()
+declare("test666", "r2 = ")
+show("test666", (k % 2n === 0n ) || exp(b, (k - 1n)/ 2n) === squareRootModPrime(al.add(exp(b, k), al.neg(b)),p))
+
+
+
+</script>
+
+
+</html>

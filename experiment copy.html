@@ -1,0 +1,308 @@
+<html>
+
+<body>
+
+    <div id="encrypt"></div>
+    <div id="decrypt"></div>
+
+    <div id="count2"></div>
+
+
+    <div id="decrypt2"></div>
+    <br>
+
+    m=m :<span id="test1"></span><br>
+    d=d: <span id="test2"></span><br>
+    m=m=m: <span id="test3"></span>
+</body>
+
+
+<script>
+
+
+const gcd = (a,b) => {
+
+    if (b > a) {var temp = a; a = b; b = temp;}
+    while (true) {
+        if (b == BigInt(0)) return a
+        a %= b
+        if (a == BigInt(0)) return b
+        b %= a
+    }
+}
+
+
+const coprime = n => {
+    let k = BigInt(3)
+    while (gcd(k, n) !== BigInt(1)) {
+        k++
+    
+    }
+    return k
+}
+
+const mod_inverse = (a, n) => {
+    let [t, newt] = [BigInt(0), BigInt(1)]
+    let [r, newr] = [n, a]
+
+    while (newr !== BigInt(0)) {
+        const quotient = r / newr
+        const t_ = newt
+        newt = t - quotient * newt
+        t = t_
+
+        const r_ = newr
+        newr = r - quotient * newr
+        r = r_
+        
+    }
+    
+    if (t < BigInt(0)) {
+        t = t + n
+    }   
+    
+    return t
+}
+    
+
+const exponentiate = (x, k, n, tag) => {
+    let y = BigInt(1)
+    while (k > BigInt(1)) {
+        if (k % BigInt(2) === BigInt(1)) {
+            y = ((x % n) * (y % n)) % n
+            k = k - BigInt(1)
+        } 
+        x = ((x % n) * (x % n)) % n
+        k /= BigInt(2)
+        
+    }
+    return ((x % n) * (y % n)) % n
+
+      
+}
+
+const exponentiate4 = (x, target, n) => {
+    const base = x
+    let k = BigInt(1)
+    let y = BigInt(1)
+
+    while (((x % n) * (y % n)) % n !== target) {
+
+        const maybehere = target % x === 0 || target % y === 0
+
+        const safeoverflowcheck = (x * x) > target
+        const overflow = safeoverflowcheck && maybehere
+        
+        const fast = () => {
+            x = ((x % n) * (x % n)) % n
+            k *= BigInt(2)
+        }
+
+        const slow = () => {
+            y = ((x % n) * (y % n)) % n
+            k = k + BigInt(1)
+        }
+
+        const safe = () => {
+            y = (base * (y % n)) % n
+            k = k + BigInt(1)
+        }
+
+        if (k % BigInt(2) === BigInt(1) || overflow) {
+            slow() //safe() ??
+        } 
+
+        if (!overflow) {
+            fast()
+        }
+       
+    }
+    return k     
+}
+
+const mul = (a, b, n) => {
+    return ((a % n) * (b % n)) % n
+}
+
+const div = (a, b, n) => {
+    return mul(a, mod_inverse(b, n), n)
+}
+
+const cmp = (a, b, n, x) => {
+    return gcd(a, n) === BigInt(1) || (a > b && b % x === BigInt(0))
+}
+
+const exponentiate5 = (x, target, n, kacc = BigInt(0)) => {
+    const base = x
+    let k = BigInt(1)
+    while (x !== target) {
+        //const predicate = (cmp(mul(x, x, n), target, n, x))
+        const predicate = (x * x > target && target % x === BigInt(0)) || x * x > n
+        if (predicate) {
+            if (target % x === BigInt(0)) {
+                target = target / x
+            } else {
+                target = div(target, x, n)
+            }
+            x = base
+            kacc += k
+            k = BigInt(1)
+        } else {
+            x = mul(x, x, n)
+            k *= BigInt(2)
+            if (k > 70000000) {
+                throw "e"
+            }
+        }
+    }
+    return k + kacc
+}
+
+const exponentiate2 = (x, target, n) => {
+    let k = BigInt(1)
+    const base = BigInt(x)
+
+    while ((x % n) !== (target % n)) {
+
+        x = (base * x) % n
+        k += BigInt(1)
+
+        if (k > 70000000) {
+            return 0
+        }
+        
+    }
+    return k
+      
+}
+
+const exponentiate3 = (n, base = BigInt(2)) => {
+    let localk = BigInt(1)
+    let k = BigInt(1)
+
+    const zero = BigInt(0)
+    const one = BigInt(1)
+    const two = BigInt(2)
+
+    let localacc = base
+    let acc = base
+    let i = 0
+
+    let fast = 0
+    let slow = 0
+
+    while (acc * localacc !== base) {
+        
+        i++
+        
+        if (acc * localacc * localacc > n || acc * localacc * localacc === n ) {
+            acc = acc * localacc
+            k += localk
+            localacc = one
+            localk = zero
+        
+            //console.log("<<" + acc)
+            
+            while (acc < n && acc !== n) {
+                i++
+                acc *= base
+                k += one
+                slow++
+                //console.log("!!!" + localacc * acc)
+            }
+            
+            acc = acc % n
+            //console.log(">>" + acc)
+
+        } else {
+            if (localacc === one) {
+                localacc *= base
+                localk += one
+                slow++
+            } else {
+                localacc *= localacc
+                localk *= two
+                fast++
+            }    
+        }
+
+
+        if (i > 1000) {
+            console.log("exp3_i_overflow k=" + k)
+            return BigInt(1)
+        }
+        
+   
+    }
+    
+    console.log("exp3_i =" + i)
+    console.log("exp3_k =" + (k + localk))
+    console.log("exp3_fast =" + fast)
+    console.log("exp3_slow =" + slow)
+
+    return k + localk
+      
+}
+
+const encrypt = (m, n, e) => {
+    return exponentiate(m, e, n, "encrypt")
+}
+
+const decrypt = (c, n, d, tag = "") => {
+    return exponentiate(c, d, n, "decrypt" + tag)
+}
+
+const recover_pk = (m, n, e, fast = false) => {
+    let d = 0 
+    const c = encrypt(m, n, e)
+    if (fast) {
+        //d = exponentiate3(n, c) //4? 5?
+        d = exponentiate5(c, m, n)
+    } else {
+        d = exponentiate2(c, m, n) 
+    }
+    return d
+}
+
+const test = () => {
+    const p = BigInt(97) //41024320 
+    const q = BigInt(89)
+    const n = p * q
+    const lambda = (p - BigInt(1)) * (q - BigInt(1))/ gcd(p - BigInt(1), q - BigInt(1))
+    const e = coprime(lambda)
+    const d = mod_inverse(e, lambda)
+
+    console.log("n = " + n)
+    console.log("lambda = " + lambda)
+    
+    console.log("e = " + e)
+    console.log("d = " + d)
+
+
+    const m = BigInt(2)
+    const c = encrypt(m, n, e)
+    console.log("c = " + c)
+    const m_ = decrypt(c, n, d)
+    document.getElementById("test1").innerHTML = (m === m_)
+    
+    const d_ = recover_pk(m, n, e, true)
+    console.log("d_ = " + d_)
+    const m__ = decrypt(c, n, d_, "2")
+    document.getElementById("test2").innerHTML = (d_ === d)
+    document.getElementById("test3").innerHTML = (m__ === m_)
+
+   // console.log("res=" + exponentiate3(BigInt(1073741822))) //233, 1073741822
+    console.log("res2=" + exponentiate5(BigInt(2), BigInt(1024) % n, n)) //233, 1073741822
+    console.log("\n")
+
+
+}
+
+
+
+test()
+
+</script>
+
+</html>
+

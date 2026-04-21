@@ -1,0 +1,395 @@
+<html>
+
+<body>
+
+    <div id="encrypt"></div>
+    <div id="decrypt"></div>
+
+    <div id="count2"></div>
+
+
+    <div id="decrypt2"></div>
+    <br>
+
+    m=m :<span id="test1"></span><br>
+    d=d: <span id="test2"></span><br>
+    m=m=m: <span id="test3"></span><br>
+    boost: <span id="boost"></span>
+</body>
+
+
+<script>
+
+const gcd = (a,b) => {
+
+    if (b > a) {var temp = a; a = b; b = temp;}
+    while (true) {
+        if (b == BigInt(0)) return a
+        a %= b
+        if (a == BigInt(0)) return b
+        b %= a
+    }
+}
+
+
+const coprime = n => {
+    let k = BigInt("387869")
+    while (gcd(k, n) !== BigInt(1)) {
+        k++
+    
+    }
+    return k
+}
+
+const mod_inverse = (a, n) => {
+    let [t, newt] = [BigInt(0), BigInt(1)]
+    let [r, newr] = [n, a]
+
+    while (newr !== BigInt(0)) {
+        const quotient = r / newr
+        const t_ = newt
+        newt = t - quotient * newt
+        t = t_
+
+        const r_ = newr
+        newr = r - quotient * newr
+        r = r_
+        
+    }
+    
+    if (t < BigInt(0)) {
+        t = t + n
+    }   
+    
+    return t
+}
+
+const exponentiate = (x, k, n, tag = "") => {
+    let y = BigInt(1)
+    let steps = 0
+    while (k > BigInt(1)) {
+        if (k % BigInt(2) === BigInt(1)) {
+            y = ((x % n) * (y % n)) % n
+            k = k - BigInt(1)
+            steps++
+        } 
+        x = ((x % n) * (x % n)) % n
+        k /= BigInt(2)
+        steps++
+        
+    }
+    console.log("steps(forward)=" + steps)
+    return ((x % n) * (y % n)) % n
+
+      
+}
+
+const mul = (a, b, n) => {
+    return ((a % n) * (b % n)) % n
+}
+
+const div = (a, b, n) => {
+    return mul(a, mod_inverse(b, n), n)
+}
+
+const cmp = (a, b, n, x) => {
+    return gcd(a, n) === BigInt(1)// || (a > b && b % x === BigInt(0))
+}
+
+
+
+/**
+ * todo: 
+ * 
+ * x^z ≡ jn mod t. 0 < j < xx/n If j is not divisible by the greatest common divisor (GCD) of x and t, there will be no solutions.
+ * v = gcd(x, t)
+ * xx/n < v -> (no target available in range)
+ */
+
+const lemma2RHS =  (y, n, t, log = false, k) => {
+    const point = (mod_inverse(n, y) * ((y - t) / gcd(n, y))) % y
+    
+    if ((y - t) % gcd(n, y) !== BigInt(0)) {
+        return false
+    }
+
+    if (log) {
+        console.log("pointrhs=" + point)
+    }
+
+   const x0 = (point < BigInt(0) ? point + y : point) 
+
+   //todo: estimate probabilty of intersection
+    if (point === BigInt(0)) {
+            return false
+    }
+   
+   return point < (y * y / n)
+}
+
+
+function bigintToBitPositions(bigint) {
+    const positions = [];
+    let index = 0;
+    while (bigint > 0n) {
+        if (bigint & 1n) {
+            positions.push(index);
+        }
+        bigint >>= 1n; // Shift right by 1
+        index++;
+    }
+    return positions;
+}
+
+const whichBitIsSingle = (x) => {
+    const pos = bigintToBitPositions(x)
+    if (pos.length > 1) {
+        return undefined
+    } else {
+        return pos[0]
+    }
+}
+
+const exponentiate5 = (x, target, n, maxk = 0n, kacc = 0n) => {
+    const base = x
+    const sqrt = {}
+    const savetarget = target
+
+    let k = 1n
+    let i = 0
+    let ii = 0
+
+    let fast = 0
+    let slow = 0
+
+    // these put back the information that % n erased
+
+    // corresponds to highest significant bit in k estimate (size of k)
+    let memorybound = 310n
+
+    // corresponds to amounts of zeroes and ones in k
+    let slowfactor = 2
+    let fastfactor = 1
+
+    // corresponds to grouping of ones in k
+    let groupingfactor = 1n
+
+    // todo: cross-reference targets
+    while (x !== target) {
+        i++
+        ii++
+
+        // this should be estimate of steps for fastexp
+        const polynomial_t = 30000000000
+
+        if (ii > polynomial_t) {//todo: auto-rebalance parameters
+            ii = 0
+            memorybound += 10n
+            k = 1n
+            kacc = 0n
+            target = savetarget
+            x = base
+            fast = 0
+            slow = 0
+        }
+
+        // these work better than math lemmas
+        const p6 = (k + kacc) > n / memorybound
+        const p7 = groupingfactor * k < kacc
+
+        if (p6 || slowfactor * slow < fastfactor * fast) {
+            slow++
+            target = div(target, x, n)
+            kacc += k
+
+            if (slow > fast) {
+                while (sqrt[x] && p7) {
+                    i++
+                    x = sqrt[x]
+                    k = k / 2n
+                }
+
+                if (sqrt[x] === undefined) {
+                    x = base
+                    k = 1n
+                }
+            }
+            
+        } else {
+            fast++
+            const root = x
+            x = mul(x, x, n)
+            if (root !== x) {
+                sqrt[x] = root
+            }
+            k *= 2n
+        }
+        if (i > 7000000) {
+            //document.getElementById("boost").innerHTML = "overshoot"
+            throw "e"
+        }
+        
+    }
+
+    console.log("steps(fast)=" + i + `(${fast})`)
+    console.log("boost=" + Number(k + kacc) / i)
+    console.log(sqrt)
+    console.log(Object.keys(sqrt).length)
+    document.getElementById("boost").innerHTML = Number(window.d) / i
+    
+    return k + kacc
+}
+
+
+
+const exponentiate2 = (x, target, n) => {
+    let k = BigInt(1)
+    const base = BigInt(x)
+
+    while ((x % n) !== (target % n)) {
+
+        x = (base * x) % n
+        k += BigInt(1)
+
+        if (k > 70000000) {
+            return 0
+        }
+        
+    }
+    console.log("steps(slow)=" + k)
+    return k
+      
+}
+
+const encrypt = (m, n, e) => {
+    return exponentiate(m, e, n, "encrypt")
+}
+
+const decrypt = (c, n, d, tag = "") => {
+    return exponentiate(c, d, n, "decrypt" + tag)
+}
+
+const recover_pk = (m, n, e, fast = false) => {
+    let d = 0 
+    const c = encrypt(m, n, e)
+    if (fast) {
+        d = exponentiate5(c, m, n, BigInt(2) ^ BigInt(window.d.toString(2).length -4))
+        //d = exponentiate6(c, m, n)
+        //d = exponentiate5(c, BigInt(1), n) / e + BigInt(1)
+    } else {
+        d = exponentiate2(c, m, n) 
+    }
+    return d
+}
+    
+
+const test = () => {
+    //const p = BigInt(97)
+    const q = BigInt(103)
+    
+    const p = BigInt(939391)
+    //const q = BigInt(999331)
+
+    const n = p * q
+    const lambda = (p - BigInt(1)) * (q - BigInt(1))/ gcd(p - BigInt(1), q - BigInt(1))
+    const e = coprime(lambda)
+    window.d = mod_inverse(e, lambda)
+
+    console.log("n = " + n)
+    console.log("lambda = " + lambda)
+    
+    console.log("e = " + e)
+    console.log("d = " + d)
+
+
+    //const m = BigInt(2)
+    const m = decrypt(BigInt(2), n, d) // smaller base -> harder DLP -> faster solution & bigger target
+    console.log("m = " + m)
+    const c = encrypt(m, n, e)
+    console.log("c = " + c)
+    const m_ = decrypt(c, n, d)
+    document.getElementById("test1").innerHTML = (m === m_)
+    
+    //recover_pk(m, n, e, false)
+    const d_ = recover_pk(m, n, e, true)
+    console.log("d_ = " + d_)
+    const m__ = decrypt(c, n, d_, "2")
+    document.getElementById("test2").innerHTML = (d_ === d)
+    document.getElementById("test3").innerHTML = (m__ === m_)
+    
+
+    //console.log("res2=" + exponentiate6(BigInt(2), BigInt(1073741824) * BigInt(1073741824), BigInt(1073741827) * BigInt(1073741827))) //233, 1073741822
+    console.log("\n")
+
+    
+    const lemma2LHS = (y, n, t) => {
+        for (let j = BigInt(0); j <= (y * y/n); j++) {
+            if ((n * j + t) % (y) === BigInt(0)) {
+                 console.log("pointlhs =" + j)
+                return true
+            }
+        }
+        console.log("pointlhs (overflow) =" + (y * y/n))
+        return false
+        
+    }
+
+    const problem2 = [90, 33, 322].map(x => BigInt(x))
+    console.log(`lemma2: ${lemma2LHS(problem2[0], problem2[1], problem2[2])} = ${lemma2RHS(problem2[0], problem2[1], problem2[2], true)}`)
+
+}
+
+
+
+test()
+
+</script>
+
+<script>
+
+    // eccmagnitude = (a * x^p1 + b * y^p2 + c * x^p3 * y^p4) / (d * x^p5 + e * y^p6 + f * x^p7 * y^p8)
+    // maybe normalize, e.g. x = x + 100 or abs
+    // eccmagnitude would only hold inside a cycle, so can only be checked between xG and 2xG, i.e. xG < target <2xG
+
+    function sqrt(value) {
+        if (value < 0n) {
+            throw 'square root of negative numbers is not supported'
+        }
+
+        if (value < 2n) {
+            return value;
+        }
+
+        function newtonIteration(n, x0) {
+            const x1 = ((n / x0) + x0) >> 1n;
+            if (x0 === x1 || x0 === (x1 - 1n)) {
+                return x0;
+            }
+            return newtonIteration(n, x1);
+        }
+
+        return newtonIteration(value, 1n);
+    }
+
+    const curve = (x, a, b, p) => {
+        return sqrt(x^3 + a * x + b) % p
+    } 
+
+    const add = (p1, p2, a, p) => {
+        [x1, y1] = p1
+        [x2, y2] = p2
+
+        const lambda = x1 === x2 && y1 === y2 ? ((3 * x1 * x1 + a) / (2 * y1)) % p : ((y2 - y1) / (x2 - x1)) % p
+
+        const x3 = lambda * lambda - x1 - x2 % p
+        const y3 = lambda * (x1 - x3) - y1 % p
+    }
+
+    const double = (p, a) => add(p, p, a)
+
+
+
+</script>
+
+</html>
+

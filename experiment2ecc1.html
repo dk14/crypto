@@ -1,0 +1,295 @@
+<html>
+
+<body>
+
+
+    <br>
+
+
+</body>
+
+<script src=" https://cdn.jsdelivr.net/npm/break_eternity.js@2.1.2/dist/break_eternity.min.js "></script>
+<script type="module">
+
+const show = (tag, msg) => {
+    document.getElementById(tag).innerText = msg
+}
+
+const br = () => {
+    document.body.appendChild(document.createElement("br"))
+}
+
+
+const declare = (tag, desc) => {
+    const descEl = document.createElement("span")
+    descEl.innerText = desc
+    document.body.appendChild(descEl)
+    const contentEl = document.createElement("span")
+    contentEl.id = tag
+    document.body.appendChild(contentEl)
+    br() 
+}
+
+const mod_inverse = (a, n) => {
+    let [t, newt] = [new Decimal(0), new Decimal(1)]
+    let [r, newr] = [n, a]
+
+   
+    while (newr.cmp(new Decimal(0)) !== 0) {
+        const quotient = r.divide(newr)
+        const t_ = newt
+        newt = t.minus(quotient.times(newt))
+        t = t_
+
+        const r_ = newr
+        newr = r.minus(quotient.times(newr))
+        r = r_
+        //throw "modinverse "
+    }
+    
+    if (t.cmp(new Decimal(0)) === -1) {
+        t = t.plus(n)
+    }   
+    
+    return t
+}
+
+const b = new Decimal(7)
+
+
+const is_on_curve = (p0, a, p) => {
+
+    return true
+    const [X, Y] = p0
+
+    const lhs = X.times(X).times(X).plus(a.times(X)).plus(b).mod(p)
+    const rhs = Y.times(Y).mod(p)
+
+
+    console.log("X " + X.toNumber())
+    console.log("Y " + Y.toNumber())
+    console.log("lhs " + lhs.toNumber())
+    console.log("rhs " + rhs.toNumber())
+    return lhs.cmp(rhs) === 0n
+}
+
+const curve_add = (p1, p2, a, p) => {
+
+    if (!p1) return p2
+    if (!p2) return p1
+
+    if (!is_on_curve(p1, a, p)) throw "p1 is out of the curve: " + p1
+    if (!is_on_curve(p2, a, p)) throw "p2 is out of the curve: " + p2
+
+
+    const [x1, y1] = p1
+    const [x2, y2] = p2
+
+    //if (y1.cmp(new Decimal(0)) === 0) throw "Y = 0"
+
+    if (x1.cmp(x2) === 0 && y1.cmp(new Decimal(0).minus(y2)) === 0) return undefined
+    
+
+    if (x1.cmp(x2) === 0) {
+        
+        mod_inverse(new Decimal(2), new Decimal(5))
+        const lambda = new Decimal(3).times(x1).times(x1).plus(a)
+            .times(mod_inverse(new Decimal(2).times(y1).mod(p), p)).mod(p)
+
+        const x3 = lambda.times(lambda).minus(new Decimal(2n).times(x1))
+        const y3 = lambda.times(x2.minus(x3)).minus(y1).mod(p)
+
+        if (!is_on_curve([x3, y3], a, p)) throw "resulting point out of the curve"
+        
+        return [x3, y3]
+    
+    } else {
+        const lambda = y2.minus(y1).times(mod_inverse(x2.minus(x1), p)).mod(p)
+        const x3 = lambda.times(lambda).minus(x2).minus(x1).mod(p)
+        const y3 = lambda.times(x1.minus(x3)).minus(y1).mod(p)
+
+        if (!is_on_curve([x3, y3], a, p)) throw "resulting point out of the curve"
+
+        return [x3, y3]
+    }
+    
+}
+
+const curve_double = (p0, a, p) => add(p0, p0, a)
+
+const curve_neg = (p0, a, p) => p0 ? [p0[0], new Decimal(0).minus(p0[1])] : undefined
+
+const rr = BigInt("0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141")
+
+const curve_pair = (P, Q, a, p) => {
+
+    const k = new Decimal("115792089237316195423570985008687907852837564279074904382605163141518161494337")
+    const r = (rr).toString(2).split('').map(x => x === '0' ? 0 : 1)
+    const pk = new Decimal(p.toString()).pow(k)
+    
+    let T = P
+
+    let f = new Decimal(1)
+    let i = 1
+
+    const h = (P, Q, R) => {
+        if (P === undefined || R === undefined) return new Decimal(1) //todo projective
+
+        const [xP, yP] = P
+        const [xQ, yQ] = Q
+        const [xR, yR] = R
+
+        let m = undefined
+        if (xP.cmp(xQ) !== 0 && yP.cmp(yQ) !== 0) {
+            // secant case
+            const denom = xQ.minus(xP).mod(pk)
+            m = yQ.minus(yP).times(mod_inverse(denom, pk)).mod(pk)
+        } else {
+            const denom = new Decimal(2).times(yP)
+            m = (new Decimal(3).times(xP).times(xP).plus(a)).times(mod_inverse(denom, pk)).mod(pk)
+        }
+
+        const l = yR.minus(yP).minus(m.times(xR.minus(xP))).mod(pk)
+
+        return l + p
+    }
+
+    while (r[i] !== undefined) {
+        console.log(T ? T.toString() : undefined)
+        f = f.times(f).times(h(T, T, Q))
+        T = curve_add(T, T, a, pk)
+
+        if (r[i] === 1) {
+            f = f.times(h(T, P, Q))
+            T = curve_add(T, P, a, pk)
+        }
+        i++
+    }
+
+    //f = f.pow(new Decimal(p).pow(k).minus(new Decimal(1)).dividedBy(new Decimal(rr.toString())))
+    
+    return f
+}
+
+const testTriangle1 = (P, Q, R, a, p) => {
+    return 0n === curve_pair(curve_add(P, Q, a, p), R, a, p).cmp(curve_pair(P, R, a, p).multiply(curve_pair(Q, R, a, p)))
+}
+
+const testTriangle2 = (P, Q, R, a, p) => {
+    return  0n === curve_pair(P, curve_add(Q, R, a, p), a, p).cmp(curve_pair(P, Q, a, p).multiply(curve_pair(Q, R, a, p)))
+}
+
+const mod_inverse2 = (a, n) => {
+    let [t, newt] = [BigInt(0), BigInt(1)]
+    let [r, newr] = [n, a]
+
+    while (newr !== BigInt(0)) {
+        const quotient = r / newr
+        const t_ = newt
+        newt = t - quotient * newt
+        t = t_
+
+        const r_ = newr
+        newr = r - quotient * newr
+        r = r_
+        
+    }
+    
+    if (t < BigInt(0)) {
+        t = t + n
+    }   
+    
+    return t
+}
+
+const div2 = (a, b, p) => ((a % p) * mod_inverse2((p + b % p) % p, p)) % p
+
+const curve_add2 = (p1, p2, p) => {
+
+    if (!p1) return p2
+    if (!p2) return p1
+
+    const [x1, y1] = p1
+    const [x2, y2] = p2
+
+    if (x1 === x2 && y1 === -y2) return undefined
+    
+    if (x1 === x2) {
+
+        const lambda = div2(3n * x1 * x1, 2n * y1, p)
+
+        const x3 = (lambda ** 2n - 2n * x1) % p
+        const y3 = (lambda * (x2 - x3) - y1) % p
+2
+        return [x3, y3]
+    
+    } else {
+        const lambda = div2(y2 - y1, x2 - x1, p)
+        const x3 = (lambda * lambda - x2 - x1) % p
+        const y3 = (lambda * (x1 - x3) - y1) % p
+
+
+        return [x3, y3]
+    }
+    
+}
+
+const exp = (x, k, n) => {
+    let y = undefined
+    let steps = 0
+
+    while (k > 1n) {
+        if (k % 2n === 1n) {
+            y = curve_add2(x, y, n)
+            k = k - 1n
+        } 
+        x = curve_add2(x, x, n)
+        k /= 2n
+        steps++
+        
+    }
+    return curve_add2(x, y, n).map(x => new Decimal(x.toString()))  
+}
+
+const pp = BigInt("0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F")
+const p = new Decimal(pp.toString())
+
+const aParam = new Decimal(0)
+const g_x = BigInt("0x79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798")
+const g_y = BigInt("0x483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8")
+const GG = [g_x, g_y]
+const G = [new Decimal(g_x.toString()), new Decimal(g_y.toString())]
+
+console.log("====" + g_x.toString() + " " + G[0] + is_on_curve(G, aParam, p))
+console.log("---" + curve_add(G, G, aParam, p))
+
+
+const left = 8888888888888888888n
+
+const right = 89900000000000000n
+
+const leftexp = left > 0n ? exp(GG, left, pp) : curve_neg(exp(GG, -left, pp), aParam, p)
+
+const rightexp = right > 0n ? exp(GG, right, pp) : curve_neg(exp(GG, -right, pp), aParam, p)
+
+const M = exp(GG, rr/2n, pp)
+
+const metric = curve_pair(leftexp, rightexp, aParam, p)
+
+br()
+declare("eccpair", "ECC pairing: ")
+show("eccpair", metric)
+
+const diff = curve_pair(leftexp, rightexp, aParam, p).minus(curve_pair(rightexp, leftexp, aParam, p))
+
+br()
+declare("eccdiff", "ECC diff: ")
+show("eccdiff", diff)
+
+
+
+
+</script>
+
+
+</html>

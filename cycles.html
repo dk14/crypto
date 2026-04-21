@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plotting Sine Function</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="plot" width="800" height="400"></canvas>
+    <script>
+        // Parameters
+        const alpha = 1.0;  // Decay constant
+        const a = 555525;        // Coefficient for the first sine term
+        const b = 10000020;        // Coefficient for the second sine term
+        const c = 4032;        // Phase shift for the second sine term
+
+        // Time array
+        const dt = 0.1;    // Time step
+        const tMax = 20;   // Maximum time
+        const numPoints = Math.floor(tMax / dt);
+        
+        const fValues = [];
+
+        // Calculate the values of the function
+        for (let i = 0; i < numPoints; i++) {
+            const t = i * dt;
+            const expDecay = Math.exp(-alpha * t);  // e^(-alpha * t)
+            const firstSine = Math.sin(a * t * expDecay);  // sin(a * t * e^(-alpha * t))
+            const secondSine = Math.sin(b * t + c);  // sin(bt + c)
+            const f = Math.abs(firstSine) * Math.abs(secondSine);  // Combined function
+            fValues.push(f);
+        }
+
+        // Plotting the results
+        const canvas = document.getElementById('plot');
+        const ctx = canvas.getContext('2d');
+        const width = canvas.width;
+        const height = canvas.height;
+        
+        // Clear the canvas
+        ctx.clearRect(0, 0, width, height);
+        
+        // Normalize data for plotting
+        const normalize = (value, min, max, height) => {
+            return height - ((value - min) / (max - min)) * height;
+        };
+        
+        // Find min and max for normalization
+        const min = Math.min(...fValues);
+        const max = Math.max(...fValues);
+        
+        ctx.beginPath();
+        // Draw the function
+        for (let i = 0; i < numPoints; i++) {
+            const x = (i / numPoints) * width;
+            const y = normalize(fValues[i], min, max, height);
+            ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = 'blue';
+        ctx.stroke();
+        
+        // Add Labels
+        ctx.fillStyle = 'black';
+        ctx.fillText('Plot of f(t) = sin(a*t*exp(-alpha*t)) * sin(bt + c)', 10, 20);
+        ctx.fillText(`a = ${a}, b = ${b}, c = ${c}`, 10, 40);
+    </script>
+</body>
+</html>

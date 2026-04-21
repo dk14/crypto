@@ -1,0 +1,502 @@
+<html>
+
+<body>
+
+    <div id="encrypt"></div>
+    <div id="decrypt"></div>
+
+    <div id="count2"></div>
+
+
+    <div id="decrypt2"></div>
+    <br>
+
+    m=m :<span id="test1"></span><br>
+    d=d: <span id="test2"></span><br>
+    m=m=m: <span id="test3"></span><br>
+    boost: <span id="boost"></span>
+</body>
+
+
+<script>
+
+const gcd = (a,b) => {
+
+    if (b > a) {var temp = a; a = b; b = temp;}
+    while (true) {
+        if (b == BigInt(0)) return a
+        a %= b
+        if (a == BigInt(0)) return b
+        b %= a
+    }
+}
+
+
+const coprime = n => {
+    let k = BigInt("387869")
+    while (gcd(k, n) !== BigInt(1)) {
+        k++
+    
+    }
+    return k
+}
+
+const mod_inverse = (a, n) => {
+    let [t, newt] = [BigInt(0), BigInt(1)]
+    let [r, newr] = [n, a]
+
+    while (newr !== BigInt(0)) {
+        const quotient = r / newr
+        const t_ = newt
+        newt = t - quotient * newt
+        t = t_
+
+        const r_ = newr
+        newr = r - quotient * newr
+        r = r_
+        
+    }
+    
+    if (t < BigInt(0)) {
+        t = t + n
+    }   
+    
+    return t
+}
+
+const exponentiate = (x, k, n, tag = "") => {
+    let y = BigInt(1)
+    let steps = 0
+    while (k > BigInt(1)) {
+        if (k % BigInt(2) === BigInt(1)) {
+            y = ((x % n) * (y % n)) % n
+            k = k - BigInt(1)
+            steps++
+        } 
+        x = ((x % n) * (x % n)) % n
+        k /= BigInt(2)
+        steps++
+        
+    }
+    console.log("steps(forward)=" + steps)
+    return ((x % n) * (y % n)) % n
+
+      
+}
+
+const mul = (a, b, n) => {
+    return ((a % n) * (b % n)) % n
+}
+
+const div = (a, b, n) => {
+    return mul(a, mod_inverse(b, n), n)
+}
+
+const cmp = (a, b, n, x) => {
+    return gcd(a, n) === BigInt(1)// || (a > b && b % x === BigInt(0))
+}
+
+
+
+const lemma2RHS =  (y, n, t, log = false, k) => {
+    const point = (mod_inverse(n, y) * ((y - t) / gcd(n, y))) % y
+    
+    if ((y - t) % gcd(n, y) !== BigInt(0)) {
+        return false
+    }
+
+    if (log) {
+        console.log("pointrhs=" + point)
+    }
+
+   const x0 = (point < BigInt(0) ? point + y : point) 
+
+   //todo: estimate probabilty
+    if (point === BigInt(0)) {
+            return false
+    }
+
+    //     
+    //   2 4 6 8 10 12 14 16
+    //   2 4   8          16
+   
+   const candidatePointFreq = (y * y / n) / x0
+   const pointsOnCurveSegment = k //todo use k
+   const p = candidatePointFreq >= pointsOnCurveSegment //???
+
+   
+   return point < (y * y / n)
+}
+
+/**
+ * 
+ * final lemma?
+ * let z = x^k
+ * (z % n) % t = 0
+ * (a%b%c) = (a - (a/b)*(b%c)) % c
+ * 
+ */
+
+
+function bigintToBitPositions(bigint) {
+    const positions = [];
+    let index = 0;
+    while (bigint > 0n) {
+        if (bigint & 1n) {
+            positions.push(index);
+        }
+        bigint >>= 1n; // Shift right by 1
+        index++;
+    }
+    return positions;
+}
+
+const whichBitIsSingle = (x) => {
+    const pos = bigintToBitPositions(x)
+    if (pos.length > 1) {
+        return undefined
+    } else {
+        return pos[0]
+    }
+}
+
+// find position to intersection of exp(k) and (exp(k)*n)/n + t
+// (exp(k)*n)/n + t -> exp(k) - exp(k) %n + t
+//  exp(k) - exp(k) %n + t = exp(k)
+
+// exp(k) %n = t -> exp(k) = ln + t -> ln = exp(k) - t
+// k = log(ln + t) && log exists (!!!)
+
+// k0 < k < k2 -> k1 < log(ln + t) < k2 -> x^k1 < ln + t < x^k2
+// x^k1 - t < ln < x^k2 - t
+
+// (x^k1 - t) / n + 1 < x^k2 - t  && log(ln + t) exists
+// 
+
+/**
+ * assume k1 = 1, k2 = 2
+ * 
+ * (x - t) / n + 1 < x^(2k) - t
+ * 
+ * (x - t) / n + 1 < x * x - t
+ * 
+ * x * x > t + (x - t) / n + 1
+ * 
+ * x * x > t + 1 && log exists
+ */
+
+const exponentiate5 = (x, target, n, maxk = BigInt(0), kacc = BigInt(0)) => {
+    const base = x
+    const sqrt = {}
+    let k = BigInt(1)
+    let i = 0
+    let fast = 0
+
+    const log = () => {
+        console.log("steps(fast)=" + i + `(${fast})`)
+        console.log("boost=" + Number(k + kacc) / i)
+        console.log(sqrt)
+        console.log(Object.keys(sqrt).length)
+        document.getElementById("boost").innerHTML = Number(window.d) / i
+        
+    }
+    
+    
+
+    while (x !== target) {
+        i++
+
+        const p2 = x * x > n
+
+        // nj + target % x === 0:
+        const p3 = lemma2RHS(x, n, target, false, k)
+        const p4 = lemma2RHS(target, n, x * x, false, k)
+
+        /**
+         * final lemma: find exists u j, (x^u - nj) % t = 0, subject to u=0..2k && j=0..x^(u_max)/n && j > (x^u)/n - 1, where k is current exponent
+         * 
+         * note: t is target; k is taken as k, not kacc, not kacc + k
+         * t should be chosen such that 2*t > n in order to avoid divisors (strict equality)
+         * 
+         * solution:
+         * 
+         *  x^u - nj === 0 (% t)
+         *  express as nj:
+         *    
+         *  n^(-1)x^u === j (% t)
+         *  j === n^(-1)x^u (% t)
+         * 
+         *  expand modulo: 
+         *  j = lt + n^(-1)x^u, l = 0..inf 
+         *  
+         *  apply range:
+         *  
+         *  0 < lt + n^(-1)x^u < x^(u_max)/n
+         * 
+         *  lt + n^(-1)x^u < x^(u_max)/n
+         *  lt < x^(u_max)/n - n^(-1)x^u
+         * 
+         *  Part II.
+         * 
+         *  apply another range, since j > (x^u)/n - 1:
+         * 
+         *  lt > (x^u)/n - n^(-1)x^u - 1 
+         * 
+         * 
+         *  Part III.
+         * 
+         *  System:
+         * 
+         *  u < u_max
+         *  (1/n - n^(-1))x^u - 1 < lt < x^(u_max)*(1/n) - n^(-1)x^u
+         * 
+         *  isolate constants:
+         *  
+         *  let a = n^(-1)-1/n
+         *  let b = x^(u_max)*(1/n)
+         *  let c = n^(-1)
+         * 
+         *  -ax^u < lt < b - cx^u
+         * 
+         * 
+         *  -ax^u < lt < b - cx^u
+         *  
+         *  get rid of fractions:
+         *  
+         *  -nax^u < lnt < nb - ncx^u
+         * 
+         *  -nax^u/nt + 1 < x^(u_max) - ncx^u
+         *  
+         *  System:
+         * 
+         *  ncx^u - nax^u/nt + 1 < x^(u_max)
+         *  x^u < x^u_max
+         * 
+         *  ->
+         * 
+         *  nn^(-1)x^u - (nn^(-1)x^u - x^u)/nt + 1 < x^(u_max)
+         *  x^u < x^u_max
+         * 
+         *  Isolate constants:
+         *  
+         *  let i = nn^(-1)
+         * 
+         *  ix^u - (i - 1)x^u/nt + 1 < x^(u_max)
+         *  x^u < x^umax
+         *  
+         * 
+         *  Speculate with division: ????? assume i > nt
+         * 
+         *  x^u * (i - (i - 1)/nt) < x^(u_max)
+         *  x^u < x^umax
+         * 
+         *  let z = (i - (i - 1)/nt) ~~ i - i/nt
+         * 
+         *  z * x^u < x^(u_max)
+         * 
+         *  Speculate with logarithms:
+         * 
+         *  log(z) + u < u_max
+         * 
+         *  ~~ log(i - i/nt) < u_max
+         *  
+         * 
+         */
+
+        const p5 = sqrt[mul(x,x,n)] !== undefined //exclusive, todo: try with exponentiate6 and ecc
+
+        const predicate = ((x * x) % target === BigInt(0)) || (p3 && p4)
+
+        if (predicate) {
+            if (target % x === BigInt(0)) {
+                target /= x
+            } else {
+                target = div(target, x, n)
+            }
+            
+            kacc += k
+            if (target < x) {
+                while (sqrt[x] && (x > target)) {
+                    x = sqrt[x]
+                    k = k / BigInt(2)
+                }
+
+                if (sqrt[x] === undefined) {
+                    x = base
+                    k = BigInt(1)
+                }
+            }
+            
+        } else {
+            fast++
+            const root = x
+            x = mul(x, x, n)
+            if (root !== x) {
+                sqrt[x] = root
+            }
+            k *= BigInt(2)
+        }
+        if (i > 7000000) {
+            //document.getElementById("boost").innerHTML = "overshoot"
+            throw "e"
+        }
+        
+    }
+
+    log()
+    return k + kacc
+}
+
+
+
+const exponentiate2 = (x, target, n) => {
+    let k = BigInt(1)
+    const base = BigInt(x)
+
+    while ((x % n) !== (target % n)) {
+
+        x = (base * x) % n
+        k += BigInt(1)
+
+        if (k > 70000000) {
+            return 0
+        }
+        
+    }
+    console.log("steps(slow)=" + k)
+    return k
+      
+}
+
+const encrypt = (m, n, e) => {
+    return exponentiate(m, e, n, "encrypt")
+}
+
+const decrypt = (c, n, d, tag = "") => {
+    return exponentiate(c, d, n, "decrypt" + tag)
+}
+
+const recover_pk = (m, n, e, fast = false) => {
+    let d = 0 
+    const c = encrypt(m, n, e)
+    if (fast) {
+        d = exponentiate5(c, m, n, BigInt(2) ^ BigInt(window.d.toString(2).length -4))
+        //d = exponentiate6(c, m, n)
+        //d = exponentiate5(c, BigInt(1), n) / e + BigInt(1)
+    } else {
+        d = exponentiate2(c, m, n) 
+    }
+    return d
+}
+    
+
+const test = () => {
+    //const p = BigInt(97)
+    const q = BigInt(103)
+    
+    const p = BigInt(939391)
+    //const q = BigInt(999331)
+
+    const n = p * q
+    const lambda = (p - BigInt(1)) * (q - BigInt(1))/ gcd(p - BigInt(1), q - BigInt(1))
+    const e = coprime(lambda)
+    window.d = mod_inverse(e, lambda)
+
+    console.log("n = " + n)
+    console.log("lambda = " + lambda)
+    
+    console.log("e = " + e)
+    console.log("d = " + d)
+
+
+    //const m = BigInt(2)
+    const m = decrypt(BigInt(2), n, d) // smaller base -> harder DLP -> faster solution & bigger target
+    console.log("m = " + m)
+    const c = encrypt(m, n, e)
+    console.log("c = " + c)
+    const m_ = decrypt(c, n, d)
+    document.getElementById("test1").innerHTML = (m === m_)
+    
+    //recover_pk(m, n, e, false)
+    const d_ = recover_pk(m, n, e, true)
+    console.log("d_ = " + d_)
+    const m__ = decrypt(c, n, d_, "2")
+    document.getElementById("test2").innerHTML = (d_ === d)
+    document.getElementById("test3").innerHTML = (m__ === m_)
+    
+
+    //console.log("res2=" + exponentiate6(BigInt(2), BigInt(1073741824) * BigInt(1073741824), BigInt(1073741827) * BigInt(1073741827))) //233, 1073741822
+    console.log("\n")
+
+    
+    const lemma2LHS = (y, n, t) => {
+        for (let j = BigInt(0); j <= (y * y/n); j++) {
+            if ((n * j + t) % (y) === BigInt(0)) {
+                 console.log("pointlhs =" + j)
+                return true
+            }
+        }
+        console.log("pointlhs (overflow) =" + (y * y/n))
+        return false
+        
+    }
+
+    const problem2 = [90, 33, 322].map(x => BigInt(x))
+    console.log(`lemma2: ${lemma2LHS(problem2[0], problem2[1], problem2[2])} = ${lemma2RHS(problem2[0], problem2[1], problem2[2], true)}`)
+
+}
+
+
+
+test()
+
+</script>
+
+<script>
+
+    // eccmagnitude = (a * x^p1 + b * y^p2 + c * x^p3 * y^p4) / (d * x^p5 + e * y^p6 + f * x^p7 * y^p8)
+    // maybe normalize, e.g. x = x + 100 or abs
+    // eccmagnitude would only hold inside a cycle, so can only be checked between xG and 2xG, i.e. xG < target <2xG
+
+    function sqrt(value) {
+        if (value < 0n) {
+            throw 'square root of negative numbers is not supported'
+        }
+
+        if (value < 2n) {
+            return value;
+        }
+
+        function newtonIteration(n, x0) {
+            const x1 = ((n / x0) + x0) >> 1n;
+            if (x0 === x1 || x0 === (x1 - 1n)) {
+                return x0;
+            }
+            return newtonIteration(n, x1);
+        }
+
+        return newtonIteration(value, 1n);
+    }
+
+    const curve = (x, a, b, p) => {
+        return sqrt(x^3 + a * x + b) % p
+    } 
+
+    const add = (p1, p2, a, p) => {
+        [x1, y1] = p1
+        [x2, y2] = p2
+
+        const lambda = x1 === x2 && y1 === y2 ? ((3 * x1 * x1 + a) / (2 * y1)) % p : ((y2 - y1) / (x2 - x1)) % p
+
+        const x3 = lambda * lambda - x1 - x2 % p
+        const y3 = lambda * (x1 - x3) - y1 % p
+    }
+
+    const double = (p, a) => add(p, p, a)
+
+
+
+</script>
+
+</html>
+

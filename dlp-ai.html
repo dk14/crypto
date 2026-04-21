@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DLP‑kmax Optimizer (early‑stop, corrected)</title>
+<style>
+  body {font-family:Arial,Helvetica,sans-serif; margin:20px;}
+  input, button {margin:5px;}
+  pre {background:#f4f4f4; padding:10px; overflow:auto;}
+</style>
+</head>
+<body>
+
+<h2>DLP‑kmax Optimizer (early‑stop, corrected)</h2>
+
+<label>Prime p: <input id="p" size="60" placeholder="e.g. 104729"></label><br>
+<label>Base b (prime‑order subgroup): <input id="b" size="60" placeholder="e.g. 5"></label><br>
+<label>Start x: <input id="x" size="60" placeholder="e.g. 2"></label><br>
+<label>Maximum block size j (leave empty for theoretical bound):
+<input id="jmax" size="10" placeholder="auto"></label><br>
+<button id="run">Run optimizer</button>
+
+<h3>Result</h3>
+<pre id="out"></pre>
+
+<script>
+// ---------- helper functions ----------
+function toBigInt(v){ return BigInt(v.trim()); }
+
+function modPow(base,exp,mod){
+    base %= mod;
+    let res = 1n;
+    while (exp > 0n){
+        if (exp & 1n) res = (res * base) % mod;
+        base = (base * base) % mod;
+        exp >>= 1n;
+    }
+    return res;
+}
+
+// trial‑division factorisation (good for numbers < 2^64)
+function factorise(n){
+    let num = n, cnt = 0, fac = [];
+    while (num % 2n === 0n){ num /= 2n; cnt++; }
+    if (cnt) fac.push(['2',cnt]);
+    let f = 3n;
+    while (f * f <= num){
+        cnt = 0;
+        while (num % f === 0n){ num /= f; cnt++; }
+        if (cnt) fac.push([f.toString(),cnt]);
+        f += 2n;
+    }
+    if (num > 1n) fac.push([num.toString(),1]);
+    return fac;
+}
+
+// generate all divisors from a prime‑factor list
+function genDivisors(fac, idx = 0){
+    if (idx === fac.length) return [1n];
+    const [pStr, e] = fac[idx];
+    const p = BigInt(pStr);
+    const sub = genDivisors(fac, idx + 1);
+    const out = [];
+    let pow = 1n;
+    for (let i = 0; i <= e; ++i){
+        for (const v of sub) out.push(v * pow);
+        pow *= p;
+    }
+    return out;
+}
+
+// order of a modulo prime m (uses factorisation of m‑1)
+function orderOfElement(a, m, factorList){
+    let order = m - 1n;
+    for (const [pStr, e] of factorList){
+        const p = BigInt(pStr);
+        for (let i = 0; i < e; ++i){
+            const cand = order / p;
+            if (modPow(a, cand, m) === 1n) order = cand;
+            else break;
+        }
+    }
+    return order;
+}
+
+// ---------- core optimizer ----------
+function optimize(p, b, x, jLimit){
+    // 1. order of b (prime subgroup order q)
+    const groupOrder = p - 1n;
+    const groupFac = factorise(groupOrder);
+    const divisors = genDivisors(groupFac).sort((a,b)=> a<b?-1:1);
+    let q = null;
+    for (const d of divisors){
+        if (modPow(b, d, p) === 1n){ q = d; break; }
+    }
+    if (!q) throw new Error('Failed to find order of b (should be prime).');
+
+    // 2. factor q‑1 once
+    const qMinus1Fac = factorise(q - 1n);
+
+    // 3. r = floor(log_b(p/x)) this is lmax, why not just just check it - up to theoretical bound??
+    const r = Math.floor(
+        Math.log(Number(p) / Number(x)) / Math.log(Number(b))
+    );
+
+    let bestK = 0n, bestJ = 1n, bestOrbit = [];
+
+    for (let j = 1; j <= jLimit; ++j){
+        const J = BigInt(j);
+        const alpha = modPow(2n, J, q);                 // α = 2^j (mod q)
+        const lambda = (alpha === 1n) ? 1n
+                     : orderOfElement(alpha, q, qMinus1Fac);
+
+        // ----- generate orbit with early break -----
+        let cur = 1n;
+        let admissible = 0;               // how many e ≤ r we have seen
+        const orbit = [];
+
+        // why not lmax = logb(p/x)???
+        for (let i = 0n; i < lambda; ++i){
+            const e = (cur - 1n + q) % q;
+            orbit.push(e);
+            if (e <= BigInt(r)) admissible++;
+
+            // maximum possible admissible count is r+1
+            if (admissible === r + 1) break;   // *** early exit ***
+
+            cur = (cur * alpha) % q;
+        }
+
+        if (admissible === 0) continue;          // this j gives no valid step
+
+        const K = J * BigInt(admissible - 1);    // total elementary updates
+        if (K > bestK){
+            bestK = K;
+            bestJ = J;
+            bestOrbit = orbit.slice();           // keep a copy for reporting
+        }
+    }
+
+    return {
+        q: q.toString(),
+        r,
+        bestJ: bestJ.toString(),
+        bestK: bestK.toString(),
+        bestOrbit: bestOrbit.map(v => v.toString())
+    };
+}
+
+// ---------- UI ----------
+document.getElementById('run').addEventListener('click', () => {
+    const out = document.getElementById('out');
+    try {
+        const p = toBigInt(document.getElementById('p').value);
+        const b = toBigInt(document.getElementById('b').value);
+        const x = toBigInt(document.getElementById('x').value);
+        const jIn = document.getElementById('jmax').value.trim();
+
+        // theoretical bound: floor(log2(p/2))
+        const defaultJ = Math.floor(Math.log2(Number(p) / 2));
+        const jLimit = jIn === '' ? defaultJ : Number(jIn);
+
+        const res = optimize(p, b, x, jLimit);
+
+        let txt = '';
+        txt += `prime p = ${p}\n`;
+        txt += `base b (order q) = ${b}   (q = ${res.q})\n`;
+        txt += `start x = ${x}\n`;
+        txt += `r = floor(log_b(p/x)) = ${res.r}\n\n`;
+        txt += `search limit jmax = ${jLimit}\n`;
+        txt += `best block size j* = ${res.bestJ}\n`;
+        txt += `maximum elementary updates K* = ${res.bestK}\n`;
+        txt += `orbit for that j (first 20 values, total ${res.bestOrbit.length}):\n`;
+        txt += res.bestOrbit.slice(0, 20).join(', ');
+        if (res.bestOrbit.length > 20) txt += ', …';
+        out.textContent = txt;
+    } catch (e) {
+        out.textContent = 'Error: ' + e.message;
+        throw e
+    }
+});
+</script>
+
+</body>
+</html>

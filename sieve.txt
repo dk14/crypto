@@ -1,0 +1,24 @@
+def exists_j(x, n, t):
+    # 1. factor x
+    factors = factorise(x)               # list of (prime, exponent)
+
+    # 2. recursively generate divisors < N
+    divisors = []
+    def gen(idx, current):
+        if current >= N:
+            return
+        if idx == len(factors):
+            divisors.append(current)
+            return
+        p, e = factors[idx]
+        for k in range(e + 1):
+            gen(idx + 1, current)
+            current *= p
+    gen(0, 1)
+
+    # 3. test congruence
+    for d in divisors:
+        if d % n == t % n:                # d ≡ t (mod n)
+            j = (d - t) // n
+ 	    return True, j
+    return False, None

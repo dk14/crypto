@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GPU‑only Divide‑and‑Conquer BigInt</title>
+<style>
+  body {font-family:sans-serif; margin:2rem;}
+  pre {background:#f4f4f4; padding:1rem; overflow:auto;}
+</style>
+</head>
+<body>
+
+<h2>GPU‑only divide‑and‑conquer big‑integer arithmetic</h2>
+
+<input id="a" placeholder="First integer (decimal)" size="60"><br><br>
+<input id="b" placeholder="Second integer (decimal)" size="60"><br><br>
+
+<button id="runMul">Multiply</button>
+<button id="runAdd">Add</button>
+
+<h3>Result (hex)</h3>
+<pre id="out">–</pre>
+
+<script src="https://unpkg.com/gpu.js@latest/dist/gpu-browser.min.js"></script>
+<script>
+/* -------------------------------------------------
+   Configuration
+   ------------------------------------------------- */
+const BLOCK_BITS = 30;                     // size of each limb
+const BLOCK_MASK = (1 << BLOCK_BITS) - 1;  // 0x3fffffff
+const LIMB_BASE  = 1 << BLOCK_BITS;       // 2^B
+
+const gpu = new GPU();
+
+/* -------------------------------------------------
+   Leaf kernels (single‑limb ops)
+   ------------------------------------------------- */
+// 1‑limb multiplication → two‑limb result (low,high)
+const leafMul = gpu.createKernel(function (A, B) {
+  const a = A[0][0];
+  const b = B[0][0];
+  const prod = a * b;                     // exact ≤ 2^60
+  const low  = prod & this.constants.mask;
+  const high = Math.floor(prod / this.constants.base);
+  this.color(low, high, 0, 1);
+})
+.setOutput([1, 1])
+.setGraphical(true)
+.setConstants({mask: BLOCK_MASK, base: LIMB_BASE})
+.setPipeline(true);
+
+// 1‑limb addition → two‑limb result (sum,carry)
+const leafAdd = gpu.createKernel(function (A, B) {
+  const sum = A[0][0] + B[0][0];
+  const low   = sum & this.constants.mask;
+  const carry = sum >>> this.constants.bits;
+  this.color(low, carry, 0, 1);
+})
+.setOutput([1, 1])
+.setGraphical(true)
+.setConstants({mask: BLOCK_MASK, bits: BLOCK_BITS})
+.setPipeline(true);
+
+/* -------------------------------------------------
+   Conversion helpers (decimal ↔ limb texture)
+   ------------------------------------------------- */
+function decToLimbs(str) {
+  let n = BigInt(str);
+  const limbs = [];
+  const mask = (1n << BigInt(BLOCK_BITS)) - 1n;
+  while (n > 0n) {
+    limbs.push(Number(n & mask));
+    n >>= BigInt(BLOCK_BITS);
+  }
+  return new Uint32Array(limbs);
+}
+function limbsToHex(limbs) {
+  let v = 0n;
+  for (let i = limbs.length - 1; i >= 0; i--) {
+    v = (v << BigInt(BLOCK_BITS)) + BigInt(limbs[i]);
+  }
+  return '0x' + v.toString(16);
+}
+
+function uploadLimbs(limbs) {
+  // A 1‑row texture: each pixel holds one 32‑bit limb.
+  const toTexture = gpu.createKernel(function (src) {
+    // `src` is a 1‑D array; return the value for this pixel.
+    return src[this.thread.x];
+  })
+  .setOutput([limbs.length, 1]) // <-- two‑dimensional output
+  .setGraphical(true)            // we need a texture output
+  .setPipeline(true);            // keep the result as a texture
+
+  // Returns a texture object that can be passed to the other kernels.
+  return toTexture(limbs);
+}
+
+/* -------------------------------------------------
+   Core recursive driver (GPU‑only)
+   ------------------------------------------------- */
+function gpuRecursion(Atex, Btex, op) {
+  // ----- helpers for texture size -----
+  const texW = t => t.output[0];
+  const texH = t => t.output[1];
+
+  // Determine recursion depth: when texture width == 1 → leaf
+  const maxLevel = Math.ceil(Math.log2(texW(Atex)));
+  let level = maxLevel;
+  let curA = Atex, curB = Btex, curOut;
+
+  while (level >= 0) {
+    if (level === 0) {
+      // leaf
+      curOut = (op === 'mul') ? leafMul(curA, curB) : leafAdd(curA, curB);
+    } else {
+      const half = Math.pow(2, level - 1);
+
+      // ----- slice helper (still uses output size) -----
+      const slice = (tex, start) => {
+        const kernel = gpu.createKernel(function (T) {
+          return T[this.thread.y][this.thread.x + this.constants.offset];
+        })
+        .setOutput([half, texH(tex)])          // height stays the same
+        .setConstants({offset: start})
+        .setPipeline(true);
+        return kernel(tex);
+      };
+
+      const lowA  = slice(curA, 0);
+      const highA = slice(curA, half);
+      const lowB  = slice(curB, 0);
+      const highB = slice(curB, half);
+
+      // recursive sub‑products
+      const P = gpuRecursion(highA, highB, 'mul');
+      const Q = gpuRecursion(lowA,  lowB,  'mul');
+      const sumA = addTextures(highA, lowA);
+      const sumB = addTextures(highB, lowB);
+      const R = gpuRecursion(sumA, sumB, 'mul');
+
+      // combine
+      const shiftedP = shiftTexture(P, 2 * half);
+      const middle   = subTextures(subTextures(R, P), Q);
+      const shiftedM = shiftTexture(middle, half);
+      curOut = addTextures(addTextures(shiftedP, shiftedM), Q);
+    }
+
+    curA = curOut;
+    curB = curOut;   // not used after leaf, but kept for signature
+    level--;
+  }
+  return curOut;
+}
+
+
+/* -------------------------------------------------
+   Helper wrappers that use the generic kernels above
+   ------------------------------------------------- */
+// (the `addTextures` function will be defined after this point)
+/* -------------------------------------------------
+   Helper wrappers that use the generic kernels above
+   ------------------------------------------------- */
+// element‑wise addition of two textures (same dimensions)
+function addTextures(A, B) {
+  const add = gpu.createKernel(function (X, Y) {
+    const sum = X[this.thread.y][this.thread.x] + Y[this.thread.y][this.thread.x];
+    const low   = sum & this.constants.mask;
+    const carry = sum >>> this.constants.bits;
+    // store carry in the next pixel (x+1); we will propagate later
+    this.color(low, carry, 0, 1);
+  })
+  .setOutput([A.width, A.height])
+  .setGraphical(true)
+  .setConstants({mask: BLOCK_MASK, bits: BLOCK_BITS})
+  .setPipeline(true);
+  return add(A, B);
+}
+
+// element‑wise subtraction (assumes A ≥ B)
+function subTextures(A, B) {
+  const sub = gpu.createKernel(function (X, Y) {
+    let diff = X[this.thread.y][this.thread.x] - Y[this.thread.y][this.thread.x];
+    let borrow = 0;
+    if (diff < 0) { diff += 0x100000000; borrow = 1; }
+    this.color(diff, borrow, 0, 1);
+  })
+  .setOutput([A.width, A.height])
+  .setGraphical(true)
+  .setPipeline(true);
+  return sub(A, B);
+}
+
+// shift a texture left by `k` limbs (multiply by 2^{k·B})
+function shiftTexture(T, k) {
+  const sh = gpu.createKernel(function (X) {
+    const src = this.thread.x - this.constants.shift;
+    const val = src >= 0 ? X[this.thread.y][src] : 0;
+    this.color(val, 0, 0, 1);
+  })
+  .setOutput([T.output[0], T.output[1]])   // use output array
+  .setConstants({shift: k})
+  .setGraphical(true)
+  .setPipeline(true);
+  return sh(T);
+}
+
+/* -------------------------------------------------
+   UI handling
+   ------------------------------------------------- */
+document.getElementById('runMul').addEventListener('click', () => {
+  const aStr = document.getElementById('a').value.trim();
+  const bStr = document.getElementById('b').value.trim();
+  if (!aStr || !bStr) {
+    document.getElementById('out').textContent = 'Enter both numbers.';
+    return;
+  }
+  try {
+    const aLimbs = decToLimbs(aStr);
+    const bLimbs = decToLimbs(bStr);
+    const aTex = uploadLimbs(aLimbs);
+    const bTex = uploadLimbs(bLimbs);
+    const resultTex = gpuRecursion(aTex, bTex, 'mul');
+    const resultLimbs = resultTex.toArray()  // Uint32Array (low words)
+    document.getElementById('out').textContent = limbsToHex(resultLimbs);
+  } catch (e) {
+    document.getElementById('out').textContent = 'Error: ' + e;
+  }
+});
+
+document.getElementById('runAdd').addEventListener('click', () => {
+  const aStr = document.getElementById('a').value.trim();
+  const bStr = document.getElementById('b').value.trim();
+  if (!aStr || !bStr) {
+    document.getElementById('out').textContent = 'Enter both numbers.';
+    return;
+  }
+  try {
+    const aLimbs = decToLimbs(aStr);
+    const bLimbs = decToLimbs(bStr);
+    const aTex = uploadLimbs(aLimbs);
+    const bTex = uploadLimbs(bLimbs);
+    const resultTex = gpuRecursion(aTex, bTex, 'add');
+    const resultLimbs = resultTex.toArray()
+    document.getElementById('out').textContent = limbsToHex(resultLimbs);
+  } catch (e) {
+    document.getElementById('out').textContent = 'Error: ' + e;
+  }
+});
+</script>
+</body>
+</html>

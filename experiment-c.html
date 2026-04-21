@@ -1,0 +1,420 @@
+<html>
+
+<body>
+
+</body>
+
+<script>
+
+// drama: 
+// https://bitcoin.stackexchange.com/questions/113116/how-is-the-generator-point-g-chosen-in-the-secp256k1-curve-used-in-bitcoin
+
+// only for fields to find a primitive root
+
+window.sieve = (max) => {
+    const limit = BigInt(max);
+    const isPrime = new Map();
+
+    // Initialize all numbers as prime
+    for (let i = BigInt(2); i <= limit; i++) {
+        isPrime.set(i, true);
+    }
+
+    for (let i = BigInt(2); i * i <= limit; i++) {
+        if (isPrime.get(i)) {
+            for (let j = i * i; j <= limit; j += i) {
+                isPrime.set(j, false); // Mark multiples of i as non-prime
+            }
+        }
+    }
+
+    const primes = [];
+    for (let i = BigInt(2); i <= limit; i++) {
+        if (isPrime.get(i)) {
+            primes.push(i);
+        }
+    }
+
+    return primes;
+}
+
+let primes = sieve(100000n);
+
+window.factor = (n) => {
+  if ((!primes) || (primes[primes.length - 1] < n)) {
+    primes = sieve(n);
+  }
+
+  var factors = [];
+  for (let k = 0; k < primes.length && n > 1; k++) {
+    let p = primes[k];
+  	if (n % p === 0n) {
+	    var factor = { prime: p, power: 0n };
+	    while (n % p === 0n) {
+        factor.power++;
+        n /= p;
+      }
+      factors.push(factor);
+    }
+  }
+
+  if (n > 1n) {
+    // Whatever remains, if it is not 1, must be prime
+    factors.push( { prime: n, power: 1n } );
+  }
+  return factors;
+};
+
+window.primeFactors = (n) => {
+  return factor(n).map(function (f) { return f.prime });
+};
+
+window.eulerPhi = (n) => {
+  const product = function (list) {
+    return list.reduce(function (memo, number) {
+      return memo * number;
+    }, 1n);
+  };
+  const factors = primeFactors(n);
+  const N = product(factors.map(function (p) { return p - 1n; }))
+  const D = product(factors);
+  return n * N / D;
+};
+
+window.isInSameSubgroup = (a, b, p) => {
+   const phi_m = eulerPhi(p);
+   const factors = primeFactors(phi_m);
+   const aSubOrder = factors.filter(d => powerMod(a, phi_m/d, p) === 1n)
+
+   const intersect = aSubOrder.filter(suborder => powerMod(b, phi_m/suborder, p) === 1n)
+   return intersect.length > 0
+}
+
+window.primitiveRoot = (modulus) => {
+  var phi_m = eulerPhi(modulus);
+  var factors = primeFactors(phi_m);
+  for (var x = 2n; x < modulus; x++) {
+    var check = true;
+    var n = factors.length;
+    for (var i = 0; i < n; i++) {
+      if (powerMod(x, phi_m / factors[i], modulus) === 1n) {
+        check = false;
+        break;
+      }
+    }
+    if (check) { return x; }
+  }
+  return NaN;
+};
+
+</script>
+
+<script type="module">
+
+// https://github.com/rsandor/number-theory/blob/master/lib/square_root_mod.js
+
+const show = (tag, msg) => {
+    document.getElementById(tag).innerText = msg
+}
+
+const br = () => {
+    document.body.appendChild(document.createElement("br"))
+}
+
+const declare = (tag, desc) => {
+    const descEl = document.createElement("span")
+    descEl.innerText = desc
+    document.body.appendChild(descEl)
+    const contentEl = document.createElement("span")
+    contentEl.id = tag
+    document.body.appendChild(contentEl)
+    br() 
+}
+
+const gcd = (a,b) => {
+    if (b > a) {var temp = a; a = b; b = temp;}
+    while (true) {
+        if (b == BigInt(0)) return a
+        a %= b
+        if (a == BigInt(0)) return b
+        b %= a
+    }
+}
+
+const mod_inverse = (a, n) => {
+    let [t, newt] = [BigInt(0), BigInt(1)]
+    let [r, newr] = [n, a]
+
+    while (newr !== BigInt(0)) {
+        const quotient = r / newr
+        const t_ = newt
+        newt = t - quotient * newt
+        t = t_
+
+        const r_ = newr
+        newr = r - quotient * newr
+        r = r_
+        
+    }
+    
+    if (t < BigInt(0)) {
+        t = t + n
+    }   
+    
+    return t
+}
+
+
+const mod = (a, p) => (a % p + p) % p
+
+const alg = p => ({
+    zero: 1n,
+    add: (a, b) => mod(mod(a, p) * mod(b, p), p),
+    neg: (a) => mod_inverse(mod(a, p), p),
+    sqrt: (a) => squareRootModPrime(a, p),
+
+    neq: (a, b) => a !== b,
+    eq: (a, b) => a === b
+})
+
+window.powerMod = (x, k, p) => exp(x, k, alg(p))
+
+const exp = (x, k, algebra = alg(p)) => {
+    if (k === 0n) return algebra.zero
+    let y = algebra.zero
+    while (k > 1n) {
+        if (k % 2n === 1n) {
+            y = algebra.add(x, y)
+            k = k - 1n
+        } 
+        x = algebra.add(x, x)
+        k /= 2n
+        
+    }
+    return algebra.add(x, y)  
+}
+
+const p = 3967n //13n, 3967n,  993319n
+
+const b = mod(9009n * 9009n, p) //13011n
+
+// b has to be selected such it would allow for max testable factors
+
+const k = 3n * 661n * 2n * 3n //BigInt("0b101000110011")
+const e = exp(b, k, alg(p))
+
+const predicate = (candidate, b, e, p) => {
+  console.log("[test] " + candidate)
+  return exp(b, candidate) === e
+}
+
+const sunzi = (eq1, eq2) => {
+    const M = eq1.m * eq2.m
+    const b1 = M / eq1.m
+    const b2 = M / eq2.m
+    return mod(eq1.a * b1 * mod_inverse(b1, eq1.m) + eq2.a * b2 * mod_inverse(b2, eq2.m), M)
+}
+
+//todo put negative numbers
+// guess limit based on remaining phi-factors available left
+// out of phi factors possible
+// ignore solution = zero
+const aggregate = (eq1acc, eq2, limit) => {
+    console.log((eq1acc?.a + "%" + eq1acc?.m) + " (+) " + (eq2?.a + "%" + eq2?.m) + " = ?")
+
+    if (limit.counter > limit.n) {
+      limit.counter = 0n
+      return undefined
+    }
+
+    if (eq1acc === undefined) {
+      return eq2
+    }
+
+    if (eq2 === undefined) {
+      return eq1acc
+      limit.counter++
+    }
+
+    for (let nd of limit.nondivisors) {
+      const eq1contradicts = mod(eq1acc.a, nd) === nd.a
+      const eq2contradicts = mod(eq2.a, nd) === nd.a
+
+      if (eq1contradicts && eq2contradicts) {
+          return undefined
+      } else if (eq1contradicts){
+          return eq2
+      } else if (eq2contradicts) {
+          return eq1acc
+          limit.counter++
+      }
+    }
+
+    if (gcd(eq2.m, eq1acc.m) !== 1n) { 
+      limit.counter++
+      //console.log("gcd no pair")
+      if (eq2.m > eq1acc.m) {
+        return eq2 //not reachable?
+      } else {
+        limit.queue.push(eq2)
+        limit.queue = limit.queue.slice(-Number(limit.max_queue))
+        return eq1acc
+        
+      }
+    }
+
+    const M = eq1acc.m * eq2.m
+    const x = sunzi(eq1acc, eq2)
+    
+    const logfound = predicate(x, b, e, p)
+    console.log((eq1acc.a + "%" + eq1acc.m) + " (+) " + (eq2.a + "%" + eq2.m) + " = " + (x + "%" + M))
+
+    if (logfound) {
+      throw "log found: " + candidate
+    }
+    
+    if (M === limit.Mbound) {
+      return undefined
+    }
+
+    return {a: x, m: M}
+}
+
+const reductor = (acc, b, e, p, shift, limit) => {
+    const [divisors, nondivisors] = characteristic(b, e, p)
+
+    for (let nd of nondivisors) {
+        limit.nondivisors.push(nd)
+        limit.nondivisors = limit.nondivisors.slice(-Number(limit.max_nondivisors))
+    }
+
+    if (divisors.length > 1) {
+       //console.log(`${divisors} ${e} ${acc.a}%${acc.m}${Object.keys(acc.m)}`)
+    }
+   
+
+    const agg = divisors.reduce((d1, d2) => {
+      const newacc = aggregate(d1, {a: shift, m: BigInt(d2)}, limit)
+        
+      if (false && newacc === undefined && limit.queue.length > 0n) {
+          const savequeue = limit.queue
+          limit.queue = []
+          return savequeue.reduce((s1, s2) => {
+            return aggregate(s1, s2, limit)
+          }, undefined)
+      }
+      return newacc
+    }, acc)
+
+    return agg
+}
+
+const log = (e, b, p) => {
+    const maxsteps = p
+    let steps = 0n
+    const phi = eulerPhi(p)
+    const limit = {
+      n: 50n, 
+      counter: 0n, 
+      queue: [], 
+      Mbound: factor(phi).map(x => x.prime).reduce((a, b) => a * b, 1n),
+      nondivisors: [],
+      max_queue: 10n,
+      max_nondivisors: 10n
+    } 
+
+    const [[c0]] = characteristic(b, e, p)
+    let solution = reductor({a: 0n, m: BigInt(c0)}, b, e, p, 0n, limit)
+
+    let shift = 0n
+
+    while (steps < maxsteps) {
+        steps++
+        shift += 1n
+        e = mod(e * b, p)
+        if (e === b) {
+          return [phi - steps + 1n, " steps = " + steps]
+        }
+        solution = reductor(solution, b, e, p, shift, limit)
+    }
+}
+
+br()
+declare("b", "b = ")
+show("b", b)
+declare("k", "k = ") 
+show("k", k)
+declare("e", "e = ")
+show("e", e)
+declare("p", "p = ")
+show("p", p)
+
+const al = alg(p)
+
+/**
+n is a positive integer.
+m is coprime to n, meaning they have no common divisors (i.e., gcd(m,n)=1).
+n has a primitive root r -> base is p^k where p is prime
+d is the greatest common divisor (gcd) of h and φ(n), i.e., d=gcd(h,φ(n)).
+
+factors of e's k are recovered if b is non-residue in a factor
+*/
+const characteristic = (b, e, p, limit = 20) => {
+
+    //todo try to extract remainders of division
+    //x^(phi/k) divided by (phi/k), e.g. find (phi/k)th root (in a subgroup??)
+    // it will represent x^remainder (in a subgroup??)
+
+    // another option is to test for equality manually (phi/1, phi/2, phi/3 ...phi/k), using small numbers
+    // then non-divisors turn into proper equations
+
+    const phi = eulerPhi(p)
+    const phi_factors = factor(phi).map(x => x.prime)
+    //console.log(phi_factors)
+    const kroot = (x, k) => exp(x, phi/gcd(k, phi)) === 1n
+    const range = [...Array(limit).keys()].map(x => BigInt(x))
+    const broots = range.map(k => kroot(b, k))
+    const testable =  phi_factors.filter(k => !kroot(b, k))
+    const eroots = range.map(k => kroot(e, k))
+
+    const c = []
+    for(let i = 0; i < limit; i++) {
+      if (broots[i] === false && eroots[i] === true) {
+        c.push(i)
+      }
+    }
+    const characters = c
+      .filter(x => phi_factors.includes(BigInt(x)))
+    
+    const cocharacters = testable.filter(x => !characters.map(c => BigInt(c)).includes(x))
+    return [characters, cocharacters]
+}
+
+br()
+declare("test777", "c = ")
+show("test777", characteristic(b, e, p)[0])
+
+br()
+declare("test888", "not c = ")
+show("test888", characteristic(b, e, p)[1])
+
+br()
+declare("lg", "log = ")
+show("lg", log(e, b, p))
+
+const phi = eulerPhi(p)
+const phi_factors = factor(phi).map(x => x.prime)
+//console.log(phi_factors)
+const kroot = (x, k) => exp(x, phi/gcd(k, phi)) === 1n
+const range = [...Array(50).keys()].map(x => BigInt(x))
+const broots = range.map(k => kroot(b, k))
+const testable = phi_factors.filter(k => !kroot(b, k))
+
+br()
+declare("testable", "testable = ")
+show("testable", testable + " out of " + phi_factors)
+
+</script>
+
+
+</html>

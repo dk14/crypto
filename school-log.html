@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Asymmetric Power‑Mod Inverse – detailed counters</title>
+<style>
+  body {font-family:Arial,Helvetica,sans-serif; margin:2rem; line-height:1.5;}
+  input, button {font-size:1rem; padding:0.3rem;}
+  .result {margin-top:1rem; font-weight:bold;}
+</style>
+</head>
+<body>
+
+<h2>Asymmetric Power‑Mod Inverse (detailed step counters)</h2>
+<p>
+  Finds the largest exponent <code>e</code> with <code>bᵉ ≡ t (mod p)</code>.
+  Counters show (1) total elementary steps, (2) fast‑exponentiation loop
+  iterations (“doublings”), and (3) every modular multiplication performed.
+</p>
+
+<label>Prime modulus p:
+  <input id="p" type="number" value="1019" min="2">
+</label><br><br>
+<label>Generator b (primitive root mod p):
+  <input id="b" type="number" value="2" min="2">
+</label><br><br>
+<label>Target t (1 ≤ t < p):
+  <input id="t" type="number" value="123" min="1">
+</label><br><br>
+<button id="run">Compute e</button>
+
+<div class="result" id="output"></div>
+
+<script>
+/* ---------- global counters ---------- */
+let stepsTotal = 0;   // every elementary operation
+let stepsPow   = 0;   // each iteration of the binary‑exponentiation loop
+let stepsMul   = 0;   // each modular multiplication (including squaring)
+
+/* ---------- modular utilities ---------- */
+function modMul(a, b, mod) {
+  stepsMul++;                     // count this multiplication
+  return (a * b) % mod;
+}
+
+function modPow(base, exp, mod) {
+  const B0 = BigInt(base) % BigInt(mod);
+  let e = BigInt(exp);
+  const M = BigInt(mod);
+  let result = 1n;
+  let B = B0;
+
+  while (e > 0n) {
+    stepsPow++;                  // one “doubling” iteration
+    stepsTotal++;                // loop iteration itself
+    if (e & 1n) result = modMul(result, B, M);
+    B = modMul(B, B, M);        // square (the “doubling” of the exponent)
+    e >>= 1n;
+  }
+  return result;
+}
+
+/* ---------- perfect‑power (school_log) ---------- */
+function schoolLog(b, t) {
+  const B = BigInt(b);
+  const T = BigInt(t);
+  if (B <= 1n) throw new Error('base must be > 1');
+
+  // exponential search for an upper bound
+  let low = 0n, high = 1n;
+  while (modPow(B, high, Number.MAX_SAFE_INTEGER) <= T) {
+    high <<= 1n;
+    stepsTotal++;
+  }
+  // binary search for k
+  while (low + 1n < high) {
+    const mid = (low + high) >> 1n;
+    if (modPow(B, mid, Number.MAX_SAFE_INTEGER) <= T) low = mid;
+    else high = mid;
+    stepsTotal++;
+  }
+  const k = low;
+  const pow = modPow(B, k, Number.MAX_SAFE_INTEGER);
+  return [Number(k), [Number(T), Number(pow)]];
+}
+
+/* ---------- core algorithm ---------- */
+function asymmetricPowerModInverse(p, b, t) {
+  const P = BigInt(p);
+  const B = BigInt(b);
+  const T = BigInt(t);
+
+  // 1. interval size Δ = floor(sqrt(p‑1))
+  const delta = BigInt(Math.floor(Math.sqrt(Number(P - 1n))));
+  stepsTotal++;
+
+  // pre‑compute b^Δ mod p
+  const bDelta = modPow(B, delta, P);
+  stepsTotal++;
+
+  // 2. walk intervals until we bracket the solution
+  let lowExp = 0n;
+  let lowVal = 1n;
+  let nextExp, nextVal;
+
+  while (true) {
+    nextExp = lowExp + delta;
+    nextVal = modMul(lowVal, bDelta, P);   // one modular multiplication
+    stepsTotal++;
+
+    if (nextVal === T) return Number(nextExp); // exact hit
+
+    const lowLess  = lowVal < T;
+    const nextLess = nextVal < T;
+    stepsTotal++;                     // comparison
+
+    if (lowLess === nextLess) {
+      lowExp = nextExp;
+      lowVal = nextVal;
+    } else {
+      break;                          // bracket found
+    }
+  }
+
+  // 3. binary search inside the bracket
+  let L = lowExp, R = nextExp;
+  while (L + 1n < R) {
+    const M = (L + R) >> 1n;
+    const val = modPow(B, M, P);
+    stepsTotal++;                     // binary‑search iteration
+    const sameSide = (val < T) === (lowVal < T);
+    if (sameSide) L = M;
+    else          R = M;
+  }
+
+  // final verification
+  if (modPow(B, L, P) === T) return Number(L);
+  if (modPow(B, R, P) === T) return Number(R);
+  return -1;
+}
+
+/* ---------- UI ---------- */
+document.getElementById('run').addEventListener('click', () => {
+  // reset counters for each run
+  stepsTotal = 0;
+  stepsPow   = 0;
+  stepsMul   = 0;
+
+  const p = Number(document.getElementById('p').value);
+  const b = Number(document.getElementById('b').value);
+  const t = Number(document.getElementById('t').value);
+  const out = document.getElementById('output');
+
+  try {
+    if (p <= 2 || !Number.isInteger(p)) throw 'p must be a prime > 2';
+    if (b <= 1 || !Number.isInteger(b)) throw 'b must be > 1';
+    if (t <= 0 || t >= p) throw 't must satisfy 1 ≤ t < p';
+
+    const e = asymmetricPowerModInverse(p, b, t);
+    if (e === -1) {
+      out.textContent = 'No exponent found (b may not be a generator).';
+    } else {
+      const residue = modPow(BigInt(b), BigInt(e), BigInt(p));
+      out.innerHTML = `
+        e = ${e}<br>
+        b^e mod p = ${residue}<br>
+        <strong>Total elementary steps:</strong> ${stepsTotal}<br>
+        <strong>Fast‑exponentiation (doubling) steps:</strong> ${stepsPow}<br>
+        <strong>Modular multiplications performed:</strong> ${stepsMul}
+      `;
+    }
+  } catch (err) {
+    out.textContent = 'Error: ' + err;
+  }
+});
+</script>
+
+</body>
+</html>

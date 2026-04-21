@@ -1,0 +1,186 @@
+<html>
+
+<body>
+</body>
+<script type="module">
+
+const gcd = (a, b) => {
+    if (b > a) {var temp = a; a = b; b = temp;}
+    while (true) {
+        if (b === 0n) return a
+        a %= b
+        if (a === 0n) return b
+        b %= a
+    }
+}
+
+const show = (tag, msg) => {
+    document.getElementById(tag).innerText = msg
+}
+
+const br = () => {
+    document.body.appendChild(document.createElement("br"))
+}
+
+
+const declare = (tag, desc) => {
+    const descEl = document.createElement("span")
+    descEl.innerText = desc
+    document.body.appendChild(descEl)
+    const contentEl = document.createElement("span")
+    contentEl.id = tag
+    document.body.appendChild(contentEl)
+    br() 
+}
+
+const mod_inverse = (a, n) => {
+    let [t, newt] = [BigInt(0), BigInt(1)]
+    let [r, newr] = [n, a]
+
+    while (newr !== BigInt(0)) {
+        const quotient = r / newr
+        const t_ = newt
+        newt = t - quotient * newt
+        t = t_
+
+        const r_ = newr
+        newr = r - quotient * newr
+        r = r_
+        
+    }
+    
+    if (t < BigInt(0)) {
+        t = t + n
+    }   
+    
+    return t
+}
+
+const b = 7n
+
+
+const is_on_curve = (p0, a, p) => {
+    const lhs = ((p0[0] ** 3n) + a * p0[0] + b) % p
+    const rhs = (p0[1] * p0[1]) % p
+
+    return lhs === rhs
+}
+
+const mod = (a, p) => (a % p + p) % p
+const div = (a, b, p) => mod((a % p) * mod_inverse((p + b % p) % p, p), p)
+
+const curve_add = (p1, p2, a, p) => {
+
+    if (!p1) return p2
+    if (!p2) return p1
+
+    if (!is_on_curve(p1, a, p)) throw "p1 is out of the curve: " + p1
+    if (!is_on_curve(p2, a, p)) throw "p2 is out of the curve: " + p2
+
+    const [x1, y1] = p1
+    const [x2, y2] = p2
+
+    if (x1 === x2 && mod(y1, p) === mod(-y2, p)) return undefined
+    
+    if (x1 === x2) {
+
+        const lambda = div(3n * x1 * x1 + a, 2n * y1, p)
+
+        const x3 = mod(lambda ** 2n - 2n * x1, p)
+        const y3 = mod(lambda * (x2 - x3) - y1, p)
+
+        if (!is_on_curve([x3, y3], a, p)) throw "resulting point out of the curve"
+    
+        return [x3, y3]
+    
+    } else {
+        const lambda = div(y2 - y1, x2 - x1, p)
+        const x3 = mod(lambda * lambda - x2 - x1, p)
+        const y3 = mod(lambda * (x1 - x3) - y1, p)
+
+        if (!is_on_curve([x3, y3], a, p)) throw "resulting point out of the curve"
+
+        return [x3, y3]
+    }
+    
+}
+
+const curve_double = (p0, a, p) => add(p0, p0, a)
+
+const curve_neg = (p0, a, p) => p0 ? [p0[0], -p0[1]] : undefined
+
+const r = BigInt("0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141")
+
+const algebraCurve = (aParam, G) => ({
+    zero: undefined,
+    add: (a, b, p) => curve_add(a, b, aParam, p),
+    neg: (a, p) => curve_neg(a, aParam, p)
+})
+
+const exp = (x, k, n, algebra) => {
+    let y = algebra.zero
+    while (k > 1n) {
+        if (k % 2n === 1n) {
+            y = algebra.add(x, y, n)
+            k = k - 1n
+        } 
+        x = algebra.add(x, x, n)
+        k /= 2n
+    }
+    return algebra.add(x, y, n)  
+}
+
+const p = BigInt("0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F")
+
+const aParam = 0n
+const g_x = BigInt("0x79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798")
+const g_y = BigInt("0x483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8")
+const G = [g_x, g_y]
+
+br()
+
+
+const alg = algebraCurve(aParam, G)
+
+const e = (point, power) => power > 0n ? exp(point, power, p, alg) : curve_neg(exp(point, -power, p, alg), aParam, p)
+
+const eq = (p1, p2) => p1[0] === p2[0] && p1[1] === p2[1]
+
+const neg = p0 => curve_neg(p0, aParam, p)
+
+const add = (p1, p2) => curve_add(p1, p2, aParam, p)
+
+const sub = (p1, p2) => add(p1, neg(p2))
+
+const p1 = e(e(G, 33n), (r + 1n) / 2n)
+
+const p2 = e(G, r/2n + 1n + 16n)
+
+declare("point_eq", "EQ: ")
+show("point_eq", eq(p1, p2))
+
+//2×13×83×45751×509879×2300168931843757888934889794142140465088020300168077349902139959 (6 distinct prime factors)
+
+const v = 4532n
+
+const p11 = e(e(G, 2n*v + 1n), (r + 1n) / 2n)
+
+const p22 = e(G, 2n*v + 1n)
+
+
+console.log("")
+
+//console.log("" + (p11[1] + p22[1]) > p / 2n)
+
+//console.log("" + p22[1] < p/2n && p11[1] > p/2n)
+//console.log("" + p22[1] > p/2n)
+
+
+br()
+declare("point_eq2", "EQ2: ")
+show("point_eq2", eq(p11, p22))
+
+</script>
+
+
+</html>

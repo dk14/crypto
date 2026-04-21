@@ -1,0 +1,339 @@
+<html>
+
+<body>
+<pre>
+===
+
+</pre>
+</body>
+
+<script>
+
+
+</script>
+
+<script type="module">
+
+const show = (tag, msg) => {
+    document.getElementById(tag).innerText = msg
+}
+
+const br = () => {
+    document.body.appendChild(document.createElement("br"))
+}
+
+const declare = (tag, desc) => {
+    const descEl = document.createElement("span")
+    descEl.innerText = desc
+    document.body.appendChild(descEl)
+    const contentEl = document.createElement("span")
+    contentEl.id = tag
+    document.body.appendChild(contentEl)
+    br() 
+}
+
+const mod = (a, p) => (a % p + p) % p
+
+const mul = (a, b, p) => mod(mod(a, p) * mod(b, p), p)
+
+const exp = (x, k, p) => {
+  if (k === 0n) return 1n
+  let y = 1n
+  while (k > 1n) {
+      if (k % 2n === 1n) {
+          y = mul(x, y, p) 
+          k = k - 1n
+      } 
+      x = mul(x, x, p)
+      k /= 2n
+      
+  }
+  return mul(x, y, p) 
+
+}
+
+const gcd = (x, y) => {
+    while (y) {
+        let temp = y;
+        y = x % y;
+        x = temp;
+    }
+    return x;
+}
+
+const modInverse = (a, b) => {
+    let m0 = b, y = 0n, x = 1n;
+    if (b === 1n) return 0n;
+
+    while (a > 1n) {
+        const q = a / b;
+        const temp = b;
+        b = a % b;
+        a = temp;
+        const tempY = y;
+        y = x - q * y;
+        x = tempY;
+    }
+    if (x < 0n) x += m0;
+    return x;
+}
+
+// test: a=3, b =5, t =2. the line should start at 12, cycle is lcm
+const findFirstIntersection = (a, p, t) => {
+    if (t === 0n) return lcm(a, p)
+    const d = gcd(a, p);
+    
+    if (t % d !== 0n) {
+        throw `no solution exists for t = ${t} and gcd(${a},${p}) = ${d}`
+        return null;
+    }
+
+    a /= d; p /= d; t /= d;
+    const aInv = modInverse(a, p);
+
+    if (aInv === 0n) {
+      throw "mod_inverse is zero"
+    }
+    let k = (t * aInv) % p;
+    let x = k * d * a; // Multiply by d to restore original scale   
+    // might need % (a * b), not really - its for subsequent intersections 
+    return x;
+}
+
+
+const lcm = (a, b) => {
+    return a * b / gcd(a, b)
+}
+
+const log = (b, x, acc) => {
+  let steps = 1n
+  let k = 0n
+  let acc_ = 1n
+  if (b === 1n || x < 0n) throw "error"
+  while (acc * acc_ < x) {
+    acc_ *= b 
+    k++
+    console.log("-- " + acc_ + " < " + x)
+    steps++
+    if (steps > 30n) throw "log_overflow"
+  }
+  return [k, acc * acc_, steps]
+}
+
+// intersection of integer line and exponent
+// returns in units of exponent rather than than units of line
+const lcmexp = (a, b, t = 0n, min_k = 0n) => { //b is base of exponentiation
+  let steps = 0n
+  let k = min_k
+  let acc = exp(b, k, a)
+  let line_period = a
+  let line_phase = t
+
+  console.log("t = " + t)
+
+  while (true) {
+
+    console.log("acc: " + acc)
+    console.log("line_phase: " + line_phase)
+    console.log("line_period: " + line_period)
+    console.log("------")
+
+    //todo intersect with original line only??
+    // then it should simplify for a given k we're testing
+    // vs previous k we had, call it kprev
+    // into b^k < (b^kp + t*p*inv(b, p) + cycle)
+    // e.g. does new b^k overshoots b^kprev + t*p*inv(b,p) + cycle //or minus tp??
+    // b^k - b^kprev > t*p*inv(b,p)
+
+    // target could be false positive
+    // so we have to compare b^k - b^kprev - t*p*inv(b,p) > b
+    // if it isn't: then cycle = cycle + cycle
+    // cycle is b^kprev*p, so it would become 2*b^kpev*p
+    // it's coeff would be incrementing
+
+    //problem: compare b^k and (b^2k - c) for large b and large k
+    line_phase = findFirstIntersection(acc, line_period, line_phase)
+    line_period = lcm(acc, line_period)
+    
+    if (line_period % acc !== 0n) throw "scaling error"
+    if (line_phase % acc !== 0n) throw "scaling error"
+
+    line_period = line_period / acc
+    line_phase = line_phase / acc
+
+    const fastlog = (b, t) => {
+      
+      let steps = 0n
+      let k = 1n
+      let kacc = 1n
+
+      let acc_ = 1n
+      if (b === 1n || t < 0n) throw "error"
+
+      let x = b
+
+      const adjust = true
+
+      while (t > acc_ ) {
+        console.log("-- " + acc_ * x + " < " + t)
+        if (acc_ * x < t) { //x * x?
+          console.log("FAST") 
+          x = x * x
+          k *= 2n
+          steps++
+        } else {
+          if (acc_ !== 1n) {
+            console.log("SLOW")
+            steps++  
+          }
+          acc_ *= x
+          x = b
+          kacc += k
+          k = 1n
+        }
+        
+        if (steps > 7000n) throw "log_overflow"
+      }
+       console.log("STEPS: " + steps)
+
+      return [kacc - 1n, acc_, steps]
+
+    }
+
+    const [k_, acc_, steps_] = fastlog(b, line_phase)
+    k += k_
+    acc = acc_
+    steps += steps_
+
+    if (acc === line_phase) { 
+      console.log("steps = " + steps)
+      return k
+    }
+
+    if (acc > line_phase) {
+      line_phase = line_phase + line_period
+    }
+    
+    if (steps > 7000n) throw "overflow"
+    
+  }
+
+}
+
+console.clear()
+console.log("====")
+const b = 1236n
+const p = 1231n //999331n //999331n 439n 24n * 30n * 24n 
+const t = exp(b, 197n, p)
+
+const k = lcmexp(p, b, t, 0n)
+
+console.log(k)
+
+const check = exp(b, k, p) === t
+console.log("--->")
+console.log(k)
+console.log(check)
+
+</script>
+
+<script>
+// Function to compute modular inverse using Extended Euclidean Algorithm
+function modInverse(a, p) {
+    let m0 = p, y = 0, x = 1;
+    if (p === 1) return 0;
+    while (a > 1) {
+        let q = Math.floor(a / p);
+        let t = p;
+        p = a % p;
+        a = t;
+        t = y;
+        y = x - q * y;
+        x = t;
+    }
+    return (x + m0) % m0;
+}
+
+// Function to represent a modular equation
+function createModularEquation(a, b) {
+    return { a: a, b: b }; // Represents a * x ≡ b (mod p)
+}
+
+// Function to compute the target using modular equations
+function computeTarget(t, p, e) {
+    const inv = modInverse(p, e.a);
+    return createModularEquation(t * p * inv, 1); // target is represented as an equation
+}
+
+// Function to represent e in its exponential form
+function createExpForm(base, exponent) {
+    return { base: base, exponent: exponent };
+}
+
+// Function to combine two modular equations according to defined rules
+function combineModularEquations(eq1, eq2) {
+    const newA = eq1.a * eq2.a; // Combined a's
+    const newB = eq1.b * eq2.b; // Combined b's
+    return createModularEquation(newA, newB); // Returns the new modular equation
+}
+
+// Function to check if two equations are equivalent in modular space
+function checkEquivalence(eq1, eq2) {
+    return (eq1.a === eq2.a && eq1.b === eq2.b);
+}
+
+// Function to check if a modular equation is reachable with the smallest step
+function isReachable(target, currentExp) {
+    const nextStep = target.a - currentExp.base; // Calculate the difference
+    return nextStep > 0 && nextStep % currentExp.base === 0; // Ensure it’s a multiple of the base
+}
+
+// Function to iterate and find valid intersections
+function searchIntersections(t, p, e) {
+    let k = 1; // Start with k = 1
+    let currentExp = createExpForm(e.base, k); // Initialize with e^1
+    let target = computeTarget(t, p, e); // Compute the initial target
+
+    while (true) {
+        console.log(`Current k: ${k}, Current exponential form: ${currentExp.base}^${currentExp.exponent}`);
+        console.log(`Current target (in modular equation): ${target.a} * x ≡ ${target.b} (mod ${e.base})`);
+
+        // Precompute the next state for exponent
+        const nextExp = createExpForm(currentExp.base, currentExp.exponent + 1);
+
+        // Check for overshoot in exponential representation
+        const maxExponent = Math.log(target.a) / Math.log(e.base); // Compare this way
+        if (nextExp.exponent > maxExponent) {
+            console.log("Overshoot detected. Incrementing k.");
+            k++; // Increment k if we have overshot
+            currentExp = createExpForm(currentExp.base, k); // Reset to a new exponential form
+            continue; // Re-evaluate with new k
+        }
+
+        // Construct the modular equation to represent validity check
+        const modCheckEquation = combineModularEquations(target, createModularEquation(currentExp.base, 0));
+
+        // Check if we found a valid intersection (equivalence of modular equations)
+        if (checkEquivalence(modCheckEquation, target)) {
+            // Check if this valid target is reachable with the smallest step
+            if (isReachable(target, currentExp)) {
+                console.log(`Valid intersection found at k=${k} with target equation: ${target.a} * x ≡ ${target.b}.`);
+                break; // Found valid intersection
+            } else {
+                console.log(`False positive detected for k=${k}: target not reachable.`);
+            }
+        }
+
+        // Move to the next state by doubling k
+        k *= 2; // Double k
+        currentExp = nextExp; // Update the currentExp to the precomputed next
+    }
+}
+
+// Example parameters
+
+
+
+</script>
+
+</html>

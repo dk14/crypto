@@ -1,0 +1,665 @@
+<html>
+
+<body>
+
+
+    <br>
+
+
+</body>
+
+<script src=" https://cdn.jsdelivr.net/npm/decimal.js-light@2.5.1/decimal.min.js "></script>
+
+<script type="module">
+
+const gcd = (a, b) => {
+    if (b > a) {var temp = a; a = b; b = temp;}
+    while (true) {
+        if (b === 0n) return a
+        a %= b
+        if (a === 0n) return b
+        b %= a
+    }
+}
+
+class NaiveLazyNumber {
+    constructor(number, bitacc = 0n) {
+        if (number) {
+            const nn = BigInt(number).toString(2).split('').filter(x => x === '1')
+            //console.log(nn.length)
+            this.bits = bitacc + BigInt(nn.length)
+        } else {
+            this.bits = bitacc
+        }
+        
+    }
+    
+    multiply(by) {
+        return new NaiveLazyNumber(undefined, by.bits + this.bits)
+    }
+
+    cmp(other) {
+        if (this.bits === other.bits) {
+            console.log("equals?")
+        }
+        if (this.bits > other.bits) {
+            return +1
+        } else {
+            return -1
+        }
+    }
+
+}
+
+const sum = (a, b) => {
+
+    for(let x in a) {
+        if (b[x] !== undefined) {
+            a[x] += b[x]
+            delete b[x]
+        }
+    }
+    return Object.assign({}, a, b)
+}
+
+//console.log(sum({"12": 1}, {"12": 1}))
+
+class HyperNumber {
+
+    constructor(number, acc = {}) {
+        if (number && number !== 1n) {
+            const index = BigInt(number).toString()
+            const num = {}
+            num[index] = 1
+            //console.log("===" + JSON.stringify((acc, num)))
+            this.acc = sum(structuredClone(acc), num)
+        } else {
+            this.acc = structuredClone(acc)
+        }
+        
+    }
+    
+    multiply(by) {
+        return new HyperNumber(undefined, sum(structuredClone(by.acc), structuredClone(this.acc)))
+    }
+
+    cmp(other) {
+        const intersection = Object.keys(this.acc).filter(x => Object.keys(other.acc).includes(x))
+
+        for (let x of intersection) {
+            const left = this.acc[x]
+            const right = other.acc[x]
+            if (left > right) {
+                this.acc[x] -= right
+                delete other.acc[x]
+            } else if (left === right) {
+                delete this.acc[x]
+                delete other.acc[x]
+            } else if (left < right) {
+                other.acc[x] -= left
+                delete this.acc[x]
+            }
+        }
+
+        for (let x in this.acc) {
+            for (let y in other.acc) {
+                let xx = BigInt(x)
+                let yy = BigInt(y)
+
+                if (!xx === 0n && !yy === 0n) {
+                    const xxn = this.acc[x]
+                    const yyn = other.acc[y]
+
+                    while (gcd(xx, yy) !== 1n) {
+                        const divisor = gcd(xx, yy)
+
+                        xx /= divisor
+                        yy /= divisor
+
+                        delete this.acc[x]
+                        delete other.acc[y]
+
+                        if (xx !== 1n) {
+                            const index = xx.toString()
+                            this.acc[index] = xxn
+                        }
+                        if (yy !== 1n) {
+                            const index = yy.toString()
+                            other.acc[index] = yyn
+                        }
+                    }
+                } else {
+                    if (xx === 0n) {
+                        delete this.acc[x]
+                    }
+
+                    if (yy === 0n) {
+                        delete this.acc[y]
+                    }
+                }
+
+                
+            }
+        }
+
+        if (Object.keys(this.acc).length === 0) {
+            if (Object.keys(other.acc).length === 0) {
+                console.log("+0")
+                return 0n
+            } else {
+                console.log("-1")
+                return -1
+            }
+        }
+
+        if (Object.keys(other.acc).length === 0) {
+            console.log("+1")
+            return +1
+        }
+
+        Decimal.set({
+            rounding: Decimal.ROUND_FLOOR,
+            LN10: '2.302585092994045684017991454684364207601101488628772976033327900967572609677352480235997205089598298341967784042286248633409525465082806756666287369098781689482907208325554680843799894826233198528393505308965377732628846163366222287698219886746543667474404243274365155048934314939391479619404400222105101714174800368808401264708068556774321622835522011480466371565912137345074785694768346361679210180644507064800027'
+        });
+
+        const lg = d => {
+            return new Decimal(d.logarithm().toSignificantDigits(80))
+        }
+
+
+        let thisnum = new Decimal('0')
+
+        if (this.acc['0'] === undefined) {
+            thisnum = Object.keys(this.acc).reduce((num, key) => {
+                return lg(new Decimal(key)).times(new Decimal(this.acc[key].toString())).plus(num)
+            }, new Decimal('0'))
+        }
+
+
+        let othernum = new Decimal('0')
+        
+        if (other.acc['0'] === undefined) {
+            othernum = Object.keys(other.acc).reduce((num, key) => {
+                return lg(new Decimal(key)).times(new Decimal(other.acc[key].toString())).plus(num)
+            }, new Decimal('0'))
+        }
+
+        const res = thisnum.comparedTo(othernum)
+
+        if (res === 0 && !thisnum.comparedTo(new Decimal(0)) === 0 && !othernum.comparedTo(new Decimal(0)) === 0) {
+            // console.log(this.acc)
+            // console.log(other.acc)
+            console.log("retry decide")
+            return undefined
+        } else {
+            return res
+        }
+        
+    }
+
+}
+
+const ff = new HyperNumber(99n)
+const fff = ff.multiply(ff)
+const ffff = fff.multiply(fff)
+const fffff = ffff.multiply(ffff)
+//console.log(JSON.stringify(fffff.acc))
+
+const gt = fffff.cmp(ffff)
+const lt = ffff.cmp(fffff)
+//console.log(gt)
+//console.log(lt)
+
+//throw "break"
+
+const LazyNumber = HyperNumber
+
+const show = (tag, msg) => {
+    document.getElementById(tag).innerText = msg
+}
+
+const br = () => {
+    document.body.appendChild(document.createElement("br"))
+}
+
+
+const declare = (tag, desc) => {
+    const descEl = document.createElement("span")
+    descEl.innerText = desc
+    document.body.appendChild(descEl)
+    const contentEl = document.createElement("span")
+    contentEl.id = tag
+    document.body.appendChild(contentEl)
+    br() 
+}
+
+const mod_inverse = (a, n) => {
+    let [t, newt] = [BigInt(0), BigInt(1)]
+    let [r, newr] = [n, a]
+
+    while (newr !== BigInt(0)) {
+        const quotient = r / newr
+        const t_ = newt
+        newt = t - quotient * newt
+        t = t_
+
+        const r_ = newr
+        newr = r - quotient * newr
+        r = r_
+        
+    }
+    
+    if (t < BigInt(0)) {
+        t = t + n
+    }   
+    
+    return t
+}
+
+const b = 7n
+
+
+const is_on_curve = (p0, a, p) => {
+    const lhs = ((p0[0] ** 3n) + a * p0[0] + b) % p
+    const rhs = (p0[1] * p0[1]) % p
+
+    return lhs === rhs
+}
+
+const div = (a, b, p) => ((a % p) * mod_inverse((p + b % p) % p, p)) % p
+
+const curve_add = (p1, p2, a, p) => {
+
+    if (!p1) return p2
+    if (!p2) return p1
+
+    if (!is_on_curve(p1, a, p)) throw "p1 is out of the curve: " + p1
+    if (!is_on_curve(p2, a, p)) throw "p2 is out of the curve: " + p2
+
+    const [x1, y1] = p1
+    const [x2, y2] = p2
+
+    if (x1 === x2 && y1 === -y2) return undefined
+    
+    if (x1 === x2) {
+
+        const lambda = div(3n * x1 * x1 + a, 2n * y1, p)
+
+        const x3 = (lambda ** 2n - 2n * x1) % p
+        const y3 = (lambda * (x2 - x3) - y1) % p
+
+        if (!is_on_curve([x3, y3], a, p)) throw "resulting point out of the curve"
+    
+        return [x3, y3]
+    
+    } else {
+        const lambda = div(y2 - y1, x2 - x1, p)
+        const x3 = (lambda * lambda - x2 - x1) % p
+        const y3 = (lambda * (x1 - x3) - y1) % p
+
+        if (!is_on_curve([x3, y3], a, p)) throw "resulting point out of the curve"
+
+        return [x3, y3]
+    }
+    
+}
+
+const curve_double = (p0, a, p) => add(p0, p0, a)
+
+const curve_neg = (p0, a, p) => p0 ? [p0[0], -p0[1]] : undefined
+
+const rr = BigInt("0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141")
+
+const curve_pair = (P, Q, a, p) => {
+
+    const mod = (a) => (a % p + p) % p
+
+    const k = new LazyNumber("115792089237316195423570985008687907852837564279074904382605163141518161494337")
+
+    if (Q === undefined) {
+        throw "Q === 0"
+        //return curve_pair(P, P, a, p)
+    }
+
+    if (P === undefined) {
+        throw "P === 0"
+        //return curve_pair(P, P, a, p)
+    }
+
+    let T = P
+
+    // https://en.bitcoin.it/wiki/Secp256k1
+    
+    const r = (rr).toString(2).split('').map(x => x === '0' ? 0 : 1)
+
+    let f = new LazyNumber(1)
+
+    let i = 1 // skip most significant bit
+    
+    const h = (P, Q, R) => {
+        const [xP, yP] = P
+        const [xQ, yQ] = Q
+        const [xR, yR] = R
+
+        let m = undefined
+        if (xP !== xQ && yP !== yQ) {
+            // secant case
+            const denom = mod(xQ - xP)
+            m = div(yQ - yP, denom, p)
+        } else {
+            // tangent case
+            const denom = (2n * yP) % p
+            m = div((3n * xP * xP + a), denom, p) 
+        }
+
+        //todo handle undefined
+
+        const l = mod(yR - yP - m * (xR - xP))
+
+        return l + p
+    }
+
+    const wrap = (v) => new LazyNumber((v).toString())
+
+    while (r[i] !== undefined) {
+
+        //console.log(`bit[${i}] = ` + h(T, T, Q))
+
+        f = f.multiply(f).multiply(wrap(h(T, T, Q))) 
+        T =  curve_add(T, T, a, p)
+
+        if (r[i] === 1) {
+            //console.log(`bit[${i}][odd] = ` + h(T, T, Q))
+            f = f.multiply(wrap(h(T, P, Q)))
+            T = curve_add(T, P, a, p)
+        }
+        i++
+    }
+
+    //check if roots are precise!!! (p^k - 1n) / r
+    // calc k as embedding degree
+    for(let i = 1n; i <= (p - 1n)/rr; i += 1n) {
+        //f = f.multiply(f) // it should be irrelevent for comparison
+    }
+    
+    return f
+}
+
+const testTriangle1 = (P, Q, R, a, p) => {
+    return 0n === curve_pair(curve_add(P, Q, a, p), R, a, p).cmp(curve_pair(P, R, a, p).multiply(curve_pair(Q, R, a, p)))
+}
+
+const testTriangle2 = (P, Q, R, a, p) => {
+    return  0n === curve_pair(P, curve_add(Q, R, a, p), a, p).cmp(curve_pair(P, Q, a, p).multiply(curve_pair(Q, R, a, p)))
+}
+
+const algebraMod = {
+    zero: 1n,
+    add: (a, b, n) => ((a % n) * (b % n)) % n,
+    neg: (a, n) => mod_inverse(a, n),
+    cmp: (a, b, n, x) => x * x > b || x * x > n //todo construct billinear map
+}
+
+const algebraCurve = (aParam, G, r = undefined, decidability = 6n) => ({ //r must be subgroup order
+    zero: undefined,
+    add: (a, b, p) => curve_add(a, b, aParam, p),
+    neg: (a, p) => curve_neg(a, aParam, p),
+    cmp: (p1, p2, p) => { 
+        // p1 > p2
+
+        const comparisons = []
+        const comparisonsN = 3
+
+        const shiftStep = 5n
+
+        let shift = 2n
+
+        let overflow = 0n
+
+        const translate = true
+
+        while(comparisons.length < comparisonsN && overflow < decidability) {
+
+            // linear shifts: G + shift, p1 + shift, p2 + shift
+            // scaling shifts: shift * G, shift * p1, shift * p2; note they introduce linear dependency in a sample -> bad for decidability
+
+            // todo higher translations: can shift G independently (relative to 0) in order to exclude primes
+            // todo consider projective coordinates or mapping smaller space
+            // todo reflections
+
+            // todo self-pairings
+            // todo try to target smallest element with smallest index in a target group
+            // try to expand to prime*r target group
+
+            const Gshifted = translate ? curve_add(G, exp(G, shift, p, alg), aParam, p) : exp(G, shift, p, alg) 
+            const p1shifted = translate ? curve_add(p1, exp(G, shift, p, alg), aParam, p) : exp(p1, shift, p, alg) 
+            const p2shifted = translate ? curve_add(p2, exp(G, shift, p, alg), aParam, p) : exp(p2, shift, p, alg) 
+
+
+
+            const candidate = curve_pair(Gshifted, p1shifted, aParam, p)
+            const target = curve_pair(Gshifted, p2shifted, aParam, p)
+ 
+            const comparison = candidate.cmp(target)
+
+            if (comparison) {
+                comparisons.push(comparison)
+            } else {
+                if (r && r % 2n === 0n) { //odd should be okay too
+                    const midpoint = exp(Gshifted, r / 2, p, alg)
+                    const midpointPair = curve_pair(Gshifted, Gshifted, aParam, p)
+
+                    const diff = curve_add(p2shifted, curve_neg(p1shifted, aParam, b), aParam, b)
+                    const diffPair = curve_pair(Gshifted, diff, aParam, p)
+
+
+                    const sign = (x) => curve_pair(Gshifted, x, aParam, p).cmp(midpointPair)
+
+                    const candidate_sign = sign(candidate)
+                    const target_sign = sign(target)
+
+                    if (candidate_sign && target_sign && candidate_sign !== target_sign) {
+                        comparisons.push(candidate_sign)
+                    } else {
+                        const mpcomparison = diffPair.cmp(midpointPair)
+                        if (mpcomparison) {
+                            comparisons.push(mpcomparison)
+                        }
+                    }
+                }
+               
+            }
+
+            shift += shiftStep
+            overflow++
+        }
+
+        if (comparisons.length === 0) {
+            throw "undecidable"
+            return undefined //las vegas convergence here -> can increase decidability factor
+        }
+        
+        const res = comparisons.filter(c => c === -1).length > comparisons.filter(c => c === 1).length
+
+        console.log(comparisons)
+        console.log(res)
+
+        return res
+    }
+})
+
+const exp = (x, k, n, algebra) => {
+    let y = algebra.zero
+    let steps = 0
+
+    while (k > 1n) {
+        if (k % 2n === 1n) {
+            y = algebra.add(x, y, n)
+            k = k - 1n
+        } 
+        x = algebra.add(x, x, n)
+        k /= 2n
+        steps++
+        
+    }
+    show("stepsforward", steps)
+    return algebra.add(x, y, n)  
+}
+
+const exphyper = (x, k) => new LazyNumber(0)//todo
+
+const testExp1 = (P, Q, n, a, p) => {
+    return 0 === curve_pair(exp(P, n, p, algebraCurve(a, P)), Q, a, p).cmp(exphyper(curve_pair(P, Q, a, p), n))
+}
+
+const testExp2 = (P, Q, n, a, p) => {
+    return 0 === curve_pair(P, exp(Q, n, p, algebraCurve(a, Q)), a, p).cmp(exphyper(curve_pair(P, Q, a, p), n))
+}
+
+// symmetry: physically optimal computation of log should not take more steps than 
+// steps forward + computing prime p for the modulus (and possibly PRNG deending on setup)
+const log = (x, t, n, algebra, tag = "stepsbackward") => {
+    const b = x
+    
+    let kacc = 0n
+    let k = 1n
+    let steps = 0
+    while (x !== t) {
+        steps++
+        
+        const p = algebra.cmp(algebra.add(x, x, n), t, n, x)
+
+        if (p === undefined) { // termination guarantee for numerically stable semi-decidable cmp
+            console.log("undecided")
+            t = algebra.add(t, algebra.neg(b, n), n) //t - b
+            kacc += 1n
+            continue
+        }
+
+         console.log("[" + steps + "] for k = " + (k) + "; k + kacc = " + (k + kacc))
+        
+        if (k >= kacc || p) { // || k >= kacc
+            t = algebra.add(t, algebra.neg(x, n), n)
+            if (t === undefined) {
+                show(tag, "-" + steps)
+                return kacc + k
+            }
+
+           
+            
+            kacc += k
+            x = b //todo memoize roots, go greedy
+            k = 1n
+
+        } else {
+            x = algebra.add(x, x, n)
+            k *= 2n
+        }
+        
+        if (steps > 30) { // termination guarantee for numerically unstable cmp
+            show(tag, "Inf")
+            return 0
+        }
+    }
+    show(tag, steps)
+    return k + kacc
+}
+
+declare("exp", "exp: ")
+declare("stepsforward", "steps forward: ")
+br()
+
+const k = 5n
+const p = BigInt("0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F")
+
+
+const exponent = exp(b, k, p, algebraMod)
+show("exp", `${b}^${k} = ${exponent} (% ${p})`)
+
+
+declare("log", "fast log: ")
+declare("stepsbackward", "steps (no billinear map yet): ")
+
+
+const lg = log(b, exponent, p, algebraMod)
+
+show("log", `log${b}(${exponent}) = ${lg} ---> ${b}^${lg} = ${exp(b, lg, p, algebraMod)} (% ${p})`)
+br()
+
+declare("test", "test: ")
+
+const aParam = 0n
+const g_x = BigInt("0x79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798")
+const g_y = BigInt("0x483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8")
+const G = [g_x, g_y]
+
+br()
+
+const curve_k = 32n
+declare("target_k", "ECC k_target: ")
+show("target_k", curve_k)
+
+
+const alg = algebraCurve(aParam, G)
+const curve_exponent = exp(G, curve_k, p, alg)
+
+
+declare("eccexp", "ECC exp: ")
+show("eccexp", curve_exponent)
+
+const left = 2000000n
+
+const right = 2n
+
+const leftexp = left > 0n ? exp(G, left, p, alg) : curve_neg(exp(G, -left, p, alg), aParam, p)
+
+const rightexp = right > 0n ? exp(G, right, p, alg) : curve_neg(exp(G, -right, p, alg), aParam, p)
+
+await new Promise(r => setTimeout(r, 2000));
+
+console.log("Pairing...")
+const metric = curve_pair(leftexp, rightexp, aParam, p)
+
+br()
+declare("eccpair", "ECC pairing: ")
+show("eccpair", JSON.stringify(metric.acc ?? metric.bits.toString()))
+
+const diff = curve_pair(leftexp, leftexp, aParam, p).cmp(curve_pair(rightexp, rightexp, aParam, p))
+//const diff2 = (curve_pair(G, leftexp, aParam, p).multiply(curve_pair(G, leftexp, aParam, p))).cmp(curve_pair(G, rightexp, aParam, p))
+
+br()
+declare("eccdiff", "ECC diff: ")
+show("eccdiff", diff)
+
+throw "break"
+
+const R = exp(curve_exponent, curve_k + 9n, p, algebraCurve(aParam, G))
+
+declare("testtriangle1", "[TEST] left triangle: ")
+show("testtriangle1",  testTriangle1(G, curve_exponent, R, aParam, p))
+
+declare("testtriangle2", "[TEST] right triangle: ")
+show("testtriangle2", testTriangle2(G, curve_exponent, R, aParam, p))
+
+declare("testexp1", "[TEST] left exponent: ")
+show("testexp1", testExp1(G, curve_exponent, curve_k, aParam, p)) 
+
+declare("testexp2", "[TEST] right exponent: ")
+show("testexp2", testExp2(G, curve_exponent, curve_k, aParam, p))
+
+br()
+declare("stepsbackwardecc", "ECC reverse steps: ")
+
+console.log("============")
+const lgCurve = log(G, curve_exponent, p, algebraCurve(aParam, G), "stepsbackwardecc")
+
+
+declare("ecclog", "ECC log: ")
+show("ecclog", lgCurve)
+
+
+
+
+</script>
+
+</html>
