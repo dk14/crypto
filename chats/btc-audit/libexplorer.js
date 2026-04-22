@@ -17,6 +17,10 @@ const require = createRequire(import.meta.url);
 const crypto = require('crypto');        // only for converting to Buffer
 const MT19937 = require('mersenne-twister'); // npm i mersenne-twister
 
+
+
+
+var i = 1543200000000
 /**
  * Generate a seed.
  *
@@ -31,13 +35,13 @@ export function generateClockSeed(bitLength = 192) {
   if (bitLength < 128) {
     throw new Error('bitLength must be at least 128 bits');
   }
-
+i += 1000
   // -----------------------------------------------------------------
   // 1) Get the timer – libbitcoin‑explorer used the current time
   //    in *seconds* since the epoch (cast to uint32).  Node’s Date.now()
   //    returns milliseconds, so we divide by 1000 and truncate.
   // -----------------------------------------------------------------
-  const nowSec = Math.floor(Date.now() / 1000) >>> 0;   // uint32
+  const nowSec = Math.floor(i / 1000) >>> 0;   // uint32
 
   // -----------------------------------------------------------------
   // 2) Initialise the 32‑bit Mersenne‑Twister with that seed.

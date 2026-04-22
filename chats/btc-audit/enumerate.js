@@ -181,6 +181,8 @@ async function genNextSeed(generator) {
     
 }
 
+const start = Date.now()
+
 async function runAudit(generator) {
     while (true) {
         const seed = await genNextSeed(generator);
@@ -203,9 +205,10 @@ async function runAudit(generator) {
 
             if (total % 1000 === 0) {
                 console.log({
+                    mode: generator,
                     processed: total,
                     hits,
-                    hitRate: hits / total
+                    elapsedHours: ((Date.now() - start) / (1000 * 60 * 60)).toFixed(3)
                 });
             }
         })
