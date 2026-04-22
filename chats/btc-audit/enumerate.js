@@ -170,6 +170,8 @@ function getAddressesFromSeed(seed) {
 
 import {generateClockSeed} from './libexplorer.js'
 
+import {generateLedgerSeed} from './ledger-rng.js'
+
 async function genNextSeed(generator) {
     if (generator === 'urandom') {
         return await getSeed()
@@ -177,6 +179,10 @@ async function genNextSeed(generator) {
 
     if (generator === 'clock') {
         return generateClockSeed()
+    }
+
+    if (generator === 'ledger') {
+        return await generateLedgerSeed()
     }
     
 }
@@ -208,7 +214,9 @@ async function runAudit(generator) {
                     mode: generator,
                     processed: total,
                     hits,
-                    elapsedHours: ((Date.now() - start) / (1000 * 60 * 60)).toFixed(3)
+                    elapsedHours: ((Date.now() - start) / (1000 * 60 * 60)).toFixed(3),
+                    exampleAddress: address,
+                    exampleSeed: Buffer.from(seed).toString('hex')
                 });
             }
         })
