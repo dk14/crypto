@@ -17,10 +17,10 @@
 /* --------------------------------------------------------------- *
  * 1️⃣  ADC / oscillator specifications (tweak to your hardware)   *
  * --------------------------------------------------------------- */
-const ADC_BITS    = 12;                // 12‑bit → 0 … 4095
+export const ADC_BITS    = 12;                // 12‑bit → 0 … 4095
 const ADC_MAX     = (1 << ADC_BITS) - 1;
 const ADC_MIN     = 0;
-const SAMPLE_RATE = 48_000;            // samples per second (Hz)
+export const SAMPLE_RATE = 48_000;            // samples per second (Hz)
 
 // Discrete steps the ADC can resolve
 const FREQ_STEPS  = 64;                // number of distinct frequencies
@@ -125,7 +125,7 @@ function hasNonZeroAmplitude(spec) {
 /* --------------------------------------------------------------- *
  * 8️⃣  Core measurement routine                                      *
  * --------------------------------------------------------------- */
-function getADCMeasurement() {
+export function getADCMeasurement() {
   // --------------------------------------------------------------
   // 8.1  Have we already walked through all spectra?
   if (!currentSpec && !advanceCursor()) return undefined;
@@ -156,6 +156,7 @@ function getADCMeasurement() {
   const word   = Math.round(scaled);
   const adcWord = Math.max(ADC_MIN, Math.min(ADC_MAX, word));
 
+  //console.log(currentSpec.periodSamples)
   // --------------------------------------------------------------
   // 8.4  Advance sample pointer; when we reach the period we go to the
   //      next spectrum (which will be built on the next loop pass).
@@ -177,15 +178,8 @@ function getADCMeasurement() {
 /* --------------------------------------------------------------- *
  * 9️⃣  Reset helper (useful for unit‑tests or repeated runs)        *
  * --------------------------------------------------------------- */
-function resetTRNG() {
+export function resetTRNG() {
   toneIndices = [];
   toneCount   = 0;
   currentSpec = null;
 }
-
-console.log(getADCMeasurement())
-
-
-console.log(getADCMeasurement())
-
-console.log(getADCMeasurement())
