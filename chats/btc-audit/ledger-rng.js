@@ -13,9 +13,13 @@
  * is abstracted by the user‑supplied async getAdcReading() function.
  ********************************************************************/
 
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
+
 const crypto = require('crypto');
 const ENTROPY_BYTES = 32;               // 256‑bit final entropy required
 const SAMPLE_SIZE   = 2;                // we collect 2 bytes per ADC sample (12‑bit fits in 2)
+
 
 /**
  * Simple whitening: xor each new sample with the previous one.
@@ -50,6 +54,7 @@ async function get256BitEntropy(getAdcReading) {
   let prevSample = Buffer.alloc(2);
   // Fill the pool until we have 256 bits = 32 bytes.
   let produced = 0;
+  let dg = undefined
   while (produced < ENTROPY_BYTES) {
     // -------------------------------------------------------------
     // 1️⃣  Get a raw ADC reading (12‑bit).  The real device samples
@@ -70,14 +75,15 @@ async function get256BitEntropy(getAdcReading) {
     // 3️⃣  Feed the whitened bytes to the SHA‑256 extractor.
     // -------------------------------------------------------------
     hash.update(whitened);
-    produced = hash.digest().length; // after first digest we get 32 bytes
+    dg = hash.digest()
+    produced = dg.length; // after first digest we get 32 bytes
     // The above line is only to compute the final length; we will call
     // .digest() once at the end of the loop.
     // (Keeping a running length avoids an extra variable.)
   }
 
   // Final 256‑bit entropy.
-  return hash.digest();   // Buffer(32)
+  return dg;   // Buffer(32)
 }
 
 /**
@@ -116,13 +122,11 @@ async function getAdcReading() {
 
 const fs = require('fs');
 const path = require('path');
-const { collectEntropy } = require('./ledger-rng');
-const WORDLIST = fs.readFileSync(
-  path.join(__dirname, 'wordlist-english.txt'),
-  'utf8'
-)
-  .trim()
-  .split('\n');                     // 2048 entries, index 0‑2047
+
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 /**
  * Convert a Buffer to a binary string (most‑significant‑bit first).
@@ -152,14 +156,11 @@ function binToInt(binStr) {
  * @param {Function} getAdcReading  async () => number  // ADC mock
  * @returns {Promise<string[]>}   array of 24 words
  */
-async function generateLedgerSeed() {
+export async function generateLedgerSeed() {
   const entropy = await collectEntropy(getAdcReading);
   const checksumFull = crypto.createHash('sha256').update(entropy).digest();
-  const checksumBits = checksumFull[0].toString(2).padStart(8, '0'); // 8‑bit string
-  const entropyBits = bufferToBits(entropy); // 256 bits
-  return entropyBits
+  const checksumBits = checksumFull[0].toString(2).padStart(8, '0'); // 8‑bit string 
+  return entropy // 256 bits
 }
 
-module.exports = {
-  generateLedgerSeed,
-};
+console.log((await generateLedgerSeed()).toString('hex'))
