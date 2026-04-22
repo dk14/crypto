@@ -125,7 +125,7 @@ const NETWORK          = bitcoin.networks.bitcoin
 const COIN_TYPE        = 0;           // 0 = BTC mainnet, 1 = testnet
 const ACCOUNT          = 0;           // default account
 const CHANGE           = 0;           // 0 = external (receive) chain
-const NUM_ADDRESSES    = 10;         
+const NUM_ADDRESSES    = 100;         
 
 //Common purpose codes include 44 for legacy addresses (P2PKH), 49 for wrapped SegWit addresses (P2SH-P2WPKH), and 84 for native SegWit addresses (P2WPKH).
 
@@ -167,13 +167,23 @@ function getAddressesFromSeed(seed) {
     return addresses
 }
 
-async function genNextSeed(seed) {
-    return await getSeed()
+
+import {generateClockSeed} from './libexplorer.js'
+
+async function genNextSeed(generator) {
+    if (generator === 'urandom') {
+        return await getSeed()
+    }
+
+    if (generator === 'clock') {
+        return generateClockSeed()
+    }
+    
 }
 
-async function runAudit() {
+async function runAudit(generator) {
     while (true) {
-        const seed = await genNextSeed();
+        const seed = await genNextSeed(generator);
         if (!seed) break;
 
         const addresses = getAddressesFromSeed(seed);
@@ -204,4 +214,4 @@ async function runAudit() {
     console.log('Done:', { total, hits });
 }
 
-runAudit()
+runAudit(process.argv[2] ?? 'urandom')
