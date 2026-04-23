@@ -33,7 +33,8 @@ const {
 // ---------------------------------------------------------------
 // 2️⃣  Configuration – change these to affect the output size
 // ---------------------------------------------------------------
-const SAMPLE_COUNT = 2048 * 20;            // how many ADC words we will plot
+const SAMPLE_COUNT = 2048 * 20000;            // how many ADC words we will plot
+const SAMPLE_START = SAMPLE_COUNT - 2048 * 20; 
 const HTML_FILE    = 'noise.html';    // file that will be written
 
 // ---------------------------------------------------------------
@@ -75,7 +76,7 @@ function buildHTML(dataArray) {
 <body>
   <h2>TRNG waveform (12‑bit ADC, ${dataArray.length} samples)</h2>
   <canvas id="sig" width="${width}" height="${height}"></canvas>
-
+${dataArray.length}
   <script>
     const data = ${jsArray};
     const canvas = document.getElementById('sig');
@@ -115,5 +116,5 @@ function buildHTML(dataArray) {
 // 5️⃣  Write the HTML file
 // ---------------------------------------------------------------
 const fs = require('fs');
-fs.writeFileSync(HTML_FILE, buildHTML(samples));
+fs.writeFileSync(HTML_FILE, buildHTML(samples.slice(SAMPLE_START)));
 console.log(`✅  ${HTML_FILE} written – open it in a browser to see the waveform.`);
