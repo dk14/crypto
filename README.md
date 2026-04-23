@@ -8,7 +8,7 @@ Statistical estimates of "overheads of fast exp for DLP", which NIST and others 
 
 > Additionally, ECC is even worse than DH, speaking of crypto - polynomials introduce more holes on top of illusions.
 >
-> Note on key restauration with deterministic slowexp (the nonly proven way): [here](https://github.com/dk14/crypto/blob/main/dlp.html#L225) I show that local monotonicities can be exploited. [perfect power](https://github.com/dk14/crypto/blob/main/dlp.html#L137) (logN speedified with memoization) is used to skip through local monotonic interval.
+> Note on key restauration with deterministic slowexp (the only inductively proven way): [here](https://github.com/dk14/crypto/blob/main/dlp.html#L225) I show that local monotonicities can be exploited. [perfect power](https://github.com/dk14/crypto/blob/main/dlp.html#L137) (logN speedified with memoization) is used to skip through local monotonic interval.
 
 -----
 
