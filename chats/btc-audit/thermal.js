@@ -28,7 +28,7 @@ const PHASE_STEPS = 16;                // number of distinct phase values
 const AMP_LEVELS = 1 << ADC_BITS;    // full 12‑bit amplitude resolution
 
 // How many sinusoidal components may be present in one spectrum?
-const MAX_TONES   = 2;                // change to 3,4 … if you want more
+const MAX_TONES   = 64;                // change to 3,4 … if you want more
 
 /* --------------------------------------------------------------- *
  * 2️⃣  Small integer helpers                                         *
