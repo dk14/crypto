@@ -16,7 +16,7 @@ Energy conservation (or why not consumer/producer symmetry) also applies to TRNG
 
 > And without proof - cannot improve crypto
 
-I partially replicated it in a tool. PRs are welcome.
+I partially replicated TRNG pipeline in a tool. PRs are welcome.
 
 Bitcoin TRNG audit tool is here: https://github.com/dk14/crypto/tree/main/chats/btc-audit
 
