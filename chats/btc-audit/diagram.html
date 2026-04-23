@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ledger‑TRNG Simulator – Detailed Architecture</title>
+<style>
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 30px;
+    background:#f9f9f9;
+  }
+  h1 {font-size:1.8rem; margin-bottom:0.8rem;}
+  .svg-container {border:1px solid #ccc; background:#fff; display:inline-block;}
+  .box {fill:#e6f2ff; stroke:#337ab7; stroke-width:2;}
+  .big-box {fill:#fff8e1; stroke:#f0ad4e; stroke-width:2;}
+  .arrow {stroke:#555; stroke-width:2; marker-end:url(#arrowhead);}
+  .label {font-size:12px; fill:#333; pointer-events:none;}
+  .small-label {font-size:10px; fill:#555;}
+  .wave {stroke:#0a7; stroke-width:2; fill:none;}
+</style>
+</head>
+<body>
+<h1>Ledger TRNG Simulator – Detailed Architecture</h1>
+
+<div class="svg-container">
+<svg width="10100" height="720" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Arrowhead definition --------------------------------------------------- -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7"
+            refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
+    </marker>
+  </defs>
+
+  <!-- ──────── 1️⃣  Factory HSM ──────── -->
+  <rect x="30"  y="30" width="190" height="100" class="box"/>
+  <text x="125" y="55" text-anchor="middle" class="label">HSM Simulator</text>
+  <text x="125" y="70" text-anchor="middle" class="label">(getHsmSeed())</text>
+  <text x="125" y="85" text-anchor="middle" class="small-label">produces DUK (256 bit)</text>
+
+  <!-- Arrow DUK → FSEED -->
+  <line x1="125" y1="130" x2="125" y2="170" class="arrow"/>
+  <text x="125" y="150" text-anchor="middle" class="small-label">DUK</text>
+
+  <!-- FSEED box -->
+  <rect x="30" y="170" width="190" height="80" class="box"/>
+  <text x="125" y="195" text-anchor="middle" class="label">Factory Seed (FSEED)</text>
+  <text x="125" y="210" text-anchor="middle" class="small-label">SHA‑256(DUK‖0x00)</text>
+
+  <!-- Arrow FSEED → Entropy Pool (initialisation) -->
+  <line x1="220" y1="210" x2="350" y2="210" class="arrow"/>
+  <text x="285" y="200" class="small-label" text-anchor="middle">FSEED</text>
+
+  <!-- ──────── 2️⃣  Thermal‑Noise Generator ──────── -->
+  <g id="wave-gen">
+    <!-- Outer box -->
+    <rect x="350" y="130" width="210" height="140" class="big-box"/>
+    <text x="455" y="150" text-anchor="middle" class="label">Thermal‑Noise Generator</text>
+
+    <!-- Inside: analog waveform (sine‑composite) -->
+    <rect x="370" y="170" width="170" height="60" fill="#fff" stroke="#0a7" stroke-width="1"/>
+    <text x="455" y="190" text-anchor="middle" class="small-label">Analog waveforms</text>
+    <!-- Draw a simple composite‑tone shape -->
+    <path d="M370,200
+             C390,150 430,150 450,200
+             C470,250 510,250 530,200"
+          class="wave"/>
+    <text x="455" y="225" text-anchor="middle" class="small-label">(multiple sine tones, jitter, phase steps)</text>
+  </g>
+
+  <!-- Arrow: analog → ADC (sampling) -->
+  <line x1="560" y1="210" x2="610" y2="210" class="arrow"/>
+  <text x="585" y="200" class="small-label" text-anchor="middle">sample @ 48 kS/s</text>
+
+  <!-- ──────── 3️⃣  ADC + getAdcReading wrapper ──────── -->
+  <g id="adc">
+    <rect x="610" y="130" width="200" height="140" class="big-box"/>
+    <text x="710" y="150" text-anchor="middle" class="label">ADC & Wrapper</text>
+    <text x="710" y="170" text-anchor="middle" class="small-label">- 12‑bit quantisation (0…4095)</text>
+    <text x="710" y="185" text-anchor="middle" class="small-label">- skip‑N‑samples (Ledger rate)</text>
+    <text x="710" y="200" text-anchor="middle" class="small-label">- getAdcReading() → 12‑bit word</text>
+  </g>
+
+  <!-- Arrow: ADC word stream → Block Builder -->
+  <line x1="810" y1="210" x2="860" y2="210" class="arrow"/>
+  <text x="835" y="200" class="small-label" text-anchor="middle">12‑bit words</text>
+
+  <!-- ──────── 4️⃣  Block Builder (128‑word blocks) ──────── -->
+  <rect x="860" y="150" width="130" height="100" class="box"/>
+  <text x="925" y="175" text-anchor="middle" class="label">Block Builder</text>
+  <text x="925" y="190" text-anchor="middle" class="small-label">Collect 128 ADC words → 4096 bits</text>
+
+  <!-- Arrow: Block → Entropy Pool update -->
+  <line x1="990" y1="200" x2="1080" y2="200" class="arrow"/>
+  <text x="1035" y="190" class="small-label" text-anchor="middle">ADC Block</text>
+
+  <!-- ──────── 5️⃣  Entropy Pool (SHA‑256) ──────── -->
+  <g id="pool">
+    <rect x="1080" y="130" width="260" height="200" class="big-box"/>
+    <text x="1210" y="150" text-anchor="middle" class="label">Entropy Pool / DRBG</text>
+
+    <!-- Pool formation description -->
+    <text x="1210" y="175" text-anchor="middle" class="small-label">initialisation:</text>
+    <text x="1210" y="190" text-anchor="middle" class="small-label">state₀ = SHA‑256( FSEED ∥ first‑ADC‑block )</text>
+
+    <text x="1210" y="215" text-anchor="middle" class="small-label">update (each new block):</text>
+    <text x="1210" y="230" text-anchor="middle" class="small-label">stateₙ₊₁ = SHA‑256( stateₙ ∥ next‑ADC‑block )</text>
+
+    <!-- DRBG output arrow -->
+    <line x1="1210" y1="250" x2="1210" y2="310" class="arrow"/>
+    <text x="1210" y="290" text-anchor="middle" class="small-label">DRBG output (random bytes)</text>
+
+    <!-- DRBG extraction details -->
+    <text x="1210" y="335" text-anchor="middle" class="small-label">output = SHA‑256( stateₙ ∥ counter )</text>
+    <text x="1210" y="350" text-anchor="middle" class="small-label">(counter increments per request)</text>
+  </g>
+
+  <!-- ──────── 6️⃣  Ledger Firmware (consumer) ──────── -->
+  <rect x="1080" y="350" width="260" height="120" class="box"/>
+  <text x="1210" y="380" text-anchor="middle" class="label">Ledger Firmware</text>
+  <text x="1210" y="400" text-anchor="middle" class="small-label">- ECDSA / EdDSA signing</text>
+  <text x="1210" y="415" text-anchor="middle" class="small-label">- Nonce generation for transactions</text>
+  <text x="1210" y="430" text-anchor="middle" class="small-label">- Any API that needs randomness</text>
+
+  <!-- Arrow: DRBG output → Firmware -->
+  <line x1="1210" y1="310" x2="1210" y2="350" class="arrow"/>
+
+  <!-- Decorative: cloud for “Production HSM” -->
+  <ellipse cx="125" cy="15" rx="80" ry="20" fill="#f0f8ff" stroke="#5bc0de"/>
+  <text x="125" y="20" text-anchor="middle" class="small-label">Production HSM (factory)</text>
+
+  <!-- Legend (bottom) -->
+  <rect x="30" y="590" width="950" height="100" fill="#f7f7f7" stroke="#ccc"/>
+  <text x="55" y="610" class="label">Legend</text>
+  <text x="55" y="630" class="small-label">• <tspan fill="#337ab7">Box</tspan> – a logical component or storage unit</text>
+  <text x="55" y="645" class="small-label">• <tspan fill="#0a7">Sine‑wave line</tspan> – analog waveform produced by the thermal‑noise generator</text>
+  <text x="55" y="660" class="small-label">• <tspan fill="#555">Arrow</tspan> – data flow (binary data unless otherwise noted)</text>
+  <text x="55" y="675" class="small-label">• <tspan fill="#f0ad4e">Big box</tspan> – a processing stage that transforms data (e.g. SHA‑256 hashing)</text>
+</svg>
+</div>
+
+<p style="margin-top:20px;">
+  <strong>Key points shown in the diagram</strong><br>
+  1. The **factory HSM** creates a 256‑bit <em>Device‑Unique‑Key (DUK)</em> and derives the OTP‑stored <em>factory seed (FSEED)</em> via <code>SHA‑256(DUK‖0x00)</code>.<br>
+  2. The **Thermal‑Noise Generator** synthesises *composite analog waveforms* (multiple sine tones, jitter, deterministic phase steps) that model the Johnson‑Nyquist resistor noise used by Ledger’s TRNG.<br>
+  3. The **ADC** samples these waveforms at the hardware rate (48 kS/s), quantises to 12 bits, and the **`getAdcReading()`** wrapper skips a deterministic number of samples to obtain the logical read‑out rate (≈ 2 kHz).  Each call yields one 12‑bit word (0 … 4095).<br>
+  4. **Block Builder** groups 128 consecutive 12‑bit words (4096 bits) into an <em>ADC block</em>.<br>
+  5. The **Entropy Pool** is a SHA‑256‑based stateful DRBG: the first state is <code>SHA‑256(FSEED ∥ first‑ADC‑block)</code>; each subsequent block updates the state with <code>SHA‑256(state ∥ next‑ADC‑block)</code>.<br>
+  6. The **DRBG extraction** step produces random bytes for the **Ledger firmware**, which uses them for signatures, nonces, key generation, etc.<br>
+  7. The whole flow is **fully deterministic** (the same seed and the same ADC settings always produce the same sequence), which is essential for reproducible testing and analysis.
+</p>
+
+</body>
+</html>
