@@ -11,6 +11,8 @@ Statistical estimates of "overheads of fast exp for DLP", which NIST and others 
 
 Energy conservation (or why not consumer/producer symmetry) also applies to TRNGs, but proof requires to replicate whole TRNG pipeline. 
 
+> And without proof - cannot improve crypto
+
 I partially replicated it in a tool. PRs are welcome.
 
 Bitcoin TRNG audit tool is here: https://github.com/dk14/crypto/tree/main/chats/btc-audit
