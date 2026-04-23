@@ -16,97 +16,61 @@
 import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
 
-const crypto = require('crypto');
-const ENTROPY_BYTES = 32;               // 256‑bit final entropy required
-const SAMPLE_SIZE   = 2;                // we collect 2 bytes per ADC sample (12‑bit fits in 2)
+// ---------------------------------------------------------------
+// ledger-rng.js – faithful emulation (DUK + rolling XOR pool)
+// ---------------------------------------------------------------
+import crypto from 'crypto';
 
+/* ---------- 1️⃣  Device‑Unique‑Key (DUK) ---------- */
+const DUK = crypto.randomBytes(16);          // 128‑bit constant for this process
 
-/**
- * Simple whitening: xor each new sample with the previous one.
- * The real firmware does exactly that (see the open‑source SE code released
- * by Ledger – a 1‑byte rolling XOR is used before feeding the pool).
- *
- * @param {Buffer} prev  Buffer containing the previous sample (2 bytes)
- * @param {Buffer} cur   Buffer containing the current raw ADC sample (2 bytes)
- * @returns {Buffer}    Whitened sample (2 bytes)
- */
-function whiten(prev, cur) {
-  const out = Buffer.alloc(2);
-  out[0] = prev[0] ^ cur[0];
-  out[1] = prev[1] ^ cur[1];
-  return out;
+/* ---------- 2️⃣  Persistent RNG state ---------- */
+let prevSample = Buffer.alloc(2);            // rolling ADC value
+let pool = Buffer.alloc(33, 0);               // 33‑byte pool (264 bits)
+let poolLen = 0;
+
+/* --------- 3️⃣  Initialize pool with the DUK (runs once) --------- */
+(function rngBootInit() {
+  for (let i = 0; i < DUK.length; i++) {
+    pool[i] ^= DUK[i];
+  }
+})();
+
+/* ---------- 4️⃣  Mock ADC (replace with native binding) ---------- */
+export async function getAdcReading() {
+  // Real hardware would read the noise pin; here we use crypto‑secure RNG.
+  return crypto.randomInt(0, 0x1000);       // 0‑4095 inclusive
 }
 
-/**
- * Pull enough ADC samples, whiten them, and push them into a SHA‑256
- * based extractor (the “expansion” step).  The extractor is simply a
- * hash that we keep updating; when we have consumed ENTROPY_BYTES we
- * stop.
- *
- * @param {Function} getAdcReading   async () => number   // 0‑4095
- * @returns {Promise<Buffer>} 256‑bit entropy buffer
- */
-async function get256BitEntropy(getAdcReading) {
-  // Initialise a SHA‑256 context that will act as the extractor.
-  const hash = crypto.createHash('sha256');
+/* ---------- 5️⃣  Core collection routine ---------- */
+export async function collectEntropy() {
+  while (poolLen < 33) {
+    const raw = await getAdcReading();     // 12‑bit raw ADC
+    const cur = Buffer.alloc(2);
+    cur[0] = (raw >> 8) & 0xff;
+    cur[1] = raw & 0xff;
 
-  // First sample is used as the initial “previous” value for whitening.
-  let prevSample = Buffer.alloc(2);
-  // Fill the pool until we have 256 bits = 32 bytes.
-  let produced = 0;
-  let dg = undefined
-  while (produced < ENTROPY_BYTES) {
-    // -------------------------------------------------------------
-    // 1️⃣  Get a raw ADC reading (12‑bit).  The real device samples
-    //     the internal noise source at a non‑deterministic rate.
-    // -------------------------------------------------------------
-    const raw = await getAdcReading();               // 0 – 4095
-    const curSample = Buffer.alloc(2);
-    curSample[0] = (raw >> 8) & 0xff;                 // high byte
-    curSample[1] = raw & 0xff;                       // low  byte
+    // Rolling‑XOR whitening of the ADC sample
+    const whitened = Buffer.from([
+      cur[0] ^ prevSample[0],
+      cur[1] ^ prevSample[1],
+    ]);
+    prevSample = cur;                       // update persistent state
 
-    // -------------------------------------------------------------
-    // 2️⃣  Whitening – XOR with previous sample.
-    // -------------------------------------------------------------
-    const whitened = whiten(prevSample, curSample);
-    prevSample = curSample;                          // store for next round
-
-    // -------------------------------------------------------------
-    // 3️⃣  Feed the whitened bytes to the SHA‑256 extractor.
-    // -------------------------------------------------------------
-    hash.update(whitened);
-    dg = hash.digest()
-    produced = dg.length; // after first digest we get 32 bytes
-    // The above line is only to compute the final length; we will call
-    // .digest() once at the end of the loop.
-    // (Keeping a running length avoids an extra variable.)
+    // XOR‑mix into the pool at the current offset
+    pool[poolLen]     ^= whitened[0];
+    pool[poolLen + 1] ^= whitened[1];
+    poolLen += 2;
   }
 
-  // Final 256‑bit entropy.
-  return dg;   // Buffer(32)
-}
+  // SHA‑256 extractor over the whole 33‑byte pool (DUK + all samples)
+  const entropy = crypto.createHash('sha256')
+                       .update(pool)
+                       .digest();               // 32 bytes = 256 bits
 
-/**
- * Public API – wrapper that returns a Promise<Buffer>.
- *
- * @param {Function} getAdcReading   async () => number   // mocked ADC
- * @returns {Promise<Buffer>} 256‑bit seed entropy
- */
-async function collectEntropy(getAdcReading) {
-  return await get256BitEntropy(getAdcReading);
-}
-
-
-let rng = crypto.createHash('sha256'); // a deterministic source for demo
-
-async function getAdcReading() {
-  // We use the hash of a counter to obtain reproducible “random” values.
-  rng.update(Buffer.from([Date.now() & 0xff])); // tiny variation
-  const out = rng.digest().slice(0, 2);        // 2 bytes = 16 bits, truncate
-  const value = ((out[0] << 8) | out[1]) & 0x0fff; // keep only 12 bits
-  // Re‑initialise the hash with the same output so we can keep streaming.
-  rng = crypto.createHash('sha256').update(out);
-  return value;                                 // 0 – 4095
+  // Reset pointer for the next call – keep the DUK bytes in the pool
+  poolLen = 0;
+  return entropy;
 }
 
 /********************************************************************
@@ -156,7 +120,7 @@ function binToInt(binStr) {
  * @param {Function} getAdcReading  async () => number  // ADC mock
  * @returns {Promise<string[]>}   array of 24 words
  */
-export async function generateLedgerSeed() {
+export async function generateLedgerSeed(mode) {
   const entropy = await collectEntropy(getAdcReading);
   const checksumFull = crypto.createHash('sha256').update(entropy).digest();
   const checksumBits = checksumFull[0].toString(2).padStart(8, '0'); // 8‑bit string 
