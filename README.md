@@ -1,6 +1,9 @@
 This folder contains research on RSA/DH/ECC cryptography. 
 
 The bottom line: fastexp overhead is non-monotonic. Asymmetric encryption has "cat in a bag" security - defender has to spend as much energy/resources as attacker to ensure security of a given pubkey.
+
+No free lunch, but illusion that there is.
+
 Statistical estimates of "overheads of fast exp for DLP", which NIST and others (eg Blackberry) are using as an excuse, are not applicable to non-monotonic problems; made-up useless soviet 'proofs' there, coming from worst european ideas. 
 
 > Additionally, ECC is even worse than DH, speaking of crypto - polynomials introduce more holes on top of illusions.
