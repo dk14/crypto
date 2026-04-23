@@ -16,6 +16,8 @@
 import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
 
+import {getHsmSeed} from './ledger-hsm-duk.js'
+
 // ---------------------------------------------------------------
 // ledger-rng.js – faithful emulation (DUK + rolling XOR pool)
 // ---------------------------------------------------------------
@@ -24,6 +26,7 @@ import crypto from 'crypto';
 /* ---------- 1️⃣  Device‑Unique‑Key (DUK) ---------- */
 const DUK = crypto.randomBytes(16);          // 128‑bit constant for this process
 
+//const DUK = getHsmSeed().duk
 /* ---------- 2️⃣  Persistent RNG state ---------- */
 let prevSample = Buffer.alloc(2);            // rolling ADC value
 let pool = Buffer.alloc(33, 0);               // 33‑byte pool (264 bits)
@@ -36,8 +39,13 @@ let poolLen = 0;
   }
 })();
 
+
+import {getAdcReading} from './ledger-sampler.js'
+
+
+
 /* ---------- 4️⃣  Mock ADC (replace with native binding) ---------- */
-export async function getAdcReading() {
+export async function getAdcReading2() {
   // Real hardware would read the noise pin; here we use crypto‑secure RNG.
   return crypto.randomInt(0, 0x1000);       // 0‑4095 inclusive
 }

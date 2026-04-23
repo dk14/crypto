@@ -16,6 +16,8 @@
  *     (the DUK itself is the raw 256‑bit output; the OTP stores the hash
  *     of DUK‖0x00, i.e. the *factory seed*).
  *********************************************************************/
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
 
 const crypto = require('crypto');
 
@@ -99,7 +101,7 @@ function extractDuk(rawLfsr) {
 /* --------------------------------------------------------------- *
  * 4️⃣  Public API – getHsmSeed()
  * --------------------------------------------------------------- */
-function getHsmSeed() {
+export function getHsmSeed() {
   // The LFSR seed is a constant so the whole module is deterministic.
   const LFSR_SEED = 0xA5A5A5A5;
   const rawLfsr   = new RawLfsr(LFSR_SEED);
@@ -115,7 +117,3 @@ function getHsmSeed() {
   return { duk, fseed };
 }
 
-/* --------------------------------------------------------------- *
- * 5️⃣  Export the entry point
- * --------------------------------------------------------------- */
-module.exports = { getHsmSeed };

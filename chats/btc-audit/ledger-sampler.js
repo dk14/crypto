@@ -30,6 +30,9 @@
  *      })();
  *********************************************************************/
 
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
+
 const {
   getADCMeasurement,   // ← deterministic source you already have
   resetTRNG,
@@ -100,7 +103,7 @@ function computeSkip() {
 /* -------------------------------------------------------------
  * 5️⃣  Core API – deterministic, immediate “read”
  * ------------------------------------------------------------- */
-async function getAdcReading() {
+export async function getAdcReading() {
   // 1️⃣  Skip the required number of raw samples.
   const toSkip = computeSkip();
 
@@ -123,7 +126,7 @@ async function getAdcReading() {
 /* -------------------------------------------------------------
  * 6️⃣  Public helpers – change the logical read‑out rate
  * ------------------------------------------------------------- */
-function setReadRate(hz) {
+export function setReadRate(hz) {
   if (hz <= 0) throw new Error('read rate must be >0');
   READ_RATE_HZ = hz;
   idealSkip = ADC_SAMPLE_RATE / READ_RATE_HZ;
@@ -134,18 +137,9 @@ function setReadRate(hz) {
 /* -------------------------------------------------------------
  * 7️⃣  Reset the whole deterministic chain (useful for tests)
  * ------------------------------------------------------------- */
-function reset() {
+export function reset() {
   resetTRNG();         // underlying noise source
   callIdx = 0;
   skipAccumulator = 0;
 }
 
-/* -------------------------------------------------------------
- * Export
- * ------------------------------------------------------------- */
-module.exports = {
-  getAdcReading,   // async – returns a 12‑bit word or undefined
-  setReadRate,      // change the logical read‑out frequency
-  setJitter,        // install a deterministic jitter model
-  reset,            // restart from the beginning of the noise source
-};
