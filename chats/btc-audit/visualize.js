@@ -10,7 +10,7 @@ const {
   resetTRNG,
   ADC_BITS,
   SAMPLE_RATE,
-} = require('./nyquist.js');
+} = require('./thermal.js');
 
 /********************************************************************
  * thermal‑noise‑TRNG visualiser – creates a self‑contained HTML file *
