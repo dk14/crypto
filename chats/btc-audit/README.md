@@ -1,8 +1,9 @@
-1. Download addresses with values: http://addresses.loyce.club/
+1. ```npm install```
+2. Download addresses with values: http://addresses.loyce.club/
 
-2. Unpack into this folder and migrate to local DB ``` node ingest.js```
+3. Unpack into this folder and migrate to local DB ``` node ingest.js```
 
-3. Run ``` node enumerate.js ledger```
+4. Run ``` node enumerate.js ledger```
 
 Can also try ``` node enumerate.js urandom``` and ``` node enumerate.js clock```. The later reproduces libexplorer attack
 
