@@ -5,7 +5,7 @@
 
 4. Run ``` node enumerate.js ledger```
 
-Can also try ``` node enumerate.js urandom``` and ``` node enumerate.js clock```. The later reproduces libexplorer attack
+Can also try ``` node enumerate.js urandom``` and ``` node enumerate.js clock```. The latter reproduces libexplorer attack
 
 Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 (literally need time=currency to improve this)
