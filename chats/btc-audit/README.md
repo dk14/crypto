@@ -62,7 +62,7 @@ Unlike naive hacking tools, this one is rather meant as an attempt to put a stop
 
 This tool is meant to demonstrate actual flaws in TRNGs, not imaginary "low hanging fruits", so it is a long-term project. Although, one can play a lottery right now with existing tool as it is, just to see how many improvements are needed. Even if you're the luckiest - better tool will get you more luck then, right? :)
 
-Bitcoin is a perfect playground for testing fundamental Information Security.
+Overall, Bitcoin is a perfect playground for testing fundamental Information Security.
 
 ### Transparency. 
 
