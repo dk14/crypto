@@ -1,0 +1,26 @@
+This is public audit tool in development.
+
+What critically differentiates it from scanners:
+
+- flawed addresses will be reported publicly. 
+- "Cyberpolice" can (imo should - ur actual job I'm doing here, in case u forgot me) invest into "public service" and "work distribution" (work replication especially) parts of development in order to ensure that users of the tool won't hide the discoveries.
+- practically, as far academic consensus on Information Security goes, only partial matches are more likely to be discovered, so no actual funds can be ruined/stolen. But warning signal will be propagagted to wallet vendors.
+- if academic consensus breaks apart and full match is discovered - this would be a positive signal for change, which will be propagated transparently. 
+- even in that conventionally unlikely case, few officially broken addresses are small price to pay for a "paradigm shift", securing the rest.
+
+------
+For wallet vendors. 
+
+If this tool lifts off as a public service - it would be indespensable feedback for your security teams. Not only for Ledger.
+
+In that scenario:
+
+How to respond to yellow (partial match) and red (full match) flags:
+- firmware can be updated to combine entropy of several devices for TRNG (for red and yellow), rather than issuing a bigger device.
+- HD-wallet workflows can be improved (for yellow flags).
+
+Ultimately, though, anything can happen, and I am not responsible for other people's decisions to trust so called TRNGs without doing proper research. 
+
+To me using obscurity of pipelines as a defence does not appear sound, it is a time bomb, and it's ticking, while demand for "T"RNGs is only growing.
+
+My financial benefit is from developing the audit tool and hopefully public service, that is where my responsibility lies.
