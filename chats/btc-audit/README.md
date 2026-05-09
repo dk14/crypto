@@ -56,6 +56,8 @@ Successfull (fully or partially) matches will be reported here.
 
 Since even military security depends on TRNGs - majority of users of the tool, would probably be interested to report (partially or fully) matched funded addresses themselves.
 
+Bitcoin is a perfect playground for testing fundamental Information Security.
+
 ### Transparency. 
 
 If you sent me message with a bid (txid of donation) for preferred feature and I did not progress the project - feel free to create an issue here as a reminder. If your bid is not enough fpr the feature - someone else can bid more, and add a proof (txid) in comments to the issue.
