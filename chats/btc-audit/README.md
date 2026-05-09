@@ -60,7 +60,7 @@ Since even military security (security of conventional money and IDs) depends on
 
 Unlike naive hacking tools, this one is rather meant as an attempt to put a stop to childish waste of GPUs, CPUs on non-working code. So far only staged exploits (eg libexplorer clock attack), and attacks on pursposedly insecure wallets (especially altcoins) were "successful". Most energy/resources are simply wasted on non-working tools, trying to get results fast or showing off. Playing a lottery on account of wasting real money, time, resources.
 
-This tool is meant to demonstrate actual flaws in TRNGs, not imaginary "low hanging fruits", so it is a long-term project. Although, one can play a lottery right now with existing tool as it is, just to see how many improvements are needed. Even if you're the luckiest - better tool will get you more luck then, right? :)
+This tool is meant to demonstrate actual flaws in TRNGs, not imaginary "low hanging fruits", so it is a long-term project. Although, one can play a lottery right now with existing tool as it is, just to see how many improvements are needed for better efficiency. Even if you're the luckiest - better tool will get you more luck then, right?
 
 Overall, Bitcoin is a perfect playground for testing fundamental Information Security.
 
