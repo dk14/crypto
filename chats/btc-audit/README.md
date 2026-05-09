@@ -1,3 +1,5 @@
+## How to use
+
 1. ```npm install```
 2. Download addresses with values: http://addresses.loyce.club/
 
@@ -8,11 +10,16 @@
 Can also try ``` node enumerate.js urandom``` and ``` node enumerate.js clock```. The latter reproduces libexplorer attack
 
 ------
+## Donations
+
+
 Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 (I literally need time=currency to improve this)
 
 ------
+
+## To improve
 
 Pending replica improvements:
 - potential 'Ledger replica' improvements are in todos.png and add.png. 
@@ -35,6 +42,8 @@ Public service:
 - work distribution.
   
 -----
+
+## How to improve
 Any even smallest donation would baby-step progress this. 
 
 If you donate, you can send message describing which path of improvement you prefer and wether you'd like to be mentioned here to [Session ID](https://getsession.org/): 05a21ca2bd0c8df7be8df06fecb0ecf7afe1b556a6a78f8c372c9c5ba17e1a8514
