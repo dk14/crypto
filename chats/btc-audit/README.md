@@ -58,6 +58,8 @@ P.S. If you sent me message with a bid for preferred feature and I did not progr
 
 Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
-(This fund will be shared with authors of important PRs as well, subject to discretion)
+(This fund will be shared with authors of important PRs as well, subject to discretion, simply add your address to PR)
+
+------
 
 ![05a21ca2bd0c8df7be8df06fecb0ecf7afe1b556a6a78f8c372c9c5ba17e1a8514](donations.png)
