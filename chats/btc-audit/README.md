@@ -48,11 +48,17 @@ Any even smallest donation (a **bid**) would baby-step progress this.
 
 If you donate, you can send message describing which path of improvement you prefer and wether you'd like to be mentioned here to [Session ID](https://getsession.org/): 05a21ca2bd0c8df7be8df06fecb0ecf7afe1b556a6a78f8c372c9c5ba17e1a8514
 
-This is white-hat project. Successfull (fully or partially) matches will be reported here. 
+
+-----
+### White-hat project. 
+
+Successfull (fully or partially) matches will be reported here. 
 
 Since even military security depends on TRNGs - majority of users of the tool, would probably be interested to report (partially or fully) matched funded addresses themselves.
 
-P.S. If you sent me message with a bid for preferred feature and I did not progress the project - feel free to create an issue here as a reminder. If your bid is not enough - someone else can bid more, and add a proof (txid) in comments to the issue.
+### Transparency. 
+
+If you sent me message with a bid for preferred feature and I did not progress the project - feel free to create an issue here as a reminder. If your bid is not enough fpr the feature - someone else can bid more, and add a proof (txid) in comments to the issue.
 
 -----
 
