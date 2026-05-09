@@ -48,7 +48,11 @@ Public service:
 ## How to improve
 Any even smallest donation (a **bid**) would baby-step progress this. 
 
-If you donate, you can (optionally) send message describing which path of improvement you prefer and wether you'd like to be mentioned here to [Session ID](https://getsession.org/): 05a21ca2bd0c8df7be8df06fecb0ecf7afe1b556a6a78f8c372c9c5ba17e1a8514
+If you donate, you can (optionally) send me a message describing which path of improvement you prefer and wether you'd like to be mentioned here to [Session ID](https://getsession.org/): 
+
+> Session P2P Messenger Contact: 05a21ca2bd0c8df7be8df06fecb0ecf7afe1b556a6a78f8c372c9c5ba17e1a8514.
+
+This would turn your donation into a bid on a particular improvement.
 
 
 -----
