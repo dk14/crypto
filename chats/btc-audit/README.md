@@ -46,3 +46,5 @@ Since even military security depends on TRNGs - makority of users of the tool, w
 Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 (This fund will be shared with authors of important PRs as well, subject to discretion)
+
+![05a21ca2bd0c8df7be8df06fecb0ecf7afe1b556a6a78f8c372c9c5ba17e1a8514](donations.png)
