@@ -60,7 +60,7 @@ Bitcoin is a perfect playground for testing fundamental Information Security.
 
 ### Transparency. 
 
-If you sent me message with a bid (txid of donation) for preferred feature and I did not progress the project - feel free to create an issue here as a reminder. If your bid is not enough fpr the feature - someone else can bid more, and add a proof (txid) in comments to the issue.
+If you sent me message with a bid (txid of donation) for preferred feature and I did not progress the project - feel free to create an issue here as a reminder. If your bid is not enough for the feature - someone else can bid more, and add a proof (txid) in comments to the issue. With enough bids - can lift it off.
 
 -----
 
