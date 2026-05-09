@@ -39,7 +39,7 @@ Any even smallest donation would baby-step progress this.
 
 If you donate, you can send message describing which path of improvement you prefer and wether you'd like to be mentioned here to [Session ID](https://getsession.org/): 05a21ca2bd0c8df7be8df06fecb0ecf7afe1b556a6a78f8c372c9c5ba17e1a8514
 
-This is white-hat project. Successfull matches will be reported here. 
+This is white-hat project. Successfull (fully or partially) matches will be reported here. 
 
 Since even military security depends on TRNGs - makority of users of the tool, would probably interested to report matched addresses yourself.
 
