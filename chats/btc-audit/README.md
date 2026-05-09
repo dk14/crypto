@@ -48,7 +48,7 @@ Public service:
 ## How to improve
 Any even smallest donation (a **bid**) would baby-step progress this. 
 
-If you donate, you can (optionally) send me a message describing which path of improvement you prefer and wether you'd like to be mentioned here to [Session ID](https://getsession.org/): 
+If you donate, you can (optionally) send me a message describing which path of improvement you prefer and wether you'd like to be mentioned here. Can send it to my [Session ID](https://getsession.org/): 
 
 > Session P2P Messenger Contact: 05a21ca2bd0c8df7be8df06fecb0ecf7afe1b556a6a78f8c372c9c5ba17e1a8514.
 
@@ -58,7 +58,7 @@ This would turn your donation into a bid on a particular improvement.
 -----
 ### White-hat project. 
 
-Successfull (fully or partially) matches will be reported here. 
+Successfull (fully or partially) matches will be reported here, publicly.
 
 Since even military security (security of conventional money and IDs) depends on TRNGs - majority of users of the tool, would probably be interested to report (partially or fully) matched funded addresses themselves.
 
@@ -68,7 +68,7 @@ This tool is meant to demonstrate actual flaws in TRNGs, not imaginary "low hang
 
 <img src="lisa.png" width="400" height="400">
 
-Overall, Bitcoin is a perfect playground for testing fundamental Information Security.
+Bitcoin will be your perfect playground for testing Fundamental Information Security!
 
 ### Transparency. 
 
