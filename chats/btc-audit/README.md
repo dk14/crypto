@@ -14,12 +14,12 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 ------
 
-Replica improvements:
+Pending replica improvements:
 - potential 'Ledger replica' improvements are in todos.png and add.png. 
 - some Ledger TRNG workflows maybe misreported, so ideally have to enumerate mutations (mistakes etc) within common sense.
 - DUN (factory generated random number) is only partially documented so "guesses" have to be enumerated exhaustively (not that many, so possible).
 
-UX:
+Pending UX:
 - there are also UX improvements, e.g. reporting chance (by bitmatch), or more complex metrics (eg shortest abstract machine transformation).
 
 Code quality:
@@ -27,8 +27,8 @@ Code quality:
 - documentation
 
 Public service:
-- build a databases of successful matches as well as those which came close.
-- build an explorer, showing security of each funded btc address
+- build a databases of successful matches as well as those which came close. IPFS as a starter.
+- build a web explorer, showing security of each funded btc address
   
 -----
 Any even smallest donation would baby-step progress this. 
@@ -38,3 +38,7 @@ If you donate, you can send message describing which path of improvement you pre
 This is white-hat project. Successfull matches will be reported here. 
 
 Since even military security depends on TRNGs - makority of users of the tool, would probably interested to report matched addresses yourself.
+
+Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
+
+(This fund will be shared with authors of important PRs as well, subject to discretion)
