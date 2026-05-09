@@ -41,7 +41,9 @@ If you donate, you can send message describing which path of improvement you pre
 
 This is white-hat project. Successfull (fully or partially) matches will be reported here. 
 
-Since even military security depends on TRNGs - makority of users of the tool, would probably interested to report matched addresses yourself.
+Since even military security depends on TRNGs - majority of users of the tool, would probably be interested to report (partially or fully) matched funded addresses themselves.
+
+-----
 
 Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
