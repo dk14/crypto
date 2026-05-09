@@ -24,3 +24,9 @@ Ultimately, though, anything can happen, and I am not responsible for other peop
 To me using obscurity of pipelines as a defence does not appear sound, it is a time bomb, and it's ticking, while demand for "T"RNGs is only growing.
 
 My financial benefit is from developing the audit tool and hopefully public service, that is where my responsibility lies.
+
+------
+
+P.S. Reality-check, since all NDAs expired. I know that Microsoft developed BTC as a result of conflict with FED. They did not care about anonimiity of commits in github.com logs (didn't even use Onion etc) because they were already preparing to buy GitHub back then. There is no Satochi.
+
+Only legacy of corporate drama piling up, and barely anyone to clean it up.
