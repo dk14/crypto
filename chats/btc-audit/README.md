@@ -39,7 +39,7 @@ Performance:
 - thermal noise generator is highly-parallelisable. But with need for lots of care (eg account for sliding window). So GPU is low-priority here, since it is so easy to make a mistake.
 
 Public service:
-- build a databases of successful matches as well as those which came close. IPFS as a starter.
+- build a database of successful matches as well as those which came close. IPFS as a starter.
 - build a public explorer, showing security of each funded btc address, as in **"how secure your own hardware wallet actually is?"**
 - work distribution, across nodes running the tool
   
