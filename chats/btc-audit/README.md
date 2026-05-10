@@ -17,6 +17,8 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 (I literally need time=currency to improve this)
 
+> This is anti-scanner tool in development, see below.
+
 ------
 
 ## To improve
