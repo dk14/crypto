@@ -27,7 +27,9 @@ Pending replica improvements:
 - DUN (factory generated random number) is only partially documented so "guesses" have to be enumerated exhaustively (not that many, so possible).
 - generalisations: abstract from Ledger pipeline. E.g. there aren't that many "circuit variations" of [STF](https://www.sciencedirect.com/topics/computer-science/state-transition-function) possible to fit into harware/firmware while preserving necessary properties, human imagination is limited as well, recursive patterns can be discounted.
 
-> quantum nonsense (eg IBM qiskit), won't be accepted in PRs/bids (I'll return the bid, or send to other projects if gets annoying). Neural networks won't be accepted. "Non-determinstic" searches (pseudo-logN etc) won't be accepted, unless they are exhaustive. GPU cannot be accepted temporarily (law enforcement negotiations).
+> quantum nonsense (eg IBM qiskit), won't be accepted in PRs/bids (I'll return the bid, or send to other projects if gets annoying). Neural networks, almost anything with gradient descent won't be accepted - assumption of convexity is rejected. AI-generated code subject to discretion (strict coverage tests, sound reasoning, high code readability required) - rewrite by hand, so u would know what it does. "Non-determinstic" searches (pseudo-logN etc) won't be accepted, unless they are exhaustive. GPU cannot be accepted temporarily (law enforcement negotiations).
+
+> Greedy stuff is welcome. Divide and conquer is welcome.
 
 Pending UX:
 - metrics: report partial match as "odds to match" (by bitmatch), or more complex metrics (eg shortest abstract machine transformation).
