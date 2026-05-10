@@ -57,7 +57,7 @@ Public service:
 
 > see [fund management](fund-management.md) about profit sharing for bidders and possible dev cooperation
 
-> TLDR: A bid on "cool decentralized blockchain security explorer" might drop back some btc sometime in return. For bidders and potential contributors alike.
+> TLDR: A bid on "cool decentralized blockchain security explorer" might drop some btc sometime in return. For bidders and potential contributors alike.
 
 -----
 
