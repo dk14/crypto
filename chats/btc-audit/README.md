@@ -50,12 +50,18 @@ Public service:
 > Eventually: mobile wallets, secure enclaves (eg Apple) and whatever hardware wallets your exchange is using (eg coinbase, binance). Can model gyro/mouse input as "low frequency" thermal noise too, as well as IO interruption events.
 - work distribution, across nodes running the tool
 - **ad campaigns for the (future) explorer** (gets expensive)
-- if potential paid features are added, issuing "sharing profit" asset is possible (pre-distributed to bidders of this tool, proportionally).
-  
+- if potential paid features are added, issuing **"sharing profit" asset** is possible (pre-distributed to bidders of this tool, proportionally).
+
+> legal meaning of "potentially". I can commit to profit sharing asset, if enough funds (bids) provided to build an explorer, promote it and add paid features. Public service is MVP-level project that may involve extra contributors (and time) for a final product. As long as "10Ks" (of sats?) are accumulated for building it - shared-profit asset logic (proportionally directing user payments to original btc addresses of bidders) can be hardcoded into the paid features (features can be suggested through bids as well, example: complex security metrics). Securitisation of the asset (issue lightning assets to make it tradable and send it, proportionally, to the bidders as "initial offering") would be the next step.
+
+> (Un)necessary legal disclaimer: Dev fund won't take more than 5-10% of the initial asset fund, depending on amount of extra contributors (and parties) co-operating in development (not in funding). I prefer to minimize that amount (to zero) and can guarantee no scammers, no tankies, no commies of all sorts, no unproductives, no "detached from reality", no cleargreen, no farang/gringo people, no web3 fanatics at the least, lol. *Only some of potential PR contributors to the tool can be co-operators*. As it stands now - I don't like the idea of dev asset fund as incentive (future profits are most often illusory), since extra-contributions can be managed through regular bids in real-time, but reality is not that predictable, so had to write an annoying disclaimer, and increase [awareness](https://www.upwork.com/services/product/development-it-yaqui-p2p-search-engine-standalone-web-2007000568819406128) of [cranial muscles](https://dk14.github.io/mega-peers/docs/#/dsl) a bit.
+
+> TLDR: Public service is not only a bid to have a "cool decentralized blockchain security explorer" - it might drop back some btc sometime in return.
+
 -----
 
 ## How to improve
-Any even smallest donation (a **bid**) would baby-step progress this. 
+Any even smallest donation (a **bid**) would baby-step progress this tool. 
 
 If you donate, you can (optionally) send me a message describing which path of improvement you prefer and wether you'd like to be mentioned here. Can send it to my [Session ID](https://getsession.org/): 
 
