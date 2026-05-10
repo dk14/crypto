@@ -18,6 +18,7 @@ In that scenario:
 How to respond to yellow (partial match) and red (full match) flags:
 - firmware can be updated to combine entropy of several devices for TRNG (for red and yellow), rather than issuing a bigger device.
 - HD-wallet workflows can be improved (for yellow flags).
+- user can be warned about yellow flag automatically, or even auto-migrated to a new wallet.
 
 Ultimately, though, anything can happen, and I am not responsible for other people's decisions to trust so called TRNGs without doing proper research. 
 
