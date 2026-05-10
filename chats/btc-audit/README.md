@@ -71,7 +71,7 @@ This would turn your donation into a bid on a particular improvement.
 -----
 ### White-hat project. 
 
-Successfull (fully or partially) matches will be reported here, publicly.
+Successfull (fully or partially) matches will be reported here, [publicly](legal-notes.txt).
 
 Since even military security (security of conventional money and IDs) depends on TRNGs - majority of users of the tool, would probably be interested in reporting flawed funded addresses. There are also ways to enforce it by design.
 
