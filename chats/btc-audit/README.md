@@ -42,6 +42,7 @@ Pending UX:
 >> [Relevant notes](academic-drama.md) on academic quote-unquote "conspiracy" of overfunding abstract machines (aka turing) research.
 >> 
 >> Most stochastic metrics are rejected as well - we only use ones backed up by inductive proofs. Exclude any "inifinite object constructive" ones. No "axioms by judgement".
+
 >> Partial evaluations of risk are needed ("this amount of KWatt/h is not enough to hack your wallet") since search takes long.
 
 Code quality:
