@@ -19,6 +19,8 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 > This is anti-scanner tool in development, see below.
 
+> Forum: https://bitcointalk.org/index.php?topic=5582621
+
 ------
 
 ## To improve
