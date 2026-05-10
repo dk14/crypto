@@ -50,6 +50,7 @@ Public service:
 > Eventually: mobile wallets, secure enclaves (eg Apple) and whatever hardware wallets your exchange is using (eg coinbase, binance). Can model gyro/mouse input as "low frequency" thermal noise too, as well as IO interruption events.
 - work distribution, across nodes running the tool
 - **ad campaigns for the (future) explorer** (gets expensive)
+- if potential paid features are added, issuing "sharing profit" asset is possible (pre-distributed to bidders of this tool).
   
 -----
 
