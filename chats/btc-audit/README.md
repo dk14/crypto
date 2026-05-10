@@ -50,10 +50,11 @@ Performance:
 - low-level optimisations would be premature at this point (and in general, as practice shows), it needs strong coverage first.
 
 Public service:
-- build a database of successful matches as well as those which came close. IPFS as a starter.
+- build a decentralized database of successful matches as well as those which came close. IPFS as a starter.
 - build a public explorer, showing security of each funded btc address, as in **"how secure your own hardware wallet actually is?"**.
 > Eventually: mobile wallets, secure enclaves (eg Apple) and whatever hardware wallets your exchange is using (eg coinbase, binance). Can model gyro/mouse input as "low frequency" thermal noise too, as well as IO interruption events.
 - work distribution, across nodes running the tool
+- work replication, to ensure no one is keeping flawed addresses to themselves
 - **ad campaigns for the (future) explorer** (gets expensive)
 - if potential paid features are added, issuing **"sharing profit" asset** is possible (pre-distributed to bidders of this tool, proportionally).
 
