@@ -101,7 +101,7 @@ If you sent me message with a bid (txid of donation) for preferred feature and I
 
 -----
 
-Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
+Bids/donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 (This fund will be shared with authors of important PRs as well, subject to discretion, simply add your address to PR)
 
