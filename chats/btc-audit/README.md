@@ -25,6 +25,7 @@ Pending replica improvements:
 - potential 'Ledger replica' improvements are in [todos.png](todos.png) and [add.png](add.png). 
 - some Ledger TRNG workflows maybe misreported, so ideally have to enumerate mutations (mistakes etc) within common sense.
 - DUN (factory generated random number) is only partially documented so "guesses" have to be enumerated exhaustively (not that many, so possible).
+- generalisations: abstract from Ledger pipeline. E.g. there aren't that many "curcuits" possible to fit into a chip, human imagination is limited as well, recursive patterns can be discounted.
 
 Pending UX:
 - there are also UX improvements, e.g. reporting partial match as "odds to match" (by bitmatch), or more complex metrics (eg shortest abstract machine transformation).
