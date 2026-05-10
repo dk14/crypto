@@ -22,7 +22,7 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 ## To improve
 
 Pending replica improvements:
-- potential 'Ledger replica' improvements are in [todos.png](todos.png) and [add.png](add.png). 
+- potential 'Ledger TRNG replica' improvements are in [todos.png](todos.png) and [add.png](add.png). 
 - some Ledger TRNG workflows maybe misreported, so ideally have to enumerate mutations (mistakes etc) within common sense.
 - DUN (factory generated random number) is only partially documented so "guesses" have to be enumerated exhaustively (not that many, so possible).
 - generalisations: abstract from Ledger pipeline. E.g. there aren't that many "circuit variations" of [STF](https://www.sciencedirect.com/topics/computer-science/state-transition-function) possible to fit into harware/firmware while preserving necessary properties, human imagination is limited as well, recursive patterns can be discounted.
