@@ -46,7 +46,8 @@ Performance:
 
 Public service:
 - build a database of successful matches as well as those which came close. IPFS as a starter.
-- build a public explorer, showing security of each funded btc address, as in **"how secure your own hardware wallet actually is?"**. Eventually: mobile wallets, secure enclaves (eg Apple) and whatever hardware wallets your exchange is using (eg coinbase, binance), can model gyro input as "low frequency" thermal noise too.
+- build a public explorer, showing security of each funded btc address, as in **"how secure your own hardware wallet actually is?"**.
+> Eventually: mobile wallets, secure enclaves (eg Apple) and whatever hardware wallets your exchange is using (eg coinbase, binance). Can model gyro/mouse input as "low frequency" thermal noise too, as well as IO interruption events.
 - work distribution, across nodes running the tool
 - **ad campaigns for the (future) explorer** (gets expensive)
   
