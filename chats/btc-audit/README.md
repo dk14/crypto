@@ -32,7 +32,7 @@ Pending replica improvements:
 > Greedy stuff is welcome. Divide and conquer is welcome.
 
 Pending UX:
-- metrics: report partial match as "odds to match" (by bitmatch), or more complex metrics (eg shortest abstract machine transformation).
+- metrics: report partial match (address under risk) as "odds to match" (by bitmatch), or more complex metrics (eg shortest abstract machine transformation).
 - parametrisation: spectra, jitters, extras
 > The meaning of the metrics: **"amount of randomness in a number IS how much energy/work was invested into creating it"**. So we skip nonsense definitions "human cannot tell it from noise etc". Compress this readme with zip - you won't be able to tell it from noise, yet it's insecure, since can be trivially reproduced.
 
