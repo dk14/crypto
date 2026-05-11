@@ -101,7 +101,7 @@ This tool is meant to demonstrate actual flaws in TRNGs, not imaginary "low hang
 
 <img src="lisa.png" width="400" height="400">
 
-Bitcoin will be your perfect playground for testing Fundamental Information Security!
+Bitcoin is your playground!
 
 ### Transparency. 
 
