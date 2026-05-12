@@ -20,6 +20,9 @@ How to respond to yellow (partial match) and red (full match) flags:
 - HD-wallet workflows can be improved (for yellow flags).
 - user can be warned about yellow flag automatically, or even auto-migrated to a new wallet.
 
+> in extreme cases, this might temporary rise tx fees (few limited events), since yellow flags (warnings) will be issued to flawed wallets simultaneously
+> altcoins will suffer more, since no developed lightning-like infrastructure to compensate
+
 Ultimately, though, anything can happen, and I am not responsible for other people's decisions to trust so called TRNGs without doing proper research. 
 
 To me using obscurity of pipelines as a defence does not appear sound, it is a time bomb, and it's ticking, while demand for "T"RNGs is only growing.
