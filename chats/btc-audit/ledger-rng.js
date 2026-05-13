@@ -26,7 +26,7 @@ import crypto from 'crypto';
 /* ---------- 1️⃣  Device‑Unique‑Key (DUK) ---------- */
 //const DUK = crypto.randomBytes(16);          // 128‑bit constant for this process
 
-const DUK = getHsmSeed().duk
+
 /* ---------- 2️⃣  Persistent RNG state ---------- */
 let prevSample = Buffer.alloc(2);            // rolling ADC value
 let pool = Buffer.alloc(33, 0);               // 33‑byte pool (264 bits)
@@ -34,6 +34,7 @@ let poolLen = 0;
 
 /* --------- 3️⃣  Initialize pool with the DUK (runs once) --------- */
 function rngBootInit() {
+  const DUK = getHsmSeed().duk
   for (let i = 0; i < DUK.length; i++) {
     pool[i] ^= DUK[i];
   }

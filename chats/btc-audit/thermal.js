@@ -26,7 +26,6 @@ export const SAMPLE_RATE = 48_000;            // samples per second (Hz)
 const FREQ_STEPS  = 64;                // number of distinct frequencies
 const PHASE_STEPS = 64;                // number of distinct phase values
 const AMP_LEVELS = 1 << ADC_BITS;    // full 12‑bit amplitude resolution
-const EXTRA_AMP_RES_FACTOR = 4
 
 // How many sinusoidal components may be present in one spectrum?
 const MAX_TONES   = 64;                // change to 3,4 … if you want more
@@ -43,17 +42,17 @@ function lcm(a, b) { return (a / gcd(a, b)) * b; }
 // Frequency step = Fs / (2 * FREQ_STEPS)  (Nyquist‑limited grid)
 const FREQ_STEP_HZ = SAMPLE_RATE / (2 * FREQ_STEPS);
 const freqList = [];
-for (let i = 0; i < FREQ_STEPS; ++i) freqList.push(i * FREQ_STEP_HZ);
+for (let i = 0; i < FREQ_STEPS + 1; ++i) freqList.push(i * FREQ_STEP_HZ);
 
 // Phase step = 2π / PHASE_STEPS
 const phaseList = [];
-for (let i = 0; i < PHASE_STEPS; ++i)
+for (let i = 0; i < PHASE_STEPS + 1; ++i)
   phaseList.push(i * (2 * Math.PI) / PHASE_STEPS);
 
 // Amplitude step (assume full‑scale 0 … 1 V)
-const ampStep = 1 / (EXTRA_AMP_RES_FACTOR * AMP_LEVELS - 1);
+const ampStep = 1 / (AMP_LEVELS - 1);
 const ampList = [];
-for (let i = 0; i < EXTRA_AMP_RES_FACTOR * AMP_LEVELS; ++i) ampList.push(i * ampStep);
+for (let i = 0; i < AMP_LEVELS + 1; ++i) ampList.push(i * ampStep);
 
 /* --------------------------------------------------------------- *
  * 4️⃣  Enumeration state (odometer over tones)                       *
@@ -70,6 +69,7 @@ function buildCurrentSpec() {
   // Translate the index triples into real values and compute each tone's
   // integer period (in samples).  The overall period = LCM of the individual ones.
   const tones = toneIndices.map(idx => {
+    //console.log("f = " + idx.f)
     const freq   = freqList[idx.f];
     const amp    = ampList[idx.a];
     const phase  = phaseList[idx.p];
@@ -89,31 +89,42 @@ function buildCurrentSpec() {
   return { tones, periodSamples, samplePos: 0 };
 }
 
+
+
+
 /* --------------------------------------------------------------- *
- * 6️⃣  Advance the odometer (lexicographic order)                    *
+ * 6️⃣  Advance the odometer (lexicographic order)     
+
+* TODO binary search
  * --------------------------------------------------------------- */
 function advanceCursor() {
+  while (toneCount < MAX_TONES) {
+    //console.log('init')
+    toneIndices.push({ f: FREQ_STEPS, a: AMP_LEVELS, p: PHASE_STEPS });
+    toneCount++;
+  }
+  //console.log(toneIndices)
+
   // fast wheel = phase, then amplitude, then frequency, then tone‑slot
   for (let slot = 0; slot < toneCount; ++slot) {
     const idx = toneIndices[slot];
     //console.log(idx)
-    idx.p++;
-    if (idx.p < PHASE_STEPS) return true;
-    idx.p = 0; idx.a++;
-    if (idx.a < AMP_LEVELS) return true;
-    idx.a = 0; idx.f++;
-    if (idx.f < FREQ_STEPS) return true;
-    idx.f = 0;                                   // this slot exhausted → carry
+    idx.p--;
+    if (idx.p > 0) return true;
+    idx.p = PHASE_STEPS; 
+    
+
+    
+    idx.f--;
+    if (idx.f > 0) return true;
+    idx.f = FREQ_STEPS;                                   // this slot exhausted → carry
+  
+    idx.a--;
+    if (idx.a > 0) return true;
+    idx.a = AMP_LEVELS; 
+
   }
 
-  // All existing slots wrapped → add a new tone if we have capacity
-  if (toneCount < MAX_TONES) {
-    toneIndices.push({ f: 0, a: 0, p: 0 });
-    toneCount++;
-    return true;
-  }
-
-  // No more combinations left.
   return false;
 }
 
@@ -150,15 +161,17 @@ export function getADCMeasurement() {
   let analog = 0;
   for (const tone of currentSpec.tones) {
     const angle = 2 * Math.PI * tone.freq * t + tone.phase;
-    analog += tone.amp * Math.sin(angle) / EXTRA_AMP_RES_FACTOR;
+    analog += tone.amp * Math.sin(angle);
   }
 
   // Map analog (‑1 … +1) → unsigned 12‑bit integer
   const scaled = ((analog + 1) / 2) * ADC_MAX;
+
+  
   const word   = Math.round(scaled);
   const adcWord = Math.max(ADC_MIN, Math.min(ADC_MAX, word));
 
-  //console.log(currentSpec.periodSamples)
+  //console.log(currentSpec)
   // --------------------------------------------------------------
   // 8.4  Advance sample pointer; when we reach the period we go to the
   //      next spectrum (which will be built on the next loop pass).
