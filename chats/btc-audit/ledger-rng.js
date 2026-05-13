@@ -24,23 +24,25 @@ import {getHsmSeed} from './ledger-hsm-duk.js'
 import crypto from 'crypto';
 
 /* ---------- 1️⃣  Device‑Unique‑Key (DUK) ---------- */
-const DUK = crypto.randomBytes(16);          // 128‑bit constant for this process
+//const DUK = crypto.randomBytes(16);          // 128‑bit constant for this process
 
-//const DUK = getHsmSeed().duk
+const DUK = getHsmSeed().duk
 /* ---------- 2️⃣  Persistent RNG state ---------- */
 let prevSample = Buffer.alloc(2);            // rolling ADC value
 let pool = Buffer.alloc(33, 0);               // 33‑byte pool (264 bits)
 let poolLen = 0;
 
 /* --------- 3️⃣  Initialize pool with the DUK (runs once) --------- */
-(function rngBootInit() {
+function rngBootInit() {
   for (let i = 0; i < DUK.length; i++) {
     pool[i] ^= DUK[i];
   }
-})();
+};
 
+rngBootInit()
 
 import {getAdcReading} from './ledger-sampler.js'
+
 
 
 
@@ -50,8 +52,21 @@ export async function getAdcReading2() {
   return crypto.randomInt(0, 0x1000);       // 0‑4095 inclusive
 }
 
+
+const DUK_RESET_CYCLE = 2000000
+
+let dukCycleCounter = 0
+
+
 /* ---------- 5️⃣  Core collection routine ---------- */
 export async function collectEntropy() {
+  dukCycleCounter++
+
+  if (dukCycleCounter > DUK_RESET_CYCLE) {
+    dukCycleCounter = 0
+    rngBootInit()
+
+  }
   while (poolLen < 33) {
     const raw = await getAdcReading();     // 12‑bit raw ADC
     const cur = Buffer.alloc(2);

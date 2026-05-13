@@ -24,8 +24,9 @@ export const SAMPLE_RATE = 48_000;            // samples per second (Hz)
 
 // Discrete steps the ADC can resolve
 const FREQ_STEPS  = 64;                // number of distinct frequencies
-const PHASE_STEPS = 16;                // number of distinct phase values
+const PHASE_STEPS = 64;                // number of distinct phase values
 const AMP_LEVELS = 1 << ADC_BITS;    // full 12‑bit amplitude resolution
+const EXTRA_AMP_RES_FACTOR = 4
 
 // How many sinusoidal components may be present in one spectrum?
 const MAX_TONES   = 64;                // change to 3,4 … if you want more
@@ -50,9 +51,9 @@ for (let i = 0; i < PHASE_STEPS; ++i)
   phaseList.push(i * (2 * Math.PI) / PHASE_STEPS);
 
 // Amplitude step (assume full‑scale 0 … 1 V)
-const ampStep = 1 / (AMP_LEVELS - 1);
+const ampStep = 1 / (EXTRA_AMP_RES_FACTOR * AMP_LEVELS - 1);
 const ampList = [];
-for (let i = 0; i < AMP_LEVELS; ++i) ampList.push(i * ampStep);
+for (let i = 0; i < EXTRA_AMP_RES_FACTOR * AMP_LEVELS; ++i) ampList.push(i * ampStep);
 
 /* --------------------------------------------------------------- *
  * 4️⃣  Enumeration state (odometer over tones)                       *
@@ -149,7 +150,7 @@ export function getADCMeasurement() {
   let analog = 0;
   for (const tone of currentSpec.tones) {
     const angle = 2 * Math.PI * tone.freq * t + tone.phase;
-    analog += tone.amp * Math.sin(angle);
+    analog += tone.amp * Math.sin(angle) / EXTRA_AMP_RES_FACTOR;
   }
 
   // Map analog (‑1 … +1) → unsigned 12‑bit integer
