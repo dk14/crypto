@@ -31,7 +31,7 @@ Pending replica improvements:
 - DUN (factory generated random number) is only partially documented so "guesses" have to be enumerated exhaustively (not that many, so possible).
 - model skips (especially for DUK), enumerate noise length for every spectra, model drift, envelope the spectra; fix: reset entropy pool after changing spectra
 - even cover of possible spectra enumerations: from big step, to small
-- minimal node.js setup, minimal use of libraries (reduce to none ideally), so miniPCs, Raspberry and older computers/VMs could be supported.
+- minimal node.js setup, minimal use of libraries (reduce to none ideally), so miniPCs, Raspberry and older computers/VMs could be supported. Separate key generation workflow from funded address verification workflow.
 > Microsoft, Apple etc likely run anti-scanner software on PCs, CPUs have back-doors and remote updates. Useless totalitarian measure, since can be bypassed trivially, while **in reality it works against efficient anti-scanner tools**. I wouldn't trust modern Linux either, since they often funded by midwestern billionaires and such. Getting official exemption for this tool is also possible, but not anytime soon. It needs audited public reporting protocol as a start.
 - generalisations: abstract from Ledger pipeline. E.g. there aren't that many "circuit variations" of [STF](https://www.sciencedirect.com/topics/computer-science/state-transition-function) possible to fit into harware/firmware while preserving necessary properties, human imagination is limited as well, recursive patterns can be discounted.
 
