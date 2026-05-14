@@ -109,6 +109,8 @@ Bitcoin is your playground!
 
 If you sent me message with a bid (txid of donation) for preferred feature and I did not progress the project - feel free to create an issue here as a reminder. If your bid is not enough for the feature - someone else can bid more, and add a proof (txid) in comments to the issue. With enough bids - can lift it off!
 
+The [Explorer Fund](fund-management.md) will simply reward bids/donations proportionally, by addresses specified in original txids. Your transactions will act as legal contracts out of the box (whether you contact me or not). You send 10 sats to 990 sats fund, you get 1% of profit from paid features (percentage lowers as fund grows, but so are the future profits from the features implemented). No overheads, no need for special wallets, no extra effort. Your tx will be naturally registered on blockchain the moment you send it.
+
 -----
 
 Bids/donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
