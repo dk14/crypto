@@ -74,6 +74,7 @@ Public service:
 - "high risk to get hacked" notifications for users
 - **ad campaigns for the (future) Security Explorer** (gets expensive)
 - if potential paid features are added, issuing **"sharing profit" asset** is possible (pre-distributed to bidders of this tool, proportionally).
+> [diagram](explorer.png)
 
 > see [fund management](fund-management.md) about profit sharing for bidders and possible dev cooperation
 
