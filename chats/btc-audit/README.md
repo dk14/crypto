@@ -28,7 +28,7 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 (I literally need time=coins to improve this)
 
-> This is anti-scanner tool in development, see below.
+> This is **anti**-scanner tool in development, see below.
 
 > Forum: https://bitcointalk.org/index.php?topic=5582621
 
