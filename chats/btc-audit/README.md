@@ -25,7 +25,7 @@ Papers and publications. Can only give you AI screenshots of links. Most DOI and
 
 Impact. "Explorer Network" p2p cluster has to be built to outrun scanners (that AI suggests so easily), see "public service" section. Open-source (here), and independently from government, corporate, academia (and whatever claiming to be independent organisations and security projects). 
 
-Paper wallets are not permanent anymore - have to update (write down new) seedphrases, when network detects risk. No permanent addresses. No permanent IDs on blockchain - long-term contracts have to be re-negotiated, it renders smart-contract VMs useless, only pure-function-like contracts (with predefined execution time) make sense (eg Bitcoin Script or DLC and [DSLs for it](https://dk14.github.io/mega-peers/docs/#/dsl)).
+Paper wallets are not permanent anymore - have to update (write down new) seedphrases, when network detects risk. No permanent addresses. No permanent IDs on blockchain - long-term contracts have to be re-negotiated periodically (update parties). It renders smart-contract VMs useless, only pure-function-like contracts (with predefined execution time) make sense (eg Bitcoin Script or DLC and [DSLs for it](https://dk14.github.io/mega-peers/docs/#/dsl)).
 
 ------
 ## Donations
