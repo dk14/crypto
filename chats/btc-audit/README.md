@@ -27,6 +27,8 @@ Impact. "Explorer Network" p2p cluster has to be built to outrun scanners (that 
 
 Paper wallets are not permanent anymore - have to update (write down new) seedphrases, when network detects risk. No permanent addresses. No permanent IDs on blockchain - long-term contracts have to be re-negotiated periodically (update parties). The issue makes smart-contract VMs risky and inconvinient, since they meant for long-term contracts and over-designed funds, only pure-function-like contracts (with predefined execution time) make sense (eg Bitcoin Script or DLC and [DSLs for it](https://dk14.github.io/mega-peers/docs/#/dsl)). Existing long-term contracts are at extra risk if they exclusively time-locked and glued to an ID (address or pubkey).
 
+> Long term: the more scarse computational resources will become - the higher tx-fees will get. Physically, it will be grounded in sillicon rather than energy. Both depend on farming efficiency (more collectivism -> more scarcity of checmical energy -> less productivity -> less sillicon supply).
+
 Apocallypse is starting...
 
 ------
