@@ -113,7 +113,7 @@ This is anti-scanner tool. Good TRNG replicas are needed to outrun the scanners.
 
 Successfull (fully or partially) matches will be reported [publicly](legal-notes.txt).
 
-Since even military security (security of conventional money and IDs) depends on TRNGs - majority of users of the tool, would probably be interested in reporting flawed funded addresses. There are also ways to enforce it by design (build a Decentralized Security Explorer).
+Since even military security (security of conventional money, gold prices and personal IDs) depends on TRNGs - majority of users of the tool, would probably be interested in reporting flawed funded addresses. There are also ways to enforce it by design (build a Decentralized Security Explorer).
 
 Unlike naive hacking tools, this one is rather meant as an attempt to put a stop to childish waste of GPUs, CPUs on non-working code. So far only staged exploits (eg libexplorer clock attack), and attacks on pursposedly insecure wallets (especially altcoins) were "successful". Most energy/resources are simply wasted on non-working tools, trying to get results fast or showing off. Playing a lottery on account of wasting real money, time, resources. Non of it actually improves security of the wallets.
 
