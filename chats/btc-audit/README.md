@@ -15,7 +15,7 @@ TRNG waveform (12‑bit ADC, 40960 samples)
 
 > noise is not enveloped, not adjusted for drifts and jitters. To avoid actual hacks
 > 
-> note: jitter-derived "random" can be modeled as a function of thermal noise.
+> note: jitter-derived "random" can be modeled as a deterministic function of thermal noise.
 
 ------
 ## Donations
