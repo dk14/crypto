@@ -18,7 +18,7 @@ TRNG waveform (12‑bit ADC, 40960 samples)
 > note: jitter-derived "random" can be modeled as a deterministic function of thermal noise.
 
 
-Papers and publications. Can only give you AI scrrenshots of lins. Most DOI and presentations are removed. 
+Papers and publications. Can only give you AI screenshots of links. Most DOI and presentations are removed (for security reasons): [erased link1](paper1.png), [erased link2](paper2.png). You can send ones if you find ones, but security through obscurity would likely render links non-working shortly.
 
 ------
 ## Donations
