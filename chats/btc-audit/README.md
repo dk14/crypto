@@ -27,6 +27,8 @@ Impact. "Explorer Network" p2p cluster has to be built to outrun scanners (that 
 
 Paper wallets are not permanent anymore - have to update (write down new) seedphrases, when network detects risk. No permanent addresses. No permanent IDs on blockchain - long-term contracts have to be re-negotiated periodically (update parties). It renders smart-contract VMs useless, only pure-function-like contracts (with predefined execution time) make sense (eg Bitcoin Script or DLC and [DSLs for it](https://dk14.github.io/mega-peers/docs/#/dsl)).
 
+Apocallypse is starting...
+
 ------
 ## Donations
 
