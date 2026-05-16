@@ -26,7 +26,7 @@ Papers and publications. Can only give you AI screenshots of links. Most DOI and
 
 Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
-(I literally need time=currency to improve this)
+(I literally need time=coins to improve this)
 
 > This is anti-scanner tool in development, see below.
 
