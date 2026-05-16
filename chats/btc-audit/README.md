@@ -20,6 +20,8 @@ TRNG waveform (12‑bit ADC, 40960 samples)
 
 Papers and publications. Can only give you AI screenshots of links. Most DOI and presentations are removed (for security reasons): [erased link1](paper1.png), [erased link2](paper2.png). You can send ones if you find ones, but security through obscurity would likely render links non-working shortly. Here is GPT-OSS admitting insecurity: [screenshot](ai-admission.png), as part of conversation, where some of the repo code was taken from, to demonstrate how easy is to get "privilleged" academic info from AI.
 
+Potential impact. "Explorer Network" cluster has to be built to outrun scanners (that AI suggests so easily). Paper wallets are not permanent anymore - have to update (write down new) seedphrases, when network detects risk. No permanent addresses. No permanent IDs on blockchain - long-term contracts have to be re-negotiated, it renders smart-contract VMs useless, only pure functions make sense (eg Bitcoin Script or DLC and [DSLs for it](https://dk14.github.io/mega-peers/docs/#/dsl)).
+
 ------
 ## Donations
 
