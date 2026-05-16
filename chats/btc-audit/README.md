@@ -134,7 +134,11 @@ Bitcoin is your playground!
 
 ### Transparency. 
 
-If you sent me message with a bid (txid of donation) for preferred feature and I did not progress the project - feel free to create an issue here as a reminder. If your bid is not enough for the feature - someone else can bid more, and add a proof (txid) in comments to the issue. With enough bids - can lift it off!
+If you sent me message with a bid (txid of donation) for preferred feature and I did not progress the project - you can create an issue here as a reminder, so progress would be publicly tractable - mentioning txid, would prove your bid. 
+
+If your bid is not enough for the feature - someone else can bid more, and add a proof (txid) in comments to the issue. 
+
+With enough bids - can lift it off!
 
 > Stricter STEM orientation of this project, which neads human overlook and engineering, protects it from black-labeling (even by altcoins, their infrastructure is not ready). Bitcointalk post protects from spoofing. White-labeling is possible, if it involves novelty.
 
