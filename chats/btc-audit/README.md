@@ -18,7 +18,7 @@ TRNG waveform (12‑bit ADC, 40960 samples)
 > note: jitter-derived "random" can be modeled as a deterministic function of thermal noise.
 
 
-Papers and publications. Can only give you AI screenshots of links. Most DOI and presentations are removed (for security reasons): [erased link1](paper1.png), [erased link2](paper2.png). You can send ones if you find ones, but security through obscurity would likely render links non-working shortly. Here is GPT-OSS admitting insecurity: [screenshot](ai-admission.png), as part of conversation, where some code was taken from to demonstrate how easy is to get it from AI.
+Papers and publications. Can only give you AI screenshots of links. Most DOI and presentations are removed (for security reasons): [erased link1](paper1.png), [erased link2](paper2.png). You can send ones if you find ones, but security through obscurity would likely render links non-working shortly. Here is GPT-OSS admitting insecurity: [screenshot](ai-admission.png), as part of conversation, where some of the repo code was taken from, to demonstrate how easy is to get "privilleged" academic info from AI.
 
 ------
 ## Donations
