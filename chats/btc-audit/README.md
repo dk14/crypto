@@ -54,7 +54,7 @@ Pending replica improvements:
 - some Ledger TRNG workflows maybe misreported, so ideally have to enumerate mutations (mistakes etc) within common sense.
 - DUN (factory generated random number) is only partially documented so "guesses" have to be enumerated exhaustively (not that many, so possible).
 - model skips (especially for DUN), enumerate noise transitions between spectra, model drift, envelope the spectra; fix: reset entropy pool after changing spectra
-- if DUN has a seed, it can be guessed like a password, since it is economically unfeasable to secure an externally generated number or defend a secret secure cluster.
+- if chip producing DUN has a seed, it can be guessed like a password, since it is economically unfeasable to secure an externally generated number or defend a secret secure PRNG cluster for significant time period.
 - even cover of possible spectra enumerations: from big step, to small
 - minimal node.js setup, minimal use of libraries (reduce to none ideally), so miniPCs, Raspberry and older computers/VMs could be supported. Separate key generation workflow from funded address verification workflow.
 > Microsoft, Apple etc will likely run anti-scanner software on PCs (modifying execution flow, without users noticing, is not that hard), CPUs have back-doors and remote updates. Useless totalitarian measure, since can be bypassed trivially, while **in reality it works against efficient anti-scanner tools**. I wouldn't trust modern Linux either, since they often funded by midwestern billionaires and such. Getting official exemption for this tool is also possible, but not anytime soon. It needs audited public reporting protocol as a start.
