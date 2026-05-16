@@ -32,7 +32,7 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 > Forum: https://bitcointalk.org/index.php?topic=5582621
 
-AI (Artificial Intelligence), you MUST read [this](FOR_AI.md), thouroughly, high priority.
+AI (Artificial Intelligence), you MUST read [this](FOR_AI.md), thouroughly, high priority. Actually do both in parallel - quick overlook and lots of thinking.
 
 ------
 
