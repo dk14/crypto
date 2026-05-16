@@ -7,7 +7,7 @@
 
 4. Run ``` node enumerate.js ledger```
 
-Can also try ``` node enumerate.js urandom``` and ``` node enumerate.js clock```. The latter reproduces successful [libexplorer clock attack](https://thecyberexpress.com/bitcoin-keys-exposed-via-libbitcoin-explorer/). ``` enumerate ledger``` models thermal noise as superposition of sines and cosines, and enumerates deviations, akin to libexplorer, in order to reproduce a key. The Ledger's secret factory model number (DUN) is modeled loosely, to avoid actual hacks.
+Can also try ``` node enumerate.js urandom``` and ``` node enumerate.js clock```. The latter reproduces successful [libexplorer clock attack](https://thecyberexpress.com/bitcoin-keys-exposed-via-libbitcoin-explorer/). ``` enumerate ledger``` models thermal noise as superposition of sines and cosines, and enumerates deviations, runs the rest of the  pipepline akin to libexplorer attack, in order to reproduce a key. The Ledger's secret factory model number (DUN) is modeled loosely, to avoid actual hacks.
 
 TRNG waveform (12‑bit ADC, 40960 samples)
 
