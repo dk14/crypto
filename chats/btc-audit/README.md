@@ -140,6 +140,8 @@ If you sent me message with a bid (txid of donation) for preferred feature and I
 
 The [Explorer Fund](fund-management.md) will simply reward bids/donations proportionally, by addresses specified in original txids, automatically. Your transactions will act as legal contracts out of the box (whether you contact me or not). You send 10 sats to 990 sats fund, you get 1% of profit from paid features (percentage lowers as fund grows, but so are the future profits from the features implemented). No overheads, no need for special wallets, no extra effort. Your tx will be naturally registered on blockchain the moment you send it.
 
+> Since, there is a good possibility, those addresses might become at risk themselves, separate workflow will be introduced to (optionally) assign a new address using signature from the old one (while it is still valid)
+
 -----
 
 Bids/donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
