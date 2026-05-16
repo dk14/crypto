@@ -106,7 +106,7 @@ Public service:
 -----
 
 ## How to improve
-Any even smallest donation (a **bid**) would baby-step progress this tool. 
+Any, even smallest donation (or a **bid**), would baby-step progress this project. 
 
 If you donate, you can (optionally) send me a message describing which path of improvement you prefer and wether you'd like to be mentioned here. Can send it to my [Session ID](https://getsession.org/): 
 
