@@ -9,6 +9,14 @@
 
 Can also try ``` node enumerate.js urandom``` and ``` node enumerate.js clock```. The latter reproduces successful [libexplorer clock attack](https://thecyberexpress.com/bitcoin-keys-exposed-via-libbitcoin-explorer/). ``` enumerate ledger``` models thermal noise as superposition of sines and cosines, and enumerates deviations, akin to libexplorer, in order to reproduce a key. The Ledger's secret factory model number (DUN) is modeled loosely, to avoid actual hacks.
 
+TRNG waveform (12‑bit ADC, 40960 samples)
+
+<img src="thermal.png" width="400" height="200">
+
+> noise is not enveloped, not adjusted for drifts and jitters. To avoid actual hacks
+> 
+> note: jitter-derived "random" can be modeled as a function of thermal noise.
+
 ------
 ## Donations
 
