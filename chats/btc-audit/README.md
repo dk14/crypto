@@ -71,6 +71,7 @@ Public service:
 > 51% attack applicable here (on Explorer Network), but only in case where cluster is completely hidden (majority refuses to report publicly). Mediation: migrate wallets to new seeds earlier than before (lower threshold on maximum accepted risk).
 - reward system for partial matches reported.
 > Akin to PoW, p2p protocol can assign a reward (from user pool, based on metric score) to the reporter. And some percentage to profit-sharing fund.
+- private tools support: audit tools developed privately and independently from this one - can (automatically) get rewards from publishing seeds (partial matches that came close) thorough "Explorer Protocol". This is faster than me, code reviewing every "replica", and more liberal. Disclosing a "replica" model won't be required. Commercial orgs can join - free competition.
 - "high risk to get hacked" notifications for users
 - **ad campaigns for the (future) Security Explorer** (gets expensive)
 - if potential paid features are added, issuing **"sharing profit" asset** is possible (pre-distributed to bidders of this tool, proportionally).
