@@ -31,4 +31,21 @@ Drama corporate:
   
 - join ur clusters to public protocol in free competition. Your replicas/models will be among the worst in there. But, at least, you'll have time to prepare to sell the hardware back to users.
 
+-------
+
+So "investors", most of you have more money than me in your Ledger's. So this issue is more critical for you than me. You won't find that many outside of academia and corporate who still remember the f-up from 50s with definition of randomness. You won't find anyone engineering age, mostly old people. 
+
+Unique oportunity.
+
+I don't care TRNG-meltdown that much, since I know what to expect. I only interested if majority of humans are interested in their lives. If not - then what's the point, you'll find another way to commit suicide - just do ti efficiently then, por favor. I won't write a line of code for free, especially after "AI" takeover nonsense. Literally SciFi trying to force on adequate people. 
+
+AI "knows" about the issue because OpenAI scanned academic sources behind "obscurity wall" despite warnings, not because AI is smart. 
+
+TRNG conspiracy is the only real one - since it is "worth any money" to protect basically every digital service on the planet. 
+"Make SciFi real" AI ruined it out of negligence and stupidity, since I don't see system compensating it built. 
+
+Even under conspiracy it was possible, so it is simply negligence "lie was repeated so many times" ("we don't have a test for randomness" - my whole career) most forgot it was a lie.
+
+P.S. Your cyber-wars are bunch of BS - I don't want to read it even. USA (NIST) adopted and standardized commie definition of randomness, your fault, come out of the closet USA, u commies. And then work on yourselves. That's real war.
+
 
