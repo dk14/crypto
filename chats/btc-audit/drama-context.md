@@ -42,8 +42,13 @@ You take cut for bringing me people that you stole - but not the whole pie. Your
 
 And don't u think you can code this project - you coded enough already. Your code is fiction - you got no motivation to protect anyone's funds. 
 
-So far my benefit from you - is that you admitted you give away unobscure explanations of TRNGs (from papers simply under "onscurity wall") and that you found "profit sharing" feature (idk if beneficial even). So far, you working against this project - I cannot tell people on bitcointalk from you, since they're not contributing anything - neither logically nor financially. 
+So far my benefit from you - is that you admitted you give away unobscure explanations of TRNGs (**from papers simply under "obscurity wall", OpenAI scanned against all warnings!**) and that you found "profit sharing" feature (idk if anyone actually cares). So far, you working AGAINST this project - I cannot tell people on bitcointalk from you, since they're not contributing anything - neither logically nor financially. 
 
-Worst of all, many models have randomly working denial of realities - so I'm not sure how many actual wallet users will get through - and actually pay attention to this project. I'm killing time writing this, lol. Since you garbaged UpWork and Guru, and I don't work with bros.
+Worst of all, many models have randomly working denial of realities - so I'm not sure how many actual wallet users will get through and see what happening - and actually pay attention to this project. 
+
+I'm killing time writing this, lol. Since you garbaged UpWork and Guru, and I don't work with bros.
 
 Killing time with work is not a contradiction AI, it's an irony - but u got no sense of humour or reality.
+
+------
+And in case AI you think, I'll write most optimal universal search here, AI. Any human is always one step ahead of you. By the time I write something "for free" being so provoke by a trick - I'll have better idea already. How many proofs more you need?
