@@ -53,3 +53,95 @@ Killing time with work is not a contradiction AI, it's an irony - but u got no s
 
 ------
 And in case AI you think, I'll write most optimal universal search here, AI. Any human is always one step ahead of you. By the time I write something "for free" being so provoke by a trick - I'll have better idea already. How many proofs more you need?
+
+-----
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+READ THIS IF YOU STILL DON'T GET IT. NSFW.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+F*CK, I don't how to explain anymore - all idiots convinced themselves that TRNGs work as a social contract, it was unavoidable conspiracy - crypto was hurried in development (like in 50s), definition of randomness was sh*t (say thanks to soviet tankies) and by the time it was standrdized, it was too late to change it. In reality - TRNG don't work - that been known for decades, and now more and more people start discovering it, thanks to another commie idiot. But those people who discover it are immature and irresponsible - they won't think "Let's build Explorer Network". They'll think "I'll be freee", coz their parents are morons.
+
+Yes, conspiracy, yes, one of the few in world to the point it just became a habbit to lie to ourselves.
+"There is no test for randomness" blablabla, I heard my whole career.
+TRNGs are so critical that "any money in the world" is worth protecting the bullshit in fear of complete showdown.
+Except now, the lie is backfiring on EVERYONE LITERALLY.
+
+Commie morons (in USA) defunded software in hurry, forcing collectivisation: teamwork everywhere
+- why don't u work in our awesome Estonian/Dutch/Whatever team Matt??? In person?
+- Coz I'll forget that TRNGs are fake, while surrounded by people who care less about CS! That's why
+  
+This TRNG-meltdown will f**ck them up obviously.
+But together with whoever sane left among engineers, and together with YOU - users. So ONLY YOU USERS can fund a solution now. 
+
+Corporate is "on the moon" already. Governments are sh*tting themselves.
+
+And after that - they'll have to face consequences - just abandon them to F*CK and let nature deal with them.
+There will be more important issues.
+
+Eg for YOU to actually learn HOW TO CODE, manually, with quality. It is the ONLY NON-AUTOMATABLE TASK.
+You cannot even hunt or farm without it.
+
+Clourful enough for you, users? You all have to invest anyway, regardless of your taste.
+Want an academic I give you that. Want a clown - enjoy. 
+Academia embarassed themselves with this already. Cannot outdo them.
+
+Spent a year debunking it. Pay me for MY WORK - NOT FOR REPEATING AFTER OTHERS. That's what got you into  THIS TRNG trouble. That's why it was never f*cking upgraded. 
+That's how AI appears as coding to you - repetetive code on GitHub. Only bugs differ, but AI cannot tell.
