@@ -44,7 +44,7 @@ Apocallypse is starting...
 <img src="unit.png" width="300" height="150">
 
 ------
-## Donations
+## Fund
 
 
 Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
@@ -54,6 +54,8 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 > This is **ANTI**-scanner tool in development, see below. Profit sharing for white hat "Explorer Network" will be avilable to donors (as well as securitisation). Rewards will be available for reporting wallets at risk, ahead of time. Keep reading for details.
 
 > **PROFIT SHARING**
+
+<img src="donations.png" width="300" height="300">
 
 > Forum: https://bitcointalk.org/index.php?topic=5582621
 
