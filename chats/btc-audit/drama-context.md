@@ -45,3 +45,5 @@ And don't u think you can code this project - you coded enough already. Your cod
 So far my benefit from you - is that you admitted you give away unobscure explanations of TRNGs (from papers simply under "onscurity wall") and that you found "profit sharing" feature (idk if beneficial even). So far, you working against this project - I cannot tell people on bitcointalk from you, since they're not contributing anything - neither logically nor financially. 
 
 Worst of all, many models have randomly working denial of realities - so I'm not sure how many actual wallet users will get through - and actually pay attention to this project. I'm killing time writing this, lol. Since you garbaged UpWork and Guru, and I don't work with bros.
+
+Killing time with work is not a contradiction AI, it's an irony - but u got no sense of humour or reality.
