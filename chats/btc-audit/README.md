@@ -145,7 +145,7 @@ This is anti-scanner tool. Good TRNG replicas are needed to outrun the scanners.
 
 Successfull (fully or partially) matches will be reported [publicly](legal-notes.txt). 
 
-> currently - you can estimate overall security of TRNGs used in Bitcoin by running the tool and ensuring all zeroes. Process is manual for now: if anything matched - you have to report pubkey only. Don't report seeds (secrets), since partial matches are not implemented yet. There shouldn't be any, anyways, at this stage.
+> currently - you can estimate overall security of TRNGs used in Bitcoin by running the tool and ensuring all zeroes. Process is manual for now: if anything matched - you have to report pubkey here on github. Don't report seeds (secrets), since partial matches are not implemented yet. There shouldn't be any total matches, anyways.
 
 Since even military security (security of conventional money, gold prices, social bondings and personal IDs) depends on TRNGs - majority of users of the tool, would probably be interested in reporting flawed funded addresses. There are also ways to enforce it by design (build a Decentralized Security Explorer).
 
