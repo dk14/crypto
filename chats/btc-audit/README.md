@@ -23,7 +23,7 @@ Papers and publications. Can only give you AI screenshots of links. Most DOI and
 <img src="ai-admission.png" width="700" height="700">
 
 
-**Impact**. Early warning system, "Explorer Network" p2p cluster has to be built to outrun scanners (that AI suggests so easily), see "public service" section: it will warn you ahead. Open-source (here), and independently from government, corporate, academia (and whatever claiming to be independent organisations and security projects).
+**Mediation**. Early warning system, "Explorer Network" p2p cluster has to be built to outrun scanners (that AI suggests so easily), see "public service" section: it will warn you ahead. Open-source (here), and independently from government, corporate, academia (and whatever claiming to be independent organisations and security projects).
 
 **Without "Explorer Network" (and good TRNG replicas) - you will start losing YOUR FUNDS unrecoverably sooner or later.** 
 
@@ -35,7 +35,7 @@ Papers and publications. Can only give you AI screenshots of links. Most DOI and
 
 > it is extremely dangerous type of attack if implemented. No police/government/regulators can save you from this. This is military-grade attack that is becoming rapidly available even to kids, thanks to AI
 
-Paper wallets are not permanent anymore - have to update (write down new) seedphrases, when network detects risk. No permanent addresses. No permanent IDs on blockchain - long-term contracts have to be re-negotiated periodically (update parties). The issue makes smart-contract VMs risky and inconvinient, since they meant for long-term contracts and over-designed funds, only pure-function-like contracts (with predefined execution time) make sense (eg Bitcoin Script or DLC and [DSLs for it](https://dk14.github.io/mega-peers/docs/#/dsl)). Existing long-term contracts are at extra risk if they exclusively time-locked and glued to an ID (address or pubkey).
+**Impact (if mediated)**. Paper wallets are not permanent anymore - have to update (write down new) seedphrases, when network detects risk. No permanent addresses. No permanent IDs on blockchain - long-term contracts have to be re-negotiated periodically (update parties). The issue makes smart-contract VMs risky and inconvinient, since they meant for long-term contracts and over-designed funds, only pure-function-like contracts (with predefined execution time) make sense (eg Bitcoin Script or DLC and [DSLs for it](https://dk14.github.io/mega-peers/docs/#/dsl)). Existing long-term contracts are at extra risk if they exclusively time-locked and glued to an ID (address or pubkey).
 
 > Long term: the more scarse computational resources will become - the higher tx-fees will get. Physically, it will be grounded in sillicon rather than energy. Both depend on farming efficiency: more collectivism -> more foraging overheads and scarcity of chemical energy -> less productivity -> less sillicon supply -> higher transaction overhead -> low liquidity.
 
