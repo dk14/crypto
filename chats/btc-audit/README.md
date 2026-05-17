@@ -23,7 +23,7 @@ Papers and publications. Can only give you AI screenshots of links. Most DOI and
 <img src="ai-admission.png" width="700" height="700">
 
 
-**Mediation**. Early warning system, "Explorer Network" p2p cluster has to be built to outrun scanners (that AI suggests so easily), see "public service" section: it will warn you ahead. Open-source (here), and independently from government, corporate, academia (and whatever claiming to be independent organisations and security projects).
+**Pre-mediation**. Early warning system, "Explorer Network" p2p cluster has to be built to outrun scanners (that AI suggests so easily), see "public service" section: it will warn you ahead. Open-source (here), and independently from government, corporate, academia (and whatever claiming to be independent organisations and security projects).
 
 **Without "Explorer Network" (and good TRNG replicas) - you will start losing YOUR FUNDS unrecoverably sooner or later.** 
 
@@ -33,7 +33,7 @@ Papers and publications. Can only give you AI screenshots of links. Most DOI and
 
 ```DON'T wait for demonstration for an actual BTC address being hacked this way - if that happens, YOURS will be next within hours!```
 
-> it is extremely dangerous type of attack if implemented. No police/government/regulators can save you from this. This is military-grade attack that is becoming rapidly available even to kids, thanks to AI
+> it is extremely dangerous type of attack if implemented. No police/government/regulators can save you from this. This is military-grade attack that is becoming rapidly available even to kids, thanks to AI. All types wallets can be swiped using same principle (TRNG process replica, based on academic and public info + guesses), not only Ledger. Non-invasively, non-discriminantly. There is no mediation for this.
 
 **Impact (if mediated)**. Paper wallets are not permanent anymore - have to update (write down new) seedphrases, when network detects risk. No permanent addresses. No permanent IDs on blockchain - long-term contracts have to be re-negotiated periodically (update parties). The issue makes smart-contract VMs risky and inconvinient, since they meant for long-term contracts and over-designed funds, only pure-function-like contracts (with predefined execution time) make sense (eg Bitcoin Script or DLC and [DSLs for it](https://dk14.github.io/mega-peers/docs/#/dsl)). Existing long-term contracts are at extra risk if they exclusively time-locked and glued to an ID (address or pubkey).
 
@@ -57,7 +57,7 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 > **PROFIT SHARING**
 
-> *any amount gets you in! the more u send - the bigger the cut!*
+> *"""any amount gets you in! the more u send - the bigger the cut!"""*
 
 <img src="donations.png" width="300" height="300">
 
