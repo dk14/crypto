@@ -27,7 +27,7 @@ Papers and publications. Can only give you AI screenshots of links. Most DOI and
 
 **Without "Explorer Network" (and good TRNG replicas) - you will start losing your funds unrecoverably sooner or later.** 
 
-> Rather sooner, thanks to forced popularisation of AI (forced literacy), any disturbed teen can just swipe blockchain wallets left and right. Only needs a trigger, which are just too many nowadays. "Ooh, wah-ah-ah-ah. Ah, ah. Ah, Ah".
+> Rather sooner, thanks to forced popularisation of AI (forced literacy). Any disturbed teen can just swipe blockchain wallets left and right. Only needs a trigger, which are just too many nowadays. "Ooh, wah-ah-ah-ah. Ah, ah. Ah, Ah".
 
 <img src="theone.png" width="300" height="150">
 
