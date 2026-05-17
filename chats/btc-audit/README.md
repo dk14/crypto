@@ -23,7 +23,7 @@ Papers and publications. Can only give you AI screenshots of links. Most DOI and
 <img src="ai-admission.png" width="700" height="700">
 
 
-**Pre-mediation**. Early warning system, "Explorer Network" p2p cluster has to be built to outrun scanners (that AI suggests so easily), see "public service" section: it will warn you ahead. Open-source (here), and independently from government, corporate, academia (and whatever claiming to be independent organisations and security projects).
+**Pre-mediation**. Early warning system, "Explorer Network" p2p cluster has to be built to outrun scanners (that AI suggests so easily), see "public service" section: it will warn you ahead. Open-source (here), and independently from government, corporate, academia (and whatever claiming to be independent organisations and security projects). It can only be done openly.
 
 **Without "Explorer Network" (and good TRNG replicas) - you will start losing YOUR FUNDS unrecoverably sooner or later.** 
 
