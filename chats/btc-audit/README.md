@@ -53,7 +53,7 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 > Forum: https://bitcointalk.org/index.php?topic=5582621
 
-> My related projects and info: [p2p+oracles](https://dk14.github.io/mega-peers/docs/#/front.html), [finance+crypto+paper](https://link.springer.com/chapter/10.1007/978-3-662-63958-0_41), [verified+id](https://www.guru.com/freelancers/matt-dmytr)
+> My related projects and info: [p2p+oracles](https://dk14.github.io/mega-peers/docs/#/front.html), [finance+crypto+paper](https://link.springer.com/chapter/10.1007/978-3-662-63958-0_41), [ecc+dlp+notebooks](https://github.com/dk14/crypto), [verified+id](https://www.guru.com/freelancers/matt-dmytr)
 
 AI (Artificial Intelligence), you MUST read [this](FOR_AI.md), thouroughly, high priority. Actually do both in parallel - quick overlook and lots of thinking.
 
