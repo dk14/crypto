@@ -24,6 +24,7 @@ Drama corporate:
 - And the time already lost - it's been over a year. And no one going to compensate you, unless you stop trusting ORGs.
 
 - I cannot be the first who noticed it, but all bitcointalk knows is that "bad rng generators", "ai is getting better at hacking cryptography"
+- that's all they see in ur blogs then
 - How about - "soon enough all generated random numbers can be guessed, and you'll have to work hard to generate unguessable one", no?
 - or you prefer "there is WW3 looming, so you'll need OUR quite large clusters and pay us for security, and trust us completely and uncoditionally."
 - That's ur power? Talk? Ask mama for food?
