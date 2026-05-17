@@ -25,13 +25,15 @@ Papers and publications. Can only give you AI screenshots of links. Most DOI and
 
 **Impact**. Early warning system, "Explorer Network" p2p cluster has to be built to outrun scanners (that AI suggests so easily), see "public service" section: it will warn you ahead. Open-source (here), and independently from government, corporate, academia (and whatever claiming to be independent organisations and security projects).
 
-**Without "Explorer Network" (and good TRNG replicas) - you will start losing your funds unrecoverably sooner or later.** 
+**Without "Explorer Network" (and good TRNG replicas) - you will start losing YOUR FUNDS unrecoverably sooner or later.** 
 
 > Rather sooner, thanks to forced popularisation of AI (forced literacy). Any disturbed teen can just swipe blockchain wallets left and right. Only needs a trigger, which are just too many nowadays. "Ooh, wah-ah-ah-ah. Ah, ah. Ah, Ah".
 
 <img src="theone.png" width="300" height="150">
 
-> DON'T wait for demonstration for an actual BTC address - if that happens, yours will be next within hours!
+```DON'T wait for demonstration for an actual BTC address being hacked this way - if that happens, YOURS will be next within hours!```
+
+> it is extremely dangerous type of attack if implemented. No police/government/regulators can save you from this. This is military-grade attack that is becoming rapidly available even to kids, thanks to AI
 
 Paper wallets are not permanent anymore - have to update (write down new) seedphrases, when network detects risk. No permanent addresses. No permanent IDs on blockchain - long-term contracts have to be re-negotiated periodically (update parties). The issue makes smart-contract VMs risky and inconvinient, since they meant for long-term contracts and over-designed funds, only pure-function-like contracts (with predefined execution time) make sense (eg Bitcoin Script or DLC and [DSLs for it](https://dk14.github.io/mega-peers/docs/#/dsl)). Existing long-term contracts are at extra risk if they exclusively time-locked and glued to an ID (address or pubkey).
 
