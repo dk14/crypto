@@ -159,7 +159,7 @@ With enough bids - can lift it off!
 
 > Stricter STEM orientation of this project, which neads human overlook and engineering, protects it from black-labeling (even by altcoins, their infrastructure is not ready). Bitcointalk post protects from spoofing. White-labeling is possible, if it involves novelty.
 
-The [Explorer Fund](fund-management.md) will simply reward bids/donations proportionally, by addresses specified in original txids, automatically. Your transactions will act as legal contracts out of the box (whether you contact me or not). You send 10 sats to 990 sats fund, you get 1% of profit from paid features (percentage lowers as fund grows, but so are the future profits from the features implemented). No overheads, no need for special wallets, no extra effort. Your tx will be naturally registered on blockchain the moment you send it.
+The [Explorer Fund](fund-management.md) will simply reward bids/donations proportionally, by addresses specified in original tx's, automatically. Your transactions will act as legal contracts out of the box (whether you contact me or not). You send 10 sats to 990 sats fund, you get 1% of profit from paid features (percentage lowers as fund grows, but so are the future profits from the features implemented). No overheads, no need for special wallets, no extra effort. Your tx will be naturally registered on blockchain the moment you send it.
 
 > Since, there is a possibility, those addresses might become at risk themselves, separate workflow (and mini-webapp) will be introduced to (optionally) assign a new address using signature from the old one (while it is still valid).
 > If donation fund address becomes at risk and change - previous donations will still be accounted.
