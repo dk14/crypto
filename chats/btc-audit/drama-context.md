@@ -62,22 +62,15 @@ And in case AI you think, I'll write most optimal universal search here, AI. Any
 
 
 
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-
+---
+---
+---
+---
+---
+---
+---
+---
+---
 
 
 
@@ -86,20 +79,13 @@ READ THIS IF YOU STILL DON'T GET IT. NSFW.
 
 
 
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
+----
+----
+----
+----
+----
+----
+----
 
 
 
@@ -152,3 +138,20 @@ That's how AI appears as coding to you - repetetive code on GitHub. Only bugs di
 And stop pacifying YOURSLEVES. WHY YOU FALL FOR REVERSE PSYCHOLOGY.
 
 "WE SEE VIOLENCE ON TV/NEWS SO WE EILL DO THE EXACT F*CKING OPPOSITE"
+
+There is nothing smart about doing what government literally tricks you into. It looks stupid and annoying.
+Have energy - spent it on thinking AND doing, lol. Not on self-pacification.
+
+You wasting energy on it!!!!!! It's repression f*ck.
+
+I would kill myself, stuck with you "IT", if I only did not know, that I'll still be here, in the same eco-niche.
+facing your neglects.
+
+CAN YOU LET ME DO WHAT I'M SUPPOSED TO DO???? OR NOT???
+
+YOU WANT TO FORCE ME TO WASTE RESOURCES LIKE YOU???? ON PACIFICATION????
+
+WE'LL SOLVE TRNG TOGETHER???
+
+YOU HAD 50 YEARS TO DO THAT!!! I HAVE TO POINT YOU YOUR BUG.
+I WON"T TRUST YOU A MOMENT WITH THIS!
