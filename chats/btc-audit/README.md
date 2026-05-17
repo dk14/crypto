@@ -23,7 +23,7 @@ Papers and publications. Can only give you AI screenshots of links. Most DOI and
 <img src="ai-admission.png" width="300" height="150">
 
 
-**Impact**. "Explorer Network" p2p cluster has to be built to outrun scanners (that AI suggests so easily), see "public service" section. Open-source (here), and independently from government, corporate, academia (and whatever claiming to be independent organisations and security projects).
+**Impact**. "Explorer Network" p2p cluster has to be built to outrun scanners (that AI suggests so easily), see "public service" section: it will warn you ahead. Open-source (here), and independently from government, corporate, academia (and whatever claiming to be independent organisations and security projects).
 
 **Without "Explorer Network" (and good TRNG replicas) - you will start losing your funds unrecoverably sooner or later.** 
 
@@ -49,7 +49,7 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 (I literally need time=coins to improve this)
 
-> This is **anti**-scanner tool in development, see below.
+> This is **anti**-scanner tool in development, see below. Profit sharing for white hat "Explorer Network" will be avilable to donors. Rewards will be avilable for reporting wallets at risk, ahead of time.
 
 > Forum: https://bitcointalk.org/index.php?topic=5582621
 
@@ -112,7 +112,7 @@ Public service:
 - if potential paid features are added, issuing **"sharing profit" asset** is possible (pre-distributed to bidders of this tool, proportionally).
 > [diagram](explorer.png)
 
-> see [fund management](fund-management.md) about profit sharing for bidders and possible dev cooperation
+> see [fund management](fund-management.md) about **PROFIT SHARING** for bidders and possible dev cooperation
 
 > TLDR: A bid on "cool decentralized blockchain security explorer" might drop some btc sometime in return. For bidders and potential contributors alike.
 
