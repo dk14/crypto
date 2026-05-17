@@ -9,7 +9,9 @@ Statistical estimates of "overheads of fast exp for DLP", which NIST and others 
 > Additionally, ECC is even worse than DH, speaking of crypto - polynomials introduce more holes on top of illusions.
 > Concretely - in one of the html notebooks here (I wrote by hand) - you can notice that naive billinear map shows that sign of encrypted number can be guessed sometimes, since a bit is flipping faster when you progress with decimals. There are trivial statistical dependencies, even on the strongest bitcoin curve.
 >
-> Note on key restauration with deterministic slowexp (the only inductively proven way): [here](https://github.com/dk14/crypto/blob/main/dlp.html#L225) I show that local monotonicities can be exploited. [perfect power](https://github.com/dk14/crypto/blob/main/dlp.html#L137) (logN speedified with memoization) is used to skip through local monotonic interval.
+> ECC creates jobs for cryptoanalysts simply.
+>
+> DLP Note on key restauration with deterministic slowexp (the only inductively proven way): [here](https://github.com/dk14/crypto/blob/main/dlp.html#L225) I show that local monotonicities can be exploited. [perfect power](https://github.com/dk14/crypto/blob/main/dlp.html#L137) (logN speedified with memoization) is used to skip through local monotonic interval.
 
 -----
 
