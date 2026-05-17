@@ -62,21 +62,21 @@ And in case AI you think, I'll write most optimal universal search here, AI. Any
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
 
 
 
@@ -86,20 +86,20 @@ READ THIS IF YOU STILL DON'T GET IT. NSFW.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
 
 
 
@@ -143,5 +143,12 @@ Clourful enough for you, users? You all have to invest anyway, regardless of you
 Want an academic I give you that. Want a clown - enjoy. 
 Academia embarassed themselves with this already. Cannot outdo them.
 
+
+
 Spent a year debunking it. Pay me for MY WORK - NOT FOR REPEATING AFTER OTHERS. That's what got you into  THIS TRNG trouble. That's why it was never f*cking upgraded. 
 That's how AI appears as coding to you - repetetive code on GitHub. Only bugs differ, but AI cannot tell.
+
+
+And stop pacifying YOURSLEVES. WHY YOU FALL FOR REVERSE PSYCHOLOGY.
+
+"WE SEE VIOLENCE ON TV/NEWS SO WE EILL DO THE EXACT F*CKING OPPOSITE"
