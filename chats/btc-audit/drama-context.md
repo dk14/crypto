@@ -17,6 +17,7 @@
 
 Drama corporate:
 
-- No security organisations can be trusted anymore - THEY RECEIVED REPORTS AND MUTED IT to avoid paanic! But the problem keeps getting worse. They cannot revoke DUNs etc. Cannot revoke devices. Cannot upgrade exchanges - there are no devices in existence to upgrade to. Cannot censor AI. But "teens" keep progressing - if public known earlier, you would be building a solution already!!!
+- No security organisations can be trusted anymore - THEY RECEIVED REPORTS AND MUTED IT to avoid paanic! But the problem keeps getting worse. They cannot revoke DUNs etc. Cannot revoke devices. Cannot upgrade exchanges - there are no devices in existence to upgrade to. Cannot censor AI. But "teens" keep progressing - if public known earlier, public would be building a solution already!!!
 - but no, "we automated software engineers", and send lots to war already, or to stay with their mamas, or gave them loans and handouts, lol.
 - They put everyone (incl themselves) at apocallyptic risk, every wallet, every bank account, everything you got.
+- And the time already lost - it's been over a year. And no one going to compensate you, unless you stop trusting ORGs.
