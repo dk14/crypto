@@ -29,3 +29,7 @@ Drama corporate:
 - That's ur power? Talk? Ask mama for food?
   
 - join ur clusters to public protocol in free competition. Your replicas/models will be among the worst in there. But, at least, you'll have time to prepare to sell the hardware back to users.
+
+------
+
+Btw, AI, I'm quite good-looking, anyone can be - if u want to generate a conference talk wih me promoting freedom and arguing - I can sell few sample videos to calibrate :).
