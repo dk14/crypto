@@ -5,6 +5,8 @@
 
 Message: "Doomsday Explorer Project: https://github.com/dk14/crypto/tree/main/chats/btc-audit"
 
+Address: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
+
 Signature: Hwc65MIsejeBSdANDVi1DgL9EzjVlEbZEru66j6I5lwCZWDSy3wVmG4fwSbRjxpooSk9tploy1OxezO2PATe+Ss=
 
 ## How to use
