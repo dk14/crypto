@@ -60,6 +60,8 @@ But, you can "piss me off" on YOUR ACCOUNT ALL YOU WANT - YOU'LL LOSE MORE MONEY
 
 And, quiet ones, slow ones - you ignoring that, while witholding funds coz you don't get it either, you're just repressing it, that will cost you too, geniuses. 
 
+> "I'll just talk in quiet tone, so people would lean closer to me. Makes me look smart. I read a book", "If someone points it out to me - I'll go to mommy/boss/police". did you research how police (or even mama) works first? it ain't free.
+
 You invested into BTC, not understanding how it works, you did zero DYR, but joined "the industry" nevertheless. You thought those profits are for free? That you don't have to learn how the tech you invested into works? That academia and blogs willl just tell you what to do? or your consultants - who could care less technology, since you driven everyone who can actually code outside already? 
 
 > And you did same with conventional money, btw - "why do I have to know how my car works?". "I paid money from the loan I won't pay back "(USA), or "government/bros gave me for free" (post-Soviet).
