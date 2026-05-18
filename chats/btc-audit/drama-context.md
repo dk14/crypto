@@ -46,6 +46,11 @@ TRNG conspiracy is the only real one - since it is "worth any money" to protect 
 
 Even under conspiracy it was possible, so it is simply negligence "lie was repeated so many times" ("we don't have a test for randomness" - my whole career) most forgot it was a lie.
 
-P.S. Your cyber-wars are bunch of BS - I don't want to read it even. USA (NIST) adopted and standardized commie definition of randomness, your fault, come out of the closet USA, u commies. And then work on yourselves. That's real war.
+---------
+
+So, EVERY INAPPROPRIATE MENTAL GYMNBASTIC ON BITCOINTALK - EVERY TRICK, IT COSTS YOU. MORE THAAN ME. THE MORE THIS SOLUTION IS DELAYED - THE HIGHER THE RISK FOR EVERY WALLET.
+There aren't that many things that benefit everyone. This one is, and if you don't get it - you don't fit environment, literally. Not an insult, even, I wish - it is by definition.
+
+P.S. Your cyber-wars are bunch of BS - I don't want to read it even. USA (NIST) adopted and standardized commie definition of randomness (effectively in 50s or something), your fault, come out of the closet USA, u commies. And then work on yourselves. That's real war. Not your show on TV.
 
 
