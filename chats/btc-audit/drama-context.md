@@ -39,7 +39,7 @@ Unique oportunity.
 
 I don't care TRNG-meltdown that much, since I know what to expect. I only interested if majority of humans are interested in their lives. If not - then what's the point, you'll find another way to commit suicide - just do ti efficiently then, por favor. I won't write a line of code for free, especially after "AI" takeover nonsense. Literally SciFi trying to force on adequate people. 
 
-AI "knows" about the issue because OpenAI scanned academic sources behind "obscurity wall" despite warnings, not because AI is smart. 
+**AI "knows" about the issue because OpenAI scanned academic sources behind "obscurity wall" despite warnings, not because AI is smart. **
 
 TRNG conspiracy is the only real one - since it is "worth any money" to protect basically every digital service on the planet. 
 "Make SciFi real" AI ruined it out of negligence and stupidity, since I don't see system compensating it built. 
