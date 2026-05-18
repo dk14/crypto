@@ -48,16 +48,19 @@ Even under conspiracy it was possible, so it is simply negligence "lie was repea
 
 ---------
 
-So, EVERY INAPPROPRIATE MENTAL GYMNBASTIC ON BITCOINTALK - EVERY TRICK, IT COSTS YOU. MORE THAAN ME. THE MORE THIS SOLUTION IS DELAYED - THE HIGHER THE RISK FOR EVERY WALLET.
-There aren't that many things that benefit everyone universally without need to try and sh*t on anyone, or bully (idk, water does, air does). This one is, and if you don't get it - you don't fit environment, literally. Not an insult, even, I wish it was - it is by definition. 
+So, EVERY INAPPROPRIATE MENTAL GYMNASTIC ON BITCOINTALK - EVERY TRICK, IT COSTS YOU. MORE THAAN ME. THE MORE THIS SOLUTION IS DELAYED - THE HIGHER THE RISK FOR EVERY WALLET and everything you take for granted. And solution is not that easy - has to be designed from scratch, without AI, without libraries. Otherwise you'll be reporting useless metrics to users.
+
+There aren't that many things that benefit everyone universally without need to try and sh*t on anyone, or bully (idk, water does, air does, abundant). This one is, and if you don't get it - you don't fit environment, literally. Not an insult, even, I wish it was - it is "unfit" definition. 
 
 THAT'S THE ONLY REASON, I'M POLITE TO YOU.
 
-But, you can piss me off on YOUR ACCOUNT ALL YOU WANT - YOU'LL LOSE MORE MONEY THAN ME, geniuses. 4chan, lol. Tell me how much self-importance I have, whatever. You'll lose more funds than me, lol. Ask AI how to "troll me", "thin trolling", "thick trollling" - YOUR MONEY, YOUR LITERAL SECURITY, your physical security is at f-n stake. And, quiet ones, slow ones - you ignoring that, while witholding funds coz you don't get it either, you're just repressing it, that will cost you too, geniuses. 
+But, you can "piss me off" on YOUR ACCOUNT ALL YOU WANT - YOU'LL LOSE MORE MONEY THAN ME, geniuses. 4chan, lol. Tell me how much self-importance I have, whatever. You'll lose more funds than me, lol. Ask AI (idk, Torry.ai) how to "troll me", "thin trolling", "thick trollling" - YOUR MONEY, YOUR PARENTS MONEY, YOUR LITERAL SECURITY, your physical security is at f-n stake. 
 
-You invested into BTC, not understanding how it works, you did zero DYR, but joined "the industry" nevertheless. You thought those profits are for free? That you don't have to learn how the tech you invested into works? That academia and blogs willl just tell you what to do? or your consultants - who could care less technology, since you driven everyone who can actually code outside already. 
+And, quiet ones, slow ones - you ignoring that, while witholding funds coz you don't get it either, you're just repressing it, that will cost you too, geniuses. 
 
-NO FREE LUNCH.
+You invested into BTC, not understanding how it works, you did zero DYR, but joined "the industry" nevertheless. You thought those profits are for free? That you don't have to learn how the tech you invested into works? That academia and blogs willl just tell you what to do? or your consultants - who could care less technology, since you driven everyone who can actually code outside already? And you did same with conventional money, btw.
+
+NO FREE LUNCH FOR ANYONE!
 
 P.S. Your cyber-wars are bunch of BS - I don't want to read it even. As well as TV-wars: "Don't be aggressive, Matt, we'll simulate war for you, so you could cope and don't harm people around you. We all worried about something, but we don't remember what. So, we'll do same thing we did in 40s. We just imitate it for everyone"
 
