@@ -83,7 +83,7 @@ This project is just starting. I already invested in a year of independent resea
 
 > *Authorities submitted to AI and it's inertial, keeps repeating same old Sci-Fi phrases mixed with often questionable papers. **Much unlike what you've imagined as a kid**. It just glues small chunks from large datasets - it unwinds Ledger internals because it simply scanned papers behind "obscurity wall".*
 
-> *They cannot protect you from anything, they cannot do anything to you, they only talk. Your life is in your hands. Invent and invest!*
+> *They cannot do anything to you, they only talk. Your life is in your hands. Invent and invest!*
 
 ------
 
