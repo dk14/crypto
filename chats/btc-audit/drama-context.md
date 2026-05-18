@@ -64,7 +64,7 @@ And, quiet ones, slow ones - you ignoring that, while witholding funds coz you d
 
 You invested into BTC, not understanding how it works, you did zero DYR, but joined "the industry" nevertheless. You thought those profits are for free? That you don't have to learn how the tech you invested into works? That academia and blogs willl just tell you what to do? or your consultants - who could care less technology, since you driven everyone who can actually code outside already? 
 
-> And you did same with conventional money, btw - "why do I have to know how my car works?". "I paid money from the loan I won't pay back "(USA), or "government/bros gave me for free" (post-Soviet).
+> And you did same with conventional money, btw - "why do I have to know how my car works?". "I paid money from the loan I won't pay back "(USA), or "government/bros gave me for free" (post-soviet).
 
 NO FREE LUNCH FOR ANYONE!
 
