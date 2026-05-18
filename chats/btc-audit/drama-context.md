@@ -59,6 +59,8 @@ You invested into BTC, not understanding how it works, you did zero DYR, but joi
 
 NO FREE LUNCH.
 
-P.S. Your cyber-wars are bunch of BS - I don't want to read it even. USA (NIST) adopted and standardized commie definition of randomness (effectively in 50s or something), your fault, come out of the closet USA, u commies. And then work on yourselves. That's real war. Not your show on TV.
+P.S. Your cyber-wars are bunch of BS - I don't want to read it even. As well as TV-wars: "Don't be aggressive, Matt, we'll simulate war for you, so you could cope and don't harm people around you. We all worried about something, but we don't remember what. So, we'll do same thing we did in 40s. We just imitate it for everyone"
+
+USA (NIST) adopted and standardized commie definition of randomness (effectively in 50s or something), and forgot - that's your worry. Your fault, come out of the closet USA (and rest), u commies, literally. And then work on yourselves. That's real war. Not your show on TV.
 
 
