@@ -114,6 +114,7 @@ Performance:
 **Public service**:
 - build a decentralized database of successful matches as well as those which came close. IPFS as a starter.
 > enumerated private keys (seeds) will be published - so user can compare it to his private secret privately. To see how close it got. Enumerated adreesses can be compared too (full public), weaker metric.
+- develop and standardize format for public IPFS-submission (eg `seed, blockchain_id, replica_id, worker_id, worker_id_pow`)
 - build a public explorer, showing security of each funded btc address, as in **"how secure your own hardware wallet actually is?"**.
 > Eventually: mobile wallets, secure enclaves (eg Apple) and whatever hardware wallets your exchange is using (eg coinbase, binance). Can model gyro/mouse input as "low frequency" thermal noise too, as well as IO interruption events.
 - work distribution, across nodes running the tool
