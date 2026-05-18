@@ -3,6 +3,10 @@
 
 [DOOMSDAY EXPLORER: ANTI-SCANNER TRNG AUDIT TOOL (PRESENTATION)](PRESENTATION_PDF.pdf)
 
+Message: "Doomsday Explorer Project: https://github.com/dk14/crypto/tree/main/chats/btc-audit"
+
+Signature: Hwc65MIsejeBSdANDVi1DgL9EzjVlEbZEru66j6I5lwCZWDSy3wVmG4fwSbRjxpooSk9tploy1OxezO2PATe+Ss=
+
 ## How to use
 
 1. ```npm install```
