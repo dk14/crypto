@@ -78,7 +78,7 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 This is start-up. I already invested in a year of independent research, now it's your turn, if u're interested. The project is critical, since all funds are at stake.
 
-> *Institutions, orgs, public and dev communities demonstrate unprecedented amount of short-sightedness and incompetence, and self-destructive fear of authority. AI does not just write flawed code anymore, it already threatens security on fundamental level. Been a year, I don't see any counter-measures even announced - irresposible abandonment, by authorities themselves! They don't care anymore, simply.*
+> *Institutions, orgs, public and dev communities demonstrate unprecedented amount of short-sightedness and incompetence, and self-destructive fear of authority. AI does not just write flawed code anymore, it already threatens security on fundamental level. Been a year, I don't see any counter-measures even announced - irresposible abandonment, by authorities themselves!*
 
 > *Authorities are just AI and it's inertial, keeps repeating same Sci-Fi phrases mixed with often questionable papers. Much unlike what you've imagined as a kid.*
 
