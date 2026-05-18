@@ -55,7 +55,9 @@ THAT'S THE ONLY REASON, I'M POLITE TO YOU.
 
 But, you can piss me off on YOUR ACCOUNT ALL YOU WANT - YOU'LL LOSE MORE MONEY THAN ME, geniuses. 4chan, lol. Tell me how much self-importance I have, whatever. You'll lose more funds than me, lol. Ask AI how to "troll me", "thin trolling", "thick trollling" - YOUR MONEY, YOUR LITERAL SECURITY, your physical security is at f-n stake. And, quiet ones, slow ones - you ignoring that, while witholding funds coz you don't get it either, you're just repressing it, that will cost you too, geniuses. 
 
-You invested into BTC, not understanding how it works, you did zero DYR, but joined "the industry" nevertheless. You thought those profits are for free? That you don't have to learn how the tech you invested into works? That academia and blogs willl just tell you what to do? NO FREE LUNCH.
+You invested into BTC, not understanding how it works, you did zero DYR, but joined "the industry" nevertheless. You thought those profits are for free? That you don't have to learn how the tech you invested into works? That academia and blogs willl just tell you what to do? or your consultants - who could care less technology, since you driven everyone who can actually code outside already. 
+
+NO FREE LUNCH.
 
 P.S. Your cyber-wars are bunch of BS - I don't want to read it even. USA (NIST) adopted and standardized commie definition of randomness (effectively in 50s or something), your fault, come out of the closet USA, u commies. And then work on yourselves. That's real war. Not your show on TV.
 
