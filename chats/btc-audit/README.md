@@ -59,7 +59,7 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 > **PROFIT SHARING**
 
-> *"""any amount gets you in! the more u send - the bigger the cut!"""*
+> *"""TLDR: any amount gets you in! the more u send - the bigger the cut!"""*
 
 <img src="donations.png" width="300" height="300">
 
