@@ -1,3 +1,6 @@
+> If it appears that I have mental issues here - this is advantage of understanding "criminal minds" :). Science is sound here though. And implications are serious.
+
+
 - Academia did not care that AI will start teaching nuances to everyone, write code easily. 
 
 - They thought they'll be living in AI, or that nature will be saved.
