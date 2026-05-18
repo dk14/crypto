@@ -85,7 +85,7 @@ This project is just starting. I already invested in a year of independent resea
 
 > *They cannot do anything to you, they only talk. Your life is in your hands. Invent and invest!*
 
-In the meantime, there are unwise humans listening to them, so back to the project...
+In the meantime, there are unwise humans listening to AI seriously, so back to the project...
 
 ------
 
