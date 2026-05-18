@@ -118,7 +118,7 @@ Performance:
 > `seeds, blockchain_id, replica_id, worker_id, worker_id_pow, reward_address, version, signature`. this is "Exlporer Protocol".
 > 
 > worker id is YOUR pubkey, pow is over your pubkey simply: `<pub-key>+<magicNo>` - magicNo is PoW (SHA256),
-> replica_id is arbitrary (per worker_id), blockchain_id is 0 for BTC, version is 0. JSON. signature is over JSON with signature field absent
+> replica_id is arbitrary (per worker_id), blockchain_id is 0 for BTC, version is 0. JSON. Signature is over minified JSON with signature field absent
 > 
 > IPFS --metadata "project:ExplorerBTCAudit"
 > 
