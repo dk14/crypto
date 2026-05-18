@@ -48,7 +48,9 @@ Even under conspiracy it was possible, so it is simply negligence "lie was repea
 
 ---------
 
-So, EVERY INAPPROPRIATE MENTAL GYMNASTIC ON BITCOINTALK - EVERY TRICK, IT COSTS YOU. MORE THAAN ME. THE MORE THIS SOLUTION IS DELAYED - THE HIGHER THE RISK FOR EVERY WALLET and everything you take for granted. And solution is not that easy - has to be designed from scratch, without AI, without libraries. Otherwise you'll be reporting useless metrics to users.
+So, EVERY INAPPROPRIATE MENTAL GYMNASTIC ON BITCOINTALK - EVERY TRICK, IT COSTS YOU. MORE THAAN ME. THE MORE THIS SOLUTION IS DELAYED - THE HIGHER THE RISK FOR EVERY WALLET and everything you take for granted. 
+
+> And solution is not that easy - has to be designed from scratch, without AI, without libraries. Otherwise you'll be reporting useless metrics to users. And literature on those is useless, since it was obscured on purpose, it was never thought in uni's properly, never explained to PhD's. And now your funds are proven at risk because of that. AI knows how to hack Ledger coz it tapped into the obscured sources, but it has no clue about solution, since it cannot write novel code. Congrats!
 
 There aren't that many things that benefit everyone universally without need to try and sh*t on anyone, or bully (idk, water does, air does, abundant). This one is, and if you don't get it - you don't fit environment, literally. Not an insult, even, I wish it was - it is "unfit" definition. 
 
@@ -58,7 +60,9 @@ But, you can "piss me off" on YOUR ACCOUNT ALL YOU WANT - YOU'LL LOSE MORE MONEY
 
 And, quiet ones, slow ones - you ignoring that, while witholding funds coz you don't get it either, you're just repressing it, that will cost you too, geniuses. 
 
-You invested into BTC, not understanding how it works, you did zero DYR, but joined "the industry" nevertheless. You thought those profits are for free? That you don't have to learn how the tech you invested into works? That academia and blogs willl just tell you what to do? or your consultants - who could care less technology, since you driven everyone who can actually code outside already? And you did same with conventional money, btw.
+You invested into BTC, not understanding how it works, you did zero DYR, but joined "the industry" nevertheless. You thought those profits are for free? That you don't have to learn how the tech you invested into works? That academia and blogs willl just tell you what to do? or your consultants - who could care less technology, since you driven everyone who can actually code outside already? 
+
+> And you did same with conventional money, btw - "why do I have to know how my car works?". "I paid money from the loan I won't pay back "(USA), or "government/bros gave me for free" (post-Soviet).
 
 NO FREE LUNCH FOR ANYONE!
 
