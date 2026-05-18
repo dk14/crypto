@@ -1,3 +1,7 @@
+## TLDR
+
+[PRESENTATION](PRESENTATION_PDF.pdf)
+
 ## How to use
 
 1. ```npm install```
