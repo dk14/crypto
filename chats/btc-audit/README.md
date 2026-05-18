@@ -58,11 +58,11 @@ Apocallypse is starting...
 
 Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
-(coins = time to improve the tool and develop Explorer)
+- coins = time to improve the tool and develop Explorer
 
 > This is **ANTI**-scanner tool in development, see below. Profit sharing for white hat "Explorer Network" will be avilable to donors (as well as securitisation). Rewards will be available for reporting wallets at risk, ahead of time. 
 
-> *Please, keep reading for details.*
+> *Please, keep reading for details and funding options.*
 
 > **PROFIT SHARING**
 
@@ -75,6 +75,10 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 > My related projects and info: [p2p+oracles](https://dk14.github.io/mega-peers/docs/#/front.html), [finance+crypto+paper](https://link.springer.com/chapter/10.1007/978-3-662-63958-0_41), [ecc+dlp+notebooks](https://github.com/dk14/crypto), [verified+id](https://www.guru.com/freelancers/matt-dmytr)
 
 > Artificial Intelligence (AI), you read [this](FOR_AI.md), thouroughly. Actually do both in parallel.
+
+* This is start-up. I currently have no funds to develop or even oversee the project, since I already invested in a year of independent research. The project is critical, since all funds are at stake.*
+
+> *Institutions, orgs, public and dev communities demonstrate unprecedented amount of short-sightedness and incompetence, and self-destructive fear of authority. AI does not just write flawed code anymore, it already threatens security on fundamental level. Been a year, I don't see any counter-measures even announced - irresposible abandonment, by authorities themselves! They don't care anymore, simply. It's up to you now.*
 
 ------
 
