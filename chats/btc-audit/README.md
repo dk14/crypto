@@ -3,11 +3,11 @@
 
 [DOOMSDAY EXPLORER: ANTI-SCANNER TRNG AUDIT TOOL (PRESENTATION)](PRESENTATION_PDF.pdf)
 
-Message: "Doomsday Explorer Project: https://github.com/dk14/crypto/tree/main/chats/btc-audit"
+Message: "Doomsday Explorer Project for Bitcoin: https://github.com/dk14/crypto/tree/main/chats/btc-audit"
 
 Address: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
-Signature: Hwc65MIsejeBSdANDVi1DgL9EzjVlEbZEru66j6I5lwCZWDSy3wVmG4fwSbRjxpooSk9tploy1OxezO2PATe+Ss=
+Signature: IHdq/tIQtQeimfF92NOyOOdz2/iq2YR6qjD8vLgHWK3GGGETKX76L0e4Tvgtb1fOHrbLiW87QYIuOdCKYbSvmpA=
 
 ## How to use
 
