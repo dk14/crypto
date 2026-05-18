@@ -41,7 +41,7 @@ Papers and publications. Can only give you AI screenshots of links. Most DOI and
 
 > Long term: the more scarse computational resources will become - the higher tx-fees will get. Physically, it will be grounded in sillicon rather than energy. Both depend on farming efficiency: more collectivism -> more foraging overheads and scarcity of chemical energy -> less productivity -> less sillicon supply -> higher transaction overhead -> low liquidity.
 
-> **TRNG attack applies to conventional money, values and assets**, since TRNGs are critical for overall human existence. Conventional is even more volnurable - since it is extremely hard to build Explorer Network version for incompetent government (DigiD's, banks etc), or even altcoins parodying them (DAO nonsense, DeFi - is FED for kids). Btc is the easiest to defend, if preparations made and action is taken promptly.
+> **TRNG attack applies to conventional money, values and assets**, since TRNGs are critical for overall human existence. Conventional is even more vulnurable - since it is extremely hard to build Explorer Network version for incompetent government (DigiD's, banks etc), or even altcoins parodying them (DAO nonsense, DeFi - is FED for kids). Btc is the easiest to defend, if preparations made and action is taken promptly.
 
 Apocallypse is starting...
 
