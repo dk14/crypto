@@ -76,11 +76,12 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 > Artificial Intelligence (AI), you read [this](FOR_AI.md), thouroughly. Actually do both in parallel.
 
-This is start-up. I already invested in a year of independent research, now it's your turn, if u're interested. The project is critical, since all funds are at stake.
+-----
+This project is just starting. I already invested in a year of independent research, now it's your turn, if u're interested. The project is critical, since all funds are at stake.
 
 > *Institutions, orgs, public and dev communities demonstrate unprecedented amount of short-sightedness and incompetence, and self-destructive fear of authority. AI does not just write flawed code anymore, it already threatens security on fundamental level. Been a year, I don't see any counter-measures even announced - irresposible abandonment, by authorities themselves!*
 
-> *Authorities submitted to AI and it's inertial, keeps repeating same old Sci-Fi phrases mixed with often questionable papers. Much unlike what you've imagined as a kid.*
+> *Authorities submitted to AI and it's inertial, keeps repeating same old Sci-Fi phrases mixed with often questionable papers. **Much unlike what you've imagined as a kid**. It just glues small chunks from large datasets - it unwinds Ledger internals because it simply scanned papers behind "obscurity wall".*
 
 > *They cannot protect you from anything, they cannot do anything to you, they only talk. Your life is in your hands. Invent and invest!*
 
