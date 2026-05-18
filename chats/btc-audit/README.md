@@ -132,8 +132,8 @@ Performance:
 - low-level optimisations would be premature at this point (and in general, as practice shows), it needs strong coverage first.
 
 **Public service**:
-- build a decentralized database of successful matches as well as those which came close. IPFS as a starter.
-> enumerated private keys (seeds) will be published - so user can compare it to his private secret privately. To see how close it got. Enumerated adreesses can be compared too (full public), weaker metric.
+- build a decentralized database of matches which came close. IPFS as a starter.
+> enumerated private keys (seeds) will be published - so user can compare reported seed to his private seed, privately. To see how close it got. Adreesses can be compared too (full public, but weaker metric).
 - develop and standardize format for public IPFS-submission. Add it to the tool.
 > `seeds, blockchain_id, replica_id, worker_id, worker_id_pow, reward_address, version, signature`. this is "Exlporer Protocol".
 > 
