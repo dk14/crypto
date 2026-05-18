@@ -89,6 +89,7 @@ Pending replica improvements:
 > Greedy stuff is welcome. Divide and conquer is welcome.
 
 Pending UX:
+- allow to run a tool against funded seedphrase (partially uncovered only, to estimate chance)
 - discount PC sleep time in "hours elapsed"; add "Kw energy" spent estimates
 - metrics: report partial match (address under risk) as "odds to match" (by bitmatch), or more complex metrics (eg shortest abstract machine transformation).
 - parametrisation: spectra, jitters, extras
