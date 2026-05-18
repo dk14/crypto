@@ -1,4 +1,4 @@
-> If it appears that I have mental issues here - this is advantage of understanding "criminal minds" :). Science is sound here though. And implications are serious.
+> **If it appears that I have mental issues here - this is advantage of understanding "criminal minds" :). Science is sound here though as well as art. And implications are serious.**
 
 
 - Academia did not care that AI will start teaching nuances to everyone, write code easily. 
