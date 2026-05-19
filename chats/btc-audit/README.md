@@ -18,7 +18,7 @@ Signature: IHdq/tIQtQeimfF92NOyOOdz2/iq2YR6qjD8vLgHWK3GGGETKX76L0e4Tvgtb1fOHrbLi
 
 ## How to use
 
-Run blockchain audit locally:
+Run blockchain audit locally (for now):
 
 1. ```npm install```
 2. Download addresses with values: http://addresses.loyce.club/
