@@ -14,6 +14,8 @@ Statistical estimates of "overheads of fast exp for DLP", which NIST and others 
 > ECC creates jobs for cryptoanalysts simply.
 >
 > DLP Note on key restauration with deterministic slowexp (the only inductively proven way): [here](https://github.com/dk14/crypto/blob/main/dlp.html#L225) I show that local monotonicities can be exploited. [perfect power](https://github.com/dk14/crypto/blob/main/dlp.html#L137) (logN speedified with memoization) is used to skip through local monotonic interval.
+>
+> P.S. I accidentally re-invented recently invented algorithm for fast perfect power (logN, I used divide and conquer), aka polynomial DLP-solution for non-cyclic integers. When I asked AI about it - it refered to David Harvey (2019).
 
 -----
 
