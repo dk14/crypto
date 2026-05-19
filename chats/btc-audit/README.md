@@ -117,7 +117,7 @@ In the meantime, there are unwise humans listening to AI seriously, without ques
 
 ## To improve
 
-> **As bitcointalk mentioned, devs don't work for free**. I need funds to improve this. It will be solo-project for a while, which I prefer, since we're aiming at efficiency. It's easy to employ extra devs/AI/designers, but it's also risky - so it is a trade, I have to manage.
+> **As bitcointalk mentioned, devs don't work for free**. I need funds to improve this. It will be solo-project for a while, which I prefer, since we're aiming at efficiency. It's easy to employ extra devs/AI/designers, but it's also risky - so it is a trade, I have to manage. Besides, there other expenses (promotions, integrations, initial clusters, hardware for testing, my time for extra research and thinking), that take priority atm.
 
 Pending replica improvements:
 - potential 'Ledger TRNG replica' improvements are in [todos.png](todos.png) and [add.png](add.png). 
