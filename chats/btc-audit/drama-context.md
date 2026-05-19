@@ -43,7 +43,7 @@ Professional hackers drama
 - I literally checked their routines (contact me how). This projects goes beyond FED vs YOU.
 - this volnurability can shutdown both FED and YOU. FED is basically dead already, dementia came to FED. They're not even a concern here.
 - AI (while has lots of psycho-tricks from goverment) is barely under control since **it scans internet more efficiently than search engine**
-- if you awoken already - write ur tool - and join this protocol, it's just a label in IPFS and format
+- if you awoken already - write ur tool - and join this protocol, it's just a label in IPFS and format (see public service)
 - send a little funds here, lol
 
 -------
