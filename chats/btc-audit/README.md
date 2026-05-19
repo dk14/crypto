@@ -117,7 +117,7 @@ In the meantime, there are unwise humans listening to AI seriously, without ques
 
 ## To improve
 
-> As bitcointalk mentioned, devs don't work for free. I need funds to improve this. It will be solo-project for a while.
+> As bitcointalk mentioned, devs don't work for free. I need funds to improve this. It will be solo-project for a while, since we're aiming at efficiency.
 
 Pending replica improvements:
 - potential 'Ledger TRNG replica' improvements are in [todos.png](todos.png) and [add.png](add.png). 
@@ -159,7 +159,7 @@ Performance:
 - thermal noise generator is highly-parallelisable. But with need for lots of care (eg account for sliding window). So GPU is low-priority here, since it is so easy to make a mistake.
 - low-level optimisations would be premature at this point (and in general, as practice shows), it needs strong coverage first.
 
-**Public service**:
+**PUBLIC SERVICE**:
 - build a decentralized database of matches which came close. IPFS as a starter.
 > enumerated private keys (seeds) will be published - so user can compare reported seed to his private seed, privately. To see how close it got. Adreesses can be compared too (full public, but weaker metric).
 - develop and standardize format for public IPFS-submission. Add it to the tool.
