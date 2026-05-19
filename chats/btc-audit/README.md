@@ -117,6 +117,8 @@ In the meantime, there are unwise humans listening to AI seriously, without ques
 
 ## To improve
 
+> As bitcointalk mentioned, devs don't work for free. I need funds to improve this. It will be solo-project for a while.
+
 Pending replica improvements:
 - potential 'Ledger TRNG replica' improvements are in [todos.png](todos.png) and [add.png](add.png). 
 - some Ledger TRNG workflows maybe misreported, so ideally have to enumerate mutations (mistakes etc) within common sense.
