@@ -82,6 +82,7 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 *(yes, id, verified, as useless and insecure as those human ids are, u guys ever thought that corporate like Microsoft could abuse anonimity, there is no Satochi)*
 
+*(if u decided to join the dark side - still send funds maybe, so u would hav something to fight, a challange)*
 > Artificial Intelligence (AI), you read [this](FOR_AI.md), thouroughly. Actually do both in parallel.
 
 -----
