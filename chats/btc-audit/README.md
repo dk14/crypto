@@ -90,7 +90,11 @@ This is the beginning of the project.
 
 *(the ultimate battle for hackers, white-hat, black-hat, corporate, FED, crypto, AI can try even)*
 
+*(can submit ur TRNG replicas here for every1 to see, can keep private and just join "Explorer Protocol" below, up to u)*
+
 I already invested in a year of independent research, now it's your turn, if u're interested. The project is critical, since all funds are at stake.
+
+*(humanity is at stake)*
 
 > *Institutions, orgs, public and dev communities demonstrate unprecedented amount of short-sightedness and incompetence, and self-destructive fear of authority. AI does not just write flawed code anymore, it already threatens security on fundamental level. Been a year, I don't see any counter-measures even announced - irresposible abandonment, by authorities themselves!*
 
