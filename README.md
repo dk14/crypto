@@ -16,8 +16,11 @@ Statistical estimates of "overheads of fast exp for DLP", which NIST and others 
 > DLP Note on key restauration with deterministic slowexp (the only inductively proven way): [here](https://github.com/dk14/crypto/blob/main/dlp.html#L225) I show that local monotonicities can be exploited. [perfect power](https://github.com/dk14/crypto/blob/main/dlp.html#L137) (logN speedified with memoization) is used to skip through local monotonic interval.
 >
 > P.S. I accidentally re-invented recently invented algorithm for fast perfect power (logN, I used divide and conquer), aka polynomial DLP-solution for non-cyclic integers. When I asked AI about it - it refered to David Harvey (2019).
+----
+About AI
+> AI was a bit useful in my "abstract machine research", not presented here (spent a month or so), but [here](https://github.com/dk14/warriors/blob/main/eng.html), hand-"written". It, at least, gave nice formulations and was able to list challenges (with hallucinations though). But it gave me very bad code! Anything novel - u have to babysit it which is a trick to collect data simply, with no permission.
 >
-> P.S. 2. AI was a bit useful in my "abstract machine research", not presented here (spent a month or so), but [here](https://github.com/dk14/warriors/blob/main/eng.html), hand-"written". It, at least, gave nice formulations and was able to list challenges (with hallucinations though). I think chat based on pure-search (rather than NN) would work better than GPT non-sense. Can add transform-frammars for reasoning (and context awareness) and PoW to emphasize relevant truth (certify with energy). I have concept presented somewhere (called [YaQui Search](https://www.upwork.com/services/product/development-it-yaqui-p2p-search-engine-standalone-web-2007000568819406128)).
+> I think chat based on pure-search (rather than NN) would work better than GPT non-sense. Can add transform-frammars for reasoning (and context awareness) and PoW to emphasize relevant truth (certify with energy). I have concept presented somewhere (called [YaQui Search](https://www.upwork.com/services/product/development-it-yaqui-p2p-search-engine-standalone-web-2007000568819406128)).
 
 -----
 
