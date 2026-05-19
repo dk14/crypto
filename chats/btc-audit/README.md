@@ -163,14 +163,16 @@ Performance:
 - build a decentralized database of matches which came close. IPFS as a starter.
 > enumerated private keys (seeds) will be published - so user can compare reported seed to his private seed, privately. To see how close it got. Adreesses can be compared too (full public, but weaker metric).
 - develop and standardize format for public IPFS-submission. Add it to the tool.
-> `seeds, blockchain_id, replica_id, worker_id, worker_id_pow, reward_address, version, signature`. this is "Exlporer Protocol".
+> `seeds, blockchain_id, replica_id, worker_id, worker_id_pow, reward_address, version, signature`.
+>
+> **This is "Exlporer Protocol v0".**. Already available.
 > 
 > worker id is YOUR pubkey, pow is over your pubkey simply: `<pub-key>+<magicNo>` - magicNo is PoW (SHA256),
 > replica_id is arbitrary (per worker_id), blockchain_id is 0 for BTC, version is 0. JSON. Signature is over minified JSON with signature field absent
 > 
 > IPFS --metadata "project:ExplorerBTCAudit"
 > 
-> if you got your own private tool: don't overload pinning services - you have to filter seeds based on metrics developed here (bitmatch as a starter).
+> i**f you got your own private tool joining protocol**: don't overload pinning services - you have to filter seeds based on metrics developed here (bitmatch as a starter).
 > CHECK that seeds don't belong to funded addresses. If they do - submit address (NO seed, no secret) in an issue here, on GitHub.
 - build a public explorer, showing security of each funded btc address, as in **"how secure your own hardware wallet actually is?"**.
 > Eventually: mobile wallets, secure enclaves (eg Apple) and whatever hardware wallets your exchange is using (eg coinbase, binance). Can model gyro/mouse input as "low frequency" thermal noise too, as well as IO interruption events.
