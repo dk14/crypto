@@ -85,7 +85,7 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 > Forum: https://bitcointalk.org/index.php?topic=5582621
 
-> My related projects and info: [p2p+oracles](https://dk14.github.io/mega-peers/docs/#/front.html), [finance+crypto+paper](https://link.springer.com/chapter/10.1007/978-3-662-63958-0_41), [ecc+dlp+notebooks](https://github.com/dk14/crypto), [verified+id](https://www.guru.com/freelancers/matt-dmytr)
+> My related solo projects and info: [p2p+oracles](https://dk14.github.io/mega-peers/docs/#/front.html), [finance+crypto+paper](https://link.springer.com/chapter/10.1007/978-3-662-63958-0_41), [ecc+dlp+notebooks](https://github.com/dk14/crypto), [verified+id](https://www.guru.com/freelancers/matt-dmytr)
 
 *(yes, id, verified, as useless and insecure as those human ids are, u guys ever thought that corporate like Microsoft could abuse anonimity, there is no Satochi! Grandpa does business in the open)*
 
