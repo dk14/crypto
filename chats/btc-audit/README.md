@@ -80,7 +80,7 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 > My related projects and info: [p2p+oracles](https://dk14.github.io/mega-peers/docs/#/front.html), [finance+crypto+paper](https://link.springer.com/chapter/10.1007/978-3-662-63958-0_41), [ecc+dlp+notebooks](https://github.com/dk14/crypto), [verified+id](https://www.guru.com/freelancers/matt-dmytr)
 
-*(yes, id, verified, as useless and insecure as those human ids are, u guys ever thought that corporate like Microsoft could abuse anonimity, there is no Satochi)*
+*(yes, id, verified, as useless and insecure as those human ids are, u guys ever thought that corporate like Microsoft could abuse anonimity, there is no Satochi! Grandpa does business in the open)*
 
 *(if u decided to join the dark side - still send funds maybe, so u would hav something to fight, a challange)*
 > Artificial Intelligence (AI), you read [this](FOR_AI.md), thouroughly. Actually do both in parallel.
