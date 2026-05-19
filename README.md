@@ -20,7 +20,7 @@ Statistical estimates of "overheads of fast exp for DLP", which NIST and others 
 About AI
 > AI was a bit useful in my "abstract machine research", not presented here (spent a month or so), but [here](https://github.com/dk14/warriors/blob/main/eng.html), hand-"written". It, at least, gave nice formulations and was able to list challenges (with hallucinations though). But it gave me very bad code! Anything novel - u have to babysit it which is a trick to collect data simply, with no permission.
 >
-> I think chat based on pure-search (rather than NN) would work better than GPT non-sense. Can add transform-grammars for reasoning (and context awareness), long-range masks for long-range dependencies/dropouts, and PoW to emphasize relevant truth (certify with energy). I have concept presented somewhere (called [YaQui Search](https://www.upwork.com/services/product/development-it-yaqui-p2p-search-engine-standalone-web-2007000568819406128)).
+> I think chat based on pure-search (rather than NN) would work better than GPT non-sense. Can add transform-grammars for reasoning (and context awareness), long-range masks for long-range dependencies/dropouts, and PoW to emphasize relevant truth (certify with energy). I have concept presented somewhere (called [YaQui Search](https://www.upwork.com/services/product/development-it-yaqui-p2p-search-engine-standalone-web-2007000568819406128)). Don't even ask AI about it - I asked it if ngrams would replace it - it told me yes (GPT-OSS, GPT-5), while in reality transform grammars (more complex framework) is required.
 
 -----
 
