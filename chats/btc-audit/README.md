@@ -10,7 +10,7 @@ Address: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 Signature: IHdq/tIQtQeimfF92NOyOOdz2/iq2YR6qjD8vLgHWK3GGGETKX76L0e4Tvgtb1fOHrbLiW87QYIuOdCKYbSvmpA=
 
 > there are heuristics, allowing recovery of a wallet from signed message sometimes (since message has super-low entropy, and SHA256 does not help as much as u think), btw. And I don't mean trivial stuff, like sign with same nonce twice: 
-"bad RNGs on purpose" are just handouts for "professional" hackers, FED keeps u on a leash, and keeps an eye on u. I mean actual heuristics (simplify SHA256+sign circuit accounting for message being known).
+"bad spftware RNGs on purpose" are just handouts for "professional" hackers, FED keeps u on a leash, and keeps an eye on u. I mean actual heuristics, simplify SHA256+sign circuit accounting for message being known. The ones that FED employs, and now - even kids (see below).
 
 > That's why Ledger Live does not have the "sign message" feature. Be careful with signing messages. Fund is on Ledger, btw, as a "pledge" to secure it, and make it more fun. Bitcointalk requested signature - so be it.
 
