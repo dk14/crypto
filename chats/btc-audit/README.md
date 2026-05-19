@@ -188,7 +188,7 @@ Performance:
 - private tools support: audit tools developed privately and independently from this one - can (automatically) get rewards from publishing seeds (partial matches that came close) thorough "Explorer Protocol". This is faster than me, code reviewing every "replica", and more liberal. Disclosing a "replica" model won't be required. Commercial orgs can join - free competition.
 - "high risk to get hacked" notifications for users
 - **ad campaigns for the (future) Security Explorer** (gets expensive)
-- if potential paid features are added, issuing **"sharing profit" asset** is possible (pre-distributed to bidders of this tool, proportionally).
+- when paid features are added, **"sharing profit" asset** will become available (pre-distributed to bidders of this tool, proportionally).
 > [diagram](explorer.png)
 
 > see [fund management](fund-management.md) about **PROFIT SHARING** for bidders and possible dev cooperation
