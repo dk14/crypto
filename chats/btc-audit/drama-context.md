@@ -36,6 +36,16 @@ Drama corporate:
 
 -------
 
+Professional hackers drama
+
+- government keeps you on a leash - feeds you exploits; naive kids will outrun you with AI
+- still a warning: FED feeds you exploits (and prfiles you) until they need to fill a quota - then FED comes to you
+- AI (while has lots of psycho-tricks from goverment) is barely under control since it scans internet more efficiently than search engine
+- if you awoken already - write ur tool - and join this protocol, it's just a label in IPFS and format
+- send a little funds here, lol
+
+-------
+
 So "investors", most of you have more money than me in your Ledger's. So this issue is more critical for you than me. You won't find that many outside of academia and corporate who still remember the f-up from 50s with definition of randomness. You won't find anyone engineering age, mostly old people. 
 
 Unique oportunity.
