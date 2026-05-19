@@ -1,6 +1,6 @@
 This folder contains research on RSA/DH/ECC cryptography. 
 
-> **This is hand-written notebooks*, NOT AI-generated* (except for one). [Chats]([here](https://github.com/dk14/crypto/blob/main/chats) with AI prove it was generating fiction (eg, talking to me about lattice theory which is useless for practical work with DLP). As well as one or two notebooks, I asked to generate (ends with "-ai").
+> **This is hand-written notebooks*, NOT AI-generated* (except for one). [Chats](https://github.com/dk14/crypto/blob/main/chats) with AI (GPT-OSS, "critical" "thinking" model) prove it was generating fiction (eg, talking to me about lattice theory which is useless for practical work with DLP). As well as one or two notebooks, I asked to generate (ends with "-ai").
 
 The bottom line: fastexp overhead is non-monotonic. Asymmetric encryption has "cat in a bag" security - defender has to spend as much energy/resources as attacker to ensure security of a given pubkey.
 
