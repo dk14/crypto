@@ -117,7 +117,7 @@ In the meantime, there are unwise humans listening to AI seriously, without ques
 
 ## To improve
 
-> As bitcointalk mentioned, devs don't work for free. I need funds to improve this. It will be solo-project for a while, since we're aiming at efficiency.
+> **As bitcointalk mentioned, devs don't work for free**. I need funds to improve this. It will be solo-project for a while, which I prefer, since we're aiming at efficiency.
 
 Pending replica improvements:
 - potential 'Ledger TRNG replica' improvements are in [todos.png](todos.png) and [add.png](add.png). 
