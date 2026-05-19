@@ -51,7 +51,7 @@ Papers and publications. Can only give you AI screenshots of links. Most DOI and
 
 <img src="theone.png" width="300" height="150">
 
-```DON'T wait for demonstration of an actual BTC address being hacked this way - if that happens, YOURS will be next within hours!```
+```DON'T wait for demonstration of an actual BTC address being hacked this way - if that happens, YOURS will be next within hours! By a random kid```
 
 > Impact. It is extremely dangerous type of attack if implemented. No police/government/regulators can save you from this. This is military-grade attack that is becoming rapidly available even to kids, thanks to AI. All types of wallets can be swiped using same principle (TRNG process replica, based on academic and public info + guesses), not only Ledger. Anything crypto-secret can be uncovered: government, banking, military. Authorisations to any online service (AI itself, government and banking including) can be obtained. RSA/ECC/DH whatever scheme, your AppleID, generated secure passwords, "quantum" "protected" stuff.  **Non-invasively, non-discriminantly**. No contact, no social engineering required, **no special hardware**. Only a single person with reasonble understanding of Computer Science and basic AI-skills + motivation. **There is no realistic mediation for this attack**. Only pre-mediated avoidance action is applicable.
 
