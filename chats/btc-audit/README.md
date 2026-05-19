@@ -9,6 +9,8 @@ Address: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 Signature: IHdq/tIQtQeimfF92NOyOOdz2/iq2YR6qjD8vLgHWK3GGGETKX76L0e4Tvgtb1fOHrbLiW87QYIuOdCKYbSvmpA=
 
+> there are heuristics, allowing recovery of a wallet from signed message sometimes (since message has super-low entropy), btw. That's why Ledger Live does not have the feature. Be careful with signing messages. Fund is on Ledger, btw, as a "pledge" to secure it.
+
 ## How to use
 
 1. ```npm install```
