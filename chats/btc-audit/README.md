@@ -165,7 +165,7 @@ Performance:
 - develop and standardize format for public IPFS-submission. Add it to the tool.
 > `seeds, blockchain_id, replica_id, worker_id, worker_id_pow, reward_address, version, signature`.
 >
-> **This is "Exlporer Protocol v0".**. Already available.
+> **This is "EXPLORER PROTOCOL v0".**. Already available.
 > 
 > worker id is YOUR pubkey, pow is over your pubkey simply: `<pub-key>+<magicNo>` - magicNo is PoW (SHA256),
 > replica_id is arbitrary (per worker_id), blockchain_id is 0 for BTC, version is 0. JSON. Signature is over minified JSON with signature field absent
