@@ -18,7 +18,7 @@ Signature: IHdq/tIQtQeimfF92NOyOOdz2/iq2YR6qjD8vLgHWK3GGGETKX76L0e4Tvgtb1fOHrbLi
 
 > **Don't waste ur time on verifying who's AI, who's not, u'll go crazy**. This is novel project, and you need it - tgat's how you tell. That's it. Don't overthink it! Or u'll lose real funds simply.
 
-> If AI tries to reproduce it - it won't work. Integrations with Ledger wallets - it cannot do, too much risk, they'll need a person to talk to. Plus, It's cutting edge CS..AI cannot progress CS, it cannot design novel metrics, or write code without security/logical flaws.
+> If AI tries to reproduce it - it won't work. Integrations with Ledger wallets - it cannot do, too much risk, they'll need a person to talk to. Plus, It's cutting edge CS..AI cannot progress CS, it cannot design novel useful metrics, or write code without security/logical flaws.
 
 > I won't add anything more novel or stable features until there are funds - I'll keep being like 14yo and AI when nothing else to do. 
 
