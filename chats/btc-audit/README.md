@@ -146,6 +146,8 @@ Pending UX:
 - parametrisation: spectra, jitters, extras
 > The meaning of the metrics: **"amount of randomness in a number IS how much useful energy/work was invested into creating it"**. So we skip nonsense definitions "human cannot tell it from noise etc". Compress this readme with zip - you won't be able to tell it from noise, yet it's insecure, since can be trivially reproduced.
 
+> Logical definition: **number that is unknown within network, and hard to compute from known ones**. The more dteps known funtions take to infer new number, and the more steps it takes to infer a nee function generating new numbers - the more random it gets.
+
 > Note on more complex metrics than bitmatch (advanced topic). We WILL NOT invoke algorithmic complexity *nonsense* here. Machine (producing or tranforming a number) would be fixed as inc dec jmpnz. And the metric is not length of a program, but amount of steps taken to tranform/produce a number (eg secret, pubkey or address) from initial state (something known) - **amount of energy spent to move from known to unknown number**. In practice we'd have to extend with add/mul/div/mod though to estimate kilowatts on a real computing device.
 >> [Relevant notes](academic-drama.md) on academic quote-unquote "conspiracy" of overfunding abstract machines (aka turing) research.
 >> 
