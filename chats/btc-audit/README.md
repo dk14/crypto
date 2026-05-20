@@ -11,11 +11,11 @@ Signature: IHdq/tIQtQeimfF92NOyOOdz2/iq2YR6qjD8vLgHWK3GGGETKX76L0e4Tvgtb1fOHrbLi
 
 THIS IS A LONG README. 
 
-Introduces a tool as it is now.
-Describes critical security issue for blockchains, caused by AI.
-Describes mediations proposed: p2p cluster.
-Describes improvements needed for the existing tool.
-Describes project in general.
+- Introduces a tool as it is now.
+- Describes critical security issue for hardware wallets and blockchains, caused by AI.
+- Describes mediations proposed: p2p cluster to outrun TRNG-scanners.
+- Describes scope of improvements needed for the existing tool.
+- Describes project in general.
 
 
 > there are heuristics, allowing recovery of a wallet from signed message sometimes (since message has super-low entropy, and SHA256 does not help as much as u think), btw. And I don't mean trivial stuff, like sign with same nonce twice: 
