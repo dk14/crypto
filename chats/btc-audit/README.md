@@ -16,6 +16,8 @@ Signature: IHdq/tIQtQeimfF92NOyOOdz2/iq2YR6qjD8vLgHWK3GGGETKX76L0e4Tvgtb1fOHrbLi
 
 > Fund is on Ledger, btw, as a "pledge" to secure it, and make it more fun. Bitcointalk requested signature - so be it.
 
+> Don't waste ur time on verifying who's AI, who's not, u'll go crazy. This is novel project, and you need it - tgat's how you tell. That's it. Don't overthink it!
+
 ## How to use
 
 Run blockchain audit locally (for now):
