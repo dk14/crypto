@@ -195,6 +195,7 @@ Performance:
 
 > TLDR: A bid on "cool decentralized blockchain security explorer" might drop some btc sometime in return. For bidders and potential contributors alike.
 
+> yep, even for me it's hard to read it all, but details are details...
 -----
 
 ## How to improve
