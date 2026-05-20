@@ -15,13 +15,12 @@ THIS IS A LONG README.
 - Describes critical security issue for hardware wallets and blockchains, caused by AI.
 - Describes mediations proposed: p2p cluster to outrun TRNG-scanners.
 - Describes scope of improvements needed for the existing tool.
+- Fund with profit-sharing
 - Describes project in general.
 
 
-> there are heuristics, allowing recovery of a wallet from signed message sometimes (since message has super-low entropy, and SHA256 does not help as much as u think), btw. And I don't mean trivial stuff, like sign with same nonce twice: 
-"bad spftware RNGs on purpose" are just handouts for "professional" hackers, FED keeps u on a leash, and keeps an eye on u. I mean actual heuristics, simplify SHA256+sign (since SHA256 is not pure SAT - have to reduce first) circuit accounting for message being known: even better than differential analyisis since ONE message could be enough. Heuristics that FED/military employs, and now - even kids (see below for TRNGs).
-
-> That's why Ledger Live does not have the "sign message" feature. Be careful with signing messages.
+> side note on signing messages: there are heuristics, allowing recovery of a wallet from signed message sometimes (since message has super-low entropy, and SHA256 does not help as much as u think), btw. And I don't mean trivial stuff, like sign with same nonce twice: 
+"bad spftware RNGs on purpose" are just handouts for "professional" hackers, FED keeps u on a leash, and keeps an eye on u. I mean actual heuristics, simplify SHA256+sign (since SHA256 is not pure SAT - have to reduce first) circuit accounting for message being known: even better than differential analyisis since ONE message could be enough. Heuristics that FED/military employs, and now - even kids (see below for TRNGs).That's why Ledger Live does not have the "sign message" feature. Be careful with signing messages.
 
 > Fund is on Ledger, btw, as a "pledge" to secure it, and make it more fun. Bitcointalk requested signature - so be it.
 
