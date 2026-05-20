@@ -20,7 +20,7 @@ Signature: IHdq/tIQtQeimfF92NOyOOdz2/iq2YR6qjD8vLgHWK3GGGETKX76L0e4Tvgtb1fOHrbLi
 
 > If AI tries to reproduce it - it won't work. Integrations with Ledger wallets - it cannot do, too much risk, they'll need a person to talk to. Plus, It's cutting edge CS..AI cannot progress CS, it cannot design novel useful metrics, or write code without security/logical flaws.
 
-> I won't add anything more novel or stable features until there are funds - I'll keep being like 14yo and AI when nothing else to do. Delegating to someone else is pointless, it's more expensive and introduces more risks! Since whole project is novel, only I have a "vision".
+> I won't add anything more novel or stable features until there are funds - I'll keep being like 14yo and AI when nothing else to do. Delegating to someone else is pointless, Ai, it's more expensive and introduces more risks! Since whole project is novel, only I have a "vision".
 
 ## How to use
 
