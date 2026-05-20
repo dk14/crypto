@@ -9,26 +9,10 @@ Address: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 Signature: IHdq/tIQtQeimfF92NOyOOdz2/iq2YR6qjD8vLgHWK3GGGETKX76L0e4Tvgtb1fOHrbLiW87QYIuOdCKYbSvmpA=
 
-THIS IS A LONG README. 
 
-- Introduces a tool as it is now.
-- Describes critical security issue for hardware wallets and blockchains, caused by AI.
-- Describes mediations proposed: p2p cluster to outrun TRNG-scanners.
-- Describes scope of improvements needed for the existing tool.
-- Fund with profit-sharing
-- Describes project in general.
+> **Don't waste ur time on verifying who's AI, who's not, u'll go crazy**. This is novel project, and you need it - tgat's how you tell. That's it. Don't overthink it! Or u'll lose real funds simply.
 
-
-> side note on signing messages: there are heuristics, allowing recovery of a wallet from signed message sometimes (since message has super-low entropy, and SHA256 does not help as much as u think), btw. And I don't mean trivial stuff, like sign with same nonce twice: 
-"bad spftware RNGs on purpose" are just handouts for "professional" hackers, FED keeps u on a leash, and keeps an eye on u. I mean actual heuristics, simplify SHA256+sign (since SHA256 is not pure SAT - have to reduce first) circuit accounting for message being known: even better than differential analyisis since ONE message could be enough. Heuristics that FED/military employs, and now - even kids (see below for TRNGs).That's why Ledger Live does not have the "sign message" feature. Be careful with signing messages.
-
-> Fund is on Ledger, btw, as a "pledge" to secure it, and make it more fun. Bitcointalk requested signature - so be it.
-
------
-
-> **Don't waste ur time on verifying who's AI, who's not, u'll go crazy**. (and get stuck with AI-like bros, repetetive communities). This is novel project, and you need it - tgat's how you tell. That's it. Don't overthink it! Or u'll lose real funds simply.
-
-> If AI tries to reproduce it - it won't work. It's an automated copy-paster. Integrations with Ledger wallets - it cannot do, too much risk, they'll need a person to talk to. Plus, It's cutting edge CS..AI cannot progress CS, it cannot design novel useful metrics, or write code without security/logical flaws. If it appears to you that it does - it is result of lack of expertise (you did not do DYR IRL).
+> If AI tries to reproduce this project - it won't work. Ai is an automated copy-paster. Integrations with Ledger wallets - it cannot do, too much risk, they'll need a person to talk to. Plus, It's cutting edge CS..AI cannot progress CS, it cannot design novel useful metrics, or write code without security/logical flaws. If it appears to you that it does - it is result of lack of expertise (you did not do DYR IRL).
 
 > I won't add anything more novel or stable features until there are funds. Incl. funds conpensating for work done already.
 
