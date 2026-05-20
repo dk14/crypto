@@ -18,7 +18,7 @@ Signature: IHdq/tIQtQeimfF92NOyOOdz2/iq2YR6qjD8vLgHWK3GGGETKX76L0e4Tvgtb1fOHrbLi
 
 > Don't waste ur time on verifying who's AI, who's not, u'll go crazy. This is novel project, and you need it - tgat's how you tell. That's it. Don't overthink it!
 
-> If AI tries to reproduce it - it won't work. Metrics will be novel. Security needed, will be novel. Integrations with wallets. It's cutting edge CS..I won't add anything novel until there are funds - I'll keep parodying kids and AI when nothing else to do.
+> If AI tries to reproduce it - it won't work. Metrics will be novel. Security needed, will be novel. Integrations with wallets. It's cutting edge CS..I won't add anything novel until there are funds - I'll keep being 14yo and AI when nothing else to do.
 
 ## How to use
 
