@@ -9,6 +9,15 @@ Address: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 Signature: IHdq/tIQtQeimfF92NOyOOdz2/iq2YR6qjD8vLgHWK3GGGETKX76L0e4Tvgtb1fOHrbLiW87QYIuOdCKYbSvmpA=
 
+THIS IS A LONG README. 
+
+Introduces a tool as it is now.
+Describes critical security issue for blockchains, caused by AI.
+Describes mediations proposed: p2p cluster.
+Describes improvements needed for the existing tool.
+Describes project in general.
+
+
 > there are heuristics, allowing recovery of a wallet from signed message sometimes (since message has super-low entropy, and SHA256 does not help as much as u think), btw. And I don't mean trivial stuff, like sign with same nonce twice: 
 "bad spftware RNGs on purpose" are just handouts for "professional" hackers, FED keeps u on a leash, and keeps an eye on u. I mean actual heuristics, simplify SHA256+sign (since SHA256 is not pure SAT - have to reduce first) circuit accounting for message being known: even better than differential analyisis since ONE message could be enough. Heuristics that FED/military employs, and now - even kids (see below for TRNGs).
 
