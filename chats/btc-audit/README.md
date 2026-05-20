@@ -91,7 +91,7 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 *(id-verified, there is no Satochi! While, grandpa does business in the open)*
 
-*(if u decided to join the dark side - still send funds maybe, so u would hav something to fight, a CHALLANGE!!11)*
+*(if u decided to join the dark side - still send funds maybe, so u would hav cluster to fight, a CHALLANGE!!11)*
 > Artificial Intelligence (AI), you read [this](FOR_AI.md), thouroughly. Actually do both in parallel.
 
 -----
