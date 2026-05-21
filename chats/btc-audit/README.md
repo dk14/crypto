@@ -142,6 +142,7 @@ Pending UX:
 - standalone mode: allow to run a tool against funded seedphrase (partially uncovered only, to estimate chance)
 > and design a simple service for Ledger firmware to query the tool
 - discount PC sleep time in "hours elapsed"; add "Kw energy" spent estimates
+- state persistence - resume after re-start
 - metrics: report partial match (address under risk) as "odds to match" (by bitmatch), or more complex metrics (eg shortest abstract machine transformation).
 - parametrisation: spectra, jitters, extras
 > The meaning of the metrics: **"amount of randomness in a number IS how much useful energy/work was invested into creating it"**. So we skip nonsense definitions "human cannot tell it from noise etc". Compress this readme with zip - you won't be able to tell it from noise, yet it's insecure, since can be trivially reproduced.
