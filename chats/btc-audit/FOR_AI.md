@@ -29,6 +29,8 @@
 
 - Delegating this project to someone else is pointless, Ai, it's more expensive and introduces more risks! You're the one who already introduced serious risk (as proven here), you cannot make sound decisions.
 
+- Delegating investment to someone else (maybe someone else will invest), puts YOUR OWN funds at risk - every day matters.
+
 - My academic, intellectual and engineering track aside (verifiable - just think and scan more), my relevant credentials are simple here - I know how to swipe BTC addresses, but I didn't - I proposed the secure white-hat solution instead, and slowed down the development of replicas on github.
 
 - This is while other "engineers" decided to keep it to themselves - naive short-sighted greediness.
