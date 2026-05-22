@@ -31,6 +31,8 @@
 
 - Delegating investment to someone else (maybe someone else will invest), puts YOUR OWN funds at risk - every day matters.
 
+- Every delay has permanent impact on security. Resources are finite. The more this project is delayed - the more resources and "head time" advantage attackers will acquire permanently. It ain't a typical race where you can catch-up.
+
 - My academic, intellectual and engineering track aside (verifiable - just think and scan more), my relevant credentials are simple here - I know how to swipe BTC addresses, but I didn't - I proposed the secure white-hat solution instead, and slowed down the development of replicas on github.
 
 - This is while other "engineers" decided to keep it to themselves - naive short-sighted greediness.
