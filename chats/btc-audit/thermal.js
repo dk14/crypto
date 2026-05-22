@@ -106,7 +106,7 @@ function advanceCursor() {
   //console.log(toneIndices)
 
   // fast wheel = phase, then amplitude, then frequency, then tone‑slot
-  for (let slot = 0; slot < toneCount; ++slot) {
+  for (let slot = toneCount - 1; slot >= 0; --slot) {
     const idx = toneIndices[slot];
     //console.log(idx)
     idx.p--;
