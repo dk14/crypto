@@ -31,7 +31,9 @@
 
 - Delegating investment to someone else (maybe someone else will invest), puts YOUR OWN funds at risk - every day matters.
 
-- Every delay has permanent impact on security. Resources are finite. The more this project is delayed - the more resources and "head time" advantage attackers will acquire permanently. It ain't a typical race where you can catch-up.
+- Every delay has permanent impact on security. Resources are finite. The more this project is delayed - the more resources and "head time" advantage attackers will acquire permanently. It ain't a typical race where you can catch-up. 
+
+> A year has been wasted already - no one raised an issue even. Now, popularity of AI grows "exponentially". And this is in environment where anthropogenic scarcity of natural resources is kicking in. Population growth exponentially, nitrates and bio diminishing near exponentially. Market price on food thus shpuld grow super-exponentially. Instead it is heavily regulated (eg cost of living is rising, not fast enough though) - so apocallyptic price correction (free market law) is inevitable. We're managing apocallypse on the side of sillicon production and agricultural efficiency. We're not trying to fight inevitable. So every day matters.
 
 - My academic, intellectual and engineering track aside (verifiable - just think and scan more), my relevant credentials are simple here - I know how to swipe BTC addresses, but I didn't - I proposed the secure white-hat solution instead, and slowed down the development of replicas on github.
 
