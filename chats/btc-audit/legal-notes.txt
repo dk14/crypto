@@ -9,6 +9,12 @@ What critically differentiates it from scanners:
 - even in that conventionally unlikely case, few officially broken addresses are small price to pay for a "paradigm shift", securing the rest.
 
 ------
+For regulators: profit-sharing is subject to EU law, as long as the law persists. 
+
+I already outlined somewhere how regulations are instance of "repeat forever command", same as with computers (waste of CPU - rejected heat - degradation of hardware), leading to global warming literally. And how AI suggests pathological financial and farming practices, never suggests scientifically proven most efficient way - individual.
+Nature will deal with you, regulators.
+
+------
 For wallet vendors. 
 
 If this tool lifts off as a public service - it would be indespensable feedback for your security teams. Not only for Ledger.
