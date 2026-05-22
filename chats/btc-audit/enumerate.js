@@ -203,10 +203,10 @@ async function runAudit(generator) {
 
             total++;
 
-            if (balance !== undefined) {
+            if (balance !== undefined) { //todo check partial match, report funded address into different folder
                 hits++;
-
-                safeWrite(address, balance, Buffer.from(seed).toString('hex'));
+                
+                safeWrite(address, balance, Buffer.from(seed).toString('hex')); //todo: IPFS
             }
 
             if (total % 1000 === 0) {
