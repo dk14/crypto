@@ -181,6 +181,7 @@ Performance:
 > 
 > i**f you got your own private tool joining protocol**: don't overload pinning services - you have to filter seeds based on metrics developed here (bitmatch as a starter).
 > CHECK that seeds don't belong to funded addresses. If they do - submit address (NO seed, no secret) in an issue here, on GitHub.
+- later: simply gossip evrything through peerjs or alike
 - build a public explorer, showing security of each funded btc address, as in **"how secure your own hardware wallet actually is?"**.
 > Eventually: mobile wallets, secure enclaves (eg Apple) and whatever hardware wallets your exchange is using (eg coinbase, binance). Can model gyro/mouse input as "low frequency" thermal noise too, as well as IO interruption events.
 - work distribution, across nodes running the tool
