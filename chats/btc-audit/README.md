@@ -24,8 +24,8 @@ Warnings.
 > **If it appears to you that AI does invent - it is result of lack of your own expertise (you did not do DYR IRL).** Also, don't rely on cheap comparisons - things are not equal, nor equivalent to one another (building an equivalence requires work and energy, as well as applying it).
 >> If you compare cheaply - things can appear to be identical when they are not. It can cost you money or worse. This project shows how cheap randomness (believing that thermal noise is random) put your funds and life at risk.
 
-> I won't add anything more novel or stable features to this repo **until there are funds**. Incl. funds compensating for work done already. I won't respond to any communication until then - I already done more work than anyone so far alive. I invested into R&D more than you ever will, most expensive mistake in history of STEM I'm pointing out: "noise is not secure random". It was a purely psychological idea for defense, no grounds in physics/reality. It was adopted by NIST to foolishly save funds on TRNGs, among other things.
->> "noise is not secure random" is demonstrated here, implications are pointed out. Only features that would lead directly to funds stolen, or panic are left out.
+> I won't add anything more novel or stable features to this repo **until there are funds**. Incl. funds compensating for work done already. I won't respond to any communication until then - I already done more work than anyone so far alive. I invested into R&D more than you ever will, most expensive mistake in history of STEM I'm pointing out: "noise is NOT secure random". It was a purely psychological idea for defense, no grounds in physics/reality. It was adopted by NIST to foolishly save funds on TRNGs, among other things.
+>> "noise is NOT secure random" is demonstrated here, implications are pointed out. Only features that would lead directly to funds stolen, or panic are left out.
 
 >> There is enough information here to verify the work done.
 
@@ -62,7 +62,8 @@ Sources and publications. Can only give you AI screenshots of links. Most DOI an
 
 **Pre-mediation**. Early warning system, "Explorer Network" p2p cluster has to be built to outrun scanners (scanner-tools, that AI suggests to write so easily), see "public service" section: decentralized PoW-like network will warn you ahead of possible attack. 
 
-> Built it open-source (here), and independently from government, corporate, academia (and whatever claiming to be independent organisations and security projects). It can only be done openly. **Why here - coz the topic is well-covered here, and I WON'T be like Cardano (IOHK), developing nothing for a decade, promoting Sci-FI, publishing obvious. I only write a lot of text coz no one pays ~~to shut up~~ for solution so far.**
+> Built it open-source (here), and independently from government, corporate, academia (and whatever claiming to be independent organisations and security projects). It can only be done openly. **Why here - coz the topic is well-covered here, and I WON'T be like Cardano (IOHK), developing nothing for a decade, promoting Sci-FI, publishing obvious. I only write a lot of text coz no one pays ~~to shut up~~ for solution so far, and to consolidate relevant data.
+>> I don't mention that many papers because there already papers proving almost anything (why provoke paper fight), causing AI to hallucinate extra (construct "inifnite objects"). We have practical reproducible (in node.js, and logically too) experiment here and demonstration, **it takes priority over papers** (fundamental science).
 
 **Without "Explorer Network" (and good TRNG replicas) - you will start losing YOUR FUNDS unrecoverably sooner or later.** 
 
