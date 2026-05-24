@@ -27,6 +27,8 @@ Warnings.
 > I won't add anything more novel or stable features to this repo **until there are funds**. Incl. funds compensating for work done already. I won't respond to any communication until then - I already done more work than anyone so far alive. I invested into R&D more than you ever will, most expensive mistake in history of STEM I'm pointing out: "noise is not secure random". It was a purely psychological idea for defense, no grounds in physics/reality. It was adopted by NIST to foolishly save funds on TRNGs, among other things.
 >> "noise is not secure random" is demonstrated here, implications are pointed out. Only features that would lead directly to funds stolen, or panic are left out.
 
+>> There is enough information here to verify the work done.
+
 ## How to use
 
 Run blockchain audit locally (for now):
