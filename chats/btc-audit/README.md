@@ -50,7 +50,7 @@ Papers and publications. Can only give you AI screenshots of links. Most DOI and
 
 **Without "Explorer Network" (and good TRNG replicas) - you will start losing YOUR FUNDS unrecoverably sooner or later.** 
 
-> Rather sooner, thanks to forced popularisation of AI (forced literacy). Any disturbed teen can just swipe blockchain wallets left and right. Only needs a trigger, which are just too many nowadays. "Ooh, wah-ah-ah-ah. [Ah, ah. Ah, Ah](https://archive.org/download/the-one-jet-li-2001-full-movie)".
+> Rather sooner, thanks to forced popularisation of AI (forced literacy). Any disturbed teen can just swipe blockchain wallets left and right. Only needs a trigger, which are just too many nowadays. "Ooh, wah-ah-ah-ah. [Uh, uh. Uh, uh](https://archive.org/download/the-one-jet-li-2001-full-movie)".
 
 <img src="theone.png" width="300" height="150">
 
