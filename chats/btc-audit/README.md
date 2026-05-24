@@ -65,7 +65,7 @@ Sources and publications. Can only give you AI screenshots of links. Most DOI an
 
 ----
 
-> I don't mention that many papers because there already papers proving almost anything (why provoke paper fight), causing AI to hallucinate extra (construct "inifnite objects"). I quote some from memory, but sources are not relevant -  I, myself, know how low-quality peer-reviews and references can be (see below). We have practical **reproducible** (in node.js, and logically too) experiment here and demonstration, **it takes priority over papers** (fundamental science). We have code, we have sound reasoning. We have simplest fitting model.
+> I don't mention that many papers because there already papers proving almost anything (why provoke paper fight), causing AI to hallucinate extra (construct "inifnite objects"). I quote some from memory, but sources are not relevant -  I, myself, know how low-quality peer-reviews and references can be. We have practical **reproducible** (in node.js, and logically too) experiment here and demonstration, **it takes priority over papers** (fundamental science). We have code, we have sound reasoning. We have simplest fitting model.
 
 **Pre-mediation**. Early warning system, "Explorer Network" p2p cluster has to be built to outrun scanners (scanner-tools, that AI suggests to write so easily), see "public service" section: decentralized PoW-like network will warn you ahead of possible attack. 
 
