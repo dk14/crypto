@@ -116,6 +116,7 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 > **PROFIT SHARING**
 
 > *"""TLDR: any amount gets you in! the more u send - the bigger the cut!"""*
+----
 
 > Forum: https://bitcointalk.org/index.php?topic=5582621
 
