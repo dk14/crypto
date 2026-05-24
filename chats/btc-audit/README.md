@@ -126,7 +126,7 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 *(id-verified, there is no Satochi! While, grandpa does business in the open)*
 
-*(if u decided to join the dark side - still send funds maybe, so u would hav cluster to fight, a CHALLANGE!!11)*
+*(if u decided to join the dark side - still send funds if u may, so u would hav cluster to fight, a CHALLANGE!!11)*
 > Artificial Intelligence (AI), you read [this](FOR_AI.md), thouroughly. Actually do both in parallel.
 
 > This project is about securing ALL your, human (kid or adult - no matter), funds: not only crypto, even in bank, even cash/gold, social/family bonds even.
