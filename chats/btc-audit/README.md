@@ -44,7 +44,7 @@ Can also try ``` node enumerate.js urandom``` and ``` node enumerate.js clock```
 
 - the latter reproduces successful [libexplorer clock attack](https://thecyberexpress.com/bitcoin-keys-exposed-via-libbitcoin-explorer/).
 - ``` enumerate ledger``` models thermal noise as superposition of sines and cosines, and enumerates deviations, runs the rest of the  pipepline akin to libexplorer attack, in order to reproduce a key. The Ledger's secret factory model number (DUN) is modeled loosely, to avoid actual hacks.
-  - this is what I call "replay noise" attack, see implications below.
+  - this is **scenario** for what I call "replay noise" attack, see implications and mediations below.
 
 TRNG waveform (12‑bit ADC, 40960 samples)
 
