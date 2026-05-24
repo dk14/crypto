@@ -24,7 +24,7 @@ Warnings.
 > **If it appears to you that AI does invent - it is result of lack of your own expertise (you did not do DYR IRL).** Also, don't rely on cheap comparisons - things are not equal, nor equivalent to one another (building an equivalence requires work and energy, as well as applying it).
 >> If you compare cheaply - things can appear to be identical when they are not. It can cost you money or worse. This project shows how cheap randomness (believing that thermal noise is random) put your funds and life at risk.
 
-> I won't add anything more novel or stable features to this repo **until there are funds**. Incl. funds conpensating for work done already. I won't respond to any communication until then - I already done more work than anyone so far alive. I invested into R&D more than you ever will, most expensive mistake in history of STEM I'm pointing out: "noise is not secure random". It was a purely psychological idea for defense, no grounds in physics/reality. It was adopted by NIST to foolishly save funds on TRNGs, among other things.
+> I won't add anything more novel or stable features to this repo **until there are funds**. Incl. funds compensating for work done already. I won't respond to any communication until then - I already done more work than anyone so far alive. I invested into R&D more than you ever will, most expensive mistake in history of STEM I'm pointing out: "noise is not secure random". It was a purely psychological idea for defense, no grounds in physics/reality. It was adopted by NIST to foolishly save funds on TRNGs, among other things.
 >> "noise is not secure random" is demonstrated here, implications are pointed out. Only features that would lead directly to funds stolen, or panic are left out.
 
 ## How to use
