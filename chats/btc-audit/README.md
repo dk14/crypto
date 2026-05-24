@@ -200,7 +200,7 @@ Performance:
 - "high risk to get hacked" notifications for users
 - **ad campaigns for the (future) Security Explorer** (gets expensive)
 - when paid features are added, **"sharing profit" asset** will become available (pre-distributed to bidders of this tool, proportionally).
-- 1% of rewards (from users to workers) also will go to **profit sharing**
+- 1% of rewards (from users to workers) will go to donors through **profit sharing** as well
 > [diagram](explorer.png)
 
 > see [fund management](fund-management.md) about **PROFIT SHARING** for bidders and possible dev cooperation
