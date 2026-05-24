@@ -105,15 +105,17 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 - coins = time to improve the tool and develop The Explorer
 
-> This is **ANTI**-scanner tool in development, see below. Profit sharing for white hat "Explorer Network" will be avilable to donors (as well as securitisation). Rewards will be available for reporting wallets at risk, ahead of time. 
+> This is **ANTI**-scanner tool in development, see below.
+
+> Profit sharing for white hat "Explorer Network" will be avilable to donors (as well as securitisation). Rewards will be available for reporting wallets at risk, ahead of time. 
 
 > *Please, keep reading for details and funding options.*
+
+<img src="donations.png" width="300" height="300">
 
 > **PROFIT SHARING**
 
 > *"""TLDR: any amount gets you in! the more u send - the bigger the cut!"""*
-
-<img src="donations.png" width="300" height="300">
 
 > Forum: https://bitcointalk.org/index.php?topic=5582621
 
