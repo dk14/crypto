@@ -135,7 +135,7 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 > If you cannot invest in defense right now - you gotta promote ASAP (not caring in the present - will make you worry a lot in the near future). EVERYTHING RUNS ON TRNGs! BTC has best chance of surviving the imminent attack - tha's why we focus on it first.
 
-> I figure how it 'll sounds, but everyone knows the "boy crying a wolf" story, the boy is "you" humans and media and Sci-Fi. This one is real, this time it is. Don't be a sheep - defend urself!
+> I figure how it 'll sounds, but everyone knows the "boy crying a wolf" story, the boy is "you" humans and media and Sci-Fi. This one is real, this time it is. **Don't be a sheep - defend urself!**
 
 -----
 This is the beginning of the project. 
