@@ -32,7 +32,11 @@ Run blockchain audit locally (for now):
 
 4. Run ``` node enumerate.js ledger```
 
-Can also try ``` node enumerate.js urandom``` and ``` node enumerate.js clock```. The latter reproduces successful [libexplorer clock attack](https://thecyberexpress.com/bitcoin-keys-exposed-via-libbitcoin-explorer/). ``` enumerate ledger``` models thermal noise as superposition of sines and cosines, and enumerates deviations, runs the rest of the  pipepline akin to libexplorer attack, in order to reproduce a key. The Ledger's secret factory model number (DUN) is modeled loosely, to avoid actual hacks.
+Can also try ``` node enumerate.js urandom``` and ``` node enumerate.js clock```. 
+
+- the latter reproduces successful [libexplorer clock attack](https://thecyberexpress.com/bitcoin-keys-exposed-via-libbitcoin-explorer/).
+- ``` enumerate ledger``` models thermal noise as superposition of sines and cosines, and enumerates deviations, runs the rest of the  pipepline akin to libexplorer attack, in order to reproduce a key. The Ledger's secret factory model number (DUN) is modeled loosely, to avoid actual hacks.
+  - this is what I call "replay noise" attack, see implications below.
 
 TRNG waveform (12‑bit ADC, 40960 samples)
 
@@ -43,7 +47,7 @@ TRNG waveform (12‑bit ADC, 40960 samples)
 > note: jitter-derived "random" can be modeled as a deterministic function of thermal noise.
 
 
-Papers and publications. Can only give you AI screenshots of links. Most DOI and presentations are removed (police removes for security reasons): [erased link1](paper1.png), [erased link2](paper2.png). You can send ones if you find ones, but security through obscurity would likely render links non-working shortly. Here is GPT-OSS admitting insecurity: [screenshot1](ai-admission.png), [screenshot2](technical-admission-ai.heic), as part of conversation to demonstrate how easy is to get "privilleged" academic info from AI.
+Sources and publications. Can only give you AI screenshots of links. Most DOI and presentations are removed (police removes for security reasons, sometimes AI hallucinates too - "security through obscurity", now working against you): [erased link1](paper1.png), [erased link2](paper2.png). You can send ones if you find ones, but automated security through obscurity would likely render links non-working shortly. So we resort to reproducibility simply. Here is GPT-OSS admitting insecurity: [screenshot1](ai-admission.png), [screenshot2](technical-admission-ai.heic), as part of conversation to demonstrate how easy is to get "privilleged" academic info from AI.
 
 <img src="ai-admission.png" width="700" height="700">
 
