@@ -177,7 +177,8 @@ Performance:
 **PUBLIC SERVICE**:
 - build a decentralized database of matches which came close. IPFS as a starter.
 > enumerated private keys (seeds) will be published - so user can compare reported seed to his private seed, privately. To see how close it got. Adreesses can be compared too (full public, but weaker metric).
-> **User can privately see how many bits matched (as a starter) that's where alert comes from**. Later since naive bitmatch is not the only way to transform sequence of bits - more complex metrics will be developed. Also public metrics as well (overall health check) - guessing pubkey well is possible with good replica, something known about private key (advanced topic, I researched previously in this repo; bitmatch won't fit, but other metrics can).
+
+> **User can privately see how many bits matched (as a starter) that's where alert comes from**. Later since naive bitmatch is not the only way to transform sequence of bits - more complex metrics will be developed. Also public metrics as well (overall health check) - guessing pubkey well is possible with good replica, something known about private key (advanced topic, I researched previously in this repo; bitmatch won't fit well, but other metrics can).
 - develop and standardize format for public IPFS-submission. Add it to the tool.
 > `seeds, blockchain_id, replica_id, worker_id, worker_id_pow, reward_address, version, signature`.
 >
