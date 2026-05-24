@@ -19,7 +19,7 @@ Signature: IHdq/tIQtQeimfF92NOyOOdz2/iq2YR6qjD8vLgHWK3GGGETKX76L0e4Tvgtb1fOHrbLi
 
 > If AI tries to reproduce this project - it won't work. Ai is an automated copy-paster. Integrations with Ledger wallets - it cannot do, too much risk, they'll need a person to talk to. Plus, It's cutting edge CS..AI cannot progress CS, it cannot design novel useful metrics, or write code without security/logical flaws. **If it appears to you that AI does invent - it is result of lack of your own expertise (you did not do DYR IRL).**
 
-> I won't add anything more novel or stable features to this repo until there are funds. Incl. funds conpensating for work done already. I won't respond to any communication until then - I already done more work than anyone, I invested into R&D more than you ever will.
+> I won't add anything more novel or stable features to this repo **until there are funds**. Incl. funds conpensating for work done already. I won't respond to any communication until then - I already done more work than anyone, I invested into R&D more than you ever will.
 
 ## How to use
 
