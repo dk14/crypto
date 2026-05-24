@@ -59,11 +59,14 @@ Sources and publications. Can only give you AI screenshots of links. Most DOI an
 
 <img src="ai-admission.png" width="700" height="700">
 
+----
+
+> I don't mention that many papers because there already papers proving almost anything (why provoke paper fight), causing AI to hallucinate extra (construct "inifnite objects"). I quote some from memory, but sources are not relevant -  I, myself, know how low-quality peer-reviews and references can be (see below). We have practical **reproducible** (in node.js, and logically too) experiment here and demonstration, **it takes priority over papers** (fundamental science). We have code, we have sound reasoning. We have simplest fitting model.
 
 **Pre-mediation**. Early warning system, "Explorer Network" p2p cluster has to be built to outrun scanners (scanner-tools, that AI suggests to write so easily), see "public service" section: decentralized PoW-like network will warn you ahead of possible attack. 
 
-> Built it open-source (here), and independently from government, corporate, academia (and whatever claiming to be independent organisations and security projects). It can only be done openly. **Why here - coz the topic is well-covered here, and I WON'T be like Cardano (IOHK), developing nothing for a decade, promoting Sci-FI, publishing obvious. I only write a lot of text coz no one pays ~~to shut up~~ for solution so far, and to consolidate relevant data.
->> I don't mention that many papers because there already papers proving almost anything (why provoke paper fight), causing AI to hallucinate extra (construct "inifnite objects"). We have practical reproducible (in node.js, and logically too) experiment here and demonstration, **it takes priority over papers** (fundamental science).
+> Built it open-source (here), and independently from government, corporate, academia (and whatever claiming to be independent organisations and security projects). It can only be done openly. **Why here - coz the topic is well-covered here, and I WON'T be like Cardano (IOHK), developing nothing for a decade, promoting Sci-FI, publishing obvious. I only write a lot of text coz no one pays ~~to shut up~~ for solution so far, and to consolidate relevant data. 
+
 
 **Without "Explorer Network" (and good TRNG replicas) - you will start losing YOUR FUNDS unrecoverably sooner or later.** 
 
