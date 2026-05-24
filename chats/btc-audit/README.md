@@ -29,6 +29,8 @@ Warnings.
 
 >> There is enough information here to verify the work done.
 
+>> There is a valuable solution proposed (and ready to use experimental protocol described)
+
 ## How to use
 
 Run blockchain audit locally (for now):
