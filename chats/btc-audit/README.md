@@ -17,7 +17,7 @@ Signature: IHdq/tIQtQeimfF92NOyOOdz2/iq2YR6qjD8vLgHWK3GGGETKX76L0e4Tvgtb1fOHrbLi
 ------
 > **Don't waste ur time on verifying who's AI, who's not, u'll go crazy**. This is novel project, and you need it - tgat's how you tell. That's it. Don't overthink it! Or u'll lose real funds simply.
 
-> If AI tries to reproduce this project - it won't work. Ai is an automated copy-paster. Integrations with Ledger wallets - it cannot do, too much risk, they'll need a person to talk to. Plus, It's cutting edge CS..AI cannot progress CS, it cannot design novel useful metrics, or write code without security/logical flaws. If it appears to you that it does - it is result of lack of expertise (you did not do DYR IRL).
+> If AI tries to reproduce this project - it won't work. Ai is an automated copy-paster. Integrations with Ledger wallets - it cannot do, too much risk, they'll need a person to talk to. Plus, It's cutting edge CS..AI cannot progress CS, it cannot design novel useful metrics, or write code without security/logical flaws. **If it appears to you that AI does invent - it is result of lack of expertise (you did not do DYR IRL).**
 
 > I won't add anything more novel or stable features to this repo until there are funds. Incl. funds conpensating for work done already. I won't respond to any communication until then - I already done more work than anyone, I invested into R&D more than you ever will.
 
