@@ -139,9 +139,9 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 -----
 This is the beginning of the project. 
 
-*(the ultimate battle for hackers, white-hat, black-hat, corporate, FED, crypto, AI can try even)*
+*(the ultimate battle for hackers, white-hat, black-hat, corporate, FED, crypto, AI, whtever)*
 
-*(can submit ur TRNG replicas here for every1 to see, can keep private and just join "Explorer Protocol" below, up to u)*
+*(can submit ur TRNG replicas here for every1 to see, u can keep private and just join "Explorer Protocol" below anonymously, up to u)*
 
 I already invested in a year of independent research, now it's your turn, if u're interested. The project is critical, since all funds are at stake.
 
