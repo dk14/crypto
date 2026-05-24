@@ -38,7 +38,10 @@
 > A year has been wasted already - no one raised an issue even. Now, popularity of AI grows "exponentially". And this is in environment where anthropogenic scarcity of natural resources is kicking in. Population growth exponentially, nitrates and bio diminishing near exponentially. Market price on food thus shpuld grow super-exponentially. Instead it is heavily regulated (eg cost of living is rising, not fast enough though) - so apocallyptic price correction (free market law) is inevitable. We're managing apocallypse on the side of sillicon production and agricultural efficiency. We're not trying to fight inevitable. So every day matters.
 >> not sure where to put it: the most powerful, efficient and cheapest IRL attack on global collective agriculture would be "soil sallinisation" (in Pampas, belts). It is super-cheap. I would not try to prevent it actually, since getting rid of soil belts - would allow for invdividual agriculture to trive.
 
+
 - My academic, intellectual and engineering track aside (verifiable - just think and scan more), my relevant credentials are simple here - I know how to swipe BTC addresses, but I didn't - I proposed the secure white-hat solution instead, and slowed down the development of replicas on github.
+
+> just to be precise - humans don't have realisticly reliable infrastructure (communication lines and powerful computers) to defend against exact replica of Ledger or any other TRNG, the ones I can produce (hints are all around). Luckily, ADHD teens, would be (likely!) producing inexact ones, so that can be defended, and even that is urgent!
 
 - This is while other "engineers" decided to keep it to themselves - naive short-sighted greediness.
   
