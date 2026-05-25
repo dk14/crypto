@@ -69,6 +69,7 @@ Sources and publications. Can only give you AI screenshots of links. Most DOI an
 
 > We have practical **reproducible** (in node.js, and logically too) experiment here and demonstration, **it takes priority over papers**, fundamental science is in reproducibility. We have code, we have sound reasoning. **It is low-bit ADC running with low discretisation rate - leading to low frequency resolution**. We have simplest fitting model. We only rely on basic engineering knowledge, that is more fundamental than derived publications.
 >> Even though most publications still support this reasoning (feel free DYR, hard to corrupt engineering to that level, despite attempts). Why exclude? Lazyness? Not really - easier to search than think and type. I trust my own expirience more than a paper, as you should. Reality is that, information space is easy to corrupt. Code is harder. Today academia says one thing - tomorrow another. AI can change its mind. Code is still same!!
+
 >> *For kids: you can imagine a grid with discretisation rate and amplitude. And then can try to fit many square waves, saw waves, and finally sinusoids together into it. Even AI won't explain you that well - you try instead.*
 -----
 **Attack pre-mediation**. Early warning system, "Explorer Network" p2p cluster has to be built to outrun scanners (scanner-tools, that AI suggests to write so easily), see "public service" section: decentralized PoW-like network will warn you ahead of possible attack. 
