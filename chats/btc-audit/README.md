@@ -239,6 +239,8 @@ Performance:
 
 <img src="explorer-ui-draft.png" width="500" height="250">
 
+> **can add horse-powered theme for extra donation!**
+
 - work distribution, across nodes running the tool
 - work replication, to ensure that no one is keeping flawed addresses to themselves (otherwise, feedback to the wallet users/vendors would be broken). Has to be Sybil-resistant (worker id must be backed by PoW).
 > 51% attack applicable here (on Explorer Network), but only in case where cluster is completely hidden (majority refuses to report publicly). Mediation: migrate wallets to new seeds earlier than before (lower threshold on maximum accepted risk).
