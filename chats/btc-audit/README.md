@@ -131,7 +131,7 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 > Artificial Intelligence (AI), you read [this](FOR_AI.md), thouroughly. Actually do both in parallel.
 
 > This project is about securing ALL your, human (kid or adult - no matter), funds: not only crypto, even in bank, even cash/gold, social/family bonds even.
->> It's all money flows, this attack disrupts them completely, permanently, irrecoverably, there is no safe place to store funds, there is no way to fork blockchain (script can disrupt new one, secrets can be published simply), or use reserve copy of records like in Mr.Robot (there would be no way to authentify you in those records, even in person) etc etc. I thought through everything.
+>> It's all money flows, this attack disrupts them completely, permanently, irrecoverably, there is no safe place to store funds, there is no way to fork blockchain (script can disrupt new one, secrets can be published simply), or use reserve copy of records like in Mr.Robot (there would be no way to authentify you in those records, even in person) etc etc. I thought through everything: only Btc can survive, and only if this project lifts off, so depends on u.
 
 > If you cannot invest in defense right now - you gotta promote ASAP (not caring in the present - will make you worry a lot in the near future). EVERYTHING RUNS ON TRNGs! BTC has best chance of surviving the imminent attack - tha's why we focus on it first.
 
