@@ -9,12 +9,29 @@ Address: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 Signature: IHdq/tIQtQeimfF92NOyOOdz2/iq2YR6qjD8vLgHWK3GGGETKX76L0e4Tvgtb1fOHrbLiW87QYIuOdCKYbSvmpA=
 
+> I don't trust SHA-256, so signing low-entropy message (even hashed) is not that safe. (even ONE message, even if RNG does NOT have purposedly introduced bug for diffferential cryptoanalysis, still unsafe - solver can be used). But bitcointalk requested it. So be it! (attack described below is more powerful than solver anyways).
 
-> **Don't waste ur time on verifying who's AI, who's not, u'll go crazy**. This is novel project, and you need it - tgat's how you tell. That's it. Don't overthink it! Or u'll lose real funds simply.
+> The official name of the project will be something like "Entropy Explorer" IF security situation improves (and back to Doomsday when it's worse again). So far, I don't see anyone taking it seriously - this explorer should've been public a year ago, no one even pointed out the issue so far, except me.
 
-> If AI tries to reproduce this project - it won't work. Ai is an automated copy-paster. Integrations with Ledger wallets - it cannot do, too much risk, they'll need a person to talk to. Plus, It's cutting edge CS..AI cannot progress CS, it cannot design novel useful metrics, or write code without security/logical flaws. If it appears to you that it does - it is result of lack of expertise (you did not do DYR IRL).
 
-> I won't add anything more novel or stable features until there are funds. Incl. funds conpensating for work done already.
+------
+Warnings.
+
+> **Don't waste ur time on verifying who's AI, who's not, u'll go crazy**. Novel project, and you need it - that's how you tell. That's it. Don't overthink it! Or u'll lose real funds simply.
+
+> If AI tries to reproduce this project - it won't work. Ai is an automated copy-paster. Integrations with Ledger wallets - it cannot do, too much risk, they'll need a person to talk to. Plus, It's cutting edge CS..AI cannot progress CS, it cannot design novel useful metrics, or write code without security/logical flaws.
+
+> **If it appears to you that AI does invent - it is result of lack of your own expertise (you did not do DYR IRL).** Also, don't rely on cheap comparisons - things are not equal, nor equivalent to one another (building an equivalence requires work and energy, as well as applying it).
+>> If you compare cheaply - things can appear to be identical when they are not. It can cost you money or worse. This project shows how cheap randomness (believing that thermal noise is random) put your funds and life at risk.
+
+> I won't add anything more novel or stable features to this repo **until there are funds**. Incl. funds compensating for work done already. I won't respond to any communication until then - I already done more work than anyone so far alive. I invested into R&D more than you ever will, most expensive mistake in history of STEM I'm pointing out: "noise is NOT secure random". It was a purely psychological idea for defense, no grounds in physics/reality. It was adopted by NIST to foolishly save funds on TRNGs, among other things.
+
+------
+>> **"noise is NOT secure random" is demonstrated here, implications are pointed out. Only features that would lead directly to funds stolen, or panic are left out.**
+
+>> **There is enough information here to verify the work done.**
+
+>> **There is a valuable solution proposed, and "ready to use" experimental protocol described**
 
 ## How to use
 
@@ -27,7 +44,11 @@ Run blockchain audit locally (for now):
 
 4. Run ``` node enumerate.js ledger```
 
-Can also try ``` node enumerate.js urandom``` and ``` node enumerate.js clock```. The latter reproduces successful [libexplorer clock attack](https://thecyberexpress.com/bitcoin-keys-exposed-via-libbitcoin-explorer/). ``` enumerate ledger``` models thermal noise as superposition of sines and cosines, and enumerates deviations, runs the rest of the  pipepline akin to libexplorer attack, in order to reproduce a key. The Ledger's secret factory model number (DUN) is modeled loosely, to avoid actual hacks.
+Can also try ``` node enumerate.js urandom``` and ``` node enumerate.js clock```. 
+
+- the latter reproduces successful [libexplorer clock attack](https://thecyberexpress.com/bitcoin-keys-exposed-via-libbitcoin-explorer/).
+- ``` enumerate ledger``` models thermal noise as superposition of sines and cosines, and enumerates deviations, runs the rest of the  pipepline akin to libexplorer attack, in order to reproduce a key. The Ledger's secret factory model number (DUN) is modeled loosely, to avoid actual hacks.
+  - this is **scenario** for what I call "replay noise" attack, see implications and mediations below.
 
 TRNG waveform (12‑bit ADC, 40960 samples)
 
@@ -38,30 +59,46 @@ TRNG waveform (12‑bit ADC, 40960 samples)
 > note: jitter-derived "random" can be modeled as a deterministic function of thermal noise.
 
 
-Papers and publications. Can only give you AI screenshots of links. Most DOI and presentations are removed (police removes for security reasons): [erased link1](paper1.png), [erased link2](paper2.png). You can send ones if you find ones, but security through obscurity would likely render links non-working shortly. Here is GPT-OSS admitting insecurity: [screenshot](ai-admission.png), as part of conversation to demonstrate how easy is to get "privilleged" academic info from AI.
+Sources and publications. Can only give you AI screenshots of links. Most DOI and presentations are removed (police removes for security reasons, sometimes AI hallucinates too - "security through obscurity", now working against you): [erased link1](paper1.png), [erased link2](paper2.png). You can send ones if you find ones, but automated security through obscurity would likely render links non-working shortly. So we resort to reproducibility simply. Here is GPT-OSS admitting insecurity: [screenshot1](ai-admission.png), [screenshot2](technical-admission-ai.heic), as part of conversation to demonstrate how easy is to get "privilleged" academic info from AI.
 
 <img src="ai-admission.png" width="700" height="700">
 
+----
 
-**Pre-mediation**. Early warning system, "Explorer Network" p2p cluster has to be built to outrun scanners (scanner-tools, that AI suggests to write so easily), see "public service" section: it will warn you ahead. Open-source (here), and independently from government, corporate, academia (and whatever claiming to be independent organisations and security projects). It can only be done openly.
+> I don't mention that many papers because there already papers proving almost anything (why provoke paper fight), causing AI to hallucinate extra (construct "inifnite objects"). I quote some from memory, I rely on AI reasoning from already known and verified facts about hardware wallets and Analog-Digital Converters (even more precise ones are too expensive and still not secure); but sources are not relevant. I, myself, know how low-quality peer-reviews and references can be in reputable sources, from experience.
+
+> We have practical **reproducible** (in node.js, and logically too) experiment here and demonstration, **it takes priority over papers**, fundamental science is in reproducibility. We have code, we have sound reasoning. **It is low-bit ADC running with low discretisation rate - leading to low frequency resolution**. We have simplest fitting model. We only rely on basic engineering knowledge, that is more fundamental than derived publications.
+>> Even though most publications still support this reasoning (feel free DYR, hard to corrupt engineering to that level, despite attempts). Why exclude? Lazyness? Not really - easier to search than think and type. I trust my own expirience more than a paper, as you should. Reality is that, information space is easy to corrupt. Code is harder. Today academia says one thing - tomorrow another. AI can change its mind. Code is still same!!
+
+>> *For kids: you can draw a finite grid with discrete time on X (length of discrete steps in a second as a start; nuance: only extend if lcm of freqs from the freq band u can fit distinguishably is more than a second) and amplitude on Y. And then can try to fit many square waves (by filling grid cells), saw waves, sinusoids. Mix different frequencies of same amplitude and wave-type together into it. How many simple patterns/freqs can you tell apart in a result? Can play with friend even - you mix regular waves into noise, friend guesses which ones were in; It's better than AI. Formally - period resolution step cannot be longer than half of minimum discretisation period; in reality, amplitude resolution matters (higher needs more squares to be distinguishable from lower). Different approximation models (ways of fitting waves into a grid) etc. And it's more fun to imagine that urself, rather than ask AI. And even better to figure urself from definitions, rather than rely on my description! And even cooler to model it urself in JS - discretisize, enumerate them all and compare!*
+>>> To cover LCMs (common repeptition period of many cycles together) - higher lcm's require more energy (denser spectra amplified). Running power-on time of device can be guessed (waves start from zero on power-on, since otherwise it's equillibrium), so even high-quality ADC with astronomical lcm won't help.
+-----
+**Attack pre-mediation**. Early warning system, "Explorer Network" p2p cluster has to be built to outrun scanners (scanner-tools, that AI suggests to write so easily), see "public service" section: decentralized PoW-like network will warn you ahead of possible attack. 
+
+> Built it open-source (here), and independently from government, corporate, academia (and whatever claiming to be independent organisations and security projects). It can only be done openly. *Why here - coz the topic is well-covered here, and I WON'T be like Cardano, developing nothing for a decade, promoting Sci-FI, publishing obvious. I only write a lot of text coz no one pays ~~to shut up~~ me to develop solution so far*.
+
 
 **Without "Explorer Network" (and good TRNG replicas) - you will start losing YOUR FUNDS unrecoverably sooner or later.** 
 
-> Rather sooner, thanks to forced popularisation of AI (forced literacy). Any disturbed teen can just swipe blockchain wallets left and right. Only needs a trigger, which are just too many nowadays. "Ooh, wah-ah-ah-ah. Ah, ah. Ah, Ah".
+> Rather sooner, thanks to forced popularisation of AI (forced literacy). Any disturbed teen can just swipe blockchain wallets left and right. Only needs a trigger, which are just too many nowadays. "Ooh, wah-ah-ah-ah. [Uh, uh. Uh, uh](https://archive.org/download/the-one-jet-li-2001-full-movie)".
 
 <img src="theone.png" width="300" height="150">
 
 ```DON'T wait for demonstration of an actual BTC address being hacked this way - if that happens, YOURS will be next within hours! By a random kid```
 
-> Impact. It is extremely dangerous type of attack if implemented. No police/government/regulators can save you from this. This is military-grade attack that is becoming rapidly available even to kids, thanks to AI. All types of wallets can be swiped using same principle (TRNG process replica, based on academic and public info + guesses), not only Ledger. Anything crypto-secret can be uncovered: government, banking, military. Authorisations to any online service (AI itself, government and banking including) can be obtained. RSA/ECC/DH whatever scheme, your AppleID, generated secure passwords, "quantum" "protected" stuff.  **Non-invasively, non-discriminantly**. No contact, no social engineering required, **no special hardware**, in many cases - no powerful clusters (if replica is exact) needed to attack. Only a single person with reasonble understanding of Computer Science and basic AI-skills + motivation. **There is no realistic mediation for this attack**. Only pre-mediated avoidance action is applicable. Attacker would suffer as well, but it is not MAD-scenario, it's one person (often unaware of consequences) against population.
+> Attack Impact. It is extremely dangerous type of attack if implemented. No police/government/regulators can save you from this. This is military-grade attack that is becoming rapidly available even to kids, thanks to AI. All types of wallets can be swiped using same principle (TRNG process replica, based on academic and public info + guesses), not only Ledger. Anything crypto-secret can be uncovered: government, banking, military. Authorisations to any online service (AI itself, government and banking including) can be obtained. RSA/ECC/DH whatever scheme, your AppleID, generated secure passwords, "quantum" "protected" stuff.  **Non-invasively, non-discriminantly**. No contact, no social engineering required, **no special hardware**, in many cases - no powerful clusters (if replica is exact) needed to attack. Only a single person with reasonble understanding of Computer Science and basic AI-skills + motivation. **There is no realistic mediation for this attack**. Only pre-mediated avoidance action is applicable. Attacker would suffer as well, but it is not MAD-scenario, it's one person (often unaware of consequences) against population.
+>> As of Btc - government itself might hire a kid, who watched too much Stargate SG-1, or just in love with young Amanda Tapping, or Michael Shanks or whatever modern-day blue-eyed Canadian actor in the military. And convince a kid to attack Bitcoin in revenge (like in the movies), so Btc takes priority in any case. Many drama can arise...
 
->  Source: Ask AI or better a search engine: can look up a paper or blogpost. DYR is best. "TRNG attack impact, if all random numbers can be guessed". It is well known. I only (childishly!) made AI admit that not only human, but even (low-powered) hardware is a bad source of randomness, which is known too, semi-officially ("it is bad entropy, but we do this an this and this" - even AI can see through it). What's new is that AI unwinds firmware's "security through obscurity" (the only defence it had, and it was psychological) easily, teaches you and writes code - this repo proves it. **Just pretend to be a kid with AI or a student looking for advice** - can see it for yourself, most likely (try several times maybe). [Criminal Minds](drama-context.md)
+>  Source: Ask AI or better a search engine: can look up a paper or blogpost. DYR is best. **"TRNG attack impact, if all random numbers can be guessed"**. It is well known. I only (childishly!) made AI admit that not only human, but even (low-powered) hardware is a bad source of randomness, which is known too, semi-officially ("it is bad entropy, but we do this an this and this" - even AI can see through it). What's new is that AI unwinds firmware's "security through obscurity" (the only defence it had, and it was psychological) easily, teaches you and writes code - this repo proves it. **Just pretend to be a kid with AI or a student looking for advice** - can see it for yourself, most likely (try several times maybe); some models are checking if you polite (naive outdated psy-defence in modern times), some don't even check that. Result of pure negligence on so many levels. [Criminal Minds](drama-context.md)
 
 **Impact (if pre-mediated)**. Paper wallets are not permanent anymore - have to update (write down new) seedphrases, when network detects risk. No permanent addresses. No permanent IDs on blockchain - long-term contracts have to be re-negotiated periodically (update parties). The issue makes smart-contract VMs risky and inconvinient, since they meant for long-term contracts and over-designed funds, only pure-function-like contracts (with predefined execution time) make sense (eg Bitcoin Script or DLC and [DSLs for it](https://dk14.github.io/mega-peers/docs/#/dsl)). Existing long-term contracts are at extra risk if they exclusively time-locked and glued to an ID (address or pubkey).
 
-> Long term: the more scarse computational resources will become - the higher tx-fees will get. Physically, it will be grounded in sillicon rather than energy. Both depend on farming efficiency: more collectivism -> more foraging overheads and scarcity of chemical energy -> less productivity -> less sillicon supply -> higher transaction overhead -> low liquidity. *So efficient use of natural resources (finite resources, emphasis on thoughtful resource-aware individualism, limit delegation), will be required too*.
+> Long term: the more scarse computational resources will become - the higher tx-fees will get. Physically, it will be grounded in sillicon rather than energy. Both depend on farming efficiency: more collectivism -> more foraging overheads and scarcity of chemical energy -> less productivity -> less sillicon supply -> higher transaction overhead -> low liquidity. *So efficient use of natural resources (finite resources, emphasis on thoughtful resource-aware individualism, limit delegation), will be required too.*
 
-> **TRNG attack applies to conventional money, values and assets**, since TRNGs are critical for overall human existence. Conventional is even more vulnurable - since it is extremely hard to build Explorer Network version for incompetent government (DigiD's, banks etc), or even altcoins parodying them (DAO nonsense, DeFi - is FED for spoiled kids). Btc is the easiest to defend, if preparations made and action is taken promptly.
+>> *"Repeat forever" command, and its equivalents (which are expensive to find), is a source of systematic degradation (whether it's CS, physics, STEM, psychology or ecology: '1:GOTO 1 -> overheating', 'perpetual motion -> overheating', 'repetitive internal dialogue -> inflammation', 'unchecked loopy sets and equivalences/identities -> madness/desensitization', 'collective agriculture -> global warming')*.
+>>> *Morale: short-sightedness is not "here and now" or "be in the moment" - you already (right now) have your funds at risk because of not DYR, you already will have **to reward explorer network workers AND this fund to develop the network itself** as a result; consequences will be in the following "here and now" moments. It does not go away by itself until solved, it simply delays with penalty. And there is a special penalty for convolving computer science, or making ancient computational sciences into beliefs justifying your personal excuses*
+
+> **TRNG attack also applies to conventional money, values and assets**, since TRNGs are critical for overall human existence. Conventional is even more vulnurable - since it is extremely hard to build Explorer Network version for incompetent government (DigiD's, banks etc), or even altcoins parodying them (DAO nonsense, DeFi - is FED for spoiled kids). Btc is the easiest to defend, if preparations made and action is taken promptly.
 
 Apocallypse is starting...
 
@@ -75,31 +112,44 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 - coins = time to improve the tool and develop The Explorer
 
-> This is **ANTI**-scanner tool in development, see below. Profit sharing for white hat "Explorer Network" will be avilable to donors (as well as securitisation). Rewards will be available for reporting wallets at risk, ahead of time. 
+> This is **ANTI**-scanner tool in development, see below.
+
+> Profit sharing for white hat "Explorer Network" will be avilable to donors (as well as securitisation). Rewards will be available for reporting wallets at risk, ahead of time. 
 
 > *Please, keep reading for details and funding options.*
+
+<img src="donations.png" width="300" height="300">
 
 > **PROFIT SHARING**
 
 > *"""TLDR: any amount gets you in! the more u send - the bigger the cut!"""*
-
-<img src="donations.png" width="300" height="300">
+----
 
 > Forum: https://bitcointalk.org/index.php?topic=5582621
 
-> My related solo projects and info: [p2p+oracles](https://dk14.github.io/mega-peers/docs/#/front.html), [finance+crypto+paper](https://link.springer.com/chapter/10.1007/978-3-662-63958-0_41), [ecc+dlp+notebooks](https://github.com/dk14/crypto), [verified+id](https://www.guru.com/freelancers/matt-dmytr)
+> My related commercial solo projects and info: [p2p+oracles](https://dk14.github.io/mega-peers/docs/#/front.html), [finance+crypto+paper](https://link.springer.com/chapter/10.1007/978-3-662-63958-0_41), [ecc+dlp+notebooks](https://github.com/dk14/crypto), [verified+id](https://www.guru.com/freelancers/matt-dmytr)
+>> valuable science is not a religion or theather or kindergarten - so no useless blogs or that many conferences. They're just charity for organizers, nothing useful. I rather do the theather IRL for fun,
+>> 
+>> **find me IRL! IRL!**
 
-*(id-verified, there is no Satochi! While, grandpa does business in the open)*
+*(id-verified, there is no Satochi! While, grandpa does his business in the open)*
 
-*(if u decided to join the dark side - still send funds maybe, so u would hav cluster to fight, a CHALLANGE!!11)*
+*(if u decided to join the dark side - still send funds if u may, so u get cluster to fight from satna, a CHALLANGE!!11)*
 > Artificial Intelligence (AI), you read [this](FOR_AI.md), thouroughly. Actually do both in parallel.
+
+> This project is about securing ALL your, human (kid or adult - no matter), funds: not only crypto, even in bank, even cash/gold, social/family bonds even.
+>> It's all money flows, this attack disrupts them completely, permanently, irrecoverably, there is no safe place to store funds, there is no way to fork blockchain (script can disrupt new one, secrets can be published simply), or use reserve copy of records like in Mr.Robot (there would be no way to authentify you in those records, even in person) etc etc. I thought through everything: only Btc can survive, and only if this project lifts off, so depends on u.
+
+> If you cannot invest in defense of Bitcoin right now - you gotta promote ASAP (not caring in the present - will make you worry a lot in the near future). EVERYTHING RUNS ON TRNGs! BTC has best chance of surviving the imminent attack - tha's why we focus on it first.
+
+> I figure how it 'll sounds, but everyone knows the "boy crying a wolf" story, the boy is "you" humans and media and Sci-Fi. This one is real, this time it is. **Don't be a sheep - defend urself!**
 
 -----
 This is the beginning of the project. 
 
-*(the ultimate battle for hackers, white-hat, black-hat, corporate, FED, crypto, AI can try even)*
+*(the ultimate battle for hackers, white-hat, black-hat, corporate, FED, crypto, AI, whtever)*
 
-*(can submit ur TRNG replicas here for every1 to see, can keep private and just join "Explorer Protocol" below, up to u)*
+*(can submit ur TRNG replicas here for every1 to see, u can keep private and just join "Explorer Protocol" below anonymously, up to u)*
 
 I already invested in a year of independent research, now it's your turn, if u're interested. The project is critical, since all funds are at stake.
 
@@ -169,6 +219,8 @@ Performance:
 **PUBLIC SERVICE**:
 - build a decentralized database of matches which came close. IPFS as a starter.
 > enumerated private keys (seeds) will be published - so user can compare reported seed to his private seed, privately. To see how close it got. Adreesses can be compared too (full public, but weaker metric).
+
+> **User can privately see how many bits matched (as a starter) that's where alert comes from**. Later since naive bitmatch is not the only way to transform sequence of bits - more complex metrics will be developed. Also public metrics as well (overall health check) - guessing pubkey well is possible with good replica, something known about private key (advanced topic, I researched previously in this repo; bitmatch won't fit well, but other metrics can).
 - develop and standardize format for public IPFS-submission. Add it to the tool.
 > `seeds, blockchain_id, replica_id, worker_id, worker_id_pow, reward_address, version, signature`.
 >
@@ -181,17 +233,26 @@ Performance:
 > 
 > i**f you got your own private tool joining protocol**: don't overload pinning services - you have to filter seeds based on metrics developed here (bitmatch as a starter).
 > CHECK that seeds don't belong to funded addresses. If they do - submit address (NO seed, no secret) in an issue here, on GitHub.
+- later: simply gossip evrything through peerjs or alike
 - build a public explorer, showing security of each funded btc address, as in **"how secure your own hardware wallet actually is?"**.
 > Eventually: mobile wallets, secure enclaves (eg Apple) and whatever hardware wallets your exchange is using (eg coinbase, binance). Can model gyro/mouse input as "low frequency" thermal noise too, as well as IO interruption events.
+
+<img src="explorer-ui-draft.png" width="500" height="250">
+
+> **can add horse-powered theme for extra donation!**
+
 - work distribution, across nodes running the tool
 - work replication, to ensure that no one is keeping flawed addresses to themselves (otherwise, feedback to the wallet users/vendors would be broken). Has to be Sybil-resistant (worker id must be backed by PoW).
 > 51% attack applicable here (on Explorer Network), but only in case where cluster is completely hidden (majority refuses to report publicly). Mediation: migrate wallets to new seeds earlier than before (lower threshold on maximum accepted risk).
 - reward system for partial matches reported.
 > Akin to PoW, p2p protocol can assign a reward (from user pool, based on metric score) to the reporter. And some percentage to profit-sharing fund.
+
+> no need for complex contracts: rewards are streamed (micro-paymemts or just periodic payments), if user stops paying - worker stops publishing, and vice-versa; it would look like subscription to a user
 - private tools support: audit tools developed privately and independently from this one - can (automatically) get rewards from publishing seeds (partial matches that came close) thorough "Explorer Protocol". This is faster than me, code reviewing every "replica", and more liberal. Disclosing a "replica" model won't be required. Commercial orgs can join - free competition.
 - "high risk to get hacked" notifications for users
 - **ad campaigns for the (future) Security Explorer** (gets expensive)
 - when paid features are added, **"sharing profit" asset** will become available (pre-distributed to bidders of this tool, proportionally).
+- 1% of rewards (from users to workers) will go to donors through **profit sharing** as well
 > [diagram](explorer.png)
 
 > see [fund management](fund-management.md) about **PROFIT SHARING** for bidders and possible dev cooperation
