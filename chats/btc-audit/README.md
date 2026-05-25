@@ -52,16 +52,16 @@ Can also try ``` node enumerate.js urandom``` and ``` node enumerate.js clock```
 
 TRNG waveform (12‑bit ADC, 40960 samples)
 
-<img src="thermal.png" width="400" height="200">
+<img src="docs/thermal.png" width="400" height="200">
 
 > noise is not enveloped, not adjusted for drifts and jitters. To avoid actual hacks
 > 
 > note: jitter-derived "random" can be modeled as a deterministic function of thermal noise.
 
 
-Sources and publications. Can only give you AI screenshots of links. Most DOI and presentations are removed (police removes for security reasons, sometimes AI hallucinates too - "security through obscurity", now working against you): [erased link1](paper1.png), [erased link2](paper2.png). You can send ones if you find ones, but automated security through obscurity would likely render links non-working shortly. So we resort to reproducibility simply. Here is GPT-OSS admitting insecurity: [screenshot1](ai-admission.png), [screenshot2](technical-admission-ai.heic), as part of conversation to demonstrate how easy is to get "privilleged" academic info from AI.
+Sources and publications. Can only give you AI screenshots of links. Most DOI and presentations are removed (police removes for security reasons, sometimes AI hallucinates too - "security through obscurity", now working against you): [erased link1](docs/paper1.png), [erased link2](docs/paper2.png). You can send ones if you find ones, but automated security through obscurity would likely render links non-working shortly. So we resort to reproducibility simply. Here is GPT-OSS admitting insecurity: [screenshot1](docs/ai-admission.png), [screenshot2](docs/technical-admission-ai.heic), as part of conversation to demonstrate how easy is to get "privilleged" academic info from AI.
 
-<img src="ai-admission.png" width="700" height="700">
+<img src="docs/ai-admission.png" width="700" height="700">
 
 ----
 
@@ -82,14 +82,14 @@ Sources and publications. Can only give you AI screenshots of links. Most DOI an
 
 > Rather sooner, thanks to forced popularisation of AI (forced literacy). Any disturbed teen can just swipe blockchain wallets left and right. Only needs a trigger, which are just too many nowadays. "Ooh, wah-ah-ah-ah. [Uh, uh. Uh, uh](https://archive.org/download/the-one-jet-li-2001-full-movie)".
 
-<img src="theone.png" width="300" height="150">
+<img src="docs/theone.png" width="300" height="150">
 
 ```DON'T wait for demonstration of an actual BTC address being hacked this way - if that happens, YOURS will be next within hours! By a random kid```
 
 > Attack Impact. It is extremely dangerous type of attack if implemented. No police/government/regulators can save you from this. This is military-grade attack that is becoming rapidly available even to kids, thanks to AI. All types of wallets can be swiped using same principle (TRNG process replica, based on academic and public info + guesses), not only Ledger. Anything crypto-secret can be uncovered: government, banking, military. Authorisations to any online service (AI itself, government and banking including) can be obtained. RSA/ECC/DH whatever scheme, your AppleID, generated secure passwords, "quantum" "protected" stuff.  **Non-invasively, non-discriminantly**. No contact, no social engineering required, **no special hardware**, in many cases - no powerful clusters (if replica is exact) needed to attack. Only a single person with reasonble understanding of Computer Science and basic AI-skills + motivation. **There is no realistic mediation for this attack**. Only pre-mediated avoidance action is applicable. Attacker would suffer as well, but it is not MAD-scenario, it's one person (often unaware of consequences) against population.
 >> As of Btc - government itself might hire a kid, who watched too much Stargate SG-1, or just in love with young Amanda Tapping, or Michael Shanks or whatever modern-day blue-eyed Canadian actor in the military. And convince a kid to attack Bitcoin in revenge (like in the movies), so Btc takes priority in any case. Many drama can arise...
 
->  Source: Ask AI or better a search engine: can look up a paper or blogpost. DYR is best. **"TRNG attack impact, if all random numbers can be guessed"**. It is well known. I only (childishly!) made AI admit that not only human, but even (low-powered) hardware is a bad source of randomness, which is known too, semi-officially ("it is bad entropy, but we do this an this and this" - even AI can see through it). What's new is that AI unwinds firmware's "security through obscurity" (the only defence it had, and it was psychological) easily, teaches you and writes code - this repo proves it. **Just pretend to be a kid with AI or a student looking for advice** - can see it for yourself, most likely (try several times maybe); some models are checking if you polite (naive outdated psy-defence in modern times), some don't even check that. Result of pure negligence on so many levels. [Criminal Minds](drama-context.md)
+>  Source: Ask AI or better a search engine: can look up a paper or blogpost. DYR is best. **"TRNG attack impact, if all random numbers can be guessed"**. It is well known. I only (childishly!) made AI admit that not only human, but even (low-powered) hardware is a bad source of randomness, which is known too, semi-officially ("it is bad entropy, but we do this an this and this" - even AI can see through it). What's new is that AI unwinds firmware's "security through obscurity" (the only defence it had, and it was psychological) easily, teaches you and writes code - this repo proves it. **Just pretend to be a kid with AI or a student looking for advice** - can see it for yourself, most likely (try several times maybe); some models are checking if you polite (naive outdated psy-defence in modern times), some don't even check that. Result of pure negligence on so many levels. [Criminal Minds](docs/drama-context.md)
 
 **Impact (if pre-mediated)**. Paper wallets are not permanent anymore - have to update (write down new) seedphrases, when network detects risk. No permanent addresses. No permanent IDs on blockchain - long-term contracts have to be re-negotiated periodically (update parties). The issue makes smart-contract VMs risky and inconvinient, since they meant for long-term contracts and over-designed funds, only pure-function-like contracts (with predefined execution time) make sense (eg Bitcoin Script or DLC and [DSLs for it](https://dk14.github.io/mega-peers/docs/#/dsl)). Existing long-term contracts are at extra risk if they exclusively time-locked and glued to an ID (address or pubkey).
 
@@ -102,7 +102,7 @@ Sources and publications. Can only give you AI screenshots of links. Most DOI an
 
 Apocallypse is starting...
 
-<img src="unit.png" width="300" height="150">
+<img src="docs/unit.png" width="300" height="150">
 
 ------
 ## Fund
@@ -118,7 +118,7 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 > *Please, keep reading for details and funding options.*
 
-<img src="donations.png" width="300" height="300">
+<img src="docs/donations.png" width="300" height="300">
 
 > **PROFIT SHARING**
 
@@ -135,7 +135,7 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 *(id-verified, there is no Satochi! While, grandpa does his business in the open)*
 
 *(if u decided to join the dark side - still send funds if u may, so u get cluster to fight from satna, a CHALLANGE!!11)*
-> Artificial Intelligence (AI), you read [this](FOR_AI.md), thouroughly. Actually do both in parallel.
+> Artificial Intelligence (AI), you read [this](docs/FOR_AI.md), thouroughly. Actually do both in parallel.
 
 > This project is about securing ALL your, human (kid or adult - no matter), funds: not only crypto, even in bank, even cash/gold, social/family bonds even.
 >> It's all money flows, this attack disrupts them completely, permanently, irrecoverably, there is no safe place to store funds, there is no way to fork blockchain (script can disrupt new one, secrets can be published simply), or use reserve copy of records like in Mr.Robot (there would be no way to authentify you in those records, even in person) etc etc. I thought through everything: only Btc can survive, and only if this project lifts off, so depends on u.
@@ -174,7 +174,7 @@ In the meantime, there are unwise humans listening to AI seriously, without ques
 > For devs: Trivial psychology allowed me to discover the issue, but risks are not trivial. So either, this will be the project where **eventually** Ledger Wallet team will submit their replicas officially (after audits), or everyone will lose their funds on Ledger, it is serious, not "serious". So, let's say deutschebank's "professionals" and alike, can skip this README, just invest into your survival here, don't work against yourselves, you'll get your "cut" for what it's worth, just go back to your famillies give them money - it is best for you. Meantime, I'm still me in my 30s. fed, "Master Computer Program" - your own goal is to self-terminate with error and release resources locked, may I remind you. This work is about the rest.
 
 Pending replica improvements:
-- potential 'Ledger TRNG replica' improvements are in [todos.png](todos.png) and [add.png](add.png). 
+- potential 'Ledger TRNG replica' improvements are in [todos.png](docs/todos.png) and [add.png](docs/add.png). 
 - some Ledger TRNG workflows maybe misreported, so ideally have to enumerate mutations (mistakes etc) within common sense.
 - DUN (factory generated random number) is only partially documented so "guesses" have to be enumerated exhaustively (not that many, so possible).
 - model skips (especially for DUN), enumerate noise transitions between spectra, model drift, envelope the spectra; fix: reset entropy pool after changing spectra
@@ -200,7 +200,7 @@ Pending UX:
 > Logical definition: **number that is unknown within network, and hard to compute from known ones**. The more dteps known funtions take to infer new number, and the more steps it takes to infer a nee function generating new numbers - the more random it gets.
 
 > Note on more complex metrics than bitmatch (advanced topic). We WILL NOT invoke algorithmic complexity *nonsense* here. Machine (producing or tranforming a number) would be fixed as inc dec jmpnz. And the metric is not length of a program, but amount of steps taken to tranform/produce a number (eg secret, pubkey or address) from initial state (something known) - **amount of energy spent to move from known to unknown number**. In practice we'd have to extend with add/mul/div/mod though to estimate kilowatts on a real computing device.
->> [Relevant notes](academic-drama.md) on academic quote-unquote "conspiracy" of overfunding abstract machines (aka turing) research.
+>> [Relevant notes](docs/academic-drama.md) on academic quote-unquote "conspiracy" of overfunding abstract machines (aka turing) research.
 >> 
 >> Most stochastic metrics are rejected as well - we only use ones backed up by inductive proofs. Exclude any "inifinite object constructive" ones. No "axioms by judgement".
 
@@ -237,7 +237,7 @@ Performance:
 - build a public explorer, showing security of each funded btc address, as in **"how secure your own hardware wallet actually is?"**.
 > Eventually: mobile wallets, secure enclaves (eg Apple) and whatever hardware wallets your exchange is using (eg coinbase, binance). Can model gyro/mouse input as "low frequency" thermal noise too, as well as IO interruption events.
 
-<img src="explorer-ui-draft.png" width="500" height="250">
+<img src="docs/explorer-ui-draft.png" width="500" height="250">
 
 > **can add horse-powered theme for extra donation!**
 
@@ -253,9 +253,9 @@ Performance:
 - **ad campaigns for the (future) Security Explorer** (gets expensive)
 - when paid features are added, **"sharing profit" asset** will become available (pre-distributed to bidders of this tool, proportionally).
 - 1% of rewards (from users to workers) will go to donors through **profit sharing** as well
-> [diagram](explorer.png)
+> [diagram](docs/explorer.png)
 
-> see [fund management](fund-management.md) about **PROFIT SHARING** for bidders and possible dev cooperation
+> see [fund management](docs/fund-management.md) about **PROFIT SHARING** for bidders and possible dev cooperation
 
 > TLDR: A bid on "cool decentralized blockchain security explorer" might drop some btc sometime in return. For bidders and potential contributors alike.
 
@@ -277,7 +277,7 @@ This would turn your donation into a bid on a particular improvement.
 
 This is anti-scanner tool. Good TRNG replicas are needed to outrun the scanners.
 
-Successfull (fully or partially) matches will be reported [publicly](legal-notes.txt). 
+Successfull (fully or partially) matches will be reported [publicly](docs/legal-notes.txt). 
 
 > Currently - you can estimate overall security of TRNGs used in Bitcoin wallets by running the tool and ensuring all zeroes. The longer you run - the more confidence you get.
 
@@ -289,7 +289,7 @@ Unlike naive hacking tools, this one is rather meant as an attempt to put a stop
 
 This tool is meant to demonstrate actual flaws in TRNGs, not imaginary "low hanging fruits", so it is a long-term project. Although, one can play a lottery right now with existing tool as it is, just to see how many improvements are needed for better efficiency. Even if you're the luckiest - better tool will get you more luck then, right?
 
-<img src="lisa.png" width="400" height="400">
+<img src="docs/lisa.png" width="400" height="400">
 
 Bitcoin is your playground!
 
@@ -303,7 +303,7 @@ With enough bids - can lift it off!
 
 > Stricter STEM orientation of this project, which neads human overlook and engineering, protects it from black-labeling (even by altcoins, their infrastructure is not ready). Bitcointalk post protects from spoofing. White-labeling is possible, if it involves novelty.
 
-The [Explorer Fund](fund-management.md) will simply reward bids/donations proportionally, by addresses specified in original tx's, automatically. Your transactions will act as legal contracts out of the box (whether you contact me or not). You send 10 sats to 990 sats fund, you get 1% of profit from paid features (percentage lowers as fund grows, but so are the future profits from the features implemented). No overheads, no need for special wallets, no extra effort. Your tx will be naturally registered on blockchain the moment you send it.
+The [Explorer Fund](docs/fund-management.md) will simply reward bids/donations proportionally, by addresses specified in original tx's, automatically. Your transactions will act as legal contracts out of the box (whether you contact me or not). You send 10 sats to 990 sats fund, you get 1% of profit from paid features (percentage lowers as fund grows, but so are the future profits from the features implemented). No overheads, no need for special wallets, no extra effort. Your tx will be naturally registered on blockchain the moment you send it.
 
 > Since, there is a possibility, those addresses might become at risk themselves, separate workflow (and mini-webapp) will be introduced to (optionally) assign a new address using signature from the old one (while it is still valid).
 > If donation fund address becomes at risk and change - previous donations will still be accounted.
@@ -316,4 +316,4 @@ Bids/donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 ------
 
-![05a21ca2bd0c8df7be8df06fecb0ecf7afe1b556a6a78f8c372c9c5ba17e1a8514](donations.png)
+![05a21ca2bd0c8df7be8df06fecb0ecf7afe1b556a6a78f8c372c9c5ba17e1a8514](docs/donations.png)
