@@ -18,7 +18,7 @@ const require = createRequire(import.meta.url);
 
 import {getHsmSeed} from './ledger-hsm-duk.js'
 
-import {AvalancheAnalog} from './avalanche.js'
+import {AvalancheDUNGenerator} from './avalanche.js'
 
 // ---------------------------------------------------------------
 // ledger-rng.js – faithful emulation (DUK + rolling XOR pool)
@@ -35,7 +35,7 @@ let pool = Buffer.alloc(33, 0);               // 33‑byte pool (264 bits)
 let poolLen = 0;
 
 
-const analogHsm = new AvalancheAnalog()
+const analogHsm = new AvalancheDUNGenerator()
 
 /* --------- 3️⃣  Initialize pool with the DUK --------- */
 function rngBootInit() {
