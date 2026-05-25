@@ -39,9 +39,9 @@ const analogHsm = new AvalancheAnalog()
 
 /* --------- 3️⃣  Initialize pool with the DUK --------- */
 function rngBootInit() {
-  const DUK = getHsmSeed().duk.toString("hex").padStart(3, '0')
+  const DUK = getHsmSeed().duk
   //const DUK = analogHsm.next()
-  console.log("DUK = " + DUK)
+  console.log("DUK = " + DUK.toString("hex").padStart(3, '0'))
   for (let i = 0; i < DUK.length; i++) {
     pool[i] ^= DUK[i];
   }
