@@ -18,6 +18,8 @@ const require = createRequire(import.meta.url);
 
 import {getHsmSeed} from './ledger-hsm-duk.js'
 
+import {AvalancheAnalog} from './avalanche.js'
+
 // ---------------------------------------------------------------
 // ledger-rng.js – faithful emulation (DUK + rolling XOR pool)
 // ---------------------------------------------------------------
@@ -32,9 +34,14 @@ let prevSample = Buffer.alloc(2);            // rolling ADC value
 let pool = Buffer.alloc(33, 0);               // 33‑byte pool (264 bits)
 let poolLen = 0;
 
-/* --------- 3️⃣  Initialize pool with the DUK (runs once) --------- */
+
+const analogHsm = new AvalancheAnalog()
+
+/* --------- 3️⃣  Initialize pool with the DUK --------- */
 function rngBootInit() {
   const DUK = getHsmSeed().duk
+  //const DUK = analogHsm.next()
+  console.log("DUK = " + DUK)
   for (let i = 0; i < DUK.length; i++) {
     pool[i] ^= DUK[i];
   }
@@ -54,7 +61,7 @@ export async function getAdcReading2() {
 }
 
 
-const DUK_RESET_CYCLE = 2000000
+const DUK_RESET_CYCLE = 20
 
 let dukCycleCounter = 0
 
