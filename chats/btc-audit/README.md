@@ -12,6 +12,7 @@ Signature: IHdq/tIQtQeimfF92NOyOOdz2/iq2YR6qjD8vLgHWK3GGGETKX76L0e4Tvgtb1fOHrbLi
 > I don't trust SHA-256, so signing low-entropy message (even hashed) is not that safe. (even ONE message, even if RNG does NOT have purposedly introduced bug for diffferential cryptoanalysis, still unsafe - solver can be used). But bitcointalk requested it. So be it! (attack described below is more powerful than solver anyways).
 
 > The official name of the project will be something like "Entropy Explorer" IF security situation improves (and back to Doomsday when it's worse again). So far, I don't see anyone taking it seriously - this explorer should've been public a year ago, no one even pointed out the issue so far, except me.
+>> Would be fun to see all immature psychological manipulations on bitcointalk etc, until "the event" actually happens. I'm only giving you a choice here - inaction (or covert development) means you work towards black-hat. So enjoy walls of texts, I guess. If hard to read - AI can parse them for you or something.
 
 
 ------
@@ -59,7 +60,7 @@ TRNG waveform (12‑bit ADC, 40960 samples)
 > note: jitter-derived "random" can be modeled as a deterministic function of thermal noise.
 
 
-Sources and publications. Can only give you AI screenshots of links. Most DOI and presentations are removed (police removes for security reasons, sometimes AI hallucinates too - "security through obscurity", now working against you): [erased link1](docs/paper1.png), [erased link2](docs/paper2.png). You can send ones if you find ones, but automated security through obscurity would likely render links non-working shortly. So we resort to reproducibility simply. Here is GPT-OSS admitting insecurity: [screenshot1](docs/ai-admission.png), [screenshot2](docs/technical-admission-ai.heic), as part of conversation to demonstrate how easy is to get "privilleged" academic info from AI.
+Sources and publications. Can only give you AI screenshots of links. Most DOI and presentations are removed (police removes for security reasons, sometimes AI hallucinates too - "security through obscurity", now working against you): [erased link1](docs/paper1.png), [erased link2](docs/paper2.png). You can send ones if you find ones, but automated security through obscurity would likely render links non-working shortly. So we resort to reproducibility simply. Here is GPT-OSS admitting insecurity: [screenshot1](docs/ai-admission.png), [screenshot2](docs/technical-admission-ai.heic), [3](docs/admission3.png), [4](docs/admission4.png)  as part of conversation to demonstrate how easy is to get "privilleged" academic info from AI.
 
 <img src="docs/ai-admission.png" width="700" height="700">
 
@@ -72,6 +73,7 @@ Sources and publications. Can only give you AI screenshots of links. Most DOI an
 
 >> *For kids: you can draw a finite grid with discrete time on X (length of discrete steps in a second as a start; nuance: only extend if lcm of freqs from the freq band u can fit distinguishably is more than a second) and amplitude on Y. And then can try to fit many square waves (by filling grid cells), saw waves, sinusoids. Mix different frequencies of same amplitude and wave-type together into it. How many simple patterns/freqs can you tell apart in a result? Can play with friend even - you mix regular waves into noise, friend guesses which ones were in; It's better than AI. Formally - period resolution step cannot be longer than half of minimum discretisation period; in reality, amplitude resolution matters (higher needs more squares to be distinguishable from lower). Different approximation models (ways of fitting waves into a grid) etc. And it's more fun to imagine that urself, rather than ask AI. And even better to figure urself from definitions, rather than rely on my description! And even cooler to model it urself in JS - discretisize, enumerate them all and compare!*
 >>> To cover LCMs (common repeptition period of many cycles together) - higher lcm's require more energy (denser spectra amplified). Running power-on time of device can be guessed (waves start from zero on power-on, since otherwise it's equillibrium), so even high-quality ADC with astronomical lcm won't help.
+>>> LSFR (rolling register) used here is bad model for Avalanche noise (for DUN), since it enumerates over all states of 128bit register. It does not discount ADC filtering. LSFR can be used as PRNG (pseudo-random) and give you some security proportional to time/energy spent, but it is not a good model for twitching diode+ADC pipe.
 -----
 **Attack pre-mediation**. Early warning system, "Explorer Network" p2p cluster has to be built to outrun scanners (scanner-tools, that AI suggests to write so easily), see "public service" section: decentralized PoW-like network will warn you ahead of possible attack. 
 
