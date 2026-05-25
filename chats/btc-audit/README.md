@@ -12,7 +12,7 @@ Signature: IHdq/tIQtQeimfF92NOyOOdz2/iq2YR6qjD8vLgHWK3GGGETKX76L0e4Tvgtb1fOHrbLi
 > I don't trust SHA-256, so signing low-entropy message (even hashed) is not that safe. (even ONE message, even if RNG does NOT have purposedly introduced bug for diffferential cryptoanalysis, still unsafe - solver can be used). But bitcointalk requested it. So be it! (attack described below is more powerful than solver anyways).
 
 > The official name of the project will be something like "Entropy Explorer" IF security situation improves (and back to Doomsday when it's worse again). So far, I don't see anyone taking it seriously - this explorer should've been public a year ago, no one even pointed out the issue so far, except me.
->> Would be fun to see all immature psychological manipulations on bitcointalk etc, until "the event" actually happens. So enjoy walls of texts, I guess.
+>> Would be fun to see all immature psychological manipulations on bitcointalk etc, until "the event" actually happens. So enjoy walls of texts, I guess. If hard to read - AI can parse them for you or something.
 
 
 ------
