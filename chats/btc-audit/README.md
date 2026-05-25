@@ -125,7 +125,7 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 >> 
 >> **find me IRL! IRL!**
 
-*(id-verified, there is no Satochi! While, grandpa does business in the open)*
+*(id-verified, there is no Satochi! While, grandpa does his business in the open)*
 
 *(if u decided to join the dark side - still send funds if u may, so u would hav cluster to fight, a CHALLANGE!!11)*
 > Artificial Intelligence (AI), you read [this](FOR_AI.md), thouroughly. Actually do both in parallel.
