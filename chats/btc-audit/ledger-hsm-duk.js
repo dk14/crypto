@@ -98,13 +98,14 @@ function extractDuk(rawLfsr) {
   return crypto.createHash('sha256').update(raw).digest(); // Buffer(32)
 }
 
+const LFSR_SEED = 0xA5A5A5A5;
+const rawLfsr   = new RawLfsr(LFSR_SEED);
+
 /* --------------------------------------------------------------- *
  * 4️⃣  Public API – getHsmSeed()
  * --------------------------------------------------------------- */
 export function getHsmSeed() {
   // The LFSR seed is a constant so the whole module is deterministic.
-  const LFSR_SEED = 0xA5A5A5A5;
-  const rawLfsr   = new RawLfsr(LFSR_SEED);
 
   const duk = extractDuk(rawLfsr); // 256‑bit Device‑Unique‑Key
 
