@@ -64,7 +64,8 @@ Code structure.
 - `ledger-rng.js` models Ledger pipeline, it relies on thermal.js and avalanche.js/ledger-hsm-duk.js
 - `enumerate.js` audits addressess (I verified for security - 0 hits so far, as it should)
 - `thermal.js` greedily enumerates spectras of white noise with bias towards amplitude variations and thermal "envelope"
-- `avalance,js` greedily enumerates spectras of white noise, with bias towards phase variations and avalance noise
+- `avalance.js` greedily enumerates spectras of white noise, with bias towards phase variations and avalance noise
+- `visualize.js` generates `noise.html` to visualize spectra's produced by `thermal.js`
 
 Sources and publications. 
 
