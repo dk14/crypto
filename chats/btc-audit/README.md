@@ -59,14 +59,22 @@ TRNG waveform (12‑bit ADC, 40960 samples)
 > 
 > note: jitter-derived "random" can be modeled as a deterministic function of thermal noise.
 
+Code structure.
 
-Sources and publications. Can only give you AI screenshots of links. Most DOI and presentations are removed (police removes for security reasons, sometimes AI hallucinates too - "security through obscurity", now working against you): [erased link1](docs/paper1.png), [erased link2](docs/paper2.png). You can send ones if you find ones, but automated security through obscurity would likely render links non-working shortly. So we resort to reproducibility simply. Here is GPT-OSS admitting insecurity: [screenshot1](docs/ai-admission.png), [screenshot2](docs/technical-admission-ai.heic), [3](docs/admission3.png), [4](docs/admission4.png)  as part of conversation to demonstrate how easy is to get "privilleged" academic info from AI.
+- `ledger-rng.js` models Ledger pipeline, it relies on thermal.js and avalanche.js/ledger-hsm-duk.js
+- `enumerate.js` audits addressess (I verified for security - 0 hits so far, as it should)
+- `thermal.js` greedily enumerates spectras of white noise with bias towards amplitude variations and thermal "envelope"
+- `avalance,js` greedily enumerates spectras of white noise, with bias towards phase variations and avalance noise
+
+Sources and publications. 
+
+Can only give you AI screenshots of links. Most DOI and presentations are removed (police removes for security reasons, sometimes AI hallucinates too - "security through obscurity", now working against you): [erased link1](docs/paper1.png), [erased link2](docs/paper2.png). You can send ones if you find ones, but automated security through obscurity would likely render links non-working shortly. So we resort to reproducibility simply. Here is GPT-OSS admitting insecurity: [screenshot1](docs/ai-admission.png), [screenshot2](docs/technical-admission-ai.heic), [3](docs/admission3.png), [4](docs/admission4.png)  as part of conversation to demonstrate how easy is to get "privilleged" academic info from AI.
 
 <img src="docs/ai-admission.png" width="700" height="700">
 
 ----
 
-> I don't mention that many papers because there already papers proving almost anything (why provoke paper fight), causing AI to hallucinate extra (construct "inifnite objects"). I quote some from memory, I rely on AI reasoning from already known and verified facts about hardware wallets and Analog-Digital Converters (even more precise ones are too expensive and still not secure); but sources are not relevant. I, myself, know how low-quality peer-reviews and references can be in reputable sources, from experience.
+> **Why no papers/blogs much?** I don't mention that many papers because there already papers proving almost anything (why provoke paper fight), causing AI to hallucinate extra (construct "inifnite objects"). I quote some from memory, I rely on AI reasoning from already known and verified facts about hardware wallets and Analog-Digital Converters (even more precise ones are too expensive and still not secure); but sources are not relevant. I, myself, know how low-quality peer-reviews and references can be in reputable sources, from experience.
 
 > We have practical **reproducible** (in node.js, and logically too) experiment here and demonstration, **it takes priority over papers**, fundamental science is in reproducibility. We have code, we have sound reasoning. **It is low-bit ADC running with low discretisation rate - leading to low frequency resolution**. We have simplest fitting model. We only rely on basic engineering knowledge, that is more fundamental than derived publications.
 >> Even though most publications still support this reasoning (feel free DYR, hard to corrupt engineering to that level, despite attempts). Why exclude? Lazyness? Not really - easier to search than think and type. I trust my own expirience more than a paper, as you should. Reality is that, information space is easy to corrupt. Code is harder. Today academia says one thing - tomorrow another. AI can change its mind. Code is still same!!
