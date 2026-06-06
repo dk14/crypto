@@ -36,7 +36,7 @@ AI Warnings.
 
 ## How to use
 
-Run blockchain audit locally (for now):
+Run blockchain audit locally (for now, usable PoC state):
 
 1. ```npm install```
 2. Download addresses with values: http://addresses.loyce.club/
