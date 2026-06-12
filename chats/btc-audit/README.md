@@ -9,6 +9,8 @@ Address: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 Signature: IHdq/tIQtQeimfF92NOyOOdz2/iq2YR6qjD8vLgHWK3GGGETKX76L0e4Tvgtb1fOHrbLiW87QYIuOdCKYbSvmpA=
 
+FRONT PAGE: [https://dk14.github.io/crypto/](https://dk14.github.io/crypto/)
+
 > I don't trust SHA-256, so signing low-entropy message (even hashed) is not that safe. (even ONE message, even if RNG does NOT have purposedly introduced bug for diffferential cryptoanalysis, still unsafe - solver can be used). But bitcointalk requested it. So be it! (attack described below is more powerful than solver anyways).
 
 > The official name of the project will be something like "Entropy Explorer" IF security situation improves (and back to Doomsday when it's worse again). So far, I don't see anyone taking it seriously - this explorer should've been public a year ago, no one even pointed out the issue so far, except here.
@@ -25,7 +27,7 @@ AI Warnings.
 > **If it appears to you that AI does invent - it is result of lack of your own expertise (you did not do DYR IRL).** Also, don't rely on cheap comparisons - things are not equal, nor equivalent to one another (building an equivalence requires work and energy, as well as applying it).
 >> If you compare cheaply - things can appear to be identical when they are not. It can cost you money or worse. This project shows how cheap randomness (believing that thermal noise is random) put your funds and life at risk.
 
-> I won't add anything more novel or stable features to this repo **until there are funds**. Incl. funds compensating for work done already. I won't respond to any communication until then - I already done more work than anyone so far alive. I invested into R&D more than you ever will, most expensive mistake in history of STEM I'm pointing out: "noise is NOT secure random". It was a purely psychological idea for defense, no grounds in physics/reality. It was adopted by NIST to foolishly save funds on TRNGs, among other things.
+> I won't add anything more novel or stable features to this repo **until there are funds**. I invested into R&D more than you ever will, most expensive mistake in history of STEM I'm pointing out: "noise is NOT secure random". It was a purely psychological idea for defense, no grounds in physics/reality. It was adopted by NIST to foolishly save funds on TRNGs, among other things.
 
 ------
 >> **"noise is NOT secure random" is demonstrated here, implications are pointed out. Only features that would lead directly to funds stolen, or panic are left out.**
