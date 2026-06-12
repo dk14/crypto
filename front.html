@@ -227,6 +227,135 @@ footer a:hover{color:var(--c-accent);}
     margin:auto;               /* keep it centered inside the column */
 }
 
+/* -------------------------------------------------------------
+   HORIZONTAL NAVIGATION – works on all breakpoints
+   ------------------------------------------------------------- */
+
+/* 1️⃣ Force the <ul> to be a single‑row flex container */
+.navbar .navbar-nav{
+  display:flex;           /* already a flex, but we make sure */
+  flex-direction:row;     /* horizontal */
+  flex-wrap:nowrap;       /* never wrap to a new line */
+  gap:0.9rem;            /* equal spacing (replaces margin‑left)   */
+  align-items:center;    /* vertical centering of each link */
+}
+
+/* 2️⃣ Keep the Donate button the same height as the links */
+.navbar .btn{
+  padding:.45rem .9rem;
+}
+
+/* 3️⃣ When the navbar collapses (mobile) we still want a
+      horizontal scroll if the items exceed the screen width */
+@media (max-width:992px){
+  .navbar .navbar-collapse{
+    overflow-x:auto;       /* side‑scroll if needed */
+    -webkit-overflow-scrolling:touch;
+  }
+}
+
+/* 4️⃣ Optional – give the active / hover underline that you already have */
+.navbar .nav-link::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:0;
+  height:2px;
+  background:var(--accent);
+  opacity:0;
+  transform:scaleX(0);
+  transition:opacity .2s ease, transform .25s ease;
+}
+.navbar .nav-link:hover::after,
+.navbar .nav-link.active::after{
+  opacity:1;
+  transform:scaleX(1);
+}
+
+.navbar .navbar-nav,
+.navbar .navbar-nav .nav-item{
+    list-style:none;          /* no bullets or numbers */
+    margin:0;                 /* reset extra margins */
+    padding:0;                /* reset extra padding */
+}
+
+/* -------------------------------------------------------------
+   1️⃣  Remove default list markers (dots / numbers)
+   ------------------------------------------------------------- */
+.navbar .navbar-nav,
+.navbar .navbar-nav .nav-item{
+    list-style:none;      /* no bullets or numbers */
+    margin:0;
+    padding:0;
+}
+
+/* -------------------------------------------------------------
+   2️⃣  Base (mobile‑first) – vertical stack (Bootstrap default)
+   ------------------------------------------------------------- */
+.navbar .navbar-nav{
+    display:flex;
+    flex-direction:column;        /* stack vertically on small screens */
+    gap:0.5rem;                   /* a little breathing space */
+    align-items:flex-start;       /* left‑aligned inside the collapse */
+}
+
+/* Donate button should fill the width on mobile for a cleaner look */
+@media (max-width:991px){
+    .navbar .nav-item .btn{
+        width:100%;
+        text-align:center;
+    }
+}
+
+/* -------------------------------------------------------------
+   3️⃣  Desktop / tablet (≥ 992 px) – force a single horizontal row
+   ------------------------------------------------------------- */
+@media (min-width:992px){
+    /* Bring the whole list to the right side of the bar */
+    .navbar .navbar-nav{
+        flex-direction:row;          /* horizontal */
+        flex-wrap:nowrap;            /* never wrap */
+        gap:0.9rem;                  /* spacing between items */
+        align-items:center;          /* vertical centering */
+        margin-left:auto;            /* push to the right (ms-auto) */
+    }
+
+    /* Keep the Donate button the same height as the plain links */
+    .navbar .btn{
+        padding:.45rem .9rem;
+        width:auto;                 /* no full‑width on desktop */
+    }
+
+    /* When the navbar is expanded on large screens there is no need for scroll */
+    .navbar .navbar-collapse{
+        overflow-x:visible;
+    }
+}
+
+/* -------------------------------------------------------------
+   4️⃣  Optional: underline on hover / active (kept from the previous
+       version – you can delete if you don’t need it)
+   ------------------------------------------------------------- */
+.navbar .nav-link{
+    position:relative;
+}
+.navbar .nav-link::after{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:0;
+    height:2px;
+    background:var(--accent);
+    opacity:0;
+    transform:scaleX(0);
+    transition:opacity .2s ease, transform .25s ease;
+}
+.navbar .nav-link:hover::after,
+.navbar .nav-link.active::after{
+    opacity:1;
+    transform:scaleX(1);
+}
+
+
+
 </style>
 
 </head>
@@ -237,10 +366,13 @@ footer a:hover{color:var(--c-accent);}
 <nav class="navbar navbar-expand-lg">
   <div class="container">
     <a class="navbar-brand" href="#">Doomsday Explorer</a>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false">
+            data-bs-target="#navMenu" aria-controls="navMenu"
+            aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navMenu">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
@@ -248,12 +380,15 @@ footer a:hover{color:var(--c-accent);}
         <li class="nav-item"><a class="nav-link" href="#partners">Partners</a></li>
         <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-        <li class="nav-item"><a class="nav-link btn btn-sm ms-2"
-                                 href="https://dk14.github.io/crypto/">Donate</a></li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-sm ms-2"
+             href="https://dk14.github.io/crypto/">Donate</a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
+
 
 <!-- ==================== HERO ==================== -->
 <section class="hero">
