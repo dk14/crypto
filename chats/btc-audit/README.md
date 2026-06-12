@@ -11,12 +11,12 @@ Signature: IHdq/tIQtQeimfF92NOyOOdz2/iq2YR6qjD8vLgHWK3GGGETKX76L0e4Tvgtb1fOHrbLi
 
 > I don't trust SHA-256, so signing low-entropy message (even hashed) is not that safe. (even ONE message, even if RNG does NOT have purposedly introduced bug for diffferential cryptoanalysis, still unsafe - solver can be used). But bitcointalk requested it. So be it! (attack described below is more powerful than solver anyways).
 
-> The official name of the project will be something like "Entropy Explorer" IF security situation improves (and back to Doomsday when it's worse again). So far, I don't see anyone taking it seriously - this explorer should've been public a year ago, no one even pointed out the issue so far, except me.
+> The official name of the project will be something like "Entropy Explorer" IF security situation improves (and back to Doomsday when it's worse again). So far, I don't see anyone taking it seriously - this explorer should've been public a year ago, no one even pointed out the issue so far, except here.
 >> Would be fun to see all immature psychological manipulations on bitcointalk etc, until "the event" actually happens. I'm only giving you a choice here - inaction (or covert development) means you work towards black-hat. So enjoy walls of texts, I guess. If hard to read - AI can parse them for you or something.
 
 
 ------
-Warnings.
+AI Warnings.
 
 > **Don't waste ur time on verifying who's AI, who's not, u'll go crazy**. Novel project, and you need it - that's how you tell. That's it. Don't overthink it! Or u'll lose real funds simply.
 
@@ -36,7 +36,7 @@ Warnings.
 
 ## How to use
 
-Run blockchain audit locally (for now):
+Run blockchain audit locally (for now, usable PoC state):
 
 1. ```npm install```
 2. Download addresses with values: http://addresses.loyce.club/
@@ -59,17 +59,26 @@ TRNG waveform (12‑bit ADC, 40960 samples)
 > 
 > note: jitter-derived "random" can be modeled as a deterministic function of thermal noise.
 
+Code structure.
 
-Sources and publications. Can only give you AI screenshots of links. Most DOI and presentations are removed (police removes for security reasons, sometimes AI hallucinates too - "security through obscurity", now working against you): [erased link1](docs/paper1.png), [erased link2](docs/paper2.png). You can send ones if you find ones, but automated security through obscurity would likely render links non-working shortly. So we resort to reproducibility simply. Here is GPT-OSS admitting insecurity: [screenshot1](docs/ai-admission.png), [screenshot2](docs/technical-admission-ai.heic), [3](docs/admission3.png), [4](docs/admission4.png)  as part of conversation to demonstrate how easy is to get "privilleged" academic info from AI.
+- `ledger-rng.js` models Ledger pipeline, it relies on `thermal.js` and `avalanche.js`/`ledger-hsm-duk.js`
+- `enumerate.js` audits addressess (I verified for security - 0 hits so far, as it should)
+- `thermal.js` greedily enumerates spectras of white noise with bias towards amplitude variations and thermal "envelope"
+- `avalance.js` greedily enumerates spectras of white noise, with bias towards phase variations and avalance noise
+- `visualize.js` generates `noise.html` to visualize spectra's produced by `thermal.js`
+
+Sources and publications. 
+
+Can only give you AI screenshots of links. Most DOI and presentations are removed (police removes for security reasons, sometimes AI hallucinates too - "security through obscurity", now working against you): [erased link1](docs/paper1.png), [erased link2](docs/paper2.png). You can send ones if you find ones, but automated security through obscurity would likely render links non-working shortly. So we resort to reproducibility simply. Here is GPT-OSS admitting insecurity: [screenshot1](docs/ai-admission.png), [screenshot2](docs/technical-admission-ai.heic), [3](docs/admission3.png), [4](docs/admission4.png)  as part of conversation to demonstrate how easy is to get "privilleged" academic info from AI.
 
 <img src="docs/ai-admission.png" width="700" height="700">
 
 ----
 
-> I don't mention that many papers because there already papers proving almost anything (why provoke paper fight), causing AI to hallucinate extra (construct "inifnite objects"). I quote some from memory, I rely on AI reasoning from already known and verified facts about hardware wallets and Analog-Digital Converters (even more precise ones are too expensive and still not secure); but sources are not relevant. I, myself, know how low-quality peer-reviews and references can be in reputable sources, from experience.
+> **Why no papers/blogs much?** I don't mention that many papers because there already papers proving almost anything (why provoke paper fight), causing AI to hallucinate extra (construct "inifnite objects"). I quote some from memory, I rely on AI reasoning from already known and verified facts about hardware wallets and Analog-Digital Converters (even more precise ones are too expensive and still not secure); but sources are not relevant. I, myself, know how low-quality peer-reviews and references can be in reputable sources, from experience.
 
-> We have practical **reproducible** (in node.js, and logically too) experiment here and demonstration, **it takes priority over papers**, fundamental science is in reproducibility. We have code, we have sound reasoning. **It is low-bit ADC running with low discretisation rate - leading to low frequency resolution**. We have simplest fitting model. We only rely on basic engineering knowledge, that is more fundamental than derived publications.
->> Even though most publications still support this reasoning (feel free DYR, hard to corrupt engineering to that level, despite attempts). Why exclude? Lazyness? Not really - easier to search than think and type. I trust my own expirience more than a paper, as you should. Reality is that, information space is easy to corrupt. Code is harder. Today academia says one thing - tomorrow another. AI can change its mind. Code is still same!!
+> We have practical **reproducible** (in node.js, and logically too) experiment here and demonstration, **it takes priority over papers**, fundamental science is in reproducibility. We have code, we have sound reasoning. **It is low-bit ADC running with low discretisation rate - leading to low frequency resolution**. We have simplest fitting model. We only rely on basic engineering knowledge, that is more fundamental than derived publications. *And I want you to do DYR and think critically - published paper informs you, but it does not teach you, does not give you investment decision - u hav to look to reality, have to work for ur decision, so some facts are obfuscated here (as well as papers u might find) on purpose (incl. security purposes), informal reasoning is mixed with formal, but still separable!*.
+>> Even though most publications still support the reasoning outlined here (feel free DYR, hard to corrupt engineering to that level, despite attempts). Why exclude? Lazyness? Not really - easier to search than think and type. I trust my own expirience more than a paper, as you should. Reality is that, information space is easy to corrupt. Code is harder. **Today academia says one thing - tomorrow another. AI can change its mind. Code is still same!!**
 
 >> *For kids: you can draw a finite grid with discrete time on X (length of discrete steps in a second as a start; nuance: only extend if lcm of freqs from the freq band u can fit distinguishably is more than a second) and amplitude on Y. And then can try to fit many square waves (by filling grid cells), saw waves, sinusoids. Mix different frequencies of same amplitude and wave-type together into it. How many simple patterns/freqs can you tell apart in a result? Can play with friend even - you mix regular waves into noise, friend guesses which ones were in; It's better than AI. Formally - period resolution step cannot be longer than half of minimum discretisation period; in reality, amplitude resolution matters (higher needs more squares to be distinguishable from lower). Different approximation models (ways of fitting waves into a grid) etc. And it's more fun to imagine that urself, rather than ask AI. And even better to figure urself from definitions, rather than rely on my description! And even cooler to model it urself in JS - discretisize, enumerate them all and compare!*
 >>> To cover LCMs (common repeptition period of many cycles together) - higher lcm's require more energy (denser spectra amplified). Running power-on time of device can be guessed (waves start from zero on power-on, since otherwise it's equillibrium), so even high-quality ADC with astronomical lcm won't help.
@@ -125,6 +134,10 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 > **PROFIT SHARING**
 
 > *"""TLDR: any amount gets you in! the more u send - the bigger the cut!"""*
+
+> [js file referense for profit sharing](profit-sharing.js)
+
+> Investment topic: https://bitcointalk.org/index.php?topic=5583352
 ----
 
 > Forum: https://bitcointalk.org/index.php?topic=5582621
