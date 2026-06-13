@@ -9,9 +9,9 @@ Address: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 Signature: IHdq/tIQtQeimfF92NOyOOdz2/iq2YR6qjD8vLgHWK3GGGETKX76L0e4Tvgtb1fOHrbLiW87QYIuOdCKYbSvmpA=
 
-FRONT PAGE: [https://dk14.github.io/crypto/](https://dk14.github.io/crypto/front.html)
+FRONT PAGE: [https://dk14.github.io/crypto/front.html](https://dk14.github.io/crypto/front.html)
 
-BUSINESS FRONT: [https://dk14.github.io/crypto/front.html](https://dk14.github.io/crypto/)
+BUSINESS FRONT: [https://dk14.github.io/crypto](https://dk14.github.io/crypto/)
 
 > I don't trust SHA-256, so signing low-entropy message (even hashed) is not that safe. (even ONE message, even if RNG does NOT have purposedly introduced bug for diffferential cryptoanalysis, still unsafe - solver can be used). But bitcointalk requested it. So be it! (attack described below is more powerful than solver anyways).
 
