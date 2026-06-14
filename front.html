@@ -365,7 +365,7 @@ It meant to outrun hackers and report you keys that are dangerously close to you
 
 `seeds, blockchain_id, replica_id, worker_id, worker_id_pow, reward_address, version, signature`.
  
- worker id is YOUR pubkey, pow is over your pubkey simply: `<pub-key>+<magicNo>` - magicNo is PoW (SHA256),
+ worker id is YOUR pubkey, pow is over your pubkey simply: `pubkey+magicNo` - magicNo is PoW (SHA256),
  replica_id is arbitrary (per worker_id), blockchain_id is 0 for BTC, version is 0. JSON. Signature is over minified JSON with signature field absent
  
  IPFS --metadata "project:ExplorerBTCAudit"
