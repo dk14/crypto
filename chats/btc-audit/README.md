@@ -71,7 +71,7 @@ Code structure.
 - `avalance.js` greedily enumerates spectras of white noise, with bias towards phase variations and avalance noise
 - `visualize.js` generates `noise.html` to visualize spectra's produced by `thermal.js`
 
-## "Replay noise" attack, and it's mediation
+## "Replay noise" attack, mediation and impact analysis
 
 Sources and publications. 
 
