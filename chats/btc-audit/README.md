@@ -71,6 +71,8 @@ Code structure.
 - `avalance.js` greedily enumerates spectras of white noise, with bias towards phase variations and avalance noise
 - `visualize.js` generates `noise.html` to visualize spectra's produced by `thermal.js`
 
+## "Replay noise" attack, and it's mediation
+
 Sources and publications. 
 
 Can only give you AI screenshots of links. Most DOI and presentations are removed (police removes for security reasons, sometimes AI hallucinates too - "security through obscurity", now working against you): [erased link1](docs/paper1.png), [erased link2](docs/paper2.png). You can send ones if you find ones, but automated security through obscurity would likely render links non-working shortly. So we resort to reproducibility simply. Here is GPT-OSS admitting insecurity: [screenshot1](docs/ai-admission.png), [screenshot2](docs/technical-admission-ai.heic), [3](docs/admission3.png), [4](docs/admission4.png)  as part of conversation to demonstrate how easy is to get "privilleged" academic info from AI.
