@@ -95,7 +95,7 @@ Can only give you AI screenshots of links. Most DOI and presentations are remove
 > Built it open-source (here), and independently from government, corporate, academia (and whatever claiming to be independent organisations and security projects). It can only be done openly. *Why here - coz the topic is well-covered here, and I WON'T be like Cardano, developing nothing for a decade, promoting Sci-FI, publishing obvious. I only write a lot of text coz no one pays ~~to shut up~~ me to develop solution so far*.
 
 
-**Without "Explorer Network" (and good TRNG replicas) - you will start losing YOUR FUNDS unrecoverably sooner or later.** 
+**WITHOUT "Explorer Network" (and good TRNG replicas) - you will start losing YOUR FUNDS unrecoverably sooner or later.** 
 
 > Rather sooner, thanks to forced popularisation of AI (forced literacy). Any disturbed teen can just swipe blockchain wallets left and right. Only needs a trigger, which are just too many nowadays. "Ooh, wah-ah-ah-ah. [Uh, uh. Uh, uh](https://archive.org/download/the-one-jet-li-2001-full-movie)".
 
