@@ -71,6 +71,8 @@ Code structure.
 - `avalance.js` greedily enumerates spectras of white noise, with bias towards phase variations and avalance noise
 - `visualize.js` generates `noise.html` to visualize spectra's produced by `thermal.js`
 
+## "Replay noise" attack, mediation and impact analysis
+
 Sources and publications. 
 
 Can only give you AI screenshots of links. Most DOI and presentations are removed (police removes for security reasons, sometimes AI hallucinates too - "security through obscurity", now working against you): [erased link1](docs/paper1.png), [erased link2](docs/paper2.png). You can send ones if you find ones, but automated security through obscurity would likely render links non-working shortly. So we resort to reproducibility simply. Here is GPT-OSS admitting insecurity: [screenshot1](docs/ai-admission.png), [screenshot2](docs/technical-admission-ai.heic), [3](docs/admission3.png), [4](docs/admission4.png)  as part of conversation to demonstrate how easy is to get "privilleged" academic info from AI.
@@ -93,13 +95,13 @@ Can only give you AI screenshots of links. Most DOI and presentations are remove
 > Built it open-source (here), and independently from government, corporate, academia (and whatever claiming to be independent organisations and security projects). It can only be done openly. *Why here - coz the topic is well-covered here, and I WON'T be like Cardano, developing nothing for a decade, promoting Sci-FI, publishing obvious. I only write a lot of text coz no one pays ~~to shut up~~ me to develop solution so far*.
 
 
-**Without "Explorer Network" (and good TRNG replicas) - you will start losing YOUR FUNDS unrecoverably sooner or later.** 
+**WITHOUT "Explorer Network" (and good TRNG replicas) - you will start losing YOUR FUNDS unrecoverably sooner or later.** 
 
 > Rather sooner, thanks to forced popularisation of AI (forced literacy). Any disturbed teen can just swipe blockchain wallets left and right. Only needs a trigger, which are just too many nowadays. "Ooh, wah-ah-ah-ah. [Uh, uh. Uh, uh](https://archive.org/download/the-one-jet-li-2001-full-movie)".
 
 <img src="docs/theone.png" width="300" height="150">
 
-```DON'T wait for demonstration of an actual BTC address being hacked this way - if that happens, YOURS will be next within hours! By a random kid```
+```DON'T wait for demonstration of an actual BTC address being hacked this way - if that happens, YOURS will be next within hours! By a RANDOM KID```
 
 > Attack Impact. It is extremely dangerous type of attack if implemented. No police/government/regulators can save you from this. This is military-grade attack that is becoming rapidly available even to kids, thanks to AI. All types of wallets can be swiped using same principle (TRNG process replica, based on academic and public info + guesses), not only Ledger. Anything crypto-secret can be uncovered: government, banking, military. Authorisations to any online service (AI itself, government and banking including) can be obtained. RSA/ECC/DH whatever scheme, your AppleID, generated secure passwords, "quantum" "protected" stuff.  **Non-invasively, non-discriminantly**. No contact, no social engineering required, **no special hardware**, in many cases - no powerful clusters (if replica is exact) needed to attack. Only a single person with reasonble understanding of Computer Science and basic AI-skills + motivation. **There is no realistic mediation for this attack**. Only pre-mediated avoidance action is applicable. Attacker would suffer as well, but it is not MAD-scenario, it's one person (often unaware of consequences) against population.
 >> As of Btc - government itself might hire a kid, who watched too much Stargate SG-1, or just in love with young Amanda Tapping, or Michael Shanks or whatever modern-day blue-eyed Canadian actor in the military. And convince a kid to attack Bitcoin in revenge (like in the movies), so Btc takes priority in any case. Many drama can arise...
