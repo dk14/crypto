@@ -112,7 +112,7 @@ svg{fill:var(--c-accent);}
   font-size:1.1rem;
   opacity:.9;
 }
-.hero .btn{
+.btn{
   background:var(--c-accent);
   border:none;
   color:#fff;
@@ -121,7 +121,9 @@ svg{fill:var(--c-accent);}
   border-radius:6px;
   transition:background .2s ease,transform .15s ease;
 }
-.hero .btn:hover{
+
+
+.btn:hover{
   background:var(--c-accent-dim);
   transform:translateY(-2px);
 }
@@ -401,14 +403,15 @@ footer a:hover{color:var(--c-accent);}
 
     <div class="collapse navbar-collapse" id="navMenu">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
         <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">People</a></li>
         <li class="nav-item"><a class="nav-link" href="#partners">Partners</a></li>
         <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        
         <li class="nav-item">
-          <a class="nav-link btn btn-sm ms-2"
-             href="https://dk14.github.io/crypto/front.html">Donate</a>
+          <a class="nav-link"
+             href="https://dk14.github.io/crypto/front.html">Explore</a>
         </li>
       </ul>
     </div>
@@ -666,6 +669,9 @@ footer a:hover{color:var(--c-accent);}
 <!-- ==================== FOOTER ==================== -->
 <footer>
   <div class="container">
+    <a class="btn btn-primary mt-3" style=="opacity: 0.0"
+             href="https://dk14.github.io/crypto/front.html">More</a>
+             <br/><br/>
     <p class="mb-1"><strong>Connect</strong></p>
     <a href="https://github.com/dk14/crypto/tree/main/chats/btc-audit"
        class="text-muted me-3">GitHub</a>
