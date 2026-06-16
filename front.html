@@ -371,24 +371,20 @@ node enumerate.js clock    # Clock‑drift demo
       <tr>
         <th>Command</th>
         <th>Description</th>
-        <th>Typical Runtime</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td><code>node enumerate.js ledger</code></td>
         <td>Brute‑forces possible seeds derived from a Ledger hardware wallet.</td>
-        <td>30 min – 2 h (CPU/GPU dependent)</td>
       </tr>
       <tr>
         <td><code>node enumerate.js urandom</code></td>
         <td>Scans for wallets that used <code>/dev/urandom</code> directly as a private key.</td>
-        <td>&lt; 10 min</td>
       </tr>
       <tr>
         <td><code>node enumerate.js clock</code></td>
         <td>Reconstructs keys generated from system‑clock entropy (e.g., <code>time()%2^32</code>).</td>
-        <td>&lt; 5 min</td>
       </tr>
     </tbody>
   </table>
