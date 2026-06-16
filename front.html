@@ -411,9 +411,10 @@ IPFS submission format:
 
 <code style="color:green">`seeds, blockchain_id, replica_id, worker_id, worker_id_pow, reward_address, version, signature`.</code>
 <div style="color:pink">
- <code>worker_id </code>is YOUR pubkey, PoW is over your pubkey simply: `&ltpubkey&gt+&ltmagicNo&gt` - where magicNo is PoW (SHA256),
-<code>replica_id</code> is arbitrary (per worker_id), <code>blockchain_id</code> is 0 for BTC, <code>version</code> is 0. 
-JSON format. Signature is over minified JSON with <code>signature</code> field absent
+ - <code>worker_id </code>is YOUR pubkey 
+ - some reasonable <code>worker_id_pow</code> (SHA-256) is needed for Sybil-resistance, it is over your pubkey simply: `&ltpubkey&gt+&ltmagicNo&gt` - where magicNo is PoW (SHA256),
+ - <code>replica_id</code> is arbitrary (per worker_id), <code>blockchain_id</code> is 0 for BTC, <code>version</code> is 0. 
+ - JSON format. Signature is over minified JSON with <code>signature</code> field absent
  
  (`worker_id` serves as a basis for work replication an distribution)
 
