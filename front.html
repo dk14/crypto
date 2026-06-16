@@ -414,6 +414,8 @@ IPFS submission format:
  worker id is YOUR pubkey, pow is over your pubkey simply: `pubkey+magicNo` - magicNo is PoW (SHA256),
  replica_id is arbitrary (per worker_id), blockchain_id is 0 for BTC, version is 0. JSON. Signature is over minified JSON with signature field absent
  
+ (`worker_id` serves as a basis for work replication an distribution)
+
  IPFS --metadata "project:ExplorerBTCAudit"
  
  if you got your own private tool joining protocol: don't overload pinning services - you have to filter seeds based on metrics developed here (bitmatch as a starter).
