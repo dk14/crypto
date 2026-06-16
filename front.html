@@ -403,6 +403,12 @@ Tool-independent. Early warning defensive system.
 
 It meant to outrun hackers and report you keys that are dangerously close to yours.
 
+Then you simply create a new safe wallet and send your funds there.
+
+---
+
+IPFS submission format:
+
 `seeds, blockchain_id, replica_id, worker_id, worker_id_pow, reward_address, version, signature`.
  
  worker id is YOUR pubkey, pow is over your pubkey simply: `pubkey+magicNo` - magicNo is PoW (SHA256),
@@ -415,9 +421,12 @@ It meant to outrun hackers and report you keys that are dangerously close to you
 
  Note: IPFS will become replaced in favor of gossip (in future). More fields (sampled entropy etc) will be added.
 </pre>
-<p>UI design (wireframe draft):</p>
 
+<p>Network architecture:</p>
 
+<img src="./chats/btc-audit/docs/explorer.png" width="400">
+
+<p>UI design for Explorer Node (wireframe draft):</p>
 
 <img src="./chats/btc-audit/docs/explorer-ui-draft.png" width="600">
 
