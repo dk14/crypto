@@ -6,132 +6,144 @@
 <style>
   html,body{margin:0;height:100%;overflow:hidden;background:#111;font-family:"Arial",sans-serif;}
   canvas{display:block;width:100%;height:100%;}
-
-  /* Panel that mimics the site’s visual language */
-  .panel{
-    position:absolute;top:30%;left:50%;transform:translate(-50%,-30%);
-    text-align:center;color:#fff;pointer-events:none;
-  }
-  .panel h1{
-    margin:0 0 .8rem;
-    font-size:3rem;
-    text-shadow:0 0 8px rgb(255, 0, 0);
-  }
-
-  .panel h3{
-    margin:0 0 .8rem;
-    font-size:1.5rem;
-    text-shadow:0 0 8px rgb(36, 25, 25);
-  }
+  .panel{position:absolute;top:30%;left:50%;transform:translate(-50%,-30%);text-align:center;color:#fff;pointer-events:none;}
+  .panel h1{margin:0 0 .8rem;font-size:3rem;text-shadow:0 0 8px rgb(255,0,0);}
+  .panel h3{margin:0 0 .8rem;font-size:1.5rem;text-shadow:0 0 8px rgb(36,25,25);}
   .panel a{
-    pointer‑events:auto;            /* re‑enable clicks */
-    display:inline-block;
-    padding:.8rem 2rem;
-    margin-top:.4rem;
-    font-size:1.2rem;
-    color:#111;
-    background:rgb(246, 255, 0);                /* same cyan hue as the page */
-    border:none;border-radius:.4rem;
-    text-decoration:none;
-    box-shadow:0 0 12px rgb(255, 0, 0);
-    transition:background .2s,transform .2s;
+    pointer-events:auto;display:inline-block;padding:.8rem 2rem;margin-top:.4rem;
+    font-size:1.2rem;color:#111;background:rgb(246,255,0);border:none;border-radius:.4rem;
+    text-decoration:none;box-shadow:0 0 12px rgb(255,0,0);transition:background .2s,transform .2s;
   }
-  .panel a:hover{
-    background:#0dd;
-    transform:translateY(-2px);
-  }
+  .panel a:hover{background:rgb(219, 88, 2);transform:translateY(-2px);}
 </style>
 </head>
 <body>
 
 <div class="panel">
   <h1>Doomsday Explorer</h1>
-  <h3>Early-warning system for Bitcoin wallets</h3>
-  <a href="https://dk14.github.io/crypto/" target="_blank">Enter  →</a>
+  <h3>Early‑warning system for Bitcoin wallets</h3>
+  <a href="https://dk14.github.io/crypto/" target="_blank">Enter →</a>
 </div>
 
 <canvas id="noise"></canvas>
 
 <script>
-// ---------- deterministic 2‑D value noise ----------
+/* ---------- deterministic 2‑D value noise ---------- */
 const seed = 0x1a2b3c4d;
-function hash(x,y){
-  let h = seed ^ (x*374761393) ^ (y*668265263);
-  h = (h ^ (h>>13)) * 1274126177;
-  return (h ^ (h>>16)) >>> 0;
+function hash(x, y) {
+  let h = seed ^ (x * 374761393) ^ (y * 668265263);
+  h = (h ^ (h >> 13)) * 1274126177;
+  return (h ^ (h >> 16)) >>> 0;
 }
-function noise2D(x,y){
+function noise2D(x, y) {
   const x0 = Math.floor(x), y0 = Math.floor(y);
-  const x1 = x0+1, y1 = y0+1;
-  const sx = x-x0, sy = y-y0;
-  const n00 = hash(x0,y0)/0xffffffff;
-  const n10 = hash(x1,y0)/0xffffffff;
-  const n01 = hash(x0,y1)/0xffffffff;
-  const n11 = hash(x1,y1)/0xffffffff;
-  const ix0 = lerp(n00,n10,sx);
-  const ix1 = lerp(n01,n11,sx);
-  return lerp(ix0,ix1,sy);
+  const x1 = x0 + 1, y1 = y0 + 1;
+  const sx = x - x0, sy = y - y0;
+  const n00 = hash(x0, y0) / 0xffffffff;
+  const n10 = hash(x1, y0) / 0xffffffff;
+  const n01 = hash(x0, y1) / 0xffffffff;
+  const n11 = hash(x1, y1) / 0xffffffff;
+  const ix0 = lerp(n00, n10, sx);
+  const ix1 = lerp(n01, n11, sx);
+  return lerp(ix0, ix1, sy);
 }
-function lerp(a,b,t){return a+t*(b-a);}
+function lerp(a, b, t) { return a + t * (b - a); }
 
-// ---------- canvas drawing ----------
+/* ---------- canvas setup ---------- */
 const canvas = document.getElementById('noise');
 const ctx = canvas.getContext('2d');
 
-function resize(){
-  canvas.width = window.innerWidth;
+// off‑screen (lower‑resolution) canvas
+const offCanvas = document.createElement('canvas');
+const offCtx = offCanvas.getContext('2d');
+
+/* ---------- parameters ---------- */
+let off = 0;                         // animation offset
+let last = performance.now();        // previous frame timestamp
+const baseSpeed = 60;                // px/s on a 1080 px reference
+const renderScale = 0.5;             // 50 % resolution (adjustable)
+
+/* ---------- variables that will be filled later ---------- */
+let baseImg = null;                  // ImageData of the static noise
+
+/* ---------- resize handling ---------- */
+function resize() {
+  canvas.width  = window.innerWidth;
   canvas.height = window.innerHeight;
-  draw();
-}
-window.addEventListener('resize',resize);
-resize();
 
-function draw(){
-  const {width,height}=canvas;
-  const img = ctx.createImageData(width,height);
+  offCanvas.width  = Math.round(canvas.width  * renderScale);
+  offCanvas.height = Math.round(canvas.height * renderScale);
+
+  precomputeBase();                 // repopulate baseImg for the new size
+}
+window.addEventListener('resize', resize);
+resize();                            // initial call
+
+/* ---------- pre‑compute static noise texture ---------- */
+function precomputeBase() {
+  const w = offCanvas.width, h = offCanvas.height;
+  const img = offCtx.createImageData(w, h);
   const d = img.data;
   const scale = 0.01, octaves = 5, pers = 0.5;
 
-  for(let y=0;y<height;y++){
-    for(let x=0;x<width;x++){
-      let amp=1, freq=1, val=0;
-      for(let o=0;o<octaves;o++){
-        val += noise2D(x*scale*freq, y*scale*freq)*amp;
+  for (let y = 0; y < h; y++) {
+    for (let x = 0; x < w; x++) {
+      let amp = 1, freq = 1, val = 0;
+      for (let o = 0; o < octaves; o++) {
+        val += noise2D(x * scale * freq, y * scale * freq) * amp;
         amp *= pers; freq *= 2;
       }
-      const col = Math.floor(val*255);
-      const i = (y*width + x)*4;
-      d[i]=col; d[i+1]=col*0.8; d[i+2]=col*0.6; d[i+3]=255;
+      const col = Math.floor(val * 255);
+      const i = (y * w + x) * 4;
+      d[i] = col; d[i + 1] = col * 0.8; d[i + 2] = col * 0.6; d[i + 3] = 255;
     }
   }
-  ctx.putImageData(img,0,0);
+  baseImg = img;                     // now the animation can use it
 }
 
-// optional subtle animation – comment out for a static background
-let off=0;
-function animate(){
-  off+=0.2;
-  const {width,height}=canvas;
-  const img = ctx.createImageData(width,height);
-  const d = img.data;
-  const scale = 0.01, octaves = 5, pers = 0.5;
+/* ---------- animation loop (time‑driven, size‑aware) ---------- */
+function animate(now = performance.now()) {
+  const dt = (now - last) / 1000;   // seconds elapsed since the previous frame
+  last = now;
 
-  for(let y=0;y<height;y++){
-    for(let x=0;x<width;x++){
-      let amp=1, freq=1, val=0;
-      for(let o=0;o<octaves;o++){
-        val += noise2D((x+off)*scale*freq, (y+off)*scale*freq)*amp;
-        amp *= pers; freq *= 2;
-      }
-      const col = Math.floor(val*255);
-      const i = (y*width + x)*4;
-      d[i]=col; d[i+1]=col*0.8; d[i+2]=col*0.6; d[i+3]=255;
-    }
+  // --- keep motion proportional to screen size ---
+  const scaleFactor = Math.max(canvas.width, canvas.height) / 1080;
+  const speed = baseSpeed * scaleFactor;          // pixels per second
+  const step = (speed / 60) * 0.2;                 // mirrors the original “0.2 per frame”
+  off += step * dt;                               // time‑based offset
+
+  // If, for whatever reason, baseImg isn’t ready yet, skip this frame.
+  if (!baseImg) {
+    requestAnimationFrame(animate);
+    return;
   }
-  ctx.putImageData(img,0,0);
+
+  // Draw the pre‑computed texture onto the low‑res canvas,
+  // then stretch it to fill the visible canvas.
+  offCtx.putImageData(baseImg, 0, 0);
+  ctx.imageSmoothingEnabled = false;   // preserves the pixel‑art look
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(
+    offCanvas,
+    -off % offCanvas.width,                // wrap X
+    -off % offCanvas.height,               // wrap Y
+    canvas.width,
+    canvas.height
+  );
+
   requestAnimationFrame(animate);
 }
-animate();   // remove this line if you prefer a fully static background
+
+/* ---------- start the animation *after* the first texture is ready ---------- */
+function startIfReady() {
+  if (baseImg) {
+    requestAnimationFrame(animate);
+  } else {
+    // texture not ready yet – try again in a few milliseconds
+    setTimeout(startIfReady, 10);
+  }
+}
+startIfReady();
 </script>
 
 </body>
