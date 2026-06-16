@@ -348,7 +348,7 @@ npm ci                # reproducible install
 
 # 3️⃣ Pull the latest address dump (≈ 600 k addresses)
 curl -L https://addresses.loyce.club/addresses.zip -o addresses.zip
-unzip addresses.zip -d data
+unzip addresses.zip -d .
 
 # 4️⃣ Populate the local DB
 node ingest.js
