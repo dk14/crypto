@@ -15,6 +15,7 @@ BUSINESS FRONT: [https://dk14.github.io/crypto](https://dk14.github.io/crypto/)
 
 *White paper for Explorer Protocol is TBD ~2026 - features take pritority.*
 
+Notes:
 > I don't trust SHA-256, so signing low-entropy message (even hashed) is not that safe. (even ONE message, even if RNG does NOT have purposedly introduced bug for diffferential cryptoanalysis, still unsafe - solver can be used). But bitcointalk requested it. So be it! (attack described below is more powerful than solver anyways).
 
 > The official name of the project will be something like "Entropy Explorer" IF security situation improves (and back to Doomsday when it's worse again). So far, I don't see anyone taking it seriously - this explorer should've been public a year ago, no one even pointed out the issue so far, except here.
@@ -22,7 +23,7 @@ BUSINESS FRONT: [https://dk14.github.io/crypto](https://dk14.github.io/crypto/)
 
 
 ------
-AI Warnings.
+Warnings about AI use.
 
 > **Don't waste ur time on verifying who's AI, who's not, u'll go crazy**. Novel project, and you need it - that's how you tell. That's it. Don't overthink it! Or u'll lose real funds simply.
 
