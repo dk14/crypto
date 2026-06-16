@@ -143,6 +143,19 @@ footer{
     transition:none !important;
   }
 }
+
+.note{
+  background:rgba(255,255,255,.04);   /* subtle dark card */
+  border-left:4px solid var(--accent);
+  padding:1rem 1.2rem;
+  margin:2rem 0;
+  color:var(--text-light);
+  font-size:0.95rem;
+  line-height:1.6;
+}
+.note strong{
+  color:var(--accent);
+}
 </style>
 </head>
 
@@ -392,6 +405,14 @@ It meant to outrun hackers and report you keys that are dangerously close to you
 
 <img src="./chats/btc-audit/docs/explorer-ui-draft.png" width="600">
 
+<aside class="note">
+  <p>
+    <strong>Science note:</strong>  
+    Secure‑random values are obtained by “running away” from a high‑entropy cluster – the cluster itself provides public, verifiable examples of maximum entropy, while your private entropy must stay as far away from those examples as computationally feasible.  
+    In practice this is analogous to how a hash‑cash PoW works: PoW uses a costly, random‑looking computation for consensus and Sybil‑resistance; our “entropy‑escape” mechanism uses the same principle for protecting private randomness.  
+    Preserving both approaches yields scientific value that outlives any single human application.
+  </p>
+</aside>
 </section>
 <!-- ==================== PROFIT‑SHARING & FUNDING ==================== -->
 <section class="container my-5">
