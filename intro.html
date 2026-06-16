@@ -60,7 +60,7 @@ const offCtx = offCanvas.getContext('2d');
 /* ---------- parameters ---------- */
 let off = 0;                         // animation offset
 let last = performance.now();        // previous frame timestamp
-const baseSpeed = 60;                // px/s on a 1080 px reference
+const baseSpeed = 6000;                // px/s on a 1080 px reference
 const renderScale = 0.5;             // 50 % resolution (adjustable)
 
 /* ---------- variables that will be filled later ---------- */
@@ -143,7 +143,7 @@ function startIfReady() {
     setTimeout(startIfReady, 10);
   }
 }
-startIfReady();
+//startIfReady();
 </script>
 
 </body>
