@@ -409,7 +409,7 @@ Then you simply create a new safe wallet and send your funds there.
 
 IPFS submission format:
 
-`seeds, blockchain_id, replica_id, worker_id, worker_id_pow, reward_address, version, signature`.
+<code style="color:green">`seeds, blockchain_id, replica_id, worker_id, worker_id_pow, reward_address, version, signature`.</code>
  
  worker id is YOUR pubkey, pow is over your pubkey simply: `pubkey+magicNo` - magicNo is PoW (SHA256),
  replica_id is arbitrary (per worker_id), blockchain_id is 0 for BTC, version is 0. JSON. Signature is over minified JSON with signature field absent
@@ -422,11 +422,11 @@ IPFS submission format:
  Note: IPFS will become replaced in favor of gossip (in future). More fields (sampled entropy etc) will be added.
 </pre>
 
-<p>Network architecture:</p>
+<p><strong>Network architecture:</strong></p>
 
 <img src="./chats/btc-audit/docs/explorer.png" width="400">
 
-<p>UI design for Explorer Node (wireframe draft):</p>
+<p><strong>UI design for Explorer Node (wireframe draft):</strong></p>
 
 <img src="./chats/btc-audit/docs/explorer-ui-draft.png" width="600">
 
