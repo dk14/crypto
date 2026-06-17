@@ -103,7 +103,6 @@
   }
 
 </style>
-
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -112,15 +111,15 @@
 <meta property="og:title" content="Doomsday Explorer">
 <meta property="og:description"
       content="Early‑warning decentralized security system for your Bitcoin wallet, and more">
-<meta property="og:image" content="https://doomsdayexplorer.online/favicon-32x32.png">
+<meta property="og:image" content="https://doomsdayexplorer.online/android-chrome-512x512.png">
 <meta property="og:url"   content="https://dk14.github.io/crypto">
 <meta property="og:type"  content="website">
-<meta name="twitter:card"        content="https://doomsdayexplorer.online/favicon-32x32.png">
+<meta name="twitter:card"        content="https://doomsdayexplorer.online/android-chrome-512x512.png">
 <meta name="twitter:title"       content="Doomsday Explorer">
 <meta name="twitter:description"
       content="Early‑warning decentralized security system for your Bitcoin wallet, and more">
-<meta name="twitter:image"       content="https://doomsdayexplorer.online/favicon-32x32.png">
-</head>
+<meta name="twitter:image"       content="https://doomsdayexplorer.online/android-chrome-512x512.png">
+</head></head>
 
 <body>
 
@@ -494,18 +493,468 @@ btn.addEventListener('click', e => {
   </p>
 </section>
 
+<section class="hero">
+  <div class="container">
+    <h1>
+      <!-- Rocket with flame animation -->
+      <svg class="animate-icon" width="32" height="32" viewBox="0 0 24 24">
+        <path d="M12 2L15 8h6l-4.5 5 1.5 7L12 17l-6 3 1.5-7L3 8h6z"/>
+        <!-- flickering flame -->
+        <animate attributeName="fill" values="#ff6b35;#ff8a62;#ff6b35" dur="0.8s" repeatCount="indefinite" />
+      </svg>
+      Doomsday Explorer
+            <svg class="animate-icon" width="32" height="32" viewBox="0 0 24 24">
+        <path d="M12 2L15 8h6l-4.5 5 1.5 7L12 17l-6 3 1.5-7L3 8h6z"/>
+        <!-- flickering flame -->
+        <animate attributeName="fill" values="#ff6b35;#ff8a62;#ff6b35" dur="0.8s" repeatCount="indefinite" />
+      </svg>
+    </h1>
+    <p class="lead">Anti‑Scanner TRNG Audit Tool – Bitcoin‑only, open‑source, white‑hat.</p>
+    <a href="https://github.com/dk14/crypto/tree/main/chats/btc-audit"
+       class="btn btn-cta btn-lg mt-4 text-white">View on GitHub</a>
+    <br/>
+    <br />
+    <img src="./chats/btc-audit/docs/thermal.png" width="100">
+    <br/>
+       <a href="https://raw.githubusercontent.com/dk14/crypto/main/chats/btc-audit/PRESENTATION_PDF.pdf"
+       class="btn btn-cta btn-lg mt-4 text-white">Check out presentation</a>
+    <br/>
+    <br/>
+      <a href="https://dk14.github.io/crypto/"
+       class="btn btn-cta btn-lg mt-4 text-white">Official page</a>
+    <br/>
+    <br/>
+
+    <br/>
+      <a href="https://bitcointalk.org/index.php?topic=5583352"
+       class="btn btn-cta btn-lg mt-4 text-white">BitcoinTalk (project)</a>
+    <br/>
+
+    <br/>
+      <a href="https://bitcointalk.org/index.php?topic=5583453"
+       class="btn btn-cta btn-lg mt-4 text-white">BitcoinTalk ("replay noise" attack)</a>
+    <br/>
+    
+  </div>
+</section>
+
+<!-- ==================== QUICK OVERVIEW ==================== -->
+<section class="container my-5">
+  <h2 class="section-title">⚡️ Quick Overview</h2>
+
+  <div class="row g-4 mt-3">
+    <!-- WHAT -->
+    <div class="col-md-4">
+      <div class="card h-100 p-3">
+        <div class="d-flex align-items-start mb-2">
+          <!-- Shield with pulse animation -->
+          <svg class="pulse-icon" width="28" height="28" viewBox="0 0 24 24">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            <animate attributeName="stroke-width" from="1" to="3" dur="1s" begin="mouseover" end="mouseout" fill="freeze"/>
+            <animate attributeName="stroke-opacity" from="0.5" to="1" dur="1s" begin="mouseover" end="mouseout" fill="freeze"/>
+          </svg>
+          <h5 class="ms-2 mb-0">What</h5>
+        </div>
+        <p>A PoC audit framework that shows how low‑entropy / predictable TRNGs can compromise Bitcoin wallets.</p>
+      </div>
+    </div>
+
+    <!-- WHY -->
+    <div class="col-md-4">
+      <div class="card h-100 p-3">
+        <div class="d-flex align-items-start mb-2">
+          <!-- Gear pair rotating opposite ways -->
+          <svg width="28" height="28" viewBox="0 0 24 24">
+            <g class="animate-icon" style="animation-direction:normal;">
+              <path d="M19.43 12.98l1.77-1.77-1.41-1.41-1.77 1.77a7.007 7.007 0 0 0-1.59-.93l-.27-2.13h-2l-.27 2.13c-.56.23-1.09.52-1.59.93L7.2 9.79 5.79 11.2l1.77 1.77c-.41.5-.74 1.05-.98 1.64l-2.13.27v2l2.13.27c.24.59.58 1.14.98 1.64l-1.77 1.77 1.41 1.41 1.77-1.77c.5.41 1.05.74 1.64.98l.27 2.13h2l.27-2.13c.59-.24 1.14-.58 1.64-.98l1.77 1.77 1.41-1.41-1.77-1.77c.41-.5.74-1.05.98-1.64l2.13-.27v-2l-2.13-.27c-.24-.59-.58-1.14-.98-1.64zM12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/>
+            </g>
+          </svg>
+          <h5 class="ms-2 mb-0">Why</h5>
+        </div>
+        <p>“Noise is NOT secure random”. The project demonstrates a real‑world attack surface that many RNG specs hide.</p>
+      </div>
+    </div>
+
+    <!-- HOW -->
+    <div class="col-md-4">
+      <div class="card h-100 p-3">
+        <div class="d-flex align-items-start mb-2">
+          <!-- Simple stacked bars with hover draw effect -->
+          <svg width="28" height="28" viewBox="0 0 24 24">
+            <g stroke="var(--accent)" stroke-width="2" fill="none">
+              <line x1="4" y1="6" x2="20" y2="6"/>
+              <line x1="4" y1="12" x2="20" y2="12"/>
+              <line x1="4" y1="18" x2="14" y2="18"/>
+            </g>
+            <style>
+              line{
+                stroke-dasharray: 30;
+                stroke-dashoffset:30;
+                animation: draw 1s forwards;
+                animation-delay: .2s;
+              }
+              @keyframes draw{
+                to{stroke-dashoffset:0;}
+              }
+            </style>
+          </svg>
+          <h5 class="ms-2 mb-0">How</h5>
+        </div>
+        <p>`npm install` → download address dump → `node ingest.js` → `node enumerate.js replica_name`.</p>
+        Ledger Deterministic Replica:
+        <p>∀ spectra (exhaustive). `avalanche noise (first power-on)` → `SHA-256` → `entropy seed` → `thermal noise` → `XOR-fold + SHA256` → `wallet seed`.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== DEMO & SCREENSHOTS ==================== -->
+<section class="container my-5">
+  <h2 class="section-title">📽️ Demo & Screenshots</h2>
+
+  <div class="row g-4 mt-3">
+    <!-- Dashboard placeholder -->
+    <div class="col-lg-4 col-md-6">
+      <div class="card h-100 shadow-sm">
+        <div class="placeholder">
+          <img src="screenshot.png" width="500">
+        </div>
+        <div class="card-body"><h6 class="card-title">^ Dashboard</h6><br/></div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6">
+      <div class="card h-500 shadow-sm">
+        <div class="placeholder">
+          <img src="./chats/btc-audit/docs/ai-admission.png" width="700">
+        </div>
+        <div class="card-body"><h6 class="card-title">^ what AI admits...in response to childish inqury</h6><br/></div>
+      </div>
+    </div>
+
+    <!-- Clock placeholder -->
+    <div class="col-lg-4 col-md-6">
+      <div class="card h-100 shadow-sm">
+        <div class="placeholder">
+          <svg width="80" height="80" viewBox="0 0 24 24">
+            <!-- rotating clock hands -->
+            <circle cx="12" cy="12" r="9" stroke="var(--accent)" fill="none"/>
+            <line x1="12" y1="12" x2="12" y2="6" stroke="var(--accent)" stroke-width="2">
+              <animateTransform attributeName="transform" type="rotate"
+                                from="0 12 12" to="360 12 12"
+                                dur="6s" repeatCount="indefinite"/>
+            </line>
+            <line x1="12" y1="12" x2="16" y2="12" stroke="var(--accent)" stroke-width="2">
+              <animate attributeName="stroke-dasharray" values="0,12;12,0" dur="0.8s" repeatCount="indefinite"/>
+            </line>
+          </svg>
+        </div>
+        <div class="card-body"><h6 class="card-title">^ Clock is ticking...</h6><br/></div>
+      </div>
+    </div>
+
+</section>
+
+<!-- ==================== GETTING STARTED ==================== -->
+<section class="container my-5">
+  <h2 class="section-title">🚀 Getting Started</h2>
+
+  <pre class="bg-dark text-light p-3 rounded"><code># 1️⃣ Clone the repo
+git clone https://github.com/dk14/crypto.git
+cd crypto/chats/btc-audit
+
+# 2️⃣ Install dependencies
+npm ci                # reproducible install
+
+# 3️⃣ Pull the latest address dump (≈ 600 k addresses)
+curl -L https://addresses.loyce.club/addresses.zip -o addresses.zip
+unzip addresses.zip -d .
+
+# 4️⃣ Populate the local DB
+node ingest.js
+
+# 5️⃣ Run a test enumeration (choose one source)
+node enumerate.js ledger   # Ledger‑seed brute‑force
+node enumerate.js urandom  # /dev/urandom scan
+node enumerate.js clock    # Clock‑drift demo
+</code></pre>
+
+  <p class="mt-3"><strong>Tip:</strong> add <code>--verbose</code> for detailed logs or <code>--dry-run</code> for a quick sanity check.</p>
+</section>
+
+<!-- ==================== RUNNING THE AUDITS ==================== -->
+<section class="container my-5">
+  <h2 class="section-title">🔎 Running the Audits</h2>
+
+  <table class="table table-hover table-dark mt-3">
+    <thead>
+      <tr>
+        <th>Command</th>
+        <th>Description</th>
+        <th>Search space</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>node enumerate.js ledger</code></td>
+        <td>Enumerates actually possible seeds derived from a Ledger hardware wallet TRNG.</td>
+        <td>small (millions to billions)</td>
+      </tr>
+      <tr>
+        <td><code>node enumerate.js urandom</code></td>
+        <td>Scans for wallets that used <code>/dev/urandom</code> directly as a private key.</td>
+        <td>small (millions to billions)</td>
+      </tr>
+      <tr>
+        <td><code>node enumerate.js clock</code></td>
+        <td>Reconstructs keys generated from system‑clock entropy (e.g., <code>time()%2^32</code>).</td>
+        <td>tiny (millions)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Outputs: <code>found.json</code> (compromised addresses + private keys) and <code>report.md</code> (ready‑to‑publish disclosure).</p>
+  <i>Note: the audit tool deliberately expands the search space to simulate attacks, thereby avoiding any real‑world exploitation while the Explorer Network is still under development</i>
+</section>
+
+<section class="container my-5">
+  <h2 class="section-title">🔎 Explorer Protocol v0 (for PoW-like cluster)</h2>
+  <pre>
+Tool-independent. Early warning defensive system.
+
+It meant to outrun hackers and report you keys that are dangerously close to yours.
+
+Then you simply create a new safe wallet and send your funds there.
+
+<i>(any TRNG supported: Ledger, Trezor, quantum, enclaves, military)</i>
+
+---
+
+IPFS submission format:
+
+<code style="color:green">`seeds, blockchain_id, replica_id, worker_id, worker_id_pow, reward_address, version, signature`.</code>
+<div style="color:pink">
+ - <code>seeds</code> is list of seeds you uncovered with your algorithm
+ - <code>worker_id </code>is YOUR pubkey 
+ - some reasonable <code>worker_id_pow</code> (SHA-256, CPU is enough) is recommended for Sybil-resistance, 
+   - it is over your pubkey simply: `&ltpubkey&gt+&ltmagicNo&gt` - where magicNo is PoW (SHA256),
+ - <code>replica_id</code> is 0 for ledger, 1 for trezor, up to 42 - reserved, others - arbitrary 
+ - <code>blockchain_id</code> is 0 for BTC, <code>version</code> is 0. 
+ - JSON format. Signature is over minified JSON with <code>signature</code> field absent
+ - <code>reward_address</code> is where u get ur incentives
+
+ (`worker_id` serves as a basis for work replication an distribution)
+
+ (work replication ensures no one is hiding seeds)
+
+ IPFS --metadata "project:ExplorerBTCAudit"
+</div> 
+
+<div style="color:yellow">
+Got your own private tool joining protocol?
+
+Guidelines for white-hat converts:
+
+ - don't overload IPFS pinning services 
+  - you have to filter seeds based on metrics developed here (bitmatch as a starter).
+ - CHECK that seeds don't belong to funded addresses. 
+  - If they do - submit address (NO seed, no secret) in an issue here, on GitHub.
+
+Notes: 
+
+ - IPFS will become replaced in favor of gossip (in the future).
+ - More fields (eg sampled entropy) will be added.
+</div>
+</pre>
+
+<p><strong>Network architecture:</strong></p>
+
+<img src="./chats/btc-audit/docs/explorer.png" width="400">
+
+<p><strong>UI design for Explorer Node (wireframe draft):</strong></p>
+
+<img src="./chats/btc-audit/docs/explorer-ui-draft.png" width="600">
+
+<aside class="note">
+  <p>
+    <strong>Science:</strong>  
+    Secure‑random values are obtained by “running away” from a high‑entropy cluster – the cluster itself provides public, verifiable examples of maximum entropy, while your private entropy must stay as far away from those examples as computationally feasible.  
+    In practice this is analogous to how a hash‑cash PoW works: PoW uses a costly, random‑looking computation for consensus and Sybil‑resistance; our “entropy‑escape” mechanism uses the same principle for protecting private randomness.  
+    Preserving both approaches yields scientific value that outlives any single human application.
+  </p>
+</aside>
+<img src="./chats/btc-audit/docs/cat.png" width="300">
+</section>
+<!-- ==================== PROFIT‑SHARING & FUNDING ==================== -->
+<section class="container my-5">
+  <h2 class="section-title" id="profits">💰 Profit‑Sharing & Funding</h2>
+
+  <div class="row g-4 mt-3">
+
+    <!-- Donate -->
+    <div class="col-md-4">
+      <div class="card h-100 p-3">
+        <div class="d-flex align-items-start mb-2">
+          <svg class="pulse-icon" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M12 1l3 7h7l-5.5 4 2 7L12 15l-6.5 4 2-7L2 8h7z"/>
+          </svg>
+                    <svg class="pulse-icon" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M12 1l3 7h7l-5.5 4 2 7L12 15l-6.5 4 2-7L2 8h7z"/>
+          </svg>
+                    <svg class="pulse-icon" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M12 1l3 7h7l-5.5 4 2 7L12 15l-6.5 4 2-7L2 8h7z"/>
+          </svg>
+                    <svg class="pulse-icon" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M12 1l3 7h7l-5.5 4 2 7L12 15l-6.5 4 2-7L2 8h7z"/>
+          </svg>
+                    <svg class="pulse-icon" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M12 1l3 7h7l-5.5 4 2 7L12 15l-6.5 4 2-7L2 8h7z"/>
+          </svg>
+          <h5 class="ms-2 mb-0">Donate any BTC</h5>
+        </div>
+        
+        <p class="mb-1"><code>bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg</code> <pre></pre><a class="btn2 btn-primary mt-3" href="bitcoin:bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg">Send</a></p>
+        <p>Instant inclusion in the Explorer Network <strong>profit‑share</strong> pool. </p>
+        <p><i>(revenue comes from network fees on compute rewards and other computationally intensive services)</i></p>
+        <p>
+        <a href="https://bitcointalk.org/index.php?topic=5583352"
+          style="color:#28a745; text-decoration:none;"
+          onmouseover="this.style.color='#218838'; this.style.textDecoration='underline';"
+          onmouseout="this.style.color='#28a745'; this.style.textDecoration='none';">
+          BitcoinTalk
+        </a>
+      </p>
+</p>
+
+    </div>
+    </div>
+    <img src="./chats/btc-audit/docs/donations.png">
+
+    <!-- Feature bid -->
+    <div class="col-md-4">
+      <div class="card h-100 p-3">
+        <div class="d-flex align-items-start mb-2">
+          <svg class="pulse-icon" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7z"/>
+          </svg>
+          <h5 class="ms-2 mb-0">Bid on a Feature</h5>
+        </div>
+        <p><a class="text-accent" href="mailto:bids@doomsdayexplorer.online">Send</a> a TXID + description – your feature is prioritized and you get a larger revenue slice. Bids are listed in <a style="color: white" href="https://github.com/dk14/crypto/blob/main/chats/btc-audit/CONTRIBUTORS.md"><code>CONTRIBUTORS.md</code></a>.</p>
+      </div>
+    </div>
+
+    <!-- Node sponsor -->
+    <div class="col-md-4">
+      <div class="card h-100 p-3">
+        <div class="d-flex align-items-start mb-2">
+          <svg class="pulse-icon" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M12 2a9 9 0 0 0-9 9c0 5 9 13 9 13s9-8 9-13a9 9 0 0 0-9-9zm0 12a3 3 0 1 1 .001-6.001A3 3 0 0 1 12 14z"/>
+          </svg>
+          <h5 class="ms-2 mb-0">Sponsor a Compute Node</h5>
+        </div>
+        <p>Earn a “Node‑Sponsor” badge and a share of fees for all audits run on your hardware.</p>
+        <p><i><a class="text-accent" href="mailto:compute@doomsdayexplorer.online">Inquire</a> (Node-Sponsor status requires over 0.1 BTC investment)</i></p>
+      </div>
+    </div>
+
+<!-- Early investor -->
+<div class="col-md-4">
+  <div class="card h-100 p-3">
+    <div class="d-flex align-items-start mb-2">
+      <!-- ── BIRD ICON ── -->
+      <svg class="pulse-icon"
+           width="24" height="24"
+           viewBox="0 0 24 24"
+           aria-label="Early bird">
+        <!-- Simple stylised bird – a “V‑shaped” bird in flight -->
+        <path d="M4 14 L9 9 L14 14 L19 9"
+              fill="none"
+              stroke="var(--accent)"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"/>
+      </svg>
+      <h5 class="ms-2 mb-0">Early bird</h5>
+    </div>
+    <p>Earn bonuses and extra profit‑share for investing early</p>
+    <p>+ Get <strong>BRC-20</strong> and <strong>Lightning assets</strong>  proportionally to donations (~Q4 2026), with extra benefits for early investors!!11</p>
+  </div>
+  <img src="./chats/btc-audit/docs/lisa-gif.gif" width="200">
+</div>
+
+</div>
+
+
+  </div>
+
+  <p class="mt-4"><em>Profit‑sharing logic lives in <a style="color: white" href="https://github.com/dk14/crypto/blob/main/chats/btc-audit/profit-sharing.js"><code>profit-sharing.js</code></a>. Assets in <a style="color: white" href="https://github.com/dk14/crypto/blob/main/chats/btc-audit/issue-assets.js"><code>issue-assets.js</code></a>. Feel free to audit, fork or improve it.</em></p>
+</section>
+
+<!-- ==================== ROADMAP & CONTRIBUTING ==================== -->
+<section class="container my-5">
+  <h2 class="section-title">🛣️ Roadmap & How To Contribute</h2>
+
+  <table class="table table-striped table-dark mt-3">
+    <thead><tr><th>Milestone</th><th>ETA</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>v1.1</td><td>Q3 2026</td><td>Explorer UI. Tool integration into Explorer protocol</td></tr>
+      <tr><td>v1.2</td><td>Q4 2026</td><td>Ledger replica. Ledger firmware integration for risk reporting</td></tr>
+      <tr><td>v1.3</td><td>Q1 2027</td><td>Full “Explorer Network” – decentralized marketplace of auditors.</td></tr>
+      <tr><td>v2.0</td><td>Q2 2027</td><td>Other replicas (Trezor, Apple Secure Enclave, military TRNGs). Audits for public SSL certificates</td></tr>
+    </tbody>
+  </table>
+
+  <h5 class="mt-4">Want to help?</h5>
+  <ol class="list-group list-group-numbered">
+    <li class="list-group-item bg-dark"><a href="https://github.com/dk14/crypto/issues" class="text-accent">Open an issue</a> – bug or feature request.</li>
+    <li class="list-group-item bg-dark">Submit a PR – follow the existing code style (`eslint-config-airbnb-base`).</li>
+    <li class="list-group-item bg-dark">Donate – any amount pushes the roadmap forward.</li>
+
+   
+  </ol>
+   
+
+  <p class="mt-3">All contributors and spendings (<strong>transparent fund tracking</strong>) are listed in <a style="color: white" href="https://github.com/dk14/crypto/blob/main/chats/btc-audit/CONTRIBUTORS.md"><code>CONTRIBUTORS.md</code></a>. Fund contributors automatically receive a share of future revenues.</p>
+</section>
+
+<!-- ==================== AUTHENTICATION ==================== -->
+<section class="container my-5">
+  <h2 class="section-title">📜 Authentication</h2>
+
+  
+<p>Message:  <code>"Doomsday Explorer Project for Bitcoin: https://github.com/dk14/crypto/tree/main/chats/btc-audit"</code></p>
+
+<p>Address: <code>bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg</code></p>
+
+<p>Signature: <code>IHdq/tIQtQeimfF92NOyOOdz2/iq2YR6qjD8vLgHWK3GGGETKX76L0e4Tvgtb1fOHrbLiW87QYIuOdCKYbSvmpA=</code> </p>
+
+
+</section>
+
+ 
+<!-- ==================== LICENSE & DISCLAIMER ==================== -->
+<section class="container my-5">
+  <h2 class="section-title">📜 License & Disclaimer</h2>
+
+  <p><strong>License</strong> – MIT (see <code>LICENSE</code> file).</p>
+
+  <p><strong>Disclaimer</strong> – This tool is for **educational, research and white‑hat security auditing only**.  
+  Misuse to steal funds is illegal and will be prosecuted. The author disclaims any liability for damages caused by misuse.</p>
+
+
+</section>
+
 <!-- ==================== FOOTER ==================== -->
 <footer>
   <div class="container">
-    <a class="btn btn-primary mt-3" style=="opacity: 0.0"
-             href="https://dk14.github.io/crypto/front.html#profits">Fund & Contribute</a>
-             <br/><br/>
     <p class="mb-1"><strong>Connect</strong></p>
-        <a href="https://github.com/dk14/crypto/tree/main/chats/btc-audit" class="text-muted me-3">GitHub</a>
+    <a href="https://github.com/dk14/crypto/tree/main/chats/btc-audit" class="text-muted me-3">GitHub</a>
     <a href="https://bitcointalk.org/index.php?topic=5583352" class="text-muted me-3">Bitcointalk</a>
+    <a href="https://discord.gg/N5QFm7Nn4" class="text-muted me-3">Discord</a>
     <a href="https://www.reddit.com/r/DoomsdayExplorer/" class="text-muted me-3">Reddit</a>
-
-    <p class="mt-3 mb-0">© 2024‑2026 <a href="https://doomsdayexplorer.online/">Doomsday Explorer</a> – All rights reserved.</p>
+    <a href="https://nostr.com/npub1yy8ukd3stqdjhw6w5zxm430q89lpaqu8f85kwv4qpgqhewefm2jq6ttajx" class="text-muted me-3">Nostr</a>
+   
+    <p class="mt-3 mb-0">© 2024‑2026 <a href="https://doomsdayexplorer.online" class="text-accent">Doomsday Explorer</a> – All rights reserved.</p>
   </div>
 </footer>
 
