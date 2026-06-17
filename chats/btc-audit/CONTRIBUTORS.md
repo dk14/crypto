@@ -31,7 +31,7 @@ Outstanding compensations:
     - intro, front and official page
 - dk14, audit tool: 80 hours logged (4000 USD)
 - dk14, documented research efforts: 800 hours logged (at risk, 40000 USD)
-- dk14, field research at physical risk (government security: agencies, police departments, detention centers, refugee centers, military conflict zones), > 300000 USD
+- dk14, field research at physical risk (government security: agencies, police departments, detention centers, refugee centers, military conflict zones), >300000 USD
 
 PR rewards:
  - none
