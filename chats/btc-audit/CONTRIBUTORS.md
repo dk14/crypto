@@ -8,3 +8,4 @@
   - early-bird: yes
   - sponsor: no
   - partner: no
+  - dev: no
