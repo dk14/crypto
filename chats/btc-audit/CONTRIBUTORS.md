@@ -26,7 +26,7 @@ Spendings:
     - avalanche model integration
     - ring-oscillators prototype
 
-Outstanding compensations:
+Outstanding compensations (as of Jun 17 2026):
 - dk14, website refinements: 20 hours logged (1000 USD)
     - intro, front and official page
 - dk14, audit tool: 80 hours logged (4000 USD)
