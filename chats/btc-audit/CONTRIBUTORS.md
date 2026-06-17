@@ -15,6 +15,7 @@ Incoming contributions:
   - grant: no
   - comment: no
   - date: 5/26/2026
+  - spent: yes, 6/17/2026
 
 Team:
 - dk14 (founder, lead)
@@ -39,14 +40,14 @@ Pending compensations (as of Jun 17 2026):
   - github:dk14/crypto/chats: long formal chats with AI about number theory, related abstract math and physics
 
 --------
-Pending high-value compensations (as of Jun 17 2026):
+Pending high-value compensations (as of Jun 2026):
 - dk14, independent field research at physical risk (government security research: agencies, police departments, detention centers, refugee centers, military conflict borderline zones; + science/inventions depend on quality of agriculture, so, agricultural security research: travel expenses, financial risks), >1,000,000 USD
 - dk14, novel practical approach for actual true entropy, >10,000,000 USD
   - research done on rejecting quantum randomness/computing: dk14/q, dk14/fqc
   - research done on Digital Signal Processing and HCI: dk14/warriors
     - note: Human Computer Interaction research was related to human factor in security, human entropy is low (both "mind and body").
   - research done into Bitcoin PoW and SHA256 specifics (eg SHA256's dangerous reducibility to SAT)
-  - research done into computability, it's relation to conservation laws;
+  - research done into computability, its relation to conservation laws;
     - result: successful projection into cryptography: assymetric and symmetric
   - overall scientific research: e.g. rejection of "infinite objects" in CS and cryptography.
     - impact: results allow to pragmatically discard claims not backed up by inductive proofs
