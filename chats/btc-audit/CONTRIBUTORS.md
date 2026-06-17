@@ -9,3 +9,4 @@
   - sponsor: no
   - partner: no
   - dev: no
+  - sepa: no
