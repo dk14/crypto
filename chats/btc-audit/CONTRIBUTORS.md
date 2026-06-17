@@ -41,11 +41,12 @@ Outstanding compensations (as of Jun 17 2026):
     - note: Human Computer Interaction research was related to human factor in security, human entropy is low (both "mind and body").
   - research done into Bitcoin PoW and SHA256 specifics (eg SHA256's dangerous reducibility to SAT)
   - research done into computability, it's relation to conservation laws; successful projection into cryptography (assymetric and symmetric)
-  - overall scientific research, historical research of NIST legacy
+  - overall scientific research (eg rejection of "infinite objects" in CS/cryptography)
+  - historical research of NIST/FED legacy
   - active research into macroeconomics, ecology
-  - develooped formalism, practically applicable definition of randomness
+  - results: developed working formalism, practically applicable definition of randomness/entropy, grounded in physics
   - unique insights and expirience, risks taken (going against academia)
-  - field research and criminlogical analysis: shady investment banking, shady IT projects in Cardano ecosystem, shady freelance
+  - field research and criminlogical analysis: shady investment banking, shady IT projects in Cardano ecosystem, shady freelance, shady research orgs
   - penalties for institutional, academic and social resistance to independent research (and human natural and legal rights): TBD
   - benefits of research - saves trillions of USD. Saves natural resources (if applied cross-discipline).
 
