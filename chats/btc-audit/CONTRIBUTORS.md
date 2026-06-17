@@ -6,3 +6,5 @@
   - origin: anonymous
   - bid: none
   - early-bird: yes
+  - sponsor: no
+  - partner: no
