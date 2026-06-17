@@ -46,7 +46,7 @@ Outstanding compensations (as of Jun 17 2026):
   - active research into macroeconomics, ecology
   - results: developed working formalism, practically applicable definition of randomness/entropy, grounded in physics
   - unique insights and expirience, risks taken (going against academia)
-  - field research and criminlogical analysis: shady investment banking, shady IT projects in Cardano ecosystem, shady freelance, shady research orgs
+  - field research and criminological analysis: shady investment banking, shady IT projects in Cardano ecosystem, shady freelance, shady research orgs
   - penalties for institutional, academic and social resistance to independent scientific research (and human natural and legal rights): TBD
   - benefits of research - saves trillions of USD. Saves natural resources (if applied cross-discipline).
 
