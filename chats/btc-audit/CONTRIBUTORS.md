@@ -31,7 +31,7 @@ Outstanding compensations (as of Jun 17 2026):
     - intro, front and official page
 - dk14, audit tool: 80 hours logged (4000 USD)
 - dk14, documented research efforts (github:dk14/crypto root): 800 hours logged (at risk, 40000 USD)
-- dk14, independent field research at physical risk (government security: agencies, police departments, detention centers, refugee centers, military conflict borderline zones), >1000000 USD
+- dk14, independent field research at physical risk (government security: agencies, police departments, detention centers, refugee centers, military conflict borderline zones; agricultural security: travel expenses, financial risks), >1000000 USD
 
 PR rewards:
  - none
