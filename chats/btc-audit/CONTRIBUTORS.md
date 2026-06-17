@@ -45,12 +45,14 @@ Pending high-value compensations (as of Jun 17 2026):
   - research done on Digital Signal Processing and HCI: dk14/warriors
     - note: Human Computer Interaction research was related to human factor in security, human entropy is low (both "mind and body").
   - research done into Bitcoin PoW and SHA256 specifics (eg SHA256's dangerous reducibility to SAT)
-  - research done into computability, it's relation to conservation laws; successful projection into cryptography (assymetric and symmetric)
-  - overall scientific research (eg rejection of "infinite objects" in CS/cryptography)
+  - research done into computability, it's relation to conservation laws;
+    - result: successful projection into cryptography: assymetric and symmetric
+  - overall scientific research: e.g. rejection of "infinite objects" in CS and cryptography.
+    - impact: results allow to pragmatically discard claims not backed up by inductive proofs
   - historical research of NIST/FED legacy: project-related bitcointalks mention
   - active research into macroeconomics, ecology
   - results: developed working formalism, practically applicable definition of randomness/entropy, grounded in physics
-    - developed protocol for real-world implementation
+    - impact: developed protocol for real-world implementation
   - unique insights and expirience, risks taken (going against academia)
   - field research and criminological analysis: shady investment banking, shady IT projects in Cardano ecosystem, shady freelance, shady research orgs
   - penalties for institutional, enforcement, academic and social resistance to independent scientific research (and human natural and legal rights): TBD
