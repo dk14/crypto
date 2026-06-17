@@ -54,6 +54,6 @@ Pending high-value compensations (as of Jun 17 2026):
   - unique insights and expirience, risks taken (going against academia)
   - field research and criminological analysis: shady investment banking, shady IT projects in Cardano ecosystem, shady freelance, shady research orgs
   - penalties for institutional, enforcement, academic and social resistance to independent scientific research (and human natural and legal rights): TBD
-  - benefits of research - saves trillions of USD. Saves natural resources (if applied cross-discipline: efficiancy of consumption maximizes entropy).
+  - benefits of research - saves trillions of USD. Saves natural resources (if applied cross-discipline: efficiency of consumption maximizes util entropy).
 
 
