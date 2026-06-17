@@ -27,11 +27,12 @@ Spendings:
     - ring-oscillators prototype
 
 Outstanding compensations (as of Jun 17 2026):
-- dk14, website refinements: 20 hours logged (1000 USD)
+- dk14, website refinements: 20 hours logged (1,000 USD)
     - intro, front and official page
-- dk14, audit tool: 80 hours logged (4000 USD)
-- dk14, documented research efforts (github:dk14/crypto root): 800 hours logged (at risk, 40000 USD)
-- dk14, independent field research at physical risk (government security research: agencies, police departments, detention centers, refugee centers, military conflict borderline zones; + science/inventions depend on quality of agriculture, so, agricultural security research: travel expenses, financial risks), >1000000 USD
+- dk14, audit tool PoC: 160 hours logged (8,000 USD)
+    - chats, coding, analysis, refinements/improvements, manual testing, ensuring non-exploitability, documenting
+- dk14, documented research efforts (github:dk14/crypto root): 800 hours logged (at risk, 40,000 USD)
+- dk14, independent field research at physical risk (government security research: agencies, police departments, detention centers, refugee centers, military conflict borderline zones; + science/inventions depend on quality of agriculture, so, agricultural security research: travel expenses, financial risks), >1,000,000 USD
 
 PR rewards:
  - none
