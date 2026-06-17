@@ -16,6 +16,8 @@ Incoming contributions:
   - comment: no
   - date: 5/26/2026
 
+Team:
+- dk14 (founder, lead)
 
 Spendings:
 - dk14, website: 3 hours logged (150 USD)
