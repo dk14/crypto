@@ -31,7 +31,9 @@ Outstanding compensations (as of Jun 17 2026):
     - intro, front and official page
 - dk14, audit tool PoC: 160 hours logged (8,000 USD)
     - chats, coding, analysis, refinements/improvements, manual testing, ensuring non-exploitability, documenting
-- dk14, documented research efforts (github:dk14/crypto root): 800 hours logged (at risk, 40,000 USD)
+- dk14, documented research efforts: 800 hours logged (at risk, 40,000 USD)
+  - github:dk14/crypto root: (no AI-assistance) flaws related to non-monotonicty, DLP, number theory, polynomials, transfers.
+  - github:dk14/crypto/chats: long formal chats with AI about number theory, related abstract math and physics
 - dk14, independent field research at physical risk (government security research: agencies, police departments, detention centers, refugee centers, military conflict borderline zones; + science/inventions depend on quality of agriculture, so, agricultural security research: travel expenses, financial risks), >1,000,000 USD
 - dk14, novel practical approach for actual true entropy, >10,000,000 USD
   - research done on rejecting quantum randomness/computing: dk14/q, dk14/fqc
