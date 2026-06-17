@@ -44,7 +44,7 @@ Outstanding compensations (as of Jun 17 2026):
   - unique insights and expirience, risks taken (going against academia)
   - field research and criminlogical analysis: shady investment banking, shady IT projects in Cardano ecosystem, shady freelance
   - penalties for institutional, academic and social resistance to independent research (and human natural and legal rights): TBD
-  - benefits of research - saves trillions of USD.
+  - benefits of research - saves trillions of USD. Saves natural resources (if applied cross-discipline).
 
 PR rewards:
  - none
