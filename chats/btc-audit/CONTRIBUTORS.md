@@ -41,7 +41,7 @@ Outstanding compensations (as of Jun 17 2026):
   - research into macroeconomics, ecology
   - formalism, practically applicable definition of randomness
   - unique insights and expirience, risks taken (going against academia)
-  - field research and criminlogical analysis: shady investment banking, shady IT projects in Cardano ecosystem
+  - field research and criminlogical analysis: shady investment banking, shady IT projects in Cardano ecosystem, shady freelance
   - penalties for institutional, academic and social resistanse to independent research: TBD
   - benefits of research - saves trillions of USD.
 
