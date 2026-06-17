@@ -21,7 +21,11 @@ Team:
 
 Spendings:
 - dk14, website: 3 hours logged (150 USD)
+    - intro, front and official page
 - dk14, audit-tool: 1 hour logged (50 USD)
+    - avalanche model
+    - ring-oscillators prototype
+
 
 PR rewards:
  - none
