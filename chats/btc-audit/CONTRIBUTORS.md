@@ -19,7 +19,7 @@ Incoming contributions:
 
 Spendings:
 - dk14, website: 3 hours logged (150 USD)
-- dk14, tool: 1 hour logged (50 USD)
+- dk14, audit-tool: 1 hour logged (50 USD)
 
 PR rewards:
  - none
