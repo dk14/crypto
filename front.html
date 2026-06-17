@@ -447,7 +447,7 @@ IPFS submission format:
  - <code>worker_id </code>is YOUR pubkey 
  - some reasonable <code>worker_id_pow</code> (SHA-256, CPU is enough) is recommended for Sybil-resistance, 
    - it is over your pubkey simply: `&ltpubkey&gt+&ltmagicNo&gt` - where magicNo is PoW (SHA256),
- - <code>replica_id</code> is arbitrary 0 for ledger, 1 for trezor, up to 42 - reserved, others - arbitrary 
+ - <code>replica_id</code> is 0 for ledger, 1 for trezor, up to 42 - reserved, others - arbitrary 
  - <code>blockchain_id</code> is 0 for BTC, <code>version</code> is 0. 
  - JSON format. Signature is over minified JSON with <code>signature</code> field absent
  - <code>reward_address</code> is where u get ur incentives
