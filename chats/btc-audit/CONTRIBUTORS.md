@@ -26,6 +26,11 @@ Spendings:
     - avalanche model integration
     - ring-oscillators prototype
 
+Outstanding:
+- dk14, website refinements: 3 hours logged (1000 USD)
+    - intro, front and official page
+- dk14, audit tool: 80 hours logged (4000 USD)
+- dk14, existing research efforts: 800 hours logged (at risk, 40000 USD)
 
 PR rewards:
  - none
