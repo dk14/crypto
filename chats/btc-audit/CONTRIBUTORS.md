@@ -42,7 +42,7 @@ Outstanding compensations (as of Jun 17 2026):
   - research done into Bitcoin PoW and SHA256 specifics (eg SHA256's dangerous reducibility to SAT)
   - research done into computability, it's relation to conservation laws; successful projection into cryptography (assymetric and symmetric)
   - overall scientific research (eg rejection of "infinite objects" in CS/cryptography)
-  - historical research of NIST/FED legacy
+  - historical research of NIST/FED legacy: my bitcointalks mention
   - active research into macroeconomics, ecology
   - results: developed working formalism, practically applicable definition of randomness/entropy, grounded in physics
   - unique insights and expirience, risks taken (going against academia)
