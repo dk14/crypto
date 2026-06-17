@@ -45,6 +45,7 @@ Outstanding compensations (as of Jun 17 2026):
   - historical research of NIST/FED legacy: my bitcointalks mention
   - active research into macroeconomics, ecology
   - results: developed working formalism, practically applicable definition of randomness/entropy, grounded in physics
+    - devleoped protocol for real-world implementation
   - unique insights and expirience, risks taken (going against academia)
   - field research and criminological analysis: shady investment banking, shady IT projects in Cardano ecosystem, shady freelance, shady research orgs
   - penalties for institutional, academic and social resistance to independent scientific research (and human natural and legal rights): TBD
