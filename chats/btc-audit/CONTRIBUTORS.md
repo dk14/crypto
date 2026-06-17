@@ -26,6 +26,9 @@ Spendings:
     - avalanche model integration
     - ring-oscillators prototype
 
+PR reward spendings:
+ - none
+
 Outstanding compensations (as of Jun 17 2026):
 - dk14, website refinements: 20 hours logged (1,000 USD)
     - intro, front and official page
@@ -34,6 +37,8 @@ Outstanding compensations (as of Jun 17 2026):
 - dk14, documented research efforts: 800 hours logged (at risk, 40,000 USD)
   - github:dk14/crypto root: (no AI-assistance) flaws related to non-monotonicty, DLP, number theory, polynomials, transfers.
   - github:dk14/crypto/chats: long formal chats with AI about number theory, related abstract math and physics
+ 
+Outstanding high-value compensations (as of Jun 17 2026):
 - dk14, independent field research at physical risk (government security research: agencies, police departments, detention centers, refugee centers, military conflict borderline zones; + science/inventions depend on quality of agriculture, so, agricultural security research: travel expenses, financial risks), >1,000,000 USD
 - dk14, novel practical approach for actual true entropy, >10,000,000 USD
   - research done on rejecting quantum randomness/computing: dk14/q, dk14/fqc
@@ -51,5 +56,4 @@ Outstanding compensations (as of Jun 17 2026):
   - penalties for institutional, academic and social resistance to independent scientific research (and human natural and legal rights): TBD
   - benefits of research - saves trillions of USD. Saves natural resources (if applied cross-discipline: efficiancy of consumption maximizes entropy).
 
-PR rewards:
- - none
+
