@@ -1,4 +1,8 @@
 // ledgerReplayNoiseSim.js ----------------------------------------------------
+
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
+
 const crypto = require('crypto');
 
 /* ----------------------------------------------------------------------
@@ -115,6 +119,7 @@ function runSimulation({fs = 3000}) {
     const buf = xorFold(vn);
     const seed = crypto.createHash('sha256').update(buf).digest('hex');
     return {
+        fs : fs,
         rawLen   : raw.length,
         vnLen    : vn.length,
         bufHex   : buf.toString('hex'),
