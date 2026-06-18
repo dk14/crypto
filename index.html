@@ -53,14 +53,15 @@ body{
 /* ── Founder badge ── */
 .badge-founder{
   display:inline-block;
+  vertical-align:middle;
   margin-left:.6rem;
   padding:.2rem .5rem;
-  font-size:0.7rem;
-  font-weight600;
+  font-size:0.9rem;
+  font-weight: 600;
   color:#fff;
   background:var(--accent);          /* same accent colour you already use */
-  border-radius:4px;
-  vertical-align:middle;
+  border-radius:0px;
+  vertical-align: middle;
 }
 
 /* Optional: a subtle “pulse” on the badge to draw attention */
@@ -69,10 +70,10 @@ body{
   50%  {transform:scale(1.08);}
   100% {transform:scale(1);}
 }
-/*
+
 .badge-founder{
   animation:badgePulse 2s infinite ease-in-out;
-}*/
+}
 
 
 /* Links ------------------------------------------------------ */
@@ -546,10 +547,9 @@ footer a:hover{color:var(--c-accent);}
 
 <!-- ==================== ABOUT ==================== -->
 <section class="container" id="about">
-    <h2 class="section-title">
-    About Dmytró “Matt” Kondratiuk
-    <span class="badge-founder">Founder</span>
-  </h2>
+  
+    <h2 class="section-title">People</h2>
+
   <div class="row align-items-center g-4">
 <div class="col-lg-3 text-center">
   <!-- 1️⃣  Link that points to the original file (opens the full‑size picture) -->
@@ -562,7 +562,10 @@ footer a:hover{color:var(--c-accent);}
 
   </a>
 </div>
-
+  <div>
+      <h2 style="text-align: center">Dmytró “Matt” Kondratiuk</h2>
+      <h5 style="text-align: center"><span class="badge-founder">Founder</span></h5>
+    </div>
     <div class="col-lg-9">
       <p>
         <strong>Software Engineer / Security Researcher</strong> with more than a decade of experience in
