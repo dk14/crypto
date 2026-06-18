@@ -15,13 +15,15 @@ Official Front: [https://dk14.github.io/crypto](https://dk14.github.io/crypto/)
 
 Intro website: [https://doomsdayexplorer.online/](https://doomsdayexplorer.online/)
 
+Contact: [info-github@doomsdayexplorer.online](mailto:info-github@doomsdayexplorer.online)
+
 *White paper for Explorer Protocol is TBD ~2026 - features take priority.*
 
 Notes:
 > I don't trust SHA-256, so signing low-entropy message (even hashed) is not that safe. (even ONE message, even if RNG does NOT have purposedly introduced bug for diffferential cryptoanalysis, still unsafe - solver can be used). But bitcointalk requested it. So be it! (attack described below is more powerful than solver anyways).
 
 > The official name of the project will be something like "Entropy Explorer" IF security situation improves (and back to Doomsday when it's worse again). So far, I don't see anyone taking it seriously - this explorer should've been public a year ago, no one even pointed out the issue so far, except here.
->> This project gives you a choice - inaction (or covert development) means you work towards black-hat. So enjoy walls of texts, I guess. If hard to read - AI can parse this README.
+>> This project gives you a choice - inaction (or covert development) means you work towards black-hat. So enjoy walls of texts, I guess. **If hard to read - AI can parse this README.**
 
 > **for git cloners** - I noticed lots of clones are happening...quietly. **If you just want to run audit - it's awesome, the project aims at freedom and information security**. <em>But if you hope to get rich quick by stealing funds - think twice</em>. I would not publish a working scanner tool - no one does (even btc-heist or whatever - but my code is NOT naive and does NOT out of memory, lol), I know the actual CS - I know actual odds of hitting and how to manage them. You can even adapt this code to GPU - it won't get close to anything without my insight and improvements I outlined, precision matters here like in a Swiss-made watch. <img src="docs/cloners.png" width="300" height="200">
 >> Want to make real cash - go white hat, donate small amount here, you'll get profit share and better code, and better wallet security. Do you realize that hacking real btc address would be noticable on chain? anomaly detection (both cyber and social even). Then everyone starts hacking everything, since there would be proof it's possible to hack anything like in the movies (black friday of hacking) - and everyone loses then 1btc would be come 0btc (after USD/gold/cash falls first). Then hooman becomes savage (hunts and gathers in panic) - then human go starve slowly dying like it happened 10000 years ago, except this time it would be final extinction. 
@@ -197,7 +199,7 @@ In the meantime, there are unwise humans listening to AI seriously, without ques
 
 ------
 
-## To improve
+## Project plan (To improve)
 
 > **As bitcointalk mentioned, devs don't work for free**. I need funds to improve this. It will be solo-project for a while, which I prefer, since we're aiming at efficiency. It's relatively easy to employ extra devs/AI/QA/auditors/researches/designers, but it's also risky for a critical project - so it is a trade, I would have to [manage](docs/fund-management.md). Besides, there are other expenses (extra supporting services, promotions, integrations, clouds, hardware for testing, my time for extra research and thinking, experimentation, modeling, consulting, publishing, devops, test certification, my own dev time), that **take priority** atm.
 >
@@ -340,6 +342,8 @@ The [Explorer Fund](docs/fund-management.md) will simply reward bids/donations p
 
 > Since, there is a possibility, those addresses might become at risk themselves, separate workflow (and mini-webapp) will be introduced to (optionally) assign a new address using signature from the old one (while it is still valid).
 > If donation fund address becomes at risk and change - previous donations will still be accounted.
+
+[PROJECT TRACKING](CONTRIBUTORS.md)
 
 -----
 
