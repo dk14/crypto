@@ -64,10 +64,15 @@ body{
 }
 
 /* Optional: a subtle “pulse” on the badge to draw attention */
-
+@keyframes badgePulse{
+  0%   {transform:scale(1);}
+  50%  {transform:scale(1.08);}
+  100% {transform:scale(1);}
+}
+/*
 .badge-founder{
   animation:badgePulse 2s infinite ease-in-out;
-}
+}*/
 
 
 /* Links ------------------------------------------------------ */
