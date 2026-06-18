@@ -9,9 +9,9 @@ Address: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 Signature: IHdq/tIQtQeimfF92NOyOOdz2/iq2YR6qjD8vLgHWK3GGGETKX76L0e4Tvgtb1fOHrbLiW87QYIuOdCKYbSvmpA=
 
-FRONT PAGE: [https://dk14.github.io/crypto/front.html](https://dk14.github.io/crypto/front.html)
+Font Page: [https://dk14.github.io/crypto/front.html](https://dk14.github.io/crypto/front.html)
 
-OFFICIAL FRONT: [https://dk14.github.io/crypto](https://dk14.github.io/crypto/)
+Official Front: [https://dk14.github.io/crypto](https://dk14.github.io/crypto/)
 
 Intro website: [https://doomsdayexplorer.online/](https://doomsdayexplorer.online/)
 
