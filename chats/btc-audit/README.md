@@ -15,7 +15,7 @@ Official Front: [https://dk14.github.io/crypto](https://dk14.github.io/crypto/)
 
 Intro website: [https://doomsdayexplorer.online/](https://doomsdayexplorer.online/)
 
-Contact website: [info-github@doomsdayexplorer.online](mailto:info-github@doomsdayexplorer.online)
+Contact: [info-github@doomsdayexplorer.online](mailto:info-github@doomsdayexplorer.online)
 
 *White paper for Explorer Protocol is TBD ~2026 - features take priority.*
 
