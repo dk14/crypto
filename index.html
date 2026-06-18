@@ -50,6 +50,26 @@ body{
   line-height:var(--lh-base);
 }
 
+/* ── Founder badge ── */
+.badge-founder{
+  display:inline-block;
+  margin-left:.6rem;
+  padding:.2rem .5rem;
+  font-size:0.7rem;
+  font-weight600;
+  color:#fff;
+  background:var(--accent);          /* same accent colour you already use */
+  border-radius:4px;
+  vertical-align:middle;
+}
+
+/* Optional: a subtle “pulse” on the badge to draw attention */
+
+.badge-founder{
+  animation:badgePulse 2s infinite ease-in-out;
+}
+
+
 /* Links ------------------------------------------------------ */
 a{
   color:var(--c-accent);
@@ -521,7 +541,10 @@ footer a:hover{color:var(--c-accent);}
 
 <!-- ==================== ABOUT ==================== -->
 <section class="container" id="about">
-  <h2 class="section-title">About Dmytró “Matt” Kondratiuk</h2>
+    <h2 class="section-title">
+    About Dmytro “Matt” Kondratiuk
+    <span class="badge-founder">Founder</span>
+  </h2>
   <div class="row align-items-center g-4">
 <div class="col-lg-3 text-center">
   <!-- 1️⃣  Link that points to the original file (opens the full‑size picture) -->
