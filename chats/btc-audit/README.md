@@ -341,6 +341,8 @@ The [Explorer Fund](docs/fund-management.md) will simply reward bids/donations p
 > Since, there is a possibility, those addresses might become at risk themselves, separate workflow (and mini-webapp) will be introduced to (optionally) assign a new address using signature from the old one (while it is still valid).
 > If donation fund address becomes at risk and change - previous donations will still be accounted.
 
+[PROJECT TRACKING](CONTRIBUTORS.md)
+
 -----
 
 Bids/donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
