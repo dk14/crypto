@@ -40,9 +40,9 @@ Pending compensations (as of Jun 17 2026):
   - github:dk14/crypto/chats: long formal chats with AI about number theory, related abstract math and physics
 
 --------
-high-value (as of Jun 2026):
-- dk14, independent field research at physical risk (government security research: agencies, police departments, detention centers, refugee centers, military conflict borderline zones; + science/inventions depend on quality of agriculture, so, agricultural security research: travel expenses, financial risks), >1,000,000 USD
-- dk14, novel practical approach for actual true entropy, >10,000,000 USD
+high-value (as of 2026):
+- dk14, independent field research at physical risk (government security research: agencies, police departments, detention centers, refugee centers, military conflict borderline zones; + science/inventions depend on quality of agriculture, so, agricultural security research: travel expenses, financial risks), >1,000,000 USD, spans over past 5 years
+- dk14, novel practical approach for actual true entropy, >10,000,000 USD, spans over last decade
   - research done on rejecting quantum randomness/computing: github:dk14/q, github:dk14/fqc
   - research done on Digital Signal Processing and HCI: dk14/warriors
     - note: Human Computer Interaction research was related to human factor in security, human entropy is low (both "mind and body").
