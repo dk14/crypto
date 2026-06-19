@@ -20,7 +20,7 @@ Contact: [info-github@doomsdayexplorer.online](mailto:info-github@doomsdayexplor
 *White paper for Explorer Protocol is TBD ~2026 - features take priority.*
 
 Notes:
-> I don't trust SHA-256, so signing low-entropy message (even hashed) is not that safe. (even ONE message, even if RNG does NOT have purposedly introduced bug for diffferential cryptoanalysis, still unsafe - solver can be used). But bitcointalk requested it. So be it! (attack described below is more powerful than solver anyways).
+> minor note: I wouldn't trust SHA-256, so signing low-entropy message (even hashed) is not that safe. (even ONE message, even if RNG does NOT have purposedly introduced bug for diffferential cryptoanalysis, still unsafe - solver can be used). But bitcointalk requested it. So be it! (attack described below is more powerful than solver anyways).
 
 > The official name of the project will be something like "Entropy Explorer" IF security situation improves (and back to Doomsday when it's worse again). So far, I don't see anyone taking it seriously - this explorer should've been public a year ago, no one even pointed out the issue so far, except here.
 >> This project gives you a choice - inaction (or covert development) means you work towards black-hat. So enjoy walls of texts, I guess. **If hard to read - AI can parse this README.**
