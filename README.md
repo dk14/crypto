@@ -22,6 +22,7 @@ About AI
 >
 > I think chat based on pure-search (rather than NN) would work better than GPT non-sense. Can add transform-grammars for reasoning (and context awareness), long-range masks for long-range dependencies/dropouts, and PoW to emphasize relevant truth (certify with energy). I have concept presented somewhere (called [YaQui Search](https://www.upwork.com/services/product/development-it-yaqui-p2p-search-engine-standalone-web-2007000568819406128)). Don't even ask AI about it - I asked it if ngrams would replace it - it told me yes (GPT-OSS, GPT-5), while in reality transform grammars (more complex framework) is required.
 
+> Trying to parse this README with AI naively is a bad idea (they'll complain that notebooks are html - they html bcause you can simply use them to test models). You can try to use something STEM, like GPT-OSS or cross-reference with chats. But ideally, don't use AI - just run HTML files and see what they do.
 -----
 
 Energy conservation (or why not consumer/producer symmetry) also applies to TRNGs, but proof requires to replicate whole TRNG pipeline. 
