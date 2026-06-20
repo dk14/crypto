@@ -41,7 +41,7 @@ Team:
 Spendings:
 - dk14, website: 3+9 hours logged (150 USD donation#1)
     - intro, front and official page
-- dk14, audit-tool: 1 hour logged + 7 hours logged (50 USD donation#1, 350USD donation#2)
+- dk14, audit-tool: 1 hour logged + 7 hours logged (50 USD donation#1, 350 USD donation#2)
     - avalanche model integration
     - ring-oscillators prototype
 
