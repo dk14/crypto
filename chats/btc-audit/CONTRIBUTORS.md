@@ -36,6 +36,11 @@ Incoming contributions:
   - spent: partially
   - comment: partner is learning the concept of self-custody :) and preparing more donations to send.
 
+Current fund pledge: 0 BTC
+- comment on donation #2: I'm learning to not use Ledger Live, but Electrum instead to keep some pledge.
+
+Current outstanding dev fund: ~ 900 USD
+
 Team:
 - dk14 (founder, lead)
 
