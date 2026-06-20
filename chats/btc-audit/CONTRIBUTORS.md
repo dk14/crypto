@@ -36,7 +36,7 @@ Incoming contributions:
   - grant: no
   - refunded: no 
     - note: refund from the founder still keeps you in the pool, pool speculations by the founder not accepted
-      - explanation: otherwise the founder would be able to inflate partner's share in the pool (in situations when profits are much higher than initial investments)
+      - explanation: otherwise the founder would be able to artificially inflate partner's share in the pool by refunding the rest of participants (in situations when profits are much higher than initial investments)
   - comment: no
   - date: 6/19/2026
   - spent: partially
