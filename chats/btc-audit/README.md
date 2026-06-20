@@ -64,7 +64,7 @@ Warnings about AI use.
 
 >> **There is a valuable solution proposed, and "ready to use" experimental protocol described**
 
-## How to use
+## How to use [the audit tool]
 
 Run blockchain audit locally (for now, usable PoC state):
 
