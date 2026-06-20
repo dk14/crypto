@@ -336,9 +336,9 @@ Bitcoin is your playground!
 
 ### Transparency. 
 
-If you sent me message with a bid (txid of donation) for preferred feature and I did not progress the project - you can create an issue here as a reminder, so progress would be publicly tractable - mentioning txid, would prove your bid. 
+If you sent me message with a bid (signed txid of donation) for preferred feature and I did not progress the project - you can create an issue here as a reminder, so progress would be publicly tractable - mentioning signed txid, would prove your bid. 
 
-If your bid is not enough for the feature - someone else can bid more, and add a proof (txid) in comments to the issue. 
+If your bid is not enough for the feature - someone else can bid more, and add a proof (signed txid) in comments to the issue. 
 
 With enough bids - can lift it off!
 
