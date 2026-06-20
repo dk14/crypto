@@ -82,7 +82,7 @@ Pending compensations (as of Jun 17 2026):
 --------
 **Semi-formal pre-history of the project.**
 
-> Note: semi-automated verification of many activities described requires running AI with high (above consumer level) access to computational resources and government internal databases (e.g. immigration records, military records, reports). It also requires AI clean from speculative reasoning and "fill-in" hallucinations, not consumer-grade AI.
+> Note: semi-automated verification of many activities described below requires running AI with high (above consumer level) access to computational resources and government internal databases (e.g. immigration records, military records, reports). It also requires AI clean from speculative reasoning and "fill-in" hallucinations, not consumer-grade AI.
 >> It is added here because of alternative: when Explorer Network is operational, it can demonstrate zero-balance certain keys hacked after funds are safely moved away. Owners of the keys would get private individual proofs and will, thus, be incetivized to reward the network and the profit-share fund. Since massive activities would be noticable on-chain, dev fund share can be adjusted to fit  high-value compensations.
 
 High-value activities compensations pending (as of 2026):
