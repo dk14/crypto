@@ -1,5 +1,14 @@
-## TLDR
+## Table of Content
 
+- [TLDR](#tldr)
+- [How to use](#how-to-use-the-audit-tool)
+- ["Replay noise" attack / Call for action](#replay-noise-attack-mediation-and-impact-analysis)
+- [Project plan / How to improve](#project-plan-aka-to-improve)
+- [White-hat messages](#white-hat-project)
+- [Project transparency notes](#transparency)
+- [Fund](#fund)
+
+## TLDR
 
 [DOOMSDAY EXPLORER: ANTI-SCANNER TRNG AUDIT TOOL (PRESENTATION)](PRESENTATION_PDF.pdf)
 
