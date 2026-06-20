@@ -23,7 +23,7 @@ Incoming contributions:
   - current profit share: 90% (donation made: 0.00276677 BTC ~ 1750 usd)
   - origin: anonymous
   - bids: (preferred: audit tool UX refinements, signed: no - from trusted anonymous partner, coinbase wallet)
-  - profit-share: effectively refused (profit share will go back to coinbase, strict rule: alterations not accepted)
+  - profit-share: refused by partner (profit share will go back to coinbase, strict rule: alterations not accepted)
   - early-bird: yes
   - sponsor: no
   - partner: yes
