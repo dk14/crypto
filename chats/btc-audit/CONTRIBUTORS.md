@@ -4,7 +4,7 @@ Incoming contributions:
 
 - #1, reward address: 17P3kGxqCm45b5QQhBo1VhrG9FzKqyVyvv
   - txid: 9ed083fa57c2c7a03123f1d21c86daa96e44e3d88f0f73e1784429769a5c4ab7
-  - current profit share: 100% (donation made: 0.00276677 BTC ~ 200 usd)
+  - current profit share: 10% (donation made: 0.00276677 BTC ~ 200 usd)
   - origin: anonymous
   - bids: none
   - early-bird: yes
@@ -13,17 +13,35 @@ Incoming contributions:
   - dev: no
   - sepa: no
   - grant: no
+  - refunded: no
   - comment: no
   - date: 5/26/2026
   - spent: yes, 6/17/2026
+
+- #2, reward address: bc1q2ds62dp3647w74xr9njkwze2mhl0cp0uge75tv
+  - txid: 01fca3a26dabe372972e0d5bac93f8dd108032a1070e6e2f72d22c20d0b473af
+  - current profit share: 90% (donation made: 0.00276677 BTC ~ 1750 usd)
+  - origin: anonymous
+  - bids: (preferred: audit tool UX refinements, signed: no - from trusted anonymous partner, coinbase wallet)
+  - profit-share: effectively refused (profit share will go back to coinbase, strict rule: alterations not accepted)
+  - early-bird: yes
+  - sponsor: no
+  - partner: yes
+  - dev: no
+  - sepa: no
+  - grant: no
+  - refunded: no (note: refund from the founder still keeps you in the pool, pool speculations by the founder not accepted)
+  - comment: no
+  - date: 5/26/2026
+  - spent: partially
 
 Team:
 - dk14 (founder, lead)
 
 Spendings:
-- dk14, website: 3 hours logged (150 USD, donation#1)
+- dk14, website: 3+9 hours logged (150 USD donation#1)
     - intro, front and official page
-- dk14, audit-tool: 1 hour logged (50 USD, donation#1)
+- dk14, audit-tool: 1 hour logged + 7 hours logged (50 USD donation#1, 350USD donation#2)
     - avalanche model integration
     - ring-oscillators prototype
 
@@ -33,7 +51,7 @@ PR reward spendings:
 Pending compensations (as of Jun 17 2026):
 - dk14, website refinements: 20 hours logged (1,000 USD)
     - intro, front and official page
-- dk14, audit tool PoC: 160 hours logged (8,000 USD)
+- dk14, audit tool PoC: 160 - 7 hours logged (8,000 - 350 USD)
     - chats, coding, analysis, refinements/improvements, manual testing, ensuring non-exploitability, documenting
 - dk14, documented research efforts: 800 hours logged (at risk, 40,000 USD)
   - github:dk14/crypto root: (no AI-assistance) flaws related to non-monotonicty, DLP, number theory, polynomials, transfers.
