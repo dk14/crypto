@@ -17,7 +17,7 @@ Intro website: [https://doomsdayexplorer.online/](https://doomsdayexplorer.onlin
 
 Contact: [info-github@doomsdayexplorer.online](mailto:info-github@doomsdayexplorer.online)
 
-*White paper for Explorer Protocol (written in formal language) is TBD ~2026 - features take priority.*
+*White paper for Explorer Protocol (written fully in formal language) is TBD ~2026 - features take priority.*
 
 Notes:
 > minor note: I wouldn't trust SHA-256, so signing low-entropy message (even hashed) is not that safe. (even ONE message, even if RNG does NOT have purposedly introduced bug for diffferential cryptoanalysis, still unsafe - solver can be used). But bitcointalk requested it. So be it! (attack described below is more powerful than solver anyways).
