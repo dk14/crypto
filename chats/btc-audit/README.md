@@ -6,7 +6,7 @@
 - ["Replay noise" attack / Call for action](#replay-noise-attack-mediation-and-impact-analysis)
 - [Project plan / How to improve](#project-plan-aka-to-improve)
 - [The White-Hat Message](#white-hat-project)
-- [Project transparency notes](#transparency)
+- [Project transparency / tracking](#transparency)
 - [Project Fund](#fund)
 
 ## TLDR
