@@ -5,7 +5,7 @@
 - [How to use the audit tool](#how-to-use-the-audit-tool)
 - ["Replay noise" attack / Call for action](#replay-noise-attack-mediation-and-impact-analysis)
 - [Project plan / How to improve](#project-plan-aka-to-improve)
-- [White-hat messages](#white-hat-project)
+- [The White-Hat Message](#white-hat-project)
 - [Project transparency notes](#transparency)
 - [Project Fund](#fund)
 
