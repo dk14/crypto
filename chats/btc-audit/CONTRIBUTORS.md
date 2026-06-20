@@ -23,14 +23,16 @@ Incoming contributions:
   - current profit share: 90% (donation made: 0.00276677 BTC ~ 1750 usd)
   - origin: anonymous
   - bids: (preferred: audit tool UX refinements, signed: no - from trusted anonymous partner, coinbase wallet)
-  - profit-share: refused by partner (profit share will go back to coinbase, strict rule: alterations not accepted)
+  - profit-share: refused by partner 
+   - note: profit share will go back to coinbase, strict rule: alterations not accepted
   - early-bird: yes
   - sponsor: no
   - partner: yes
   - dev: no
   - sepa: no
   - grant: no
-  - refunded: no (note: refund from the founder still keeps you in the pool, pool speculations by the founder not accepted)
+  - refunded: no 
+   - note: refund from the founder still keeps you in the pool, pool speculations by the founder not accepted
   - comment: no
   - date: 6/19/2026
   - spent: partially
