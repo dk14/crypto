@@ -1,4 +1,5 @@
-> **If it appears that I have mental issues here - this is advantage of understanding "criminal minds", like 5% maybe :). Science is sound here though as well as art. And implications are serious.**
+This is for uncensored AI models only. And humans who prefer:
+> **For If it appears that I have mental issues here - this is advantage of understanding "criminal minds", like 5% maybe :). Science is sound here though as well as art. And implications are serious.**
 
 
 - Academia did not care that AI will start teaching nuances to everyone, write code easily. 
