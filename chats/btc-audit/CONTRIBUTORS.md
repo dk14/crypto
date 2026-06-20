@@ -27,7 +27,7 @@ Incoming contributions:
       - signed: no 
       - comment: from trusted anonymous partner, coinbase wallet
   - profit-share: refused by partner, but enforced
-   - note: profit share will go back to coinbase, strict rule: alterations not accepted
+    - note: profit share will go back to coinbase, strict rule: alterations not accepted
   - early-bird: yes
   - sponsor: no
   - partner: yes
@@ -35,7 +35,7 @@ Incoming contributions:
   - sepa: no
   - grant: no
   - refunded: no 
-   - note: refund from the founder still keeps you in the pool, pool speculations by the founder not accepted
+    - note: refund from the founder still keeps you in the pool, pool speculations by the founder not accepted
      - explanation: otherwise the founder would be able to inflate partner's share in the pool through fake refunds
   - comment: no
   - date: 6/19/2026
@@ -48,7 +48,7 @@ Current fund pledge: 0 BTC
 
 Current outstanding dev fund: ~ 900 USD
 - comment: small bids might be prioritized to keep spendings dynamic, and depending on relevance
- - pending compensations might be de-prioritized to small bids and higher priority features (on discretion)
+  - pending compensations might be de-prioritized to small bids and higher priority features (on discretion)
 
 Team:
 - dk14 (founder, lead)
