@@ -44,7 +44,7 @@ Spendings:
 - dk14, audit-tool: 1 hour logged + 7 hours logged (50 USD donation#1, 350 USD donation#2)
     - avalanche model integration
     - ring-oscillators prototype
-    - (from pending): refinements/improvements
+    - (from pending): refinements/improvements, manual testing
 
 PR reward spendings:
  - none
