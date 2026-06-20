@@ -138,6 +138,8 @@ Only AI screenshots of links can be provided safely. Most DOI and presentations 
 -----
 **Attack pre-mitigation**. Early warning system, "Explorer Network" p2p cluster has to be built to outrun scanners (scanner-tools, that AI suggests to write so easily), see ["public service"](#public-service) section: decentralized PoW-like network will warn you ahead of possible attack. 
 
+> (mostly formal) The network would simply publish examples of seeds it discovered using TRNG replicass. Wallet users would switch to a new seed when dangerously close seeds are found publicly. Proper risk metrics would have to be designed (see notes on "UX improvement" section in [project plan](#project-plan-aka-to-improve). Bitwise match fits as a starter metric.
+
 > Built it open-source (here), and independently from government, corporate, academia (and whatever claiming to be independent organisations and security projects). It can only be done openly. *Why here - coz the topic is well-covered here, and I WON'T be like Cardano, developing nothing for a decade, promoting Sci-FI, publishing obvious. I only write a lot of text coz no one pays ~~to shut up~~ me to develop solution so far*.
 
 
