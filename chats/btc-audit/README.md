@@ -216,7 +216,7 @@ In the meantime, there are unwise humans listening to AI seriously, without ques
 
 ------
 
-## Project plan (To improve)
+## Project plan (aka "To improve")
 
 > **As bitcointalk mentioned, devs don't work for free**. I need funds to improve this. It will be solo-project for a while, which I prefer, since we're aiming at efficiency. It's relatively easy to employ extra devs/AI/QA/auditors/researches/designers, but it's also risky for a critical project - so it is a trade, I would have to [manage](docs/fund-management.md). Besides, there are other expenses (extra supporting services, promotions, integrations, clouds, hardware for testing, my time for extra research and thinking, experimentation, modeling, consulting, publishing, devops, test certification, my own dev time), that **take priority** atm.
 >
