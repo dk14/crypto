@@ -32,7 +32,7 @@ Incoming contributions:
   - grant: no
   - refunded: no (note: refund from the founder still keeps you in the pool, pool speculations by the founder not accepted)
   - comment: no
-  - date: 5/26/2026
+  - date: 6/19/2026
   - spent: partially
 
 Team:
