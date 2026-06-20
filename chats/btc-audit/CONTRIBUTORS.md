@@ -34,6 +34,7 @@ Incoming contributions:
   - comment: no
   - date: 6/19/2026
   - spent: partially
+  - comment: partner is learning the concept of self-custody :) and preparing more donations to send.
 
 Team:
 - dk14 (founder, lead)
