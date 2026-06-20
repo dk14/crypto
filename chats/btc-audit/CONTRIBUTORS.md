@@ -78,7 +78,9 @@ Pending compensations (as of Jun 17 2026):
   - github:dk14/crypto/chats: long formal chats with AI about number theory, related abstract math and physics
 
 --------
-Semi-formal pre-history of the project.
+--------
+--------
+**Semi-formal pre-history of the project.**
 
 High-value activities compensations pending (as of 2026):
 - dk14, independent field research at physical risk (government security research: agencies, police departments, detention centers, refugee centers, military conflict borderline zones; + science/inventions depend on quality of agriculture, so, agricultural security research: travel expenses, financial risks), >1,000,000 USD, spans over past 5 years
