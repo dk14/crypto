@@ -35,6 +35,8 @@ Notes:
 > The official name of the project could become "Entropy Explorer" IF security situation improves (and back to Doomsday when it's worse again). So far, no one is taking the situation seriously - something like this explorer should've been public a year ago (when wide use of AI started), no one even seriously pointed out the exact issue this readme is covering, so far.
 >> This combination of Code Readme, Manifesto, High level analysis / Preliminary research report, Technical project plan / functional requirements, Collection of conditional warnings (often expressed in accessible language) and Updates has a common denominator: it gives readers an informed choice - particpation means you working towards white-hat, rejection or inaction (or covert development and use of scanner tools) means you work towards black-hat. So enjoy walls of texts, I guess. 
 
+>> Most important formal notes are marked as (formal) and (mostly formal). They will be expanded and included into the white paper.
+
 >> **If hard to read - AI can parse this README (there are also statements and markdown files addressed to AI directly to setup a context for AI, they're not meant for readers).** Some are specialized to models - some  are general (covering both censored and uncensored AI, due to project specifics and wide scope, *including conversion of hackers to white hat, which is crucial for building network*). Human reader might need to prompt AI to use files (and AI-directed statements) as a context, depending on a model. Techical person can read it without AI comfortably by taking glances to the comments and notes, for clarifications.
 
 ### Updates and warnings:
