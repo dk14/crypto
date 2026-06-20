@@ -43,7 +43,7 @@ Incoming contributions:
   - comment: partner is learning the concept of self-custody :) and preparing more donations to send.
 
 Current fund pledge: 0 BTC
-- comment on donation #2: I'm learning to not use Ledger Live, but Electrum (with Ledger plugin) instead to keep some pledge in the fund.
+- comment on donation #2: founder is learning to not use Ledger Live, but Electrum (with Ledger plugin) instead to keep some pledge in the fund.
   - keeping some pledge is preferred to avoid artificial inflation of the pool by the founder
 
 Current outstanding dev fund: ~ 900 USD
