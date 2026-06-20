@@ -44,7 +44,7 @@ Incoming contributions:
 
 Current fund pledge: 0 BTC
 - comment on donation #2: founder is learning to not use Ledger Live, but Electrum (with Ledger plugin) instead to keep some pledge in the fund.
-  - keeping some pledge is preferred to avoid artificial inflation of the pool by the founder
+  - keeping some pledge is preferred to avoid artificial inflation of the pool (whole pool or a group of participants) by the founder
   - pledge also incentivies development, since wallet is on Ledger Nano, the device that was meant to be defended
 
 Current outstanding dev fund: ~ 900 USD
