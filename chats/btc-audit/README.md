@@ -2,7 +2,7 @@
 
 - [TLDR](#tldr)
 - [Project updates](#updates)
-- [How to use](#how-to-use-the-audit-tool)
+- [How to use the audit tool](#how-to-use-the-audit-tool)
 - ["Replay noise" attack / Call for action](#replay-noise-attack-mediation-and-impact-analysis)
 - [Project plan / How to improve](#project-plan-aka-to-improve)
 - [White-hat messages](#white-hat-project)
