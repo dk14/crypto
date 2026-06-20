@@ -39,7 +39,6 @@ Incoming contributions:
       - explanation: otherwise the founder would be able to artificially inflate partner's share in the pool by refunding the rest of participants (in situations when profits are much higher than initial investments)
       - note: since refunds keep in the profit share pool (which can be exploited) - refunds are on founder's discretion (will be reported here for public fund audit).
         - note: as a result - bids can be anonymous, but content of the bid (feature requested) cannot be private
-  - comment: no
   - date: 6/19/2026
   - spent: partially
   - comment: partner is learning the concept of self-custody :) and preparing more donations to send.
