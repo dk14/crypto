@@ -43,6 +43,7 @@ Current fund pledge: 0 BTC
 
 Current outstanding dev fund: ~ 900 USD
 - comment: small bids might be prioritized to keep spendings dynamic, and depending on relevance
+ - pending compensations might be de-prioritized to small bids and higher priority features
 
 Team:
 - dk14 (founder, lead)
