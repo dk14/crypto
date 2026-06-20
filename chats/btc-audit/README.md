@@ -45,9 +45,6 @@ Warnings about AI use.
 
 >>>> Although, quality of information AI receives can be improved - there is a [Yaqui Search](docs/yaqui.pdf) concept presented in the doomsday ecosystem, addressing the "quality of information" issue. It developed organically from [Mg-Peers Oracle Platform](https://dk14.github.io/mega-peers/docs/front.html) project.
 
->>>> Although, quality of information AI receives can be improved - there is a [Yaqui Search](docs/yaqui.pdf) concept presented in the doomsday ecosystem, addressing the "quality of information" issue. It is naturally grown from [Mg-Peers Oracle Platform](https://dk14.github.io/mega-peers/docs/front.html) project.
->>>>>>> 80f7b17abcbc3d2bcb55fddd632ffc99767327bb
-
 > **If it appears to you that AI does invent - it is result of lack of your own expertise (you did not do DYR IRL).** Also, don't rely on cheap comparisons - things are not equal, nor equivalent to one another (building an equivalence requires work and energy, as well as applying it).
 >> If you compare cheaply - things can appear to be identical when they are not. It can cost you money or worse. This project shows how cheap randomness (believing that thermal noise is random) put your funds and life at risk.
 
