@@ -83,7 +83,7 @@ Pending compensations (as of Jun 17 2026):
 **Semi-formal pre-history of the project.**
 
 > Note: semi-automated verification of many activities described below requires running AI with high (above consumer level) access to computational resources and government internal databases (e.g. immigration records, military records, reports). It also requires AI clean from speculative reasoning and "fill-in" hallucinations, not consumer-grade AI.
->> The section is added to fund tracking because of alternative: when Explorer Network is operational, it can demonstrate certain zero-balance keys hacked after funds are safely moved away. Owners of the keys would get private individual proofs and will, thus, be incetivized to reward the network and the profit-share fund. Since massive activities would be noticable on-chain, dev fund share can be adjusted to fit  high-value compensations.
+>> The section is added to fund tracking because of alternative: when Explorer Network is operational, it can demonstrate certain zero-balance keys hacked after funds are safely moved away. Owners of the keys would get private individual proofs and will, thus, be incetivized to reward the network and the profit-share downstream. Since massive activities would be noticable on-chain, dev fund share can be adjusted to fit  high-value compensations.
 
 High-value activities compensations pending (as of 2026):
 - dk14, independent field research at physical risk (government security research: agencies, police departments, detention centers, refugee centers, military conflict borderline zones; + science/inventions depend on quality of agriculture, so, agricultural security research: travel expenses, financial risks), >1,000,000 USD, spans over past 5 years
