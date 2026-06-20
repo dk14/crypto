@@ -133,7 +133,7 @@ Can only give you AI screenshots of links. Most DOI and presentations are remove
 >>> To cover LCMs (common repeptition period of many cycles together) - higher lcm's require more energy (denser spectra amplified). Running power-on time of device can be guessed (waves start from zero on power-on, since otherwise it's equillibrium), so even high-quality ADC with astronomical lcm won't help.
 >>> LSFR (rolling register) used here is bad model for Avalanche noise (for DUN), since it enumerates over all states of 128bit register. It does not discount ADC filtering. LSFR can be used as PRNG (pseudo-random) and give you some security proportional to time/energy spent, but it is not a good model for twitching diode+ADC pipe.
 -----
-**Attack pre-mitigation**. Early warning system, "Explorer Network" p2p cluster has to be built to outrun scanners (scanner-tools, that AI suggests to write so easily), see "public service" section: decentralized PoW-like network will warn you ahead of possible attack. 
+**Attack pre-mitigation**. Early warning system, "Explorer Network" p2p cluster has to be built to outrun scanners (scanner-tools, that AI suggests to write so easily), see ["public service"](#public-service) section: decentralized PoW-like network will warn you ahead of possible attack. 
 
 > Built it open-source (here), and independently from government, corporate, academia (and whatever claiming to be independent organisations and security projects). It can only be done openly. *Why here - coz the topic is well-covered here, and I WON'T be like Cardano, developing nothing for a decade, promoting Sci-FI, publishing obvious. I only write a lot of text coz no one pays ~~to shut up~~ me to develop solution so far*.
 
@@ -281,7 +281,7 @@ Performance:
 - thermal noise generator is highly-parallelisable. But with need for lots of care (eg account for sliding window). So GPU is low-priority here, since it is so easy to make a mistake.
 - low-level optimisations would be premature at this point (and in general, as practice shows), it needs strong coverage first.
 
-**PUBLIC SERVICE**:
+#### **PUBLIC SERVICE**:
 - build a decentralized database of matches which came close. IPFS as a starter.
 > enumerated private keys (seeds) will be published - so user can compare reported seed to his private seed, privately. To see how close it got. Adreesses can be compared too (full public, but weaker metric).
 
