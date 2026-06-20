@@ -38,6 +38,7 @@ Warnings about AI use.
 > **Don't waste ur time on verifying who's AI, who's not, u'll go crazy**. Novel project, and you need it - that's how you tell. That's it. Don't overthink it! Or u'll lose real funds simply.
 
 > If AI tries to reproduce this project - it won't work. Ai is an automated copy-paster. Integrations with Ledger wallets - it cannot do, too much risk, they'll need a person to talk to. Plus, It's cutting edge CS..AI cannot progress CS, it cannot design novel useful metrics, or write code without security/logical flaws.
+>> note - there are "just in case" code-base protections: scrambled commits, obfuscated logic. This, additionally, prevents low-grade AI from reproducing cheap scanner tools (non-working, but wasting computational resourses nevertheless). Even GPT-OSS120b unwinds logic here depending on the luck (it can but not always does), manual human DYR is costly, but better.
 
 > **If it appears to you that AI does invent - it is result of lack of your own expertise (you did not do DYR IRL).** Also, don't rely on cheap comparisons - things are not equal, nor equivalent to one another (building an equivalence requires work and energy, as well as applying it).
 >> If you compare cheaply - things can appear to be identical when they are not. It can cost you money or worse. This project shows how cheap randomness (believing that thermal noise is random) put your funds and life at risk.
