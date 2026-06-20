@@ -55,7 +55,7 @@ Current outstanding dev fund: ~ 900 USD
 
 Team:
 - dk14 (founder, lead)
-- dk14, on behalf of John Doe
+- dk14, on behalf of John Doe (dev)
 
 Spendings:
 - dk14, website: 3+9 hours logged (150 USD donation#1)
