@@ -37,7 +37,7 @@ About AI
 
 ### TRNG
 
-Energy conservation (or why not consumer/producer symmetry) also applies to TRNGs, but proof requires to replicate whole TRNG pipeline. 
+Energy conservation (or why not consumer/producer symmetry) also applies to TRNGs, but proof requires to replicate whole TRNG pipeline of, let's say Ledger Nano, as a start. 
 
 > And without proof - cannot improve crypto
 
