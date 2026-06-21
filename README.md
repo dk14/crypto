@@ -19,7 +19,7 @@ From chats with GPT-OSS: Statistical estimates of "overheads of fast exp for DLP
 >
 > DLP Note on key restauration with deterministic slowexp (the inductively proven way): [here](https://github.com/dk14/crypto/blob/main/dlp.html#L225) I show that local monotonicities can be exploited to progress faster. [perfect power](https://github.com/dk14/crypto/blob/main/dlp.html#L137) (logN speedified with memoization) is used to skip through local monotonic interval.
 >
-> P.S. I accidentally re-invented recently invented algorithm for fast perfect power (logN, I used divide and conquer), aka polynomial DLP-solution for non-cyclic integers. When I asked AI about it - it refered to David Harvey (2019).
+> P.S. I accidentally re-invented "recently" (by academic standards) invented algorithm for fast perfect power (logN, I used divide and conquer), aka polynomial DLP-solution for non-cyclic integers. When I asked AI about it - it refered to David Harvey (2019).
 ----
 About AI
 > AI was a bit useful in my "abstract machine research", not presented here (spent a month or so), but [here](https://github.com/dk14/warriors/blob/main/eng.html), hand-"written". It, at least, gave nice formulations and was able to list challenges (with hallucinations though). But it gave me very bad code! Anything novel - u have to babysit it which is a trick to collect data simply, with no permission.
