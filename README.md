@@ -34,3 +34,7 @@ I partially replicated TRNG pipeline in a tool. PRs are welcome.
 Bitcoin TRNG audit tool is here: https://github.com/dk14/crypto/tree/main/chats/btc-audit
 
 Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
+
+-----
+
+Note: this repos also serves as a root for augmented-reality text based adventure game. It is where research starts....
