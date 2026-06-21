@@ -78,11 +78,14 @@ Warnings about AI use.
 
 General note:
 
-> I won't add anything more novel or stable features to this repo **until there are funds - it is unsafe** to add more features without funds to build a network. Without Explorer Network, it would turn this audit tool into a scanner. I invested into R&D more than anyone ever will, most expensive mistake in history of STEM I'm pointing out: "noise is NOT secure random". Noise as source of randomness was a purely psychological idea for defense, no grounds in physics/reality. It was adopted by NIST to foolishly save funds on RNGs, among other things, IT-industry was not funded well at the time (e.g. prior to 70s). Today, we have an opportunity to implement actual physiocratic solution, secure non-quantum computational randomness, arising from competition for resources.
+> I won't add anything more novel or stable features to this repo **until there are funds - it is unsafe** to add more features without funds to build a network. Without Explorer Network, it would turn this audit tool into a scanner. I invested into R&D more than anyone ever will, most expensive mistake in history of STEM I'm pointing out: "noise is NOT secure random". 
+
+>Noise as source of randomness was a purely psychological idea for defense, no grounds in physics/reality. It was adopted by NIST to foolishly save funds on RNGs, among other things, IT-industry was not funded well at the time (e.g. prior to 70s). Today, we have an opportunity to implement actual physiocratic solution, secure non-quantum computational randomness, arising from competition for resources.
 
 >> magicNo in Bitcoin's hashcash is a good example: it is impossible to predict without outrunning hashcash miners. Explorer Network provides practical solution aimed at private keys and existing TRNGs.
 
 ------
+
 >> **"noise is NOT secure random" is demonstrated here, implications are pointed out. Only features that would lead directly to funds stolen, or panic are left out.**
 
 >> **There is enough information here to verify the work done.**
