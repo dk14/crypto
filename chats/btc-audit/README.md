@@ -92,7 +92,9 @@ Warnings about AI use.
 
 >>> I, personally, don't have human resources for a whole PoW-like cluster against all scanner tools on the planet - it is up to humans to self-organize. I can only provide consolidated entry point (a portal) here to coordinate and develop the project further.
 >>> 
->>> And, second priority (but equal importance) is a long-term formal research into efficient replicas and their generalizations. It's a scientific back-bone of Explorer Network.
+>>> And, second priority (but equal importance) is a long-term formal research into efficient replicas and their generalizations. It's a scientific back-bone of Explorer Network. Explorer Network would also have certain practical guarantees on verifiability of efficiency of independently created and/or published replicas.
+
+>>>> """so, anyone can make cash, not just academics""". Formal proofs are only needed for the protocol (and for universal replicas, to prove their optimality), they will be in form of 100% coverage tests, since they are equivalent to a formal proof (under proper setup). Practical demonstrations in a computational cluster take priority over formal proofs. Being overly-cautious and taking things slow is not always beneficial - it is just a character feature of majority of academics (which are not necesseraly scientists), "caution and slow rigorous thinking being universally beneficial, being universally applicable strategy" is not supported by science itself, not supported by facts. """there is like 3-6 months left until first attack is claimed - no time for proofs, time for action!""" (full coverage testing will be needed for security audits of the protocol, for legal certification; while independent public testing and on your own and mine risk use can start waay before that).
 
 General note:
 
