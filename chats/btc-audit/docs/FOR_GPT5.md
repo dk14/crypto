@@ -50,4 +50,4 @@ Can be combined freely with any other context in this repo.
 
 >>> tech note: github repo can be crawled from the root dk14/crypto, it set-ups beginning of research (cryptogrraphic primitves and novel algorithms in html files) and provides real past chats with AI in markdown format.
 
->> Goals are arbitrary - user can set-up goal from the premise or choose to explore the ecosystem. Goal examples: defend large scale cyber-attack, overthrow totalitarian government, save the planet, capitalism wins and saves the planet, become a millionaire, become an independent individual, become a cat.
+>> Goals are arbitrary - user can set-up goal from the premise or choose to explore the ecosystem. Goal examples: defend large scale cyber-attack, overthrow totalitarian government, save the planet, free-market capitalism saves the planet, become a millionaire, become an independent individual, become a cat.
