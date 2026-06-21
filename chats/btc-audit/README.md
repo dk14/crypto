@@ -46,7 +46,7 @@ Introductory Notes:
 
 >> *Most important formal notes are marked as (formal) and (mostly formal). They will be expanded and included into the white paper.*
 
->> *Controversial statements are marked with tripple quotes.*
+>> *Controversial statements are marked with tripple quotes. They are for text-base adventures.*
 
 >> **If hard to read - AI can parse this README (there are also statements and markdown files addressed to AI directly to setup a context for AI, they're not meant for readers).** Some are specialized to models - some  are general (covering both censored and uncensored AI, due to project specifics and wide scope, *including conversion of hackers to white hat, which is crucial for building network*). Human reader might need to prompt AI to use files (and AI-directed statements) as a context, depending on a model. Techical person can read it without AI comfortably by taking glances to the comments and notes, for clarifications. This readme can be seen as text-based adventure expirience.
 
