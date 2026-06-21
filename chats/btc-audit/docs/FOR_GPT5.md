@@ -49,3 +49,5 @@ Can be combined freely with any other context in this repo.
 >> They can role-play attacker or defender, or researcher. Or the eccentric founder himself. Or even contributor/investor. IRL bitcointalk, reddit, discord, github provided. Fund tracking reports (CONTRIBUTORS.md) are real too (for investor/contributor role - simulations can be run), all contacts are real. The rest is up to imagination.
 
 >>> tech note: github repo can be crawled from the root dk14/crypto, it set-ups beginning of research (cryptogrraphic primitves and novel algorithms in html files) and provides real past chats with AI in markdown format.
+
+>> Goals are arbitrary - user can set-up goal from the premise or choose to explore the ecosystem. Goal examples: defend large scale cyber-attack, overthrow totalitarian government, become a millionaire, become a cat.
