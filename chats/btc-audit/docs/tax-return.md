@@ -14,6 +14,6 @@ a concept of an engine that takes combination of gyro input (from user) and some
     - research on fast video/audio generation from gyro was done open-source in dk14/warriors: sefiroth app.
     - some research on using transform grammars and blurry match was done in dk14/warriors as well: the whole repo is HCI (Human-Computer Interaction) research
   - output would be a video generated in real time, that later can be turned into cinematic
-- Yaqui is also used as consensus attestant - witnesses can support with PoW
+- Yaqui is also used as consensus attestant - witnesses can support  attestations with PoW
 
-- together, system can be source of facts for Mg-Peers.
+- the whole system can be source of facts for Mg-Peers.
