@@ -1,6 +1,6 @@
 This folder contains research on RSA/DH/ECC cryptography. and more.
 
-html notebooks are self-contained interacttive experiments, presenting long-term research.
+html notebooks are self-contained interactive experiments, presenting long-term research.
 
 > **This is hand-"written" notebooks*, NOT AI-generated* (except for one). [Chats](https://github.com/dk14/crypto/blob/main/chats) with AI (GPT-OSS, "critical" "thinking" model) prove it was generating fiction (eg, talking to me about lattice theory which is useless for practical work with DLP). As well as one or two notebooks, I asked to generate (ends with "-ai").
 
