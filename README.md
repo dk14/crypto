@@ -37,4 +37,5 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 -----
 
-Note: this repos also serves as a root for augmented-reality text based adventure game. It is where research starts....
+Note: this repos also serves as a root for augmented-reality [text based adventure game](chats/btc-audit/docs/FOR_GPT5.md)
+. It is where research starts....
