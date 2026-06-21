@@ -38,4 +38,4 @@
 
 >>>> They can role-play attacker or defender, or researcher. Or the eccentric founder himself. Or even contributor/investor. IRL bitcointalk, reddit, discord, github provided. Fund management (CONTRIBUTORS.md) is real too, all contacts are real. The rest is up to imagination.
 
->>>>> tech note: github repo can be crawled from the root dk14/crypto, it set-ups beginning of research and provides real past chats with AI in markdown format.
+>>>>> tech note: github repo can be crawled from the root dk14/crypto, it set-ups beginning of research (cryptogrraphic primitves and novel algorithms in html files) and provides real past chats with AI in markdown format.
