@@ -91,7 +91,7 @@ General note:
 
 >> **There is enough information here to verify the work done.**
 
->> **There is a valuable solution proposed, and "ready to use" experimental protocol described**
+>> **There is a valuable solution proposed, and "ready to use" experimental protocol described**. Other audit tools can start using it now.
 
 ## How to use [the audit tool]
 
