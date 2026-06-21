@@ -1,6 +1,6 @@
 another hidden part of doomsday ecosystem:
 
-Tax return concept (aka psychodrama engine).
+Psychodrama Engine concept (aka Tax Return).
 
 a concept of an engine that takes combination of gyro input (from user) and some text guidance, and reconstructs (and certifies) real memories of real events.
 
@@ -17,3 +17,5 @@ a concept of an engine that takes combination of gyro input (from user) and some
 - Yaqui is also used as consensus attestant - witnesses can support  attestations with PoW
 
 - the whole system can be source of facts for Mg-Peers.
+
+- *note: there is a real-world story to test in mind*
