@@ -240,9 +240,9 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 > Forum: https://bitcointalk.org/index.php?topic=5582621
 
 > My related commercial solo projects and info: [p2p+oracles](https://dk14.github.io/mega-peers/docs/#/front.html), [finance+crypto+paper](https://link.springer.com/chapter/10.1007/978-3-662-63958-0_41), [ecc+dlp+notebooks](https://github.com/dk14/crypto), [verified+id](https://www.guru.com/freelancers/matt-dmytr)
->> valuable science is not a religion or theather or kindergarten - so no useless blogs or that many conferences. They're just charity for organizers, nothing useful. I rather do the theather IRL for fun,
+>> """valuable science is not a religion or theather or kindergarten - so no useless blogs or that many conferences. They're just charity for organizers, nothing useful. I rather do the theather IRL for fun,""" """what? Springer Lecture Notes On Computer Science publication does not give me any cred???"""
 >> 
->> **find me IRL! IRL!**
+>> """**find me IRL! IRL!**"""
 
 *"""id-verified, there is no Satochi! While, grandpa does his business in the open)"""*
 
