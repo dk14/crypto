@@ -41,7 +41,7 @@ Energy conservation (or why not consumer/producer symmetry) also applies to TRNG
 
 > And without proof - cannot improve Information Security, cannot improve "crypto"
 
-I replicated TRNG pipeline in a tool, tool is in a usable working state. Includes deterministic model of entropy-source itself, with purposedly limited precision and accuracy. Contributions are welcome to make replicas more accurate: there is an elegant p2p protocol, designed to compensate security risks.
+I replicated TRNG pipeline in a tool, tool is in a usable working state. Includes deterministic model of entropy-source itself, with purposedly limited precision and accuracy. Contributions are welcome to make replicas more accurate: there is an elegant p2p protocol, designed to compensate security risks, more accurate replicas would otherwise introduce.
 
 Bitcoin TRNG audit tool is here: https://github.com/dk14/crypto/tree/main/chats/btc-audit
 
