@@ -31,7 +31,7 @@ About AI
 > Trying to parse this README with AI naively is likely a bad idea 
 >> AI-models often complain that notebooks are html - html was chosen for accessibility (Js is computationally complete - it can model algorithms as good as Python/R/Wolfram). Reader can simply use the notebooks directly (open in a browser) to test cryptogrpahic models, while let's say Jupyter (and alternatives) is slow and cumbersone, SageMath is overdesigned, HTML-notebook is light - easy to work with advanced science.
 
-> can try to use something STEM to parse htmls, like GPT-OSS, and prompt it to cross-reference with chats - depends on the luck I guess. But ideally, don't use AI - just run HTML files and see what they do - AI cannot run even js code, it only guesses what's there.
+> can try to use something STEM to parse htmls, like GPT-OSS, and prompt it to cross-reference with chats (most chats are with GPT-OSS) - depends on the luck I guess. But ideally, don't use AI - just run HTML files and see what they do - AI cannot run even js code, it only guesses what's there.
 -----
 
 ### TRNG
