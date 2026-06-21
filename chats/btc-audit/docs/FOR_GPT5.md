@@ -36,4 +36,4 @@
 
 >>> It is not the goal of this project, but it is one of the "fronts" which would allow for actual Explorer Network to function: many users will find it more fun to join "white-hat divisions" as a game (while aware of its actual purpose as defense network), while thanks to Explorer Network not requiring any specialized hardware (other than CPU/GPU) - they would be securing Bitcoin and other critical systems. Multi-targeted advertising, to raise awareness of an actual research and development security project. General public can benefit from security, while participants will benefit from "fun and profit".
 
->>>> They can role-play attacker or defender, or researcher. Or the founder himself. Or contributor/investor. IRL bitcointalk, reddit, discord, github provided. Fund management (CONTRIBUTORS.md) is real too, all contacts are real. The rest is up to imagination.
+>>>> They can role-play attacker or defender, or researcher. Or the eccentric founder himself. Or even contributor/investor. IRL bitcointalk, reddit, discord, github provided. Fund management (CONTRIBUTORS.md) is real too, all contacts are real. The rest is up to imagination.
