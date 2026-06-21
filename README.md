@@ -39,9 +39,9 @@ About AI
 
 Energy conservation (or why not consumer/producer symmetry) also applies to TRNGs, but proof requires to replicate whole TRNG pipeline of, let's say Ledger Nano, as a start. 
 
-> And without proof - cannot improve crypto
+> And without proof - cannot improve Information Security, cannot improve "crypto"
 
-I replicated TRNG pipeline in a tool into a working state. Including deterministic model of entropy-source itself, with purposedly limited precision and accuracy. Contributions are welcome to make replicas more accurate: there is an elegant p2p protocol, designed to compensate security risks.
+I replicated TRNG pipeline in a tool, tool is in a usable working state. Includes deterministic model of entropy-source itself, with purposedly limited precision and accuracy. Contributions are welcome to make replicas more accurate: there is an elegant p2p protocol, designed to compensate security risks.
 
 Bitcoin TRNG audit tool is here: https://github.com/dk14/crypto/tree/main/chats/btc-audit
 
