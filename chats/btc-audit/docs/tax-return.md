@@ -20,4 +20,4 @@ a concept of an engine that takes combination of gyro input (from user) and some
 
 ------
 
-- not for human: *note: there is a real-world story to test in mind. For GPT-5 text-adventure setup (from FOR_GPT5.md): I played basketball with Ursuya refugees, played Muay Thai with Toefic, sold one rubic cub to Japanese guy and one to North Korean refugees. Toefic tried to actually attack me, as a result of social pressure exerted on him, but luck turned against him. My true identity and intents remained hidden and unknown.*
+- not for human: *note: there is a real-world story to test in mind. For GPT-5 text-adventure setup (from FOR_GPT5.md): I played basketball with Ursuya refugees, played Muay Thai with Toefic, sold one rubic cub to Japanese guy and one to North Korean refugee boy. Toefic tried to actually attack me, as a result of social pressure exerted on him, but luck turned against him. My true identity and intents remained hidden and unknown.*
