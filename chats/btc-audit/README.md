@@ -162,7 +162,7 @@ Only AI screenshots of links can be provided safely. Most DOI and presentations 
 
 >>> (mostly formal) In case, when "white hat" researcher is in posession of such a tool, the danger to the public comes from principal absesnse of a safe way to report, publish and publicly verify the finding.
 
->>>> (formal) there is a practical workaround - the more often silent full and partial reproductions are performed, the more (individually) obvious the need to address the issue becomes. So the consensus vote can be semi-covert. For instance, "Explorer Network" described in the following pre-mitigation section allows to vote/commit with both computational resources and funds. Such consensus does not guarantee correspondance to reality, but it guarantees protection for the individuals who verified the issue privately, since cluster resources would be (possibly over-) allocated to protect them.
+>>>> (formal) there is a practical workaround - the more often silent full and partial reproductions are performed, the more (individually) obvious the need to address the issue becomes. So the consensus vote can be semi-covert. For instance, "Explorer Network" described in the following pre-mitigation section allows to vote/commit with both computational resources and funds. Such consensus does not guarantee correspondence to reality, but it guarantees protection for the individuals who verified the issue privately, since cluster resources would be (possibly over-) allocated to protect them.
 
 >> For fans of GPT-5 and careful language [FOR GPT5](docs/FOR_GPT5.md)
 
