@@ -2,8 +2,8 @@
 
 - [Introduction / TLDR](#tldr)
 - [Project updates and warnings](#updates-and-warnings) (note: in strong, accessible language)
-- [How to use the audit tool](#how-to-use-the-audit-tool)
-- ["Replay noise" attack analysis / Call for action](#replay-noise-attack-mediation-and-impact-analysis)
+- [How to use the audit tool](#how-to-use-the-audit-tool) 
+- ["Replay noise" attack analysis / Call for action](#replay-noise-attack-mediation-and-impact-analysis) (accessible language)
 - [Project plan / How to improve](#project-plan-aka-to-improve)
 - [The White-Hat Message](#white-hat-project)
 - [Project transparency / tracking](#transparency)
