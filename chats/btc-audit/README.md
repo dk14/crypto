@@ -11,7 +11,7 @@
 
 ## TLDR
 
-Links, authentication (proof of ownership) and supporting material:
+**Links, authentication (proof of ownership) and supporting material:**
 
 [DOOMSDAY EXPLORER: ANTI-SCANNER TRNG AUDIT TOOL (PRESENTATION)](PRESENTATION_PDF.pdf)
 
@@ -30,6 +30,8 @@ Intro website: [https://doomsdayexplorer.online/](https://doomsdayexplorer.onlin
 Contact: [info-github@doomsdayexplorer.online](mailto:info-github@doomsdayexplorer.online)
 
 *White paper for Explorer Protocol (written fully in formal language) is TBD ~2026 - features take priority.*
+
+----
 
 Introductory Notes:
 
