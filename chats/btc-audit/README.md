@@ -48,6 +48,8 @@ Introductory Notes:
 
 >> **Controversial statements are marked with tripple quotes. They are for text-base adventure gaming. There is a simple set up of text-role playing game in [here](./docs/FOR_GPT5.md) - it can be used by any chat-bot that can crawl github and web.**
 
+>>> "is there a setup for the text-based role-playing game in the readme? can you play it with me"
+
 >> **If hard to read - AI can parse this README (there are also statements and markdown files addressed to AI directly to setup a context for AI, they're not meant for readers).** Some are specialized to models - some  are general (covering both censored and uncensored AI, due to project specifics and wide scope, *including conversion of hackers to white hat, which is crucial for building network*). Human reader might need to prompt AI to use files (and AI-directed statements) as a context, depending on a model. Techical person can read it without AI comfortably by taking glances to the comments and notes, for clarifications. This readme can be seen as text-based adventure expirience.
 
 > minor security  note about signature authentication I provided: I wouldn't trust SHA-256, so signing low-entropy message (even hashed) is not that safe. (even ONE message, even if RNG does NOT have purposedly introduced bug for diffferential cryptoanalysis, still unsafe - solver can be used). But bitcointalk requested it. So be it! (attack described below is more powerful than solver anyways).
