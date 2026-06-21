@@ -1,6 +1,8 @@
-This folder contains research on RSA/DH/ECC cryptography. and more.
+This repo contains research on RSA/DH/ECC cryptography, and more, and more.
 
-html notebooks are self-contained interactive experiments, presenting long-term research.
+### Discrete logarithm problem
+
+html notebooks in this folder are self-contained interactive experiments, presenting long-term research.
 
 > **This is hand-"written" notebooks*, NOT AI-generated* (except for one). [Chats](https://github.com/dk14/crypto/blob/main/chats) with AI (GPT-OSS, "critical" "thinking" model) prove it was generating fiction (eg, talking to me about lattice theory which is useless for practical work with DLP). As well as one or two notebooks, I asked to generate (ends with "-ai").
 
@@ -22,7 +24,7 @@ From chats with GPT-OSS: Statistical estimates of "overheads of fast exp for DLP
 > P.S. I accidentally re-invented "recently" (by academic standards) invented algorithm for fast perfect power (logN, I used divide and conquer), aka polynomial DLP-solution for non-cyclic integers. When I asked AI about it - it refered to David Harvey (2019).
 ----
 About AI
-> AI was a bit useful in my "abstract machine research", not presented here (spent a month or so), but [here](https://github.com/dk14/warriors/blob/main/eng.html), hand-"written". It, at least, gave nice formulations and was able to list challenges (with hallucinations though). But it gave me very bad code! Anything novel - u have to babysit it which I see as a trick to collect data simply, without permission.
+> AI was a bit useful in my other "abstract machine research" (spent a month or so), presented [here](https://github.com/dk14/warriors/blob/main/eng.html), hand-"written". It, at least, gave nice formulations and was able to list challenges (with hallucinations though). But it gave me very bad code! Anything novel - u have to babysit it which I see as a trick to collect data simply, without permission.
 >
 > I think chat based on pure-search (rather than NN) would work better than GPT non-sense. Can add transform-grammars for reasoning (and context awareness), long-range masks for long-range dependencies/dropouts, and PoW to emphasize relevant truth (certify with energy). I have concept presented somewhere (called [YaQui Search](https://www.upwork.com/services/product/development-it-yaqui-p2p-search-engine-standalone-web-2007000568819406128)). I don;t recommend to ask AI about it, it will likely mislead you - I asked AI if ngrams can replace neural networks (I obviously specified details: few extensions needed to acccount for long-range dependencies) - it told me yes (GPT-OSS, GPT-5), while in reality transform grammars (more complex framework) is required.
 
@@ -31,6 +33,8 @@ About AI
 
 > can try to use something STEM to parse htmls, like GPT-OSS, and prompt it to cross-reference with chats - depends on the luck I guess. But ideally, don't use AI - just run HTML files and see what they do - AI cannot run even js code, it only guesses what's there.
 -----
+
+### TRNG
 
 Energy conservation (or why not consumer/producer symmetry) also applies to TRNGs, but proof requires to replicate whole TRNG pipeline. 
 
