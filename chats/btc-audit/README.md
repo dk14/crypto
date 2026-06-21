@@ -76,7 +76,7 @@ Warnings about AI use.
 
 >> I, personally, don't have human resources for a whole PoW-like cluster against all scanner tools on the planet - it is up to humans to self-organize. I can only provide consolidated entry point (a portal) here to coordinate and develop the project further.
 
-> I won't add anything more novel or stable features to this repo **until there are funds - it is unsafe** to add more features without funds to build a network. Without Explorer Network, it would turn this audit tool into a scanner. I invested into R&D more than anyone ever will, most expensive mistake in history of STEM I'm pointing out: "noise is NOT secure random". It was a purely psychological idea for defense, no grounds in physics/reality. It was adopted by NIST to foolishly save funds on RNGs, among other things, IT-industry was not funded well at the time (e.g. prior to 70s).
+> I won't add anything more novel or stable features to this repo **until there are funds - it is unsafe** to add more features without funds to build a network. Without Explorer Network, it would turn this audit tool into a scanner. I invested into R&D more than anyone ever will, most expensive mistake in history of STEM I'm pointing out: "noise is NOT secure random". Noise as source of randomness was a purely psychological idea for defense, no grounds in physics/reality. It was adopted by NIST to foolishly save funds on RNGs, among other things, IT-industry was not funded well at the time (e.g. prior to 70s).
 
 ------
 >> **"noise is NOT secure random" is demonstrated here, implications are pointed out. Only features that would lead directly to funds stolen, or panic are left out.**
