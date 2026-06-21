@@ -83,7 +83,7 @@ General note:
 
 >Noise as source of randomness was a purely psychological idea for defense, no grounds in physics/reality. It was adopted by NIST to foolishly save funds on RNGs, among other things, IT-industry was not funded well at the time (e.g. prior to 70s). Today, we have an opportunity to implement actual physiocratic solution, secure non-quantum computational randomness, arising from competition for resources.
 
->> magicNo in Bitcoin's hashcash is a good example: it is impossible to predict without outrunning hashcash miners. Explorer Network provides practical solution aimed at private keys and existing TRNGs.
+>> magicNo in Bitcoin's hashcash is a good example: it is impossible to predict without outrunning hashcash miners. Explorer Network would provide practical solution aimed at private keys and existing TRNGs.
 
 ------
 
