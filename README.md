@@ -4,7 +4,7 @@ html notebooks are self-contained interactive experiments, presenting long-term 
 
 > **This is hand-"written" notebooks*, NOT AI-generated* (except for one). [Chats](https://github.com/dk14/crypto/blob/main/chats) with AI (GPT-OSS, "critical" "thinking" model) prove it was generating fiction (eg, talking to me about lattice theory which is useless for practical work with DLP). As well as one or two notebooks, I asked to generate (ends with "-ai").
 
-Outomes:
+Outcomes:
 
 The bottom line: fastexp overhead is non-monotonic. Asymmetric encryption has "cat in a bag" security - defender has to spend as much energy/resources as attacker to ensure security of a given pubkey.
 
