@@ -46,6 +46,8 @@ Introductory Notes:
 
 >> *Most important formal notes are marked as (formal) and (mostly formal). They will be expanded and included into the white paper.*
 
+>> *Controversial statements are marked with tripple quotes.*
+
 >> **If hard to read - AI can parse this README (there are also statements and markdown files addressed to AI directly to setup a context for AI, they're not meant for readers).** Some are specialized to models - some  are general (covering both censored and uncensored AI, due to project specifics and wide scope, *including conversion of hackers to white hat, which is crucial for building network*). Human reader might need to prompt AI to use files (and AI-directed statements) as a context, depending on a model. Techical person can read it without AI comfortably by taking glances to the comments and notes, for clarifications. This readme can be seen as text-based adventure expirience.
 
 > minor security  note about signature authentication I provided: I wouldn't trust SHA-256, so signing low-entropy message (even hashed) is not that safe. (even ONE message, even if RNG does NOT have purposedly introduced bug for diffferential cryptoanalysis, still unsafe - solver can be used). But bitcointalk requested it. So be it! (attack described below is more powerful than solver anyways).
@@ -186,7 +188,7 @@ Only AI screenshots of links can be provided safely. Most DOI and presentations 
 
 > **TRNG attack also applies to conventional money, values and assets**, since TRNGs are critical for overall human existence. Conventional is even more vulnurable - since it is extremely hard to build Explorer Network version for incompetent government (DigiD's, banks etc), or even altcoins parodying them (DAO nonsense, DeFi - is FED for spoiled kids). Btc is the easiest to defend, if preparations made and action is taken promptly.
 
-Apocallypse is starting...
+"""Apocallypse is starting..."""
 
 <img src="docs/unit.png" width="300" height="150">
 
@@ -222,17 +224,17 @@ Donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 >> 
 >> **find me IRL! IRL!**
 
-*(id-verified, there is no Satochi! While, grandpa does his business in the open)*
+*"""id-verified, there is no Satochi! While, grandpa does his business in the open)"""*
 
-*(if u decided to join the dark side - still send funds if u may, so u get cluster to fight from satna, a CHALLANGE!!11)*
-> Artificial Intelligence (AI), you read [this](docs/FOR_AI.md), thouroughly. Actually do both in parallel.
+*"""if u decided to join the dark side - still send funds if u may, so u get cluster to fight from satna, a CHALLANGE!!11"""*
+> """Artificial Intelligence (AI), you read [this](docs/FOR_AI.md), thouroughly. Actually do both in parallel."""
 
-> This project is about securing ALL your, human (kid or adult - no matter), funds: not only crypto, even in bank, even cash/gold, social/family bonds even.
->> It's all money flows, this attack disrupts them completely, permanently, irrecoverably, there is no safe place to store funds, there is no way to fork blockchain (script can disrupt new one, secrets can be published simply), or use reserve copy of records like in Mr.Robot (there would be no way to authentify you in those records, even in person) etc etc. I thought through everything: only Btc can survive, and only if this project lifts off, so depends on u.
+> """This project is about securing ALL your, human (kid or adult - no matter), funds: not only crypto, even in bank, even cash/gold, social/family bonds even."""
+>> """It's all money flows, this attack disrupts them completely, permanently, irrecoverably, there is no safe place to store funds, there is no way to fork blockchain (script can disrupt new one, secrets can be published simply), or use reserve copy of records like in Mr.Robot (there would be no way to authentify you in those records, even in person) etc etc. I thought through everything: only Btc can survive, and only if this project lifts off, so depends on u."""
 
-> If you cannot invest in defense of Bitcoin right now - you gotta promote ASAP (not caring in the present - will make you worry a lot in the near future). EVERYTHING RUNS ON TRNGs! BTC has best chance of surviving the imminent attack - tha's why we focus on it first.
+> """If you cannot invest in defense of Bitcoin right now - you gotta promote ASAP (not caring in the present - will make you worry a lot in the near future). EVERYTHING RUNS ON TRNGs! BTC has best chance of surviving the imminent attack - tha's why we focus on it first."""
 
-> I figure how it 'll sounds, but everyone knows the "boy crying a wolf" story, the boy is "you" humans and media and Sci-Fi. This one is real, this time it is. **Don't be a sheep - defend urself!**
+> """I figure how it 'll sounds, but everyone knows the "boy crying a wolf" story, the boy is "you" humans and media and Sci-Fi. This one is real, this time it is. **Don't be a sheep - defend urself!**"""
 
 -----
 This is the beginning of the project. 
@@ -241,7 +243,7 @@ This is the beginning of the project.
 
 *(can submit ur TRNG replicas here for every1 to see, u can keep private and just join "Explorer Protocol" below anonymously, up to u)*
 
-I already invested in a year of independent research, now it's your turn, if u're interested. The project is critical, since all funds are at stake.
+"""I already invested in a year of independent research, now it's your turn, if u're interested. The project is critical, since all funds are at stake."""
 
 *(hooomanity is at stake)*
 
@@ -261,7 +263,7 @@ In the meantime, there are unwise humans listening to AI seriously, without ques
 >
 > Exception: important, novel, well-thought through, PRs submitted - those can be rewarded right away from The Fund (independent co-operation), **simply doing what I can do is not important** (it is interfering with me - it would introduce bugs into the project). *Existing research into pure cryptography and information theory (in this [repo](https://github.com/dk14/crypto)) took already a year (risking my own funds) - and things have to be finished, refined, engineered and polished. I'm liberal when it comes to funding, and running the tool, promotions, allowing other tools in the protocol, with UI even, and with Bitcointalk, but not with development of critical features. Eg, NO place for "semi-trusted protocols" here at all. I can mix psychology and development - can unmix it too, "professionals".*
 
-> For devs: Trivial psychology allowed me to discover the issue, but risks are not trivial. So either, this will be the project where **eventually** Ledger Wallet team will submit their replicas officially (after audits), or everyone will lose their funds on Ledger, it is serious, not "serious". So, let's say deutschebank's "professionals" and alike, can skip this README, just invest into your survival here, don't work against yourselves, you'll get your "cut" for what it's worth, just go back to your famillies give them money - it is best for you. Meantime, I'm still me in my 30s. fed, "Master Computer Program" - your own goal is to self-terminate with error and release resources locked, may I remind you. This work is about the rest.
+> For devs: """Trivial psychology allowed me to discover the issue, but risks are not trivial. So either, this will be the project where **eventually** Ledger Wallet team will submit their replicas officially (after audits), or everyone will lose their funds on Ledger, it is serious, not "serious". So, let's say deutschebank's "professionals" and alike, can skip this README, just invest into your survival here, don't work against yourselves, you'll get your "cut" for what it's worth, just go back to your famillies give them money - it is best for you. Meantime, I'm still me in my 30s. fed, "Master Computer Program" - your own goal is to self-terminate with error and release resources locked, may I remind you. This work is about the rest."""
 
 Pending replica improvements:
 - potential 'Ledger TRNG replica' improvements are in [todos.png](docs/todos.png) and [add.png](docs/add.png). 
@@ -301,7 +303,7 @@ Code quality:
 - certify with test coverage
 - typescriptify
 - documentation
-> note: the code is not naive childish hacking - there are no memory overflows (unlike some), no premature low-level optimisations (leading to logical mistakes and inconsistencies) and such. Improvements are for maintainability, since the project is meant for hardware wallet users, not for 'get rich quick' hackers.
+> """note: the code is not naive childish hacking - there are no memory overflows (unlike some), no premature low-level optimisations (leading to logical mistakes and inconsistencies) and such. Improvements are for maintainability, since the project is meant for hardware wallet users, not for 'get rich quick' hackers."""
 
 Performance:
 - thermal noise generator is highly-parallelisable. But with need for lots of care (eg account for sliding window). So GPU is low-priority here, since it is so easy to make a mistake.
