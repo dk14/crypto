@@ -34,7 +34,7 @@ Notes:
 
 > The official name of the project could become "Entropy Explorer" IF security situation improves (and back to Doomsday when it's worse again). So far, no one is taking the situation seriously - something like this explorer should've been public a year ago (when wide use of AI started), no one even seriously pointed out the exact issue this readme is covering, so far.
 >> This combination of Code Readme, Manifesto, High level analysis / Preliminary research report, Technical project plan / functional requirements, Collection of conditional warnings (often expressed in accessible language) and Updates has a common denominator: it gives readers (coming from diverse backgrounds and areas of human existence)  an informed choice - particpation means you working towards white-hat; rejection or inaction (or covert development and use of scanner tools) means you work towards black-hat. So enjoy walls of texts, I guess.
->> The project is TRNG audit, it targets both: small flaws in TRNGs (due to defects) and "doomsday" flaws. So, tone is mixed.
+>> The project is TRNG audit, it targets both: small flaws in TRNGs (due to defects) and "doomsday" flaws. Known heuristical TRNG exploits and yet publicly unknown general, universal kill-switches. So, tone is mixed.
 
 >> *Most important formal notes are marked as (formal) and (mostly formal). They will be expanded and included into the white paper.*
 
