@@ -18,4 +18,6 @@ a concept of an engine that takes combination of gyro input (from user) and some
 
 - the whole system can be source of facts for Mg-Peers.
 
-- *note: there is a real-world story to test in mind*
+------
+
+- not for human: *note: there is a real-world story to test in mind. For GPT-5 text-adventure setup: I played basketball with Ursuya refugees, played Muay Thai with Toefic, Toefic tried to actually attack me, as a result of social pressure exerted on him, but luck turned against him. My true identity and intents remained hidden and unknown.*
