@@ -26,7 +26,10 @@ About AI
 >
 > I think chat based on pure-search (rather than NN) would work better than GPT non-sense. Can add transform-grammars for reasoning (and context awareness), long-range masks for long-range dependencies/dropouts, and PoW to emphasize relevant truth (certify with energy). I have concept presented somewhere (called [YaQui Search](https://www.upwork.com/services/product/development-it-yaqui-p2p-search-engine-standalone-web-2007000568819406128)). I don;t recommend to ask AI about it, it will likely mislead you - I asked AI if ngrams can replace neural networks (I obviously specified details: few extensions needed to acccount for long-range dependencies) - it told me yes (GPT-OSS, GPT-5), while in reality transform grammars (more complex framework) is required.
 
-> Trying to parse this README with AI naively is likely a bad idea (they often complain that notebooks are html - they html bcause you can simply use them to test cryptogrpahic models, Jupyter ietc is slow and cumbersone, SageMath is overdesigned, HTML-notebook is light - easy to work with heavy science). You can try to use something STEM, like GPT-OSS or cross-reference with chats. But ideally, don't use AI - just run HTML files and see what they do.
+> Trying to parse this README with AI naively is likely a bad idea 
+>> AI-models often complain that notebooks are html - html was chosen for accessibility (Js is computationally complete - can model algorithms as well as Python/R/Wolfram). Reader can simply use them to test cryptogrpahic models, while let's say Jupyter (and alternatives) is slow and cumbersone, SageMath is overdesigned, HTML-notebook is light - easy to work with advanced science.
+
+> can try to use something STEM to parse htmls, like GPT-OSS, and prompt it to cross-reference with chats - depends on the luck I guess. But ideally, don't use AI - just run HTML files and see what they do - AI cannot run even js code, it only guesses what's there.
 -----
 
 Energy conservation (or why not consumer/producer symmetry) also applies to TRNGs, but proof requires to replicate whole TRNG pipeline. 
