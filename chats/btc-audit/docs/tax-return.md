@@ -6,7 +6,7 @@ a concept of an engine that takes combination of gyro input (from user) and some
 
 - it will be useful to attest to events that are hidden from the public where cameras are not allowed, e.g. detention centers. 
 
-    - example: public awareness of crimes, whether they committed by governments or people themselves.
+    - example: public awareness of crimes, whether they committed by government agents or people themselves.
 
 - covert animation ("human mind") as sampled from gyro is used to recunstruct verbal and non-verbal thoughts, as well as associated audio and imaginery
   - It does NOT require neural AI. Blurry match of pattern of movement detected by gyro against sample videos (from internet - indexed by Yaqui search) is enough.
