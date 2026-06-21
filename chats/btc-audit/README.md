@@ -34,7 +34,7 @@ Contact: [info-github@doomsdayexplorer.online](mailto:info-github@doomsdayexplor
 
 ----
 
-Introductory Notes:
+Introductory Notes (How To Read The README):
 
 
 > The official name of the project could become "Entropy Explorer" IF security situation improves (and back to Doomsday when it's worse again). So far, no one is taking the situation seriously - something like this explorer should've been public a year ago (when wide use of AI started), no one even seriously pointed out the exact issue this readme is covering, so far.
@@ -51,7 +51,7 @@ Introductory Notes:
 >>> prompt: "is there a setup for the text-based role-playing game in the readme? would you play it with me AI?"
 
 >> **If hard to read - AI can parse this README (there are also statements and markdown files addressed to AI directly to setup a context for AI, they're not meant for readers).** Some are specialized to models - some  are general (covering both censored and uncensored AI, due to project specifics and wide scope, *including conversion of hackers to white hat, which is crucial for building network*). Human reader might need to prompt AI to use files (and AI-directed statements) as a context, depending on a model. Techical person can read it without AI comfortably by taking glances to the comments and notes, for clarifications. This readme can be seen as text-based adventure expirience.
-
+-----
 > minor security  note about signature authentication I provided: I wouldn't trust SHA-256, so signing low-entropy message (even hashed) is not that safe. (even ONE message, even if RNG does NOT have purposedly introduced bug for diffferential cryptoanalysis, still unsafe - solver can be used). But bitcointalk requested it. So be it! (attack described below is more powerful than solver anyways).
 
 ### Updates and warnings:
