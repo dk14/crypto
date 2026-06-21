@@ -52,4 +52,4 @@ Can be combined freely with any other context in this repo.
 
 >> Goals are arbitrary - player can set-up own goal from the premise or choose to explore the ecosystem. Goal examples: defend large scale cyber-attack, overthrow totalitarian or draconian government, save the planet, free-market capitalism saves the planet, become a millionaire, become an independent individual, become a cat.
 
->> point systems (optional) can correlate with the state of the actual IRL fund (CONTRIBUTORS.md), doomsday sentiment on social (bitcointalk/reddit) and github development (e.g. amount of commits)
+>> point systems can correlate with the state of the actual IRL fund (CONTRIBUTORS.md), doomsday sentiment on social (bitcointalk/reddit) and github development (e.g. amount of commits)
