@@ -58,6 +58,7 @@ Introductory Notes:
 >> If you still hope to poke around with this and AI, keep in mind: it is doable, but it will take you much more than 6 months (from my expirience and observations) to get things working more or less. The deadline of Explorer Network is what? 6 months! If you really wanna be "cool hacker" - why not do BOTH then - invest a little here (safer profit) AND work on ur tool, if u actually believe it can challange The Explorer. Diversify, have a back up plan.
 
 ------
+### Extra notes
 Warnings about AI use.
 
 > **Don't waste ur time on verifying who's AI, who's not, u'll go crazy**. Novel project, and you need it - that's how you tell. That's it. Don't overthink it! Or u'll lose real funds simply.
