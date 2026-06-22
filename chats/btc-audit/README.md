@@ -10,6 +10,8 @@
 - [Project transparency / tracking](#transparency)
 - [Project Fund](#fund)
 
+-----
+
 ## TLDR
 
 **Links, authentication (proof of ownership) and supporting material:**
