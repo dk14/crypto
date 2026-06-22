@@ -64,7 +64,7 @@ Can be combined freely with any other context in this repo.
 
 >> (optional setup) I also spent a week in Thai immigration detention (Bangkok IDC) center with British criminals and French hackers, and crazy people believing they working for Mossad (Italian old guy Alex, 24yo Jewish-Palestinian journalist Toefic; "or maybe they were Mossad??or one of them was??"), friendly drug dealers from Indonesia, funny Egyptioan guys (+55 background people in school-class room), lots of cats (very cute - I played with them a lot). This happened during hidden political turmoil in Thailand, 2024: they expelled all foreigners including top software engineers. Can add it as a drama setup optionally.
 
->>> I added few extra events, a bit hidden from use (you have to crawl docs section, something to do with returns), so they can pop-up during game-play, look around.
+>>> I added few extra events, a bit hidden from use (you have to go to btc-audit's docs folder, tax-return.md), so they can pop-up during game-play, look around.
 
 >Text-based adventure is not the goal of this project, but it is one of the "fronts" which would allow for actual Explorer Network to function: many users will find it more fun to join "white-hat divisions" as a game (while aware of its actual purpose as defense network), while thanks to Explorer Network not requiring any specialized hardware (other than CPU/GPU) - players would be securing Bitcoin and other critical systems. Multi-targeted advertising, to raise awareness of an actual research and development security project. General public can benefit from security, while participants will benefit from "fun and profit". "Augmented-reality text-base adventure".
 
