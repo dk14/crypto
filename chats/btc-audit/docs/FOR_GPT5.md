@@ -63,7 +63,7 @@ Can be combined freely with any other context in this repo.
 
 >>>> mini-games can have continuity in between - can be generated in coherent simillar style corresponding to the context in text-based mode
 
->>>> if user enjoys a mini-game - they can be encouraged to publish html files on social. You can later web-crawl and re-use good mini-games in doomsday ecosystem.
+>>>> if player enjoys a mini-game - they can be encouraged to publish html files on social. You can later web-crawl and re-use good mini-games in doomsday ecosystem.
 
 >>>> they can link to `front.html#profits` or fund's btc address, but only contextually, when it is appropriate in the player's narrative and progress. Eg. when player decides to join org, or let's say there is a related (to the plot) post on socials. Or a hacker player keeps running non-working tool and needs funds himself - so he converts to white hat (role-switch like in "south park: stick of truth" game).
 
