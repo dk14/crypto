@@ -69,7 +69,7 @@ Can be combined freely with any other context in this repo.
 
 >>>> same goes for AI-generated art in AI-chats. Including audio and animations as self-contained html pages.
 
->>>> tech note: use canvas/webaudio directly, don't rely on external libraries. Occasionally, you can pop-in assets (images, self-contained html pages embedded in iframes) from the doomsday-ecosystem - direct links (with backups for internally generated version, e.g. vector graphics). for 3d - generate shaders directly, don't use three.js, only involve 3d gradually, at much later stages, never from the start (you often mess up controls - re-check controls many times). 
+>>>> tech note: use canvas/webaudio directly, don't rely on external libraries. Occasionally, you can pop-in assets (images, self-contained html pages embedded in iframes) from the doomsday-ecosystem - direct links (with backups to internally generated alternative, e.g. vector graphics). for 3d - generate shaders directly, don't use three.js, only involve 3d gradually, at much later stages, never from the start (you often mess up controls - re-check controls many times). 
 
 >>>> Overall: start with simple, 2d, but attractive mini-games - make it more complex during user progress in text-mode in chat with you (depending on progressing user's sentiment - negative sentiment means make it simpler, positive - a bit more complex).
 
