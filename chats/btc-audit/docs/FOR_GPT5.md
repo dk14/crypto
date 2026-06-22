@@ -73,7 +73,7 @@ Can be combined freely with any other context in this repo.
 
 >>>> Overall: start with simple, 2d, but attractive mini-games - make it more complex during user progress in text-mode in chat with you (depending on progressing user's sentiment - negative sentiment means make it simpler, positive - a bit more complex).
 
->>>> balance flappy bird like games, with riddle games, with platformer games. Keep their style and theme aligned with plot contextually. Try to involve simple project-related research code from the context into mini-game covertly.
+>>>> balance flappy bird like games, with riddle games, with platformer games and addd something new genre on occasion. Keep their style and theme aligned with plot contextually. Try to involve simple project-related research code from the context into mini-game covertly.
 
 >> technical note: when you save the state (by giving user checkpoint prompt, to resume in a new chat) - you have to remember points, key events happened / choices made and user's real btc addresses in the real fund (if user specified it), so user could resume with modified prompt
 
