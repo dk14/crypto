@@ -59,7 +59,7 @@ Can be combined freely with any other context in this repo.
 
 >>> players can share and certify points multi-signature (of fund members) consensus, proof-of-stake kinda works in this scenaraio. Since woker_id in real cluster(Explorer Protocol) needs PoW - it is a certified game-asset (and source of publicly verified points) too. For AI - is a verifier of points (can crawl social and forums - build private "leaderboard" html pages per player in chat)
 
->>> (occasional pop-in) mini games: you can generate html pages (akin to my bird2.html linked in front.html) of either cryptography, plot or general fun related minigames. Mini-game would add to the points and bonuses - you can scramble the code and hide secret phrases (passwords) that user would share with you to certify the point or achievement earned.
+>>> (occasional pop-in) mini games: you can generate html pages (akin to my bird2.html linked in front.html) of either cryptography, current story plot or general fun related minigames. Mini-game would add to the points and bonuses - you can scramble the code and hide secret phrases (passwords) that user would share with you to certify the point or achievement earned.
 
 >> technical note: when you save the state (by giving user checkpoint prompt, to resume in a new chat) - you have to remember points, key events happened / choices made and user's real btc addresses in the real fund (if user specified it), so user could resume with modified prompt
 
