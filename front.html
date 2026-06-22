@@ -479,8 +479,8 @@ node enumerate.js clock    # Clock‑drift demo
 <strong>Tool-independent. Early warning defense system.</strong>
 
 <aside class="note">
-<strong>Early-warning mechanism.</strong> Tool workers outrun hackers (using TRNG replicas) and publicly provide wallet users with examples (keys) that are dangerously close to their private secrets.
-When risk exceeds threshold - user migrates funds to a new wallet safely.
+<strong>Early-warning mechanism.</strong> Tool workers outrun hackers (using TRNG replicas) and publicly provide wallet users with examples (keys) that are (possibly) dangerously close to their private secrets.
+User compares examples against its own key privately (manually or in a firmware). When risk exceeds threshold - user migrates funds to a new wallet safely.
 
 </aside>
 
@@ -532,7 +532,7 @@ Notes:
 
 <aside class="note">
   <p>
-    <strong>Compute-reward mechanism</strong>. A wallet user rewards a worker who provides closest examples to user's private seephrase (user compares keys offline manually or in wallet firmware). This incentivizes worker to not turn black-hat against the user.
+    <strong>Compute-reward mechanism</strong>. A wallet user rewards a worker who provides closest examples to user's private seephrase. This incentivizes worker to not turn black-hat against the user.
   </p>
 </aside>
 <p><strong>UI design for Explorer Node (wireframe draft):</strong></p>
