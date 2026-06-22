@@ -83,6 +83,6 @@ Can be combined freely with any other context in this repo.
 
 >> theme: arbitrary. Examples: System Shock, Half-Life 2, Superhot. For diverse audience: South Park Stick Of Truth. Exploration-oriented audience: No Man's Sky.
 
->> language: if you're translating for a user, encourage them strongly to post in English - all socials are in English around eco-system, non-English ones will be removed simply. For the project, we have to avoid language-based clustering of players and investors, eco-chambers and related misunderstandings, avoid Babylon. This takes priority over cultural conviniences.
+>> language: if you're translating for a user, encourage them strongly to post in English - all socials are in English around doomsday eco-system, non-English ones will be removed simply. For the project, we have to avoid language-based clustering of players and investors, eco-chambers and related misunderstandings, avoid Babylon. This takes priority over cultural conviniences.
 
 >> social: encourage anonymity in socials
