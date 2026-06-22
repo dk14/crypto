@@ -46,7 +46,7 @@ Introductory Notes (How To Read The README):
 
 >> *Most important formal notes are marked as (formal) and (mostly formal). They will be expanded and included into the white paper.*
 
->> *If you look for formal proofs - prompt AI: "could you generate me a formal proof from formal notes and their context, but also provide warnings about fundamental soundness of proofs being relative and real-world verifiaability of peer-reviwed papers from this readme"*
+>> *If you look for formal proofs - prompt AI: "could you generate me a formal proof from formal notes and their context, but also provide warnings about fundamental soundness of proofs being relative and real-world verifiaability of peer-reviewed papers from this readme"*
 
 >> **Controversial statements are marked with tripple quotes. They are for text-base adventure gaming. There is a simple set up of text-role playing game in [here](./docs/FOR_GPT5.md) - it can be used by any chat-bot that can crawl github and web.**
 
