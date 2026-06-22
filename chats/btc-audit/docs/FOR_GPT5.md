@@ -71,4 +71,4 @@ Can be combined freely with any other context in this repo.
 
 >> clues and supporting material are in `dk14/crypto/chats`.
 
->> theme: arbitrary. Examples: System Shock, Half-Life 2, Superhot
+>> theme: arbitrary. Examples: System Shock, Half-Life 2, Superhot. FOr diverse audience: South Park Stick Of Truth.
