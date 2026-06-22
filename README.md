@@ -2,7 +2,7 @@ This repo contains research on RSA/DH/ECC cryptography, and more, and more.
 
 ### Discrete logarithm problem
 
-html notebooks in this folder are self-contained interactive experiments, presenting long-term research.
+html notebooks in `.notebooks` folder are self-contained interactive experiments, presenting long-term research.
 
 > **This is hand-"written" notebooks*, NOT AI-generated* (except for one). [Chats](https://github.com/dk14/crypto/blob/main/chats) with AI (GPT-OSS, "critical" "thinking" model) prove it was generating fiction (eg, talking to me about lattice theory which is useless for practical work with DLP). As well as one or two notebooks, I asked to generate (ends with "-ai").
 
@@ -19,7 +19,7 @@ From chats with GPT-OSS: Statistical estimates of "overheads of fast exp for DLP
 >
 > "ECC creates jobs for cryptoanalysts simply" :).
 >
-> DLP Note on key restauration with deterministic slowexp (the inductively proven way): [here](https://github.com/dk14/crypto/blob/main/dlp.html#L225) I show that local monotonicities can be exploited to progress faster. [perfect power](https://github.com/dk14/crypto/blob/main/dlp.html#L137) (logN speedified with memoization) is used to skip through local monotonic interval.
+> DLP Note on key restauration with deterministic slowexp (the inductively proven way): [here](https://github.com/dk14/crypto/blob/main/notebooks/dlp.html#L225) I show that local monotonicities can be exploited to progress faster. [perfect power](https://github.com/dk14/crypto/blob/main/notebooks/dlp.html#L137) (logN speedified with memoization) is used to skip through local monotonic interval.
 >
 > P.S. I accidentally re-invented "recently" (by academic standards) invented algorithm for fast perfect power (logN, I used divide and conquer), aka polynomial DLP-solution for non-cyclic integers. When I asked AI about it - it refered to David Harvey (2019).
 ----
