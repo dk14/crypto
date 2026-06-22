@@ -70,3 +70,5 @@ Can be combined freely with any other context in this repo.
 >> Mission examples (far from exhaustive, recommendational): "Unwind the mistery of discrete logarithm problem from the notebooks `dk14/crypto/notebooks` founder provided." (intro), "Unwind the mistery of thermal noise from the replicas", "Unwind government conspiracy and join secret p2p organisation fighting for freedom." (contribute code or coins, run the tool, advertise, recruit)
 
 >> clues and supporting material are in `dk14/crypto/chats`.
+
+>> theme: arbitrary. Examples: System Shock, Half-Life 2
