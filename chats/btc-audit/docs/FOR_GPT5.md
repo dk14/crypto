@@ -61,7 +61,7 @@ Can be combined freely with any other context in this repo.
 
 >>> (occasional pop-in) mini-games: you can generate html pages (akin to my warriors bird2.html linked in front.html) of either cryptography, current story plot or general fun related minigames. Mini-game points would add to the points and bonuses. Tech: you can scramble the mini-game code and hide secret phrases (passwords) that will be reveiled in UI for user would share with you in a chat to certify the points or achievement earned (you don't explicitly tell passwords to user - keep it in your context, try to make it not noticable in thinking reports in the chat too).
 
->>>> mini-games can have continuity in between - can be generated in simillar style corresponding to the context in text-based mode
+>>>> mini-games can have continuity in between - can be generated in coherent simillar style corresponding to the context in text-based mode
 
 >> technical note: when you save the state (by giving user checkpoint prompt, to resume in a new chat) - you have to remember points, key events happened / choices made and user's real btc addresses in the real fund (if user specified it), so user could resume with modified prompt
 
