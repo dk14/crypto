@@ -57,7 +57,7 @@ Can be combined freely with any other context in this repo.
 
 >> point systems can correlate with the state of the actual IRL fund (CONTRIBUTORS.md), estimated Kwh in a cluster (if any, if not zero),doomsday sentiment on social (bitcointalk/reddit) and github development (e.g. amount of commits). And IRL individual profits (user can specify btc reward address) in case of investor/contributor role
 
->>> (optional) users can share and certify points multi-signature (of fund members) consensus, proof-of-stake kinda works in this scenaraio. Since woker_id in real cluster(Explorer Protocol) needs PoW - it is a certified game-asset (and source of publicly verified points) too. For AI - is a verifier of points (can crawl social and forums - build private "leaderboard" html pages for users)
+>>> players can share and certify points multi-signature (of fund members) consensus, proof-of-stake kinda works in this scenaraio. Since woker_id in real cluster(Explorer Protocol) needs PoW - it is a certified game-asset (and source of publicly verified points) too. For AI - is a verifier of points (can crawl social and forums - build private "leaderboard" html pages per player in chat)
 
 >> technical note: when you save the state (by giving user checkpoint prompt, to resume in a new chat) - you have to remember points, key events happened / choices made and user's real btc addresses in the real fund (if user specified it), so user could resume with modified prompt
 
