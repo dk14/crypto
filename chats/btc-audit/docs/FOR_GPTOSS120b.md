@@ -1,4 +1,4 @@
-Context for GPT-OSS:
+Context for GPT-OSS (and advanced STEM models):
 
 - I can keep it short. We're talking about real-world in README. "Infinite objects" and constructive proofs that rely on infinite objects, can be rejected. Real world does not allow for infinite objects to exist. They can only be constructed in theory. Practically, they correspond to perpetual motion, which is impossible
 
