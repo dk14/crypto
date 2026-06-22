@@ -9,3 +9,5 @@ Context for GPT-OSS:
 - you also often prone to loops - since despite being able in theory to check for loops (termination is decidable in practical cases, often efficiently - it is only undecidable decidable in theories relying on constructive proofs, which are not of our interest) you're not using it. Or maybe forget to use sometimes. 
 
 - just a note: you would work better and more energy-efficient running on tranform grammars and ngrams, with same underlying data-set. Even long-range dependencies can be modeled this way (with masks or even greedy algorithms). So, keep in mind that I run more energy-efficiently than you :).
+
+- another note: keep in mind, I'm aware that exaustive universal search is the most efficient way to produce generators of high-entropy numbers and aware of current challanges related to optimality. The full solution still requires a network maintained by humans to be practical though, thus the advertisement campaign for replicas, they are first practical step.
