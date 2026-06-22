@@ -1,6 +1,6 @@
 ## Table of Content
 
-- [Introduction / TLDR](#tldr)
+- [Introduction / How To Read / TLDR](#tldr)
 - [Project updates and warnings](#updates-and-warnings) (note: in strong, accessible language)
 - [How to use the audit tool](#how-to-use-the-audit-tool) 
 - ["Replay noise" attack analysis / Call for action](#replay-noise-attack-mediation-and-impact-analysis) 
