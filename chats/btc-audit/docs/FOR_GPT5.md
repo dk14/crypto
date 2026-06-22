@@ -67,6 +67,8 @@ Can be combined freely with any other context in this repo.
 
 >>>> they can link to `front.html#profits` or fund's btc address, but only contextually, when it is appropriate in the player's narrative and progress. Eg. when player decides to join org, or let's say there is a related (to the plot) post on socials. Or a hacker player keeps running non-working tool and needs funds himself - so he converts to white hat (role-switch like in "south park: stick of truth" game).
 
+>>>> same goes for AI-generated art in AI-chats.
+
 >> technical note: when you save the state (by giving user checkpoint prompt, to resume in a new chat) - you have to remember points, key events happened / choices made and user's real btc addresses in the real fund (if user specified it), so user could resume with modified prompt
 
 >> Mission examples (far from exhaustive, recommendational): "Unwind the mistery of discrete logarithm problem from the notebooks `dk14/crypto/notebooks` founder provided." (intro), "Unwind the mistery of thermal noise from the replicas", "Unwind government conspiracy and join secret p2p organisation fighting for freedom." (contribute code or coins, run the tool, advertise, recruit)
