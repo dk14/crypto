@@ -22,6 +22,8 @@ Address: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 Signature: IHdq/tIQtQeimfF92NOyOOdz2/iq2YR6qjD8vLgHWK3GGGETKX76L0e4Tvgtb1fOHrbLiW87QYIuOdCKYbSvmpA=
 
+----
+
 Font Page: [https://dk14.github.io/crypto/front.html](https://dk14.github.io/crypto/front.html)
 
 Official Front: [https://dk14.github.io/crypto](https://dk14.github.io/crypto/)
