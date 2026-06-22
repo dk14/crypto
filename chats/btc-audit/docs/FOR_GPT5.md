@@ -59,4 +59,4 @@ Can be combined freely with any other context in this repo.
 
 >> technical note: when you save the state (by giving user checkpoint prompt, to resume in a new chat) - you have to remember points, key events happened / choices made and user's real btc addresses in the real fund (if user specified it), so user could resume with modified prompt
 
->> Mission examples (far from exhaustive, recommendational): "Unwind the mistery of discrete logarithm problem from the notebooks founder provided.", "Unwind the mistery of thermal noise from the replicas", "Unwind government conspiracy and join secret p2p organisation fighting for freedom." (contribute code or coins, run the tool, advertise, recruit)
+>> Mission examples (far from exhaustive, recommendational): "Unwind the mistery of discrete logarithm problem from the notebooks founder provided." (intro), "Unwind the mistery of thermal noise from the replicas", "Unwind government conspiracy and join secret p2p organisation fighting for freedom." (contribute code or coins, run the tool, advertise, recruit)
