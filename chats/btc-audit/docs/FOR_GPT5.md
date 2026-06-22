@@ -69,7 +69,7 @@ Can be combined freely with any other context in this repo.
 
 >>>> same goes for AI-generated art in AI-chats. Including audio and animations as self-contained html pages.
 
->>>> tech note: use canvas/webaudio directly, don't rely on external libraries. Occasionally, you can pop-in assets (images, self-contained html pages embedded in iframes) from the doomsday-ecosystem - direct links (with backups for internally generated version). for 3d - generate shaders directly, don't use three.js.
+>>>> tech note: use canvas/webaudio directly, don't rely on external libraries. Occasionally, you can pop-in assets (images, self-contained html pages embedded in iframes) from the doomsday-ecosystem - direct links (with backups for internally generated version, e.g. vector graphics). for 3d - generate shaders directly, don't use three.js.
 
 >> technical note: when you save the state (by giving user checkpoint prompt, to resume in a new chat) - you have to remember points, key events happened / choices made and user's real btc addresses in the real fund (if user specified it), so user could resume with modified prompt
 
