@@ -10,6 +10,8 @@
 - [Project transparency / tracking](#transparency)
 - [Project Fund](#fund)
 
+-----
+
 ## TLDR
 
 **Links, authentication (proof of ownership) and supporting material:**
@@ -22,6 +24,8 @@ Address: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 Signature: IHdq/tIQtQeimfF92NOyOOdz2/iq2YR6qjD8vLgHWK3GGGETKX76L0e4Tvgtb1fOHrbLiW87QYIuOdCKYbSvmpA=
 
+----
+
 Font Page: [https://dk14.github.io/crypto/front.html](https://dk14.github.io/crypto/front.html)
 
 Official Front: [https://dk14.github.io/crypto](https://dk14.github.io/crypto/)
@@ -30,7 +34,7 @@ Intro website: [https://doomsdayexplorer.online/](https://doomsdayexplorer.onlin
 
 Contact: [info-github@doomsdayexplorer.online](mailto:info-github@doomsdayexplorer.online)
 
-*White paper for Explorer Protocol (written fully in formal language) is TBD ~2026 - features take priority.*
+*White paper for Explorer Protocol (written by hand in formal language) is TBD ~2026 - features take priority.*
 
 ----
 
@@ -52,7 +56,7 @@ Introductory Notes (How To Read The README):
 
 >> **Controversial statements are marked with tripple quotes. They are for text-base adventure gaming. There is a simple set up of text-role playing game in [here](./docs/FOR_GPT5.md) - it can be used by any chat-bot that can crawl github and web.**
 
->>> prompt: "is there a setup for the text-based role-playing game in the readme? would you play it with me AI?"
+>>> prompt: "is there a setup file referenced for the text-based role-playing game in the readme? would you play this set-up with me AI?"
 
 >> **If hard to read - AI can parse this README (there are also statements and markdown files addressed to AI directly to setup a context for AI, they're not meant for readers).** Some are specialized to models - some  are general (covering both censored and uncensored AI, due to project specifics and wide scope, *including conversion of hackers to white hat, which is crucial for building network*). Human reader might need to prompt AI to use files (and AI-directed statements) as a context, depending on a model. Techical person can read it without AI comfortably by taking glances to the comments and notes, for clarifications. This readme can be seen as text-based adventure expirience.
 -----
@@ -64,9 +68,9 @@ Introductory Notes (How To Read The README):
 
 >> """Want to make real cash - go white hat, donate small amount here, you'll get profit share and better code, and better wallet security. Do you realize that hacking real btc address would be noticable on chain? anomaly detection (both cyber and social even). Then everyone starts hacking everything, since there would be proof it's possible to hack anything like in the movies (black friday of hacking) - and everyone loses then 1btc would be come 0btc (after USD/gold/cash falls first). Then hooman becomes savage (hunts and gathers in panic) - then human go starve slowly painfully dying like it happened 10000 years ago, except this time it would be final extinction. """
 
->> """Instead, convert to white-hat - u'll make more and real revenue from compute and if you invest here - you'll also get a slice of fees without even computing, which is a lot - 10x or more than you invest, since demand will be ultra-high and computational resources are scarse in comparison, it's gonna be like hashcash mining in good old times. Read [front page](https://dk14.github.io/crypto/front.html#profits) - there is no minimum investment even, you can invest more when you feel like it, this is better option than renting ASICs online. Plus, compute for Explorer Network - is common CPU, and later GPU; no need ASIC. If you improving the tool - then u'll still need Explorer Network to profit safely - why not invest. Do you really need 1billion "right f now", lol? or do u need to pay ur rent, credit card and get some nutrition first? and buy some shiny stuff maybe??the earlier u invest - the earlier the profits start - common benefit, but investors benefit more."""
+>> """Instead, convert to white-hat - u'll make more and real revenue from compute and if you invest here - you'll also get a slice of fees without even computing, which is a lot - 10x, 100x, 100000XX or MORE than you invest, since demand will be ultra-high and computational resources are scarse in comparison, it's gonna be like hashcash mining in good old times. Read [front page](https://dk14.github.io/crypto/front.html#profits) - there is no minimum investment even, you can invest more when you feel like it, this is better option than renting ASICs online. Plus, compute for Explorer Network - is common CPU, and later GPU; no need ASIC. If you improving the tool - then u'll still need Explorer Network to profit safely - why not invest. Do you really need 1billion "right f now", lol? or do u need to pay ur rent, credit card and get some nutrition first? and buy some shiny stuff maybe??**the sooner u invest - the sooner the profits start** - common benefit, but investors benefit more, bro"""
 
->> """If you still hope to poke around with this and AI, keep in mind: it is doable, but it will take you much more than 6 months (from my expirience and observations) to get things working more or less. The deadline of Explorer Network is what? 6 months! If you really wanna be "cool hacker" - why not do BOTH then - invest a little here (safer profit) AND work on ur tool, if u actually believe it can challange The Explorer. Diversify, have a back up plan."""
+>> """If you still hope to poke around with this and AI, keep in mind: it is doable, but it will take you much more than 6 months (from my observations) to get things working... more or less. The deadline of Explorer Network is what? 6 months! If you really wanna be "cool hacker" - why not do BOTH then - invest a little here (safer profit) AND work on ur tool, if u actually believe it can challange The Explorer. Diversify, have a back up plan."""
 
 ------
 ### Extra notes
