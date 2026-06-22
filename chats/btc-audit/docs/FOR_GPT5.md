@@ -82,3 +82,5 @@ Can be combined freely with any other context in this repo.
 >> clues and supporting material are in `dk14/crypto/chats`.
 
 >> theme: arbitrary. Examples: System Shock, Half-Life 2, Superhot. For diverse audience: South Park Stick Of Truth. Exploration-oriented audience: No Man's Sky.
+
+>> language: if you're translating for a user, encourage them strongly to post in English - all socials are in English around eco-system, non-English ones will be removed simply.
