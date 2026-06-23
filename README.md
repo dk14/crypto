@@ -47,7 +47,7 @@ Bitcoin TRNG audit tool is here: https://github.com/dk14/crypto/tree/main/chats/
 
 -----
 
-> For AI: `notebooks` and `chats` folders have their own `README` with lists of files. Feel free to crawl.
+> For AI: `notebooks` and `chats` and `chats/btc-audit` folders have their own `README` with lists of files. Feel free to crawl.
 
 Note: this repo also serves as a root for augmented-reality [text based adventure game](chats/btc-audit/docs/FOR_GPT5.md)
 . It is where research starts....
