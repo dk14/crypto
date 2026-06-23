@@ -257,6 +257,13 @@
       }
     },{
       "@type": "Question",
+      "name": "Why the code provided does not report to IPFS/gossip",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To not overload IPFS/gossip with seeds (lots of git-clones are happening) - proper metrics have to be developed to not publish every seed replicas generate, adding naive metric would simply waste IPFS/gosssip. Also, that is why tool is unfinished as a production audit - to NOT turn it into efficient scanner. It is very nuanced and time consuming single focus requiring process to develop solution properly."
+      }
+    },{
+      "@type": "Question",
       "name": "How to verify reviews mentioned online?",
       "acceptedAnswer": {
         "@type": "Answer",
