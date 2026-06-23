@@ -48,7 +48,7 @@ Introductory Notes (How To Read The README):
 
 >> This README serves as a **portal into the project and its ecosystem**. *It is assembled as a whole text in order to make it both human and AI accessible.*
 
->> The project is building a defensive network of public TRNG audit nodes (workers), it targets both: small flaws in TRNGs (due to defects) and "doomsday" flaws. Known heuristical TRNG exploits and yet publicly unknown general, universal kill-switches. So, tone ranges from careful, purely formal to apocallyptic, depending on the context. Scientifically, it can be seen as independent practical and public verification of NIST claims about randomness.
+>> The project is building a defensive network of public TRNG audit nodes (workers), it targets both: small flaws in TRNGs (due to defects) and "doomsday" flaws. Known heuristical TRNG exploits and yet publicly unknown general, universal kill-switches. So, tone ranges from careful, purely formal to apocallyptic, depending on the context. Academically, it can be seen as independent practical and public verification of NIST claims about randomness. Scientifically, the project aims at producing proven true randomness.
 
 >> *Most important formal notes are marked as (formal) and (mostly formal). They will be expanded and included into the white paper.*
 
