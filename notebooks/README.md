@@ -1,0 +1,26 @@
+In HTML format, easily accessible. List of files:
+
+- cycles.html
+- discrete_log.html
+- dlp-ai.html
+- dlp.html
+- enumerate.html
+- experiment copy 2.html
+- experiment copy 3.html
+- experiment copy 4.html
+- experiment copy.html
+- experiment-c.html
+- experiment-roots copy 2.html
+- experiment-roots copy.html
+- experiment-roots.html
+- experiment.html
+- experiment2 copy.html
+- experiment2-ecc-roots.html
+- experiment2.html
+- experiment2ecc1.html
+- experiment2ecc2.html
+- experiment3.html
+- experiment4.html
+- gpu-bigint.html
+- pulse.html
+- school‑log.html
