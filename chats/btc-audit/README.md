@@ -50,6 +50,8 @@ Introductory Notes (How To Read The README):
 
 >> The project is building a defensive network of public TRNG audit nodes (workers), it targets both: small flaws in TRNGs (due to defects) and "doomsday" flaws. Known heuristical TRNG exploits and yet publicly unknown general, universal kill-switches. So, tone ranges from careful, purely formal to apocallyptic, depending on the context. Academically, it can be seen as independent practical and public verification of NIST claims about randomness. Scientifically, the project aims at producing proven true randomness.
 
+>>> *All other attempts to verify NIST claims were limited in computational power - public p2p network with incentives can raise more computational resources than government, as existing Bitcoin PoW clusters already demonstrated*
+
 >> *Most important formal notes are marked as (formal) and (mostly formal). They will be expanded and included into the white paper.*
 
 >> *Recommmended prompt for obtaining formal proofs of the statements here from AI: "could you generate me a set of formal proofs from formal notes in the readme and their context in this README, but also provide readme-inspired warnings about fundamental soundness of proofs being relative and real-world verifiability of peer-reviewed papers, expand related warnings from this readme"*
