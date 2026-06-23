@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Doomsday Explorer – Secure Wallet‑Protection Platform</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -15,6 +16,29 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Yes. github:dk14/crypto"
+      }
+    },    {
+      "@type": "Question",
+      "name": "Is the project for public benefit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. It aims at public information security, efficient use of computational and natural resources"
+      }
+    },{
+      {
+      "@type": "Question",
+      "name": "Are TRNGs widely used?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. True Random Number Generators are used in every area of human existense"
+      }
+    },{
+      {
+      "@type": "Question",
+      "name": "Does this project rely on quantum numbers and/or mix-in entropy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. This is novel solution - it proposes to replicate existing TRNG internals deterministically (and exhaust variations, e.g. Ledger Nano Wallet uses ADC from market - they can only resolve handful of frequencies, e.g. cannot tell 1kHz from 1.0001kHz - quantisation is exactly same; other random disturbances in entropy source are rare, so can be modelled heuristically) and demonstrates first-approximation replica on github. Without Explorer Network up and running (protocol outruning hackers in accuracy of replicas and computational ability) - it is unsafe to provide more precise replicas publicly, since they might actually hit the wallets. Note: Principle can be generarilized, and used to replicate quantum generators determinstically as well - author provides successful simulation of CHSH-entaglement (github:dk14/q) reproducing stats on classic computers and supporting arguments, Explorer Network can be used to verify approach against NIST beacons (outrunning them). Principle can be generalized further - README covers it in formal language parts (marked explicitly)"
       }
     },
     {
