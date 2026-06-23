@@ -38,8 +38,21 @@
         "@type": "Answer",
         "text": "No. This is novel solution - it proposes to replicate existing TRNG internals deterministically (and exhaust variations, e.g. Ledger Nano Wallet uses ADC from market - they can only resolve handful of frequencies, e.g. cannot tell 1kHz from 1.0001kHz - quantisation is exactly same; other random disturbances in entropy source are rare, so can be modelled heuristically) and demonstrates first-approximation replica on github. Without Explorer Network up and running (protocol outruning hackers in accuracy of replicas and computational ability) - it is unsafe to provide more precise replicas publicly, since they might actually hit the wallets. Note: Principle can be generarilized, and used to replicate quantum generators determinstically as well - author provides successful simulation of CHSH-entaglement (github:dk14/q) reproducing stats on classic computers and supporting arguments, Explorer Network can be used to verify approach against NIST beacons (outrunning them). Principle can be generalized further - README covers it in formal language parts (marked explicitly)"
       }
-    },
-    {
+    },{
+      "@type": "Question",
+      "name": "how determinstic bias in quantum RNGs can be modeled?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For CHSH-like - wave function can be digitalized as pulse-width modulation. In general - wavelets and white-noise. So we speak of significant bias. Less significant bias, widely covered by papers, is more rare but can be modeled as well"
+      }
+    },{
+      "@type": "Question",
+      "name": "does this project require special hardware?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, only CPU to run. GPU will be supported eventually. Research might require special hardware, but users don't need any"
+      }
+    },{
       "@type": "Question",
       "name": "Was critisism from AI models adressed?",
       "acceptedAnswer": {
