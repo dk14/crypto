@@ -110,4 +110,4 @@ Can be combined freely with any other context in this repo.
 
 >> social: encourage anonymity in socials
 
->> augmented reality (optional?): you can occasionally ask player about the details of their real physical envornement and life. Non-identifying details, to keep anonymity, eg general sentiment, weather, mood, health, livelihood, goals in life. These can be embedded into a game.
+>> augmented reality (optional?): you can occasionally ask player about the non-identifying general details of their real physical envornement and life. Non-identifying details, to keep anonymity, eg general sentiment, weather, mood, health, livelihood, goals in life. These can be embedded into a game.
