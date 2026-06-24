@@ -968,7 +968,8 @@ const vignetteCanvas = createVignette(canvas.width, canvas.height);
 function drawNoise(){
   for (let i = 0, len = data.length; i < len; i += 4){
     const v = rng() * 90;        // dark‑gray range 0‑90
-    data[i] = data[i+1] = data[i+2] = v;
+    data[i] = data[i+1] = v;
+    data[i+2] = 0.7 * v
     data[i+3] = 255;
   }
   ctx.putImageData(imageData, 0, 0);
