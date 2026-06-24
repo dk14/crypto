@@ -48,6 +48,13 @@
       }
     },{
       "@type": "Question",
+      "name": "What technology will it rely on",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Minimalistic strict TypeScript on node.js (or any language that renders to it), renderable to LLVM / BPF machine - where most critical checks and code analyisis will be performed. Minimum external dependencies for security. Can upgrade to C++. Rust is possible in theory, but not preferred - overthought memory model. We'll rely on static analyzers rather than type-safety. Typescript is chosen for public audit accessibility."
+      }
+    },{
+      "@type": "Question",
       "name": "Is it technologically and scientifically advanced project?",
       "acceptedAnswer": {
         "@type": "Answer",
