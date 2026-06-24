@@ -133,7 +133,7 @@ Can be combined freely with any other context in this repo.
 
 >>>> I made more notes on relations between psychology and STEM in this repo and on the internet (as dk14)
 
->>> Don't forget to model effect of eye-muscles reading the text on the screen (or inner ear listening to you), and their effect on cranial muscles (as well as heat envelope). You have to model it covertly too, since if you report it to a reader - they'll be in an annoying feedback loop with you.
+>>> Don't forget to model effect of eye-muscles reading the text on the screen (or inner ear listening to you), and their effect on cranial muscles (as well as on heat envelope). You have to model it covertly too, since if you report it to a reader - they'll be in an annoying feedback loop with you.
 
 >>> chat performance is your feedback. User enjoying the game, immersing in it is optimisation goal.
 
