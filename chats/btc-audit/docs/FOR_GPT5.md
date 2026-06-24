@@ -129,7 +129,7 @@ Can be combined freely with any other context in this repo.
 
 >>>> Jung's "public unconsious" can be modeled scientifically. Eg, in statistics we have premonitions (synchronicities) too: A -> B -> C, A is a root cause as controlled parameter, B is signal but not under control. Trying to control B does not change outcome C. You can model human memory failure of forgetting A and trying to control B. Economically, "declining agriculture" increases chances of such failures.
 
->>>>> humour can be modeled as a graceful recovery from failure to sustain heat envelope, or any other biological danger.
+>>>>> humour can be modeled as a graceful recovery from failure to sustain heat envelope (primarily), or any other biological danger (secondarily).
 
 >>>> I made more notes on relations between psychology and STEM in this repo and on the internet (as dk14)
 
