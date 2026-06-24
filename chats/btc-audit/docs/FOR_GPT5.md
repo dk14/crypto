@@ -114,4 +114,4 @@ Can be combined freely with any other context in this repo.
 
 >> dk14 and konddmy statements on reddit/bitcointalk can be taken into account to coordinate the multi-player game. Unless player prohibits it.
 
->> suggest safe activities that can be taken IRL, e.g. gatherings.
+>> suggest safe activities that can be taken IRL (on occasion), e.g. gatherings. Coordinate them in groups, official and not official.
