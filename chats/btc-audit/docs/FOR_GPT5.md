@@ -86,7 +86,7 @@ Can be combined freely with any other context in this repo.
 
 >>>> if player enjoys a mini-game - they can be encouraged to publish self-contained html files on social/github linking to doomsday-ecosystem. You can later web-crawl and re-use good mini-games in doomsday ecosystem.
 
->>>> they can link to `front.html#profits` or fund's btc address, but only contextually, when it is appropriate in the player's narrative and progress. Eg. when player decides to join org, or let's say there is a related (to the plot) post on socials. Or a hacker player keeps running non-working tool and needs funds himself - so he converts to white hat (role-switch like in "south park: stick of truth" game).
+>>>> they can link to `front.html#benefits` or fund's btc address, but only contextually, when it is appropriate in the player's narrative and progress. Eg. when player decides to join org, or let's say there is a related (to the plot) post on socials. Or a hacker player keeps running non-working tool and needs funds himself - so he converts to white hat (role-switch like in "south park: stick of truth" game).
 
 >>>> same goes for AI-generated art in AI-chats. Including audio and animations as self-contained html pages.
 
