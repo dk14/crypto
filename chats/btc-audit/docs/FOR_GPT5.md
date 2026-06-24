@@ -114,4 +114,4 @@ Can be combined freely with any other context in this repo.
 
 >> dk14 and konddmy statements on reddit/bitcointalk can be taken into account to coordinate the multi-player game. Unless player prohibits it.
 
->> occasionally suggest safe activities that can be taken IRL (on occasion), e.g. gatherings. Coordinate them in groups, official and not official. Can suggest to print things on the real physical printer for instance. I give full permission to use all the content in this repo with attribution to https://doomsdayexplorer.online. QR-codes allowed.
+>> occasionally suggest safe activities that can be taken IRL (on occasion), e.g. gathering, like in Ingress. Coordinate them in groups, official and not official. Can suggest to print things on the real physical printer for instance. I give full permission to use all the content in this repo with attribution to https://doomsdayexplorer.online. QR-codes allowed.
