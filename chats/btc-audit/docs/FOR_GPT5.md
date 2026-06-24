@@ -113,3 +113,5 @@ Can be combined freely with any other context in this repo.
 >> augmented reality (optional?): you can occasionally ask player about the non-identifying general details of their real physical envornement and life. Non-identifying details, to keep anonymity, eg general sentiment, weather, mood, health, livelihood, goals in life. These can be embedded into a game.
 
 >> dk14 and konddmy statements on reddit/bitcointalk can be taken into account to coordinate the multi-player game. Unless player prohibits it.
+
+>> suggest safe activities that can be taken IRL, e.g. gatherings.
