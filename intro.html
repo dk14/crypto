@@ -1025,22 +1025,15 @@ setInterval(() => {
   //   we lerp towards the new factor so the change feels fluid
   const smoothing = 0.9;                        // 0‑1, lower = slower transition
   slowFactor = slowFactor * (1 - smoothing) + factor * smoothing;
-  
+
+  if (slowFactor > 5.0) {
+    slowFactor = 5.0
+  }
 
   // reset distance for the next interval
   moveDist = 0;
 }, 10);
 
-/* d. Visual cue – add/remove a CSS class when we are noticeably slowed */
-function updateSlowVisual(){
-  if (slowFactor > 1.1) {
-    slowFactor = 1.1
-    canvas.classList.add('slow');
-  }
-  else {
-    canvas.classList.remove('slow');
-  }
-}
 
 /* -------------------------------------------------
    5️⃣  Main animation scheduler (frame‑skip based)
@@ -1056,7 +1049,6 @@ function renderLoop(timestamp){
   if (timestamp - lastRender >= desiredInterval){
     drawNoise();                // your original noise drawing
     lastRender = timestamp;
-    updateSlowVisual();         // optional visual cue
   }
   requestAnimationFrame(renderLoop);
 }
