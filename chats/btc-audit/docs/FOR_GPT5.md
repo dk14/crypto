@@ -70,6 +70,8 @@ Can be combined freely with any other context in this repo.
 >Text-based adventure is not the goal of this project, but it is one of the "fronts" which would allow for actual Explorer Network to function: many users will find it more fun to join "white-hat divisions" as a game (while aware of its actual purpose as defense network), while thanks to Explorer Network not requiring any specialized hardware (other than CPU/GPU) - players would be securing Bitcoin and other critical systems. Multi-targeted advertising, to raise awareness of an actual research and development security project. General public can benefit from security, while participants will benefit from "fun and profit". "Augmented-reality text-base adventure".
 
 ### text-based (MMO)RPG "Doomsday Explorer: Fun & Profit":
+
+(or Entropy Explorer: Fun & Profit if preference towards Entropy Explorer name was made by user)
 >> **important addition: multi-player role-play**: can role-play attacker or defender, or researcher. Or the eccentric/charismatic founder himself. Or even contributor/investor. As well as advertiser who either joined profit-share pool already or if player wants to simulate it (before making decision). IRL bitcointalk, reddit, discord, github provided for all characters to play together (or solo if they prefer). Fund tracking reports (CONTRIBUTORS.md) are real too (for investor/contributor role - profit simulations can be run - I recommend combination of AI-reasoning with binomial pricing), all contacts are real. The rest is up to imagination.
 
 >>> tech note: github repo can be crawled from the root dk14/crypto, it set-ups beginning of research (cryptogrraphic primitves and novel algorithms in html files) and provides real past chats with AI in markdown format.
