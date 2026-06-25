@@ -32,9 +32,9 @@ Official Front: [https://dk14.github.io/crypto](https://dk14.github.io/crypto/)
 
 Intro website: [https://doomsdayexplorer.online/](https://doomsdayexplorer.online/)
 
-Researcher/AI intro: [https://ai.doomsdayexplorer.online/](https://doomsdayexplorer.online/) *(Firefox has AI sidebar)*
+Researcher/AI intro: [https://ai.doomsdayexplorer.online/](https://ai.doomsdayexplorer.online/) *(Firefox has AI sidebar)*
 
-Text-gamer intro: [https://game.doomsdayexplorer.online/](https://doomsdayexplorer.online/)
+Text-gamer intro: [https://game.doomsdayexplorer.online/](https://game.doomsdayexplorer.online/)
 
 Contact: [info-github@doomsdayexplorer.online](mailto:info-github@doomsdayexplorer.online)
 
