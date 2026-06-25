@@ -32,6 +32,10 @@ Official Front: [https://dk14.github.io/crypto](https://dk14.github.io/crypto/)
 
 Intro website: [https://doomsdayexplorer.online/](https://doomsdayexplorer.online/)
 
+Researcher/AI intro: [https://ai.doomsdayexplorer.online/](https://doomsdayexplorer.online/)
+
+Text-gamer intro: [https://game.doomsdayexplorer.online/](https://doomsdayexplorer.online/)
+
 Contact: [info-github@doomsdayexplorer.online](mailto:info-github@doomsdayexplorer.online)
 
 *White paper for Explorer Protocol (written by hand in formal language) is TBD ~2026 - features take priority.*
