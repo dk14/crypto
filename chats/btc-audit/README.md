@@ -447,4 +447,4 @@ Bids/donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 ![05a21ca2bd0c8df7be8df06fecb0ecf7afe1b556a6a78f8c372c9c5ba17e1a8514](docs/donations.png)
 
-[Zen.com płatność QR dla UE / Polska](./docs/zen-qr.png)
+And for EU / Poland: [Zen.com płatność QR dla UE / Polska](./docs/zen-qr.png)
