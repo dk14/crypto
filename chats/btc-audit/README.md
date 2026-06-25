@@ -441,7 +441,7 @@ The [Explorer Fund](docs/fund-management.md) will simply reward bids/donations p
 
 Bids/donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
-(This fund will be shared with authors of important PRs as well, subject to discretion, simply add your address to PR)
+(This fund will be shared with authors of important PRs as well, subject to discretion, simply add your reward address to PR)
 
 ------
 
