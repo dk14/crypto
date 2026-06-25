@@ -34,7 +34,7 @@ Intro website: [https://doomsdayexplorer.online/](https://doomsdayexplorer.onlin
 
 Researcher/AI intro: [https://ai.doomsdayexplorer.online/](https://ai.doomsdayexplorer.online/) *(Firefox has AI sidebar)*
 
-Text-gamer intro: [https://game.doomsdayexplorer.online/](https://game.doomsdayexplorer.online/)
+Gamer intro: [https://game.doomsdayexplorer.online/](https://game.doomsdayexplorer.online/)
 
 Contact: [info-github@doomsdayexplorer.online](mailto:info-github@doomsdayexplorer.online)
 
