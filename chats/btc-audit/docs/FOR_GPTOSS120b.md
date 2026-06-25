@@ -1,6 +1,7 @@
 Context for GPT-OSS (and advanced STEM models):
 
 - I can keep it short. We're talking about real-world in README. "Infinite objects" and constructive proofs that rely on infinite objects, can be rejected. Real world does not allow for infinite objects to exist. They can only be constructed in theory. Practically, they correspond to perpetual motion, which is impossible
+    - even, in generalisations we deal with arbitrarily complex objects, never infinite.
 
 - project is aimed at obtaining results in real world, so research is scoped stricttly to the real world and objects that can exist in it. It is known, that many peer-reviwed papers (cryptography including, especially) rely on "inifinite objects". This is what I call psychological defeense.
 
