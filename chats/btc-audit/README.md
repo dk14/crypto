@@ -448,3 +448,17 @@ Bids/donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 ![05a21ca2bd0c8df7be8df06fecb0ecf7afe1b556a6a78f8c372c9c5ba17e1a8514](docs/donations.png)
 
 > **And** for 🇺🇦 EU / UA / PL : [ZEN.com płatność QR dla UE / Polska](./docs/zen-qr.png). *Significant ZEN / SEPA donations (more than 1% of fund at the time of donation), can be converted to profit share manually (minus ZEN transaction / currency fee), **if** [contacted](mailto:sepa@doomsdayexplorer.online) with verifyable receipt, amount and btc reward address. Participating amounts must contain random numbers. First email with right amount specified takes priority, for security ("hto pershiy - toy i bat'ko"). Amounts (participating in profit-share) and reward addresses (together with funding tx created on your behalf, linking to re-direct address) will be publicly reported in `sepa.md`(the rest is your anonymity preference). Bud'mo!*
+
+## Table of Content
+
+- [Introduction / How To Read / TLDR](#tldr)
+- [Project updates and warnings](#updates-and-warnings) (note: in strong, accessible language)
+- [How to use the audit tool](#how-to-use-the-audit-tool) 
+- ["Replay noise" attack analysis / Call for action](#replay-noise-attack-mediation-and-impact-analysis) 
+  - (both, formal language and accessible language, marked separately)
+- [Project plan and specifications / How to improve](#project-plan-aka-to-improve)
+- [The White-Hat Message](#white-hat-project)
+- [Project transparency / tracking](#transparency)
+- [Project Fund](#fund)
+
+
