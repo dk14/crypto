@@ -1,10 +1,10 @@
 ## Table of Content
 
 - [Introduction / How To Read / TLDR](#tldr)
-- [Project updates and warnings](#updates-and-warnings) (note: in strong, accessible language)
+- [Project updates and warnings](#updates-and-warnings) *(note: in strong, accessible language)*
 - [How to use the audit tool](#how-to-use-the-audit-tool) 
 - ["Replay noise" attack analysis / Call for action](#replay-noise-attack-mediation-and-impact-analysis) 
-  - (both, formal language and accessible language, marked separately)
+  - *(both, formal language and accessible language, marked separately)*
 - [Project plan and specifications / How to improve](#project-plan-aka-to-improve)
 - [The White-Hat Message](#white-hat-project)
 - [Project transparency / tracking](#transparency)
@@ -452,10 +452,9 @@ Bids/donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 ## Table of Content
 
 - [Introduction / How To Read / TLDR](#tldr)
-- [Project updates and warnings](#updates-and-warnings) (note: in strong, accessible language)
+- [Project updates and warnings](#updates-and-warnings)
 - [How to use the audit tool](#how-to-use-the-audit-tool) 
 - ["Replay noise" attack analysis / Call for action](#replay-noise-attack-mediation-and-impact-analysis) 
-  - (both, formal language and accessible language, marked separately)
 - [Project plan and specifications / How to improve](#project-plan-aka-to-improve)
 - [The White-Hat Message](#white-hat-project)
 - [Project transparency / tracking](#transparency)
