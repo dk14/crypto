@@ -248,7 +248,8 @@ Firefox includes an AI Sidebar that can use ChatGPT, Claude, Gemini and other su
             if (!apiKey && v.startsWith('sk-')) { 
                 apiKey = v; m('u', '••••••••••'); m('', "✅ API key accepted."); 
                 t.value = PROMPT;
-                
+                t.placeholder = "Ask anything...";
+
                 send();
                 return; 
             }
