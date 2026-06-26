@@ -212,7 +212,7 @@ Firefox includes an AI Sidebar that can use ChatGPT, Claude, Gemini and other su
                 "",
                 `
  Previous conversation restored.
- 
+
 <a class=btn href="#" target=_blank id="clearChat">Clear chat</a>
                 `,
                 false,
@@ -245,7 +245,13 @@ Firefox includes an AI Sidebar that can use ChatGPT, Claude, Gemini and other su
         });
         async function send() {
             let v = t.value.trim(); if (!v) return; t.value = '';
-            if (!apiKey && v.startsWith('sk-')) { apiKey = v; m('u', '••••••••••'); m('', "✅ API key accepted."); return; }
+            if (!apiKey && v.startsWith('sk-')) { 
+                apiKey = v; m('u', '••••••••••'); m('', "✅ API key accepted."); 
+                t.value = PROMPT;
+                
+                send();
+                return; 
+            }
             m('u', v); if (!apiKey) { err('No API key provided.'); return; }
             let b = m('', 'Thinking...');
             try {
