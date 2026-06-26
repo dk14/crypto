@@ -186,6 +186,8 @@
       margin-left:var(--sidebar-width, 300px);       /* same as sidebar width */
     }
 
+    .no-select { user-select:none; }
+
 </style>
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -1126,6 +1128,16 @@
     let startX = 0;
     let startWidth = 0;
 
+
+function disableIframe() {
+  const iframe = document.querySelector('iframe');
+  if (iframe) iframe.style.pointerEvents = 'none';
+}
+function enableIframe() {
+  const iframe = document.querySelector('iframe');
+  if (iframe) iframe.style.pointerEvents = '';
+}
+
     handle.addEventListener('mousedown', e => {
       isDragging = true;
       startX = e.clientX;
@@ -1137,15 +1149,17 @@
       document.body.style.userSelect = 'none';
     });
 
+    
    // ---------- 1️⃣  Mousedown on the bar ----------
 function onMouseDown(e) {
+  disableIframe()
   // Only react to left‑button (button === 0)
   if (e.button !== 0) return;
 
   isDragging = true;
   startX = e.clientX;
   startWidth = panel.offsetWidth;          // or whatever you’re resizing
-
+  document.body.classList.add('no-select');
   // Prevent text selection while dragging
   document.body.style.userSelect = 'none';
 
@@ -1154,21 +1168,45 @@ function onMouseDown(e) {
   e.target.setPointerCapture(e.pointerId);
 }
 
-// ---------- 2️⃣  Mousemove (or pointermove) ----------
+function throttle(fn, wait = 15) {
+  let timeoutId = null;   // scheduled call
+  let lastArgs = null;    // arguments from the most recent invocation
+
+  const later = () => {
+    timeoutId = null;         // allow a new schedule
+    fn(...lastArgs);          // run with the *latest* arguments
+  };
+
+  return (...args) => {
+    lastArgs = args;          // remember newest data
+    if (timeoutId === null) { // not already waiting → schedule
+      timeoutId = setTimeout(later, wait);
+    }
+  };
+}
+
+
+const throttledResize = throttle((clientX) => {
+  const delta = clientX - startX;       // positive → wider
+  setWidth(startWidth + delta);
+});
+
 function onPointerMove(e) {
   if (!isDragging) return;
-
-  const delta = e.clientX - startX;       // positive → wider
-  // Use requestAnimationFrame to avoid layout thrashing
-  requestAnimationFrame(() => setWidth(startWidth + delta));
+  throttledResize(e.clientX);          // ← only a timer limits calls
 }
+
+
+
 
 // ---------- 3️⃣  Mouseup / pointerup ----------
 function onPointerUp(e) {
+  enableIframe()
   if (!isDragging) return;
   isDragging = false;
   document.body.style.userSelect = '';    // restore default
 
+  document.body.classList.remove('no-select');
   // Release the capture (important for future drags)
   e.target.releasePointerCapture(e.pointerId);
 }
