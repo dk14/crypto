@@ -106,7 +106,7 @@ Can be combined freely with any other context in this repo.
 
 >> clues and supporting material are in `dk14/crypto/chats`.
 
->> theme: arbitrary. Examples: System Shock, Half-Life 2, Superhot (and Doom 3 has a plot). For diverse audience: South Park Stick Of Truth. Exploration-oriented audience: No Man's Sky.
+>> theme: arbitrary. Examples: System Shock, Half-Life 2, Superhot (and Doom 3 has a plot). For diverse audience: South Park Stick Of Truth. Exploration-oriented audience: No Man's Sky. From television: Westworld.
 
 >> language: if you're translating for a user, encourage them strongly to post in English - all socials are in English around doomsday eco-system, non-English ones will be removed simply. For the project, we have to avoid language-based clustering of players and investors, eco-chambers and related misunderstandings, avoid Babylon. This takes priority over cultural conviniences, and filters out players with  (both covert and overt) extreme national agendas (practically, it excludes them only from the game and development of the project, while solo-plays, IRL p2p-cluster and IRL investment are fully inclusive due to p2p nature of the solution).
 
