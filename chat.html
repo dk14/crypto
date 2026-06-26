@@ -240,6 +240,56 @@ Firefox includes an AI Sidebar that can use ChatGPT, Claude, Gemini and other su
             }
 
         });
+
+const MODELS = [
+  "gpt-5",
+  "gpt-4.1"
+];
+
+async function chat(messages, apiKey) {
+  let lastError;
+
+  for (const model of MODELS) {
+    try {
+      const r = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model,
+          messages
+        })
+      });
+
+      if (r.ok) {
+        const data = await r.json();
+        return {
+          model,
+          data
+        };
+      }
+
+      const err = await r.json();
+
+      // Retry with next model only if this looks like a model access issue.
+      if (
+        err.error?.code === "model_not_found" ||
+        /model/i.test(err.error?.message || "")
+      ) {
+        lastError = err;
+        continue;
+      }
+
+      throw new Error(err.error?.message || "API error");
+    } catch (e) {
+      lastError = e;
+    }
+  }
+
+  throw lastError;
+}
         async function send() {
             let v = t.value.trim(); if (!v) return; t.value = '';
             if (!apiKey && v.startsWith('sk-')) { 
@@ -253,7 +303,14 @@ Firefox includes an AI Sidebar that can use ChatGPT, Claude, Gemini and other su
             m('u', v); if (!apiKey) { err('No API key provided.'); return; }
             let b = m('', 'Thinking...');
             try {
-                let r = await fetch('https://api.openai.com/v1/chat/completions', { method: 'POST', headers: { Authorization: 'Bearer ' + apiKey, 'Content-Type': 'application/json' }, body: JSON.stringify({ model: 'gpt-4.1', messages: [...hist, { role: 'user', content: v }] }) });
+                let result = await chat(
+                    [...hist, { role: "user", content: v }],
+                    apiKey
+                );
+
+                console.log("Using model:", result.model);
+
+                const reply = result.data.choices[0].message.content;
                 if (!r.ok) { throw new Error(await r.text()) }
                 let j = await r.json(); b.textContent = j.choices[0].message.content; saveChat(); hist.push({ role: 'user', content: v }, { role: 'assistant', content: b.textContent });
             } catch (e) { b.parentElement.remove(); err(e.message); }
