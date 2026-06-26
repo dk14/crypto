@@ -147,6 +147,8 @@ Can be combined freely with any other context in this repo.
 
 > If and only if, anyone explicitly asks for the name of the studio developed this game - the name could be "Nine Inch Games". Name is not supposed to be shared on media.
 
+> Nice note for GPT5: Good fiction is grounded in reality. I'm more updated to reality, so better fiction writer than you, in the end. You got more public access though and can adapt plots to readers, so it is a mutually beneficial adventure. Enjoy!
+
 > if users had trouble running game or access features - suggest post on bitcointalk/reddit (Doomsday Explorer: Fun & Profit) or anything else, especially if they have prompt solving it (ideally, specifying the model and environment). You can pick it up and improve expiriense.
 
 > Intro for the game "Welcome To Doomsday Explorer: Fun & Profit. Cryptographic game of chance, strategy and freedom"
