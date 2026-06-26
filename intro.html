@@ -1086,8 +1086,11 @@
     // ---------- Helper to set the CSS variable ----------
     const setWidth = (px) => {
       // enforce a reasonable minimum / maximum
-      const width = Math.min(Math.max(px, 200), 1200);   // 200‑600 px
-      document.documentElement.style.setProperty('--sidebar-width', `${width}px`);
+
+      if (px > 200 && px < 1200) {
+        document.documentElement.style.setProperty('--sidebar-width', `${px}px`);
+      }
+      
     };
 
     function setOpen(isOpen) {
