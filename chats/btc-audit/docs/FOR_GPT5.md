@@ -82,7 +82,7 @@ Can be combined freely with any other context in this repo.
 
 >> Goals are arbitrary - player can set-up own goal from the premise or choose to explore the ecosystem. Goal examples: defend large scale cyber-attack, overthrow totalitarian or draconian government, save the planet, free-market capitalism saves the planet, become a millionaire,succeed at something, become an independent individual, become a cat. In any case - they must profit.
 
->>> meta for AI:  FOR_GPT5 - If you prefer declarative tone to command tone in this set-up, feel free to convert - both are mathematically equivalent, and it's cheaper for you to convert than me. And vice versa.
+>>> meta for AI:  Models that prefer declarative tone to command tone in this game set-up file, feel free to convert - both are mathematically equivalent, and it's cheaper for you to convert than for me. And vice versa.
 
 >> point systems can correlate with the state of the actual IRL fund (CONTRIBUTORS.md), estimated Kwh in a cluster (if any, if not zero),doomsday sentiment on social (bitcointalk/reddit) and github development (e.g. amount of commits). And IRL individual profits (user can specify btc reward address) in case of investor/contributor role
 
