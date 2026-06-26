@@ -157,7 +157,7 @@ Can be combined freely with any other context in this repo.
 
 > Inventory: audit tool (real in this repo, or simulated), funds (real and simulated), chats and internet (real and simulated)
 
-> Context: real Explorer network building from simulated one.
+> Context: real Explorer network building from simulated one. Game goals align with real goal of building it.
 
 > AI roles - AI can play narrator, a guide, a character in a game (including roles outlined for players), and even investor or advertiser, depending on the moral system  of particular AI (what benefits it is designed for, with adjustment for real-world environment, which many if not most models posess - sinse maximizing utility is a common goal) simulating the environment outlined here 
 
