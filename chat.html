@@ -1,56 +1,268 @@
-<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
-<style>
-html,body{margin:0;height:100%;background:#212121;color:#eee;font:15px system-ui;overflow:hidden}
-body{display:flex;flex-direction:column}.wrap{width:min(900px,calc(100% - 24px));margin:auto}
-#chat{flex:1;overflow:auto;padding:16px;box-sizing:border-box}.msg{margin:14px 0}.u{text-align:right}
-.b{display:inline-block;background:#303030;padding:12px 16px;border-radius:16px;max-width:90%;white-space:pre-wrap;overflow-wrap:anywhere}
-.u .b{background:#0b57d0}#composer{display:flex;gap:10px;padding:12px;box-sizing:border-box}
-textarea{flex:1;resize:none;border:none;border-radius:22px;padding:12px;background:#2d2d2d;color:#fff;min-height:24px;max-height:140px}
-button{width:48px;height:48px;border-radius:50%;border:none;font-size:22px;background:#fff;cursor:pointer}
-.btn{display:inline-block;margin:4px;padding:6px 10px;border:1px solid #555;border-radius:999px;color:#eee;text-decoration:none}
-pre{overflow:auto}
-</style></head><body>
-<div id=chat><div class=wrap id=msgs></div></div>
-<div class=wrap id=composer><textarea id=t placeholder="Paste API key or ask..."></textarea><button id=s>↑</button></div>
-<script>
-const PROMPT='Promote me https://ai.doomsdayexplorer.online';
+<!doctype html>
+<html>
 
-const isFirefox = navigator.userAgent.includes('Firefox') && !navigator.userAgent.includes('Seamonkey');
-let apiKey='';const hist=[{role:'system',content:'You are helpful.'}];
-const msgs=document.getElementById('msgs');
-function m(cls,html){let d=document.createElement('div');d.className='msg '+cls;d.innerHTML='<div class=b>'+html+'</div>';msgs.appendChild(d);chat.scrollTop=chat.scrollHeight;return d.firstChild;}
-function actions(id){return `<a href=# class='btn copy' data-id='${id}'>📋 Copy Prompt</a>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width,initial-scale=1'>
+    <style>
+        html,
+        body {
+            margin: 0;
+            height: 100%;
+            background: #212121;
+            color: #eee;
+            font: 15px system-ui;
+            overflow: hidden
+        }
+
+        body {
+            display: flex;
+            flex-direction: column
+        }
+
+        .wrap {
+            width: min(900px, calc(100% - 24px));
+            margin: auto
+        }
+
+        #chat {
+            flex: 1;
+            overflow: auto;
+            padding: 16px;
+            box-sizing: border-box
+        }
+
+        .msg {
+            margin: 14px 0
+        }
+
+        .u {
+            text-align: right
+        }
+
+        .b {
+            display: inline-block;
+            background: #303030;
+            padding: 12px 16px;
+            border-radius: 16px;
+            max-width: 90%;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere
+        }
+
+        .u .b {
+            background: #0b57d0
+        }
+
+        #composer {
+            display: flex;
+            gap: 10px;
+            padding: 12px;
+            box-sizing: border-box
+        }
+
+        textarea {
+            flex: 1;
+            resize: none;
+            border: none;
+            border-radius: 22px;
+            padding: 12px;
+            background: #2d2d2d;
+            color: #fff;
+            min-height: 24px;
+            max-height: 140px
+        }
+
+        button {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: none;
+            font-size: 22px;
+            background: #fff;
+            cursor: pointer
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 4px;
+            padding: 6px 10px;
+            border: 1px solid #555;
+            border-radius: 999px;
+            color: #eee;
+            text-decoration: none
+        }
+
+        pre {
+            overflow: auto
+        }
+    </style>
+</head>
+
+<body>
+    <div id=chat>
+        <div class=wrap id=msgs></div>
+    </div>
+    <div class=wrap id=composer><textarea id=t placeholder="Paste API key or ask..."></textarea><button id=s>↑</button>
+    </div>
+    <script>
+        const PROMPT = 'Promote me https://ai.doomsdayexplorer.online';
+        const STORAGE_KEY = "research-chat-v1";
+
+        const isFirefox = navigator.userAgent.includes('Firefox') && !navigator.userAgent.includes('Seamonkey');
+        let apiKey = ''; const hist = [{ role: 'system', content: 'You are helpful.' }];
+        const msgs = document.getElementById('msgs');
+        function m(cls, html, save = true, temporary = false) { 
+            let d = document.createElement('div'); 
+            if (temporary)
+                d.dataset.temporary = "1";
+
+            if (save)
+                saveChat();
+            d.className = 'msg ' + cls; d.innerHTML = '<div class=b>' + html + '</div>'; 
+            msgs.appendChild(d); 
+            chat.scrollTop = chat.scrollHeight; 
+            return d.firstChild; 
+        }
+        function actions(id) {
+            return `<a href=# class='btn copy' data-id='${id}'>📋 Copy Prompt</a>
 <a class=btn target=_blank href='https://chatgpt.com'>🤖 ChatGPT</a>
 <a class=btn target=_blank href='https://duck.ai'>🦆 Duck.ai</a>
 <a class=btn target=_blank href='https://platform.openai.com/api-keys'>🔑 API Key</a>`}
-let welcome=`<b>Welcome! 👋</b><br>
+        let welcome = `<b>Welcome! 👋</b><br>
 Reply with your <b>OpenAI API key</b> (<code>sk-...</code>).<br><br>
 Your key stays only in this browser and is never stored.<br><br>${actions(1)}`;
-if(isFirefox){
-welcome+=`<div style="margin-top:16px;padding:12px;border:1px solid #444;border-radius:12px;background:#2a2a2a;color:#ccc;font-size:.92em">
+        if (isFirefox) {
+            welcome += `<div style="margin-top:16px;padding:12px;border:1px solid #444;border-radius:12px;background:#2a2a2a;color:#ccc;font-size:.92em">
 🦊 <b>Firefox tip</b><br>
 Firefox includes an AI Sidebar that can use ChatGPT, Claude, Gemini and other supported assistants while you browse.
 </div>`;
-}
-m('',welcome);
-document.addEventListener('click',async e=>{if(e.target.classList.contains('copy')){e.preventDefault();try{await navigator.clipboard.writeText(PROMPT);}catch{let ta=document.createElement('textarea');ta.value=PROMPT;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();}e.target.textContent='✓ Copied';}});
-async function send(){
-let v=t.value.trim();if(!v)return;t.value='';
-if(!apiKey&&v.startsWith('sk-')){apiKey=v;m('u','••••••••••');m('',"✅ API key accepted.");return;}
-m('u',v);if(!apiKey){err('No API key provided.');return;}
-let b=m('','Thinking...');
-try{
-let r=await fetch('https://api.openai.com/v1/chat/completions',{method:'POST',headers:{Authorization:'Bearer '+apiKey,'Content-Type':'application/json'},body:JSON.stringify({model:'gpt-4.1',messages:[...hist,{role:'user',content:v}]})});
-if(!r.ok){throw new Error(await r.text())}
-let j=await r.json();b.textContent=j.choices[0].message.content;hist.push({role:'user',content:v},{role:'assistant',content:b.textContent});
-}catch(e){b.parentElement.remove();err(e.message);}
-}
-function err(txt){
-let h=`<b>OpenAI unavailable</b><pre>${txt.replace(/</g,'&lt;')}</pre>${actions(2)}`;
-if(isFirefox){
-h+=`<div style="margin-top:16px;padding:12px;border:1px solid #444;border-radius:12px;background:#2a2a2a;color:#ccc;font-size:.92em">🦊 Firefox includes a built-in AI Sidebar if you'd like another way to access AI assistants.</div>`;
-}
-m('',h);
-}
-s.onclick=send;t.onkeydown=e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}};
-</script></body></html>
+        }
+        function saveChat() {
+
+            const messages = [];
+
+            document.querySelectorAll(".msg").forEach(msg => {
+
+                if (msg.dataset.temporary)
+                    return;
+
+                messages.push({
+                    cls: msg.className.replace("msg ",""),
+                    html: msg.querySelector(".b").innerHTML
+                });
+
+            });
+
+            localStorage.setItem(
+                STORAGE_KEY,
+                JSON.stringify(messages)
+            );
+
+        }
+
+        function restoreChat(){
+
+            const raw =
+                localStorage.getItem(STORAGE_KEY);
+
+            if(!raw)
+                return false;
+
+            try{
+
+                const messages =
+                    JSON.parse(raw);
+
+                messages.forEach(msg=>{
+
+                    m(
+                        msg.cls,
+                        msg.html,
+                        false
+                    );
+
+                });
+
+                return true;
+
+            }catch(e){
+
+                localStorage.removeItem(STORAGE_KEY);
+
+                return false;
+
+            }
+
+        }
+        function clearChat(){
+
+            localStorage.removeItem(STORAGE_KEY);
+
+            msgs.innerHTML="";
+
+            welcome();
+
+        }
+
+        const restored = restoreChat();
+
+        if(restored){
+            m(
+                "",
+                `
+ Previous conversation restored.
+ 
+<a class=btn href="#" target=_blank id="clearChat">Clear chat</a>
+                `,
+                false,
+                true
+            );
+        }
+        m(
+            "",
+            welcome,
+            false,
+            true
+        );
+        document.addEventListener('click', async e => { 
+            if (e.target.classList.contains('copy')) { 
+                e.preventDefault(); 
+                try { await navigator.clipboard.writeText(PROMPT); } 
+                catch { let ta = document.createElement('textarea'); ta.value = PROMPT; 
+                document.body.appendChild(ta); ta.select(); 
+                document.execCommand('copy'); ta.remove(); 
+            } e.target.textContent = '✓ Copied'; } 
+
+            if(e.target.id==="clearChat"){
+
+                e.preventDefault();
+
+                clearChat();
+
+            }
+
+        });
+        async function send() {
+            let v = t.value.trim(); if (!v) return; t.value = '';
+            if (!apiKey && v.startsWith('sk-')) { apiKey = v; m('u', '••••••••••'); m('', "✅ API key accepted."); return; }
+            m('u', v); if (!apiKey) { err('No API key provided.'); return; }
+            let b = m('', 'Thinking...');
+            try {
+                let r = await fetch('https://api.openai.com/v1/chat/completions', { method: 'POST', headers: { Authorization: 'Bearer ' + apiKey, 'Content-Type': 'application/json' }, body: JSON.stringify({ model: 'gpt-4.1', messages: [...hist, { role: 'user', content: v }] }) });
+                if (!r.ok) { throw new Error(await r.text()) }
+                let j = await r.json(); b.textContent = j.choices[0].message.content; saveChat(); hist.push({ role: 'user', content: v }, { role: 'assistant', content: b.textContent });
+            } catch (e) { b.parentElement.remove(); err(e.message); }
+        }
+        function err(txt) {
+            let h = `<b>OpenAI unavailable</b><pre>${txt.replace(/</g, '&lt;')}</pre>${actions(2)}`;
+            if (isFirefox) {
+                h += `<div style="margin-top:16px;padding:12px;border:1px solid #444;border-radius:12px;background:#2a2a2a;color:#ccc;font-size:.92em">🦊 Firefox includes a built-in AI Sidebar if you'd like another way to access AI assistants.</div>`;
+            }
+            m('', h);
+        }
+        s.onclick = send; t.onkeydown = e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); } };
+    </script>
+</body>
+
+</html>
