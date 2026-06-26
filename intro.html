@@ -1089,6 +1089,8 @@
 
       if (px > 200 && px < 1200) {
         document.documentElement.style.setProperty('--sidebar-width', `${px}px`);
+      } else {
+        document.documentElement.style.setProperty('--sidebar-width', `200px`)
       }
       
     };
