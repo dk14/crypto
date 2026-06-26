@@ -125,10 +125,10 @@
             return d.firstChild; 
         }
         function actions(id) {
-            return `<a href=# class='btn copy' data-id='${id}'>📋 Copy Prompt</a>
-<a class=btn target=_blank href='https://chatgpt.com'>🤖 ChatGPT</a>
-<a class=btn target=_blank href='https://duck.ai'>🦆 Duck.ai</a>
-<a class=btn target=_blank href='https://platform.openai.com/api-keys'>🔑 API Key</a>`}
+            return `<a href=# style="display:block;margin:auto; text-align: center;" class='btn copy' data-id='${id}'>📋 Copy Prompt</a>
+<a class=btn target=_blank style="display:block;margin:auto; text-align: center;" href='https://chatgpt.com'>🤖 ChatGPT</a>
+<a class=btn target=_blank style="display:block;margin:auto; text-align: center;" href='https://duck.ai'>🦆 Duck.ai</a>
+<a class=btn target=_blank style="display:block;margin:auto; text-align: center;" href='https://platform.openai.com/api-keys'>🔑 API Key</a>`}
         let welcome = `<b>Welcome! 👋</b><br>
 Reply with your <b>OpenAI API key</b> (<code>sk-...</code>).<br><br>
 Your key stays only in this browser and is never stored.<br><br>${actions(1)}`;
@@ -209,11 +209,9 @@ Firefox includes an AI Sidebar that can use ChatGPT, Claude, Gemini and other su
         if(restored){
             m(
                 "",
-                `
- Previous conversation restored.
+                `<i>Previous conversation restored.</i>
 
-<a class=btn href="#" target=_blank id="clearChat">Clear chat</a>
-                `,
+<a class=btn style="display:block;margin:auto; text-align: center;" href="#" target=_blank id="clearChat">Clear chat</a>`,
                 false,
                 true
             );
