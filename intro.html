@@ -1137,20 +1137,46 @@
       document.body.style.userSelect = 'none';
     });
 
-    const onMouseMove = e => { //todo FIX
-      if (!isDragging) return; 
-      const delta = e.clientX - startX;          // positive → wider
-      setWidth(startWidth + delta);
-    };
+   // ---------- 1️⃣  Mousedown on the bar ----------
+function onMouseDown(e) {
+  // Only react to left‑button (button === 0)
+  if (e.button !== 0) return;
 
-    const onMouseUp = () => {
-      if (!isDragging) return;
-      isDragging = false;
-      document.body.style.userSelect = '';       // restore
-    };
+  isDragging = true;
+  startX = e.clientX;
+  startWidth = panel.offsetWidth;          // or whatever you’re resizing
 
-    window.addEventListener('mousemove', onMouseMove);
-    window.addEventListener('mouseup', onMouseUp);
+  // Prevent text selection while dragging
+  document.body.style.userSelect = 'none';
+
+  // Capture the pointer so we keep receiving events even when the cursor
+  // leaves the window or goes over an iframe.
+  e.target.setPointerCapture(e.pointerId);
+}
+
+// ---------- 2️⃣  Mousemove (or pointermove) ----------
+function onPointerMove(e) {
+  if (!isDragging) return;
+
+  const delta = e.clientX - startX;       // positive → wider
+  // Use requestAnimationFrame to avoid layout thrashing
+  requestAnimationFrame(() => setWidth(startWidth + delta));
+}
+
+// ---------- 3️⃣  Mouseup / pointerup ----------
+function onPointerUp(e) {
+  if (!isDragging) return;
+  isDragging = false;
+  document.body.style.userSelect = '';    // restore default
+
+  // Release the capture (important for future drags)
+  e.target.releasePointerCapture(e.pointerId);
+}
+
+
+handle.addEventListener('pointerdown', onMouseDown);
+document.addEventListener('pointermove', onPointerMove);
+document.addEventListener('pointerup', onPointerUp);
 
     const savedWidth = localStorage.getItem('aiSidebarWidth');
     if (savedWidth) setWidth(parseInt(savedWidth, 10));
