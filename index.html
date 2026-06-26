@@ -1247,7 +1247,7 @@ footer a:hover{color:var(--c-accent);}
 <!-- ==================== NAVBAR ==================== -->
 <nav class="navbar navbar-expand-lg">
   <div class="container">
-    <a class="navbar-brand" href="https://doomsdayexplorer.online/">Doomsday Explorer</a>
+    <a class="navbar-brand" id="doomsday-link" href="https://doomsdayexplorer.online/">Doomsday Explorer</a>
 
     <div class="collapse navbar-collapse" id="navMenu">
       <ul class="navbar-nav ms-auto">
@@ -1265,6 +1265,12 @@ footer a:hover{color:var(--c-accent);}
     </div>
   </div>
 </nav>
+
+<script>
+  const choice = Date.now() % 3
+  const link = choice === 0 ? "https://doomsdayexplorer.online/" : (choice === 1 ? "https://ai.doomsdayexplorer.online/" : "https://game.doomsdayexplorer.online/")
+  document.getElementById("doomsday-link").href = link
+</script>
 
 
 <!-- ==================== HERO ==================== -->
