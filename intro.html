@@ -131,7 +131,7 @@
       position: fixed;          /* stay attached to the viewport */
       top: 0;
       left: 0;
-      width: var(--sidebar-width, 300px);              /* final width when open – adjust as needed */
+      width: var(--sidebar-width, 600px);              /* final width when open – adjust as needed */
       height: 100vh;
       background:#f9f9f9;
       border-right:1px solid #ddd;
@@ -183,7 +183,7 @@
     .toggle-link:hover { background:#004bb5; }
 
     body.sidebar-open .content2 {
-      margin-left:var(--sidebar-width, 300px);       /* same as sidebar width */
+      margin-left:var(--sidebar-width, 600px);       /* same as sidebar width */
     }
 
     .no-select { user-select:none; }
@@ -1113,7 +1113,7 @@
 
     // Initial state – closed
     setOpen(false);
-    setWidth(300); 
+    setWidth(600); 
     
 
     // Click handler
@@ -1143,7 +1143,7 @@ function enableIframe() {
       startX = e.clientX;
       // get the current width from the CSS variable (fallback to 300)
       const current = getComputedStyle(document.documentElement)
-                        .getPropertyValue('--sidebar-width') || '300px';
+                        .getPropertyValue('--sidebar-width') || '600px';
       startWidth = parseInt(current, 10);
       // prevent text selection while dragging
       document.body.style.userSelect = 'none';
