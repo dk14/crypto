@@ -1137,8 +1137,8 @@
       document.body.style.userSelect = 'none';
     });
 
-    const onMouseMove = e => {
-      if (!isDragging) return;
+    const onMouseMove = e => { //todo FIX
+      if (!isDragging) return; 
       const delta = e.clientX - startX;          // positive → wider
       setWidth(startWidth + delta);
     };
