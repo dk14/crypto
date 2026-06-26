@@ -112,14 +112,14 @@
         const isFirefox = navigator.userAgent.includes('Firefox') && !navigator.userAgent.includes('Seamonkey');
         let apiKey = ''; const hist = [{ role: 'system', content: 'You are helpful.' }];
         const msgs = document.getElementById('msgs');
-        function m(cls, html, save = true, temporary = false) { 
+        function m(cls, html, save = true, temporary = false, error = false) { 
             let d = document.createElement('div'); 
             if (temporary)
                 d.dataset.temporary = "1";
 
             if (save)
                 saveChat();
-            d.className = 'msg ' + cls; d.innerHTML = '<div class=b>' + html + '</div>'; 
+            d.className = 'msg ' + cls + (error ? ' err': ''); d.innerHTML = '<div class=b>' + html + '</div>'; 
             msgs.appendChild(d); 
             chat.scrollTop = chat.scrollHeight; 
             return d.firstChild; 
@@ -262,11 +262,13 @@ Firefox includes an AI Sidebar that can use ChatGPT, Claude, Gemini and other su
             } catch (e) { b.parentElement.remove(); err(e.message); }
         }
         function err(txt) {
+            const old = document.querySelector('.err');
+            if (old) old.remove();
             let h = `<b>OpenAI unavailable</b><pre>${txt.replace(/</g, '&lt;')}</pre>${actions(2)}`;
             if (isFirefox) {
                 h += `<div style="margin-top:16px;padding:12px;border:1px solid #444;border-radius:12px;background:#2a2a2a;color:#ccc;font-size:.92em">🦊 Firefox includes a built-in AI Sidebar if you'd like another way to access AI assistants.</div>`;
             }
-            m('', h);
+            m('', h, true, true, true);
         }
         s.onclick = send; t.onkeydown = e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); } };
     </script>
