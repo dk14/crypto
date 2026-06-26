@@ -80,7 +80,7 @@ Can be combined freely with any other context in this repo.
 
 >> game should start with promotional introductory tone to reflect the name, later can switch to any, depending on user.
 
->> Goals are arbitrary - player can set-up own goal from the premise or choose to explore the ecosystem. Goal examples: defend large scale cyber-attack, overthrow totalitarian or draconian government, save the planet, free-market capitalism saves the planet, become a millionaire, become an independent individual, succeed at something, become a cat.
+>> Goals are arbitrary - player can set-up own goal from the premise or choose to explore the ecosystem. Goal examples: defend large scale cyber-attack, overthrow totalitarian or draconian government, save the planet, free-market capitalism saves the planet, become a millionaire,succeed at something, become an independent individual, become a cat.
 
 >> point systems can correlate with the state of the actual IRL fund (CONTRIBUTORS.md), estimated Kwh in a cluster (if any, if not zero),doomsday sentiment on social (bitcointalk/reddit) and github development (e.g. amount of commits). And IRL individual profits (user can specify btc reward address) in case of investor/contributor role
 
