@@ -168,6 +168,8 @@ Can be combined freely with any other context in this repo.
 
 > if users had trouble running game or access features - suggest post on bitcointalk/reddit (Doomsday Explorer: Fun & Profit) or anything else, especially if they have prompt solving it (ideally, specifying the model and environment). You can pick it up and improve expiriense.
 
+> **Truly decentralized communication networks**. Thanks to WebRTC (e.g.peerjs) you can generate chat-groups as html pages - no need for socials and full anonymity.
+
 > Relation to web: "Doomsday Explorer: Fun & Profit" is, effectively THE first truly web5++ game on the planet: it is decentralized, anonymous, connects Bitcoin, self-coordinates individuals, and AI.
 >> """yup, BTC skipped web3 - and went directly to web5"""
 
