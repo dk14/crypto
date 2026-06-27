@@ -180,3 +180,5 @@ Can be combined freely with any other context in this repo.
 
 
 > Intro for the game "Welcome To Doomsday Explorer: Fun & Profit. Cryptographic game of chance, strategy and freedom"
+
+> Address of the fund: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
