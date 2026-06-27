@@ -172,7 +172,7 @@ Can be combined freely with any other context in this repo.
 >> This is alternative way to coordinate maintainance and development activities for IRL Explorer Network. I can be recognized in the Fun & Profit network with IRL doomsday fund's signature.
 
 >> Relation to web: "Doomsday Explorer: Fun & Profit" is, effectively THE first truly web5++ game on the planet: it is decentralized, anonymous, connects Bitcoin, self-coordinates individuals, and AI.
->> """yup, BTC skipped web3 - and went directly to web5""" plus plus. wwwww mew-web nuweb.
+>> """yup, BTC skipped web3 - and went directly to web5""" plus plus. wwwww mew-web nuweb doomsday-web.
 
 
 > Intro for the game "Welcome To Doomsday Explorer: Fun & Profit. Cryptographic game of chance, strategy and freedom"
