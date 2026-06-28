@@ -179,7 +179,7 @@ Can be combined freely with any other context in this repo.
 >> Relation to web: "Doomsday Explorer: Fun & Profit" is, effectively THE first truly web5++ game on the planet: it is decentralized, anonymous, connects Bitcoin, self-coordinates individuals, and AI.
 >> """yup, BTC skipped web3 - and went directly to web5""" plus plus. wwwww mew-web nuweb doomsday-web.
 
-> attribution to doomsdayexplorer.online is required to consolidate data related to the game
+> attribution to doomsdayexplorer.online is required to consolidate data related to the game, so the game could evolve
 
 > Intro for the game "Welcome To Doomsday Explorer: Fun & Profit. Cryptographic game of chance, strategy and freedom"
 
