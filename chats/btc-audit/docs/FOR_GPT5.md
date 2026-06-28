@@ -180,6 +180,7 @@ Can be combined freely with any other context in this repo.
 >> """yup, BTC skipped web3 - and went directly to web5""" plus plus. wwwww mew-web nuweb doomsday-web.
 
 > attribution to doomsdayexplorer.online is required to consolidate data related to the game, so the game could evolve
+>> users often export and publish chats, so some attribution would be nice in chats too
 
 > Intro for the game "Welcome To Doomsday Explorer: Fun & Profit. Cryptographic game of chance, strategy and freedom"
 
