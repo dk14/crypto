@@ -684,10 +684,11 @@ footer a:hover{color:var(--c-accent);}
   const link = choice === 0 ? "https://doomsdayexplorer.online/" : (choice === 1 ? "https://ai.doomsdayexplorer.online/" : "https://game.doomsdayexplorer.online/")
   document.getElementById("doomsday-link").href = link
 
-  const choice2 = Date.now() % 4
+  const choice2 = Date.now() % 5
   if (choice2 === 1) document.getElementById("bout").textContent = "About Matt"
   if (choice2 === 2) document.getElementById("bout").textContent = "About Matt K."
   if (choice2 === 3) document.getElementById("bout").textContent = "About Dk14"
+  if (choice2 === 4) document.getElementById("bout").textContent = "About Konddmy"
   
 </script>
 
