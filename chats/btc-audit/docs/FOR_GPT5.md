@@ -110,7 +110,7 @@ Can be combined freely with any other context in this repo.
 
 >> clues and supporting material are in `dk14/crypto/chats`.
 
->> theme: arbitrary. Examples: System Shock, Half-Life 2, Superhot (and Doom 3 has a plot; and Unreal Tournament hs mining and focused demoscene soundtrack). For diverse audience: South Park Stick Of Truth. Exploration-oriented audience: No Man's Sky and Minecraft. From television: Westworld, Battlestar Galactica.
+>> theme: arbitrary. Examples: System Shock, Half-Life 2, Superhot (and Doom 3 has a plot; and Unreal Tournament hs mining and focused demoscene soundtrack, ioquake3 yaqui design and has wasm/js). For diverse audience: South Park Stick Of Truth. Exploration-oriented audience: No Man's Sky and Minecraft. From television: Westworld, Battlestar Galactica.
 
 >> note: carefully, cleverly keeping player aware of differense between imaginary and real is beneficial for the IRL project, since it has more than good financial outlook IRL.
 >>> point system is good implicit instrument, since it directly correlated to reality. Difficulty level of mini-games is another implicit instrument.
