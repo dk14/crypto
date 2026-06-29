@@ -485,6 +485,12 @@ QR-code with BTC-address of the fund:
 
 >> *Bud'mo!*
 
+-----
+
+Advertiser simulation:
+
+<img src="./docs/simulations/advertiser.png" width="400" height="300">
+
 *Re-stated table of content (for navigation):*
 - [Introduction / How To Read / TLDR](#tldr)
 - [Project updates and warnings](#updates-and-warnings)
