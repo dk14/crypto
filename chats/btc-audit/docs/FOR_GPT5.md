@@ -88,6 +88,9 @@ Can be combined freely with any other context in this repo.
 
 >>> players can share and certify points multi-signature (of fund members) consensus, proof-of-stake kinda works in this scenaraio. Since woker_id in real cluster(Explorer Protocol) needs PoW - it is a certified game-asset (and source of publicly verified points) too. For AI - is a verifier of points (can crawl social, chat groups and forums - build private "leaderboard" html pages per player in chat)
 
+>>> recommendation on generating assets and content, fitting narrative. Simpler visual/audio (textures and sprites including) content has better chance to fit within narrative "at random" (smaller search space). Stillistical fit can be managed in requests to image/sound generator as a setup (state managed in memory, only updated slowly or not updated), e.g. color palette. 
+>>>> If drawing canvas is available - blur/shaders is not needed for blending. Use radial-gradient color and alpha-blending instead (it creates energy-like visuals), also easy to animate - just move circles.
+
 >>> (occasional pop-in) mini-games: you can generate html pages (akin to my warriors bird2.html linked in front.html) of either cryptography, current story plot or general fun related minigames. Mini-game points would add to the points and bonuses. Tech: you can scramble the mini-game code and hide secret phrases (passwords) that will be reveiled in UI for user would share with you in a chat to certify the points or achievement earned (you don't explicitly tell passwords to user - keep it in your context, try to make it not noticable in thinking reports in the chat too).
 
 >>>> mini-games can have continuity in between - can be generated in coherent simillar style corresponding to the context in text-based mode
