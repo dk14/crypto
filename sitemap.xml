@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- --------------------------------------------------------------- -->
+  <!-- 1️⃣  Root‑level files (unchanged)                                 -->
+  <!-- --------------------------------------------------------------- -->
+  <url><loc>https://crypto.doomsdayexplorer.online/.gitignore</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/LICENSE</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/README.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chat.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/front.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/index.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/intro.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/screenshot.png</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/sieve.txt</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/simple.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/wrangler.jsonc</loc></url>
+
+  <!-- --------------------------------------------------------------- -->
+  <!-- 2️⃣  AI‑chat logs – moved into chats/btc‑audit/                  -->
+  <!-- --------------------------------------------------------------- -->
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/duck.ai_2025-10-06_15-17-51.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/duck.ai_2025-10-07_09-00-59.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/duck.ai_2025-10-07_09-11-04.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/duck.ai_2025-10-07_09-20-32.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/duck.ai_2025-10-07_09-23-44.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/duck.ai_2025-10-08_10-38-31.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/duck.ai_2025-10-09_01-52-06.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/duck.ai_2025-10-09_17-11-13.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/duck.ai_2025-10-09_17-20-32.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/duck.ai_2025-10-10_20-19-26.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/duck.ai_2025-10-10_20-24-00.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/duck.ai_2025-10-10_20-30-20.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/duck.ai_2025-10-11_11-43-10.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/duck.ai_2025-10-11_13-15-12.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/duck.ai_2025-10-11_18-43-34.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/duck.ai_2025-10-12_18-57-53.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/duck.ai_2025-10-12_18-58-53.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/duck.ai_2025-10-12_20-12-56.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/duck.ai_2025-10-12_22-03-24.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/duck.ai_2025-10-12_22-53-08.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/duck.ai_2025-10-22_05-53-14.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/duck.ai_2025-11-02_10-54-02.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/duck.ai_2025-11-02_11-34-47.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/duck.ai_2025-11-02_13-25-13.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/duck.ai_2025-11-02_16-44-34.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/duck.ai_2025-11-03_04-41-03.md</loc></url>
+
+  <!-- --------------------------------------------------------------- -->
+  <!-- 3️⃣  HTML notebooks – kept in the same folder structure but served -->
+  <!--      from chats/btc-audit/notebooks/                           -->
+  <!-- --------------------------------------------------------------- -->
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/notebooks/README.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/notebooks/cycles.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/notebooks/discrete_log.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/notebooks/dlp-ai.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/notebooks/dlp.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/notebooks/enumerate.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/notebooks/experiment copy 2.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/notebooks/experiment copy 3.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/notebooks/experiment copy 4.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/notebooks/experiment copy.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/notebooks/experiment-c.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/notebooks/experiment-roots copy 2.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/notebooks/experiment-roots copy.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/notebooks/experiment-roots.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/notebooks/experiment.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/notebooks/experiment2 copy.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/notebooks/experiment2-ecc-roots.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/notebooks/experiment2.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/notebooks/experiment2ecc1.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/notebooks/experiment2ecc2.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/notebooks/experiment3.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/notebooks/experiment4.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/notebooks/gpu-bigint.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/notebooks/pulse.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/notebooks/school-log.html</loc></url>
+
+  <!-- --------------------------------------------------------------- -->
+  <!-- 4️⃣  Full docs folder (chats/btc-audit/docs) – every file listed   -->
+  <!-- --------------------------------------------------------------- -->
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/FOR_AI.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/FOR_GPT5.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/FOR_GPTOSS120b.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/academic-drama.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/add.png</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/admission3.png</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/admission4.png</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/ai-admission.png</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/cat.png</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/cloners.png</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/donations.png</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/drama-context.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/explorer-ui-draft.png</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/explorer.png</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/fund-management.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/gestalt.png</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/legal-notes.txt</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/lisa-gif.gif</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/lisa.png</loc></url>
+
+  <!-- Sub‑folder: docs/matt (image assets) -->
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/matt/1756090A-F315-47E5-8536-608F3AEF99DE_1_105_c.jpeg</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/matt/270F90EE-15DF-4D22-8E08-FA49886E0774_1_105_c.jpeg</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/matt/2B80924A-991D-4ADC-8B92-E0A089C57F7D_1_105_c.jpeg</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/matt/3BBBCB8B-AFD6-4DFB-9268-465F7831E89F_1_105_c.jpeg</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/matt/8451D7DA-08BD-4EB2-823C-B633FA67BB62_1_105_c.jpeg</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/matt/8EC6E889-CACD-4016-9D1C-FEAC0C4A8BA6_1_105_c.jpeg</loc></url>
+
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/paper1.png</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/paper2.png</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/photo.JPG</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/tax-return.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/technical-admission-ai.heic</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/theone.png</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/thermal.png</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/todos.png</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/unit.png</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/yaqui.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/yaqui.pdf</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/yaqui.png</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/zen-qr.png</loc></url>
+
+  <!-- --------------------------------------------------------------- -->
+  <!-- 5️⃣  btc‑audit source files (kept under the same path)            -->
+  <!-- --------------------------------------------------------------- -->
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/.gitignore</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/CONTRIBUTORS.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/LICENSE</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/PRESENTATION_PDF.pdf</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/README.md</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/avalanche.js</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/diagram.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/enumerate.js</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/ingest.js</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/issue-assets.js</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/jitter.js</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/ledger-hsm-duk.js</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/ledger-rng.js</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/ledger-sampler.js</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/libexplorer.js</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/noise.html</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/package-lock.json</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/package.json</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/profit-sharing.js</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/thermal.js</loc></url>
+  <url><loc>https://crypto.doomsdayexplorer.online/chats/btc-audit/visualize.js</loc></url>
+</urlset>
