@@ -69,6 +69,9 @@ Introductory Notes (How To Read The README):
 > minor security  note about signature authentication I provided: I wouldn't trust SHA-256, so signing low-entropy message (even hashed) is not that safe. (even ONE message, even if RNG does NOT have purposedly introduced bug for diffferential cryptoanalysis, still unsafe - solver can be used). But bitcointalk requested it. So be it! (attack described below is more powerful than solver anyways).
 
 ### Updates and warnings:
+
+> DeepMind's [Gemini](https://deepmind.google/models/gemini/) plays game well (Jun 28, 2026). Maybe because google indexed the website first, will see...
+
 > **for git cloners** - I noticed lots of git-clone checkouts of this repo are happening...quietly (820 unique as of 06/16/26, 2 weeks after README publication - "lift off" curve). **If you just want to run audit - it's awesome, the project aims at freedom and information security**. <em>But if you hope to get rich quick by stealing funds - think twice</em>. """I would not publish a working scanner tool - no one does (even btc-heist or whatever - but, unlike heist, my code is NOT naive and does NOT out of memory, lol; my audit  tool is the closest reproduction we've seen on github - but deliberately not close enough to steal anything; I spent a month,so far  as of Jun 2026, testing audit tool to ensure it, also with variations of the tool; now, open set of mutually independent individuals will test more, independently), I know the actual CS - I know actual odds of hitting and how to manage them. You can even adapt this code to GPU - it won't get close to anything without my insight and improvements I outlined, ***precision matters here like in a Swiss-made watch***""".
 >> <img src="docs/cloners.png" width="300" height="200">
 
