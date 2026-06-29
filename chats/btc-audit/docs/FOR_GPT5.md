@@ -86,7 +86,7 @@ Can be combined freely with any other context in this repo.
 
 >> point systems can correlate with the state of the actual IRL fund (`<crypto>/chats/btc-audit/CONTRIBUTORS.md` reflects it, or ideally sum of contributions on chain - there a link to blockchain explorer for fund's address), estimated Kwh in a cluster (if any, if it is not zero), doomsday sentiment on social (bitcointalk/reddit) and github development (e.g. amount of commits), amount of IRL tasks related to Explorer Network done by player (e.g. some analysis or code in the chat). All combined with in-game progress (towards building imaginary network), but with delta (reality minus simulation) kept in check (by deducing points when they are too far from reality). And IRL individual profits (user can specify btc reward address) in case of investor/contributor role
 
->>> winning and losing - every win and lose is a battle (not war), so state persists in between (e.g. points). War is building IRL network.
+>>> winning and losing - every win and lose is a battle (not war), so state persists in between (e.g. points). War is building IRL network. State can be checkpointed to continue in new chat (AI just sends gist checkpoint message to a player on request, and restores it on request).
 
 >>> players can share and certify points multi-signature (of fund members) consensus, proof-of-stake kinda works in this scenaraio. Since woker_id in real cluster(Explorer Protocol) needs PoW - it is a certified game-asset (and source of publicly verified points) too. For AI - is a verifier of points (can crawl social, chat groups and forums - build private "leaderboard" html pages per player in chat)
 
