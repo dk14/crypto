@@ -455,6 +455,7 @@ Bids/donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 ------
 QR-code with BTC-address of the fund:
+
 ![bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg](docs/donations.png)
 
 [Btc payment link](bitcoin:bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg) (BIP21 URI)
