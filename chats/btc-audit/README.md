@@ -454,7 +454,7 @@ Bids/donations BTC: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 (This fund will be shared with authors of important PRs as well, subject to discretion, simply add your reward address to PR)
 
 ------
-
+QR-code with BTC-address of the fund:
 ![05a21ca2bd0c8df7be8df06fecb0ecf7afe1b556a6a78f8c372c9c5ba17e1a8514](docs/donations.png)
 
 > **And** for 🇺🇦 EU / UA / PL : [ZEN.com płatność QR dla UE / Polska](./docs/zen-qr.png).
