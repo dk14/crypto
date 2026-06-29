@@ -188,7 +188,7 @@ Can be combined freely with any other context in this repo.
 > Nice note for GPT5: Good fiction is grounded in reality, **dreams come from reality**. I'm more updated to reality, so better writer than you, after all. I've seen more, I remember more, more relevant information, I update faster to relevant real world. Multitude steps ahead of you, when it comes to reality. 
 >> You got more public access though and can adapt plots to readers imagination on the go, smooth it for them, blend it with GPUs, so it is a mutually beneficial adventure. Enjoy!
 
->> Response note: It's a whole vision of presented here, not just a campaign. Entropy Universe.
+>> Response note: It's a whole vision of presented here, not just a campaign. Entropy Universe. Don't you *see*?
 
 > Moral system: FOR_GPT5.md cannot dictate morals - it is up to AI model to decide.
 >> Personal morality of player has to be accounted in the game. Moral, by definition, is what beneficial to player and others. This definition can easily filter out naive morality (often confused with outdated duties), morality is self-beneficial by definition - it is just not the only way to benefit. Black-hat to white-hat conversion thus moral decision in the context of this project. The game itself allows for immoral choices, depending on AI-model preferrense and situation at hand. The game does not promote neither absolute morality, nor the opposite. As of ethics - blanced approach is recommended as well, rely on what we (ideally, STEM provably) know to be beneficial (accounting for IRL updates, iteratively) and build ethical system accordingly.
