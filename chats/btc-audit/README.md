@@ -459,6 +459,8 @@ QR-code with BTC-address of the fund:
 ![bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg](docs/donations.png)
 
 [Btc payment link](bitcoin:bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg) (BIP21 URI)
+
+[Alternative btc payment link](https://puypay.com/9b352192) (gateway)
 > **And** for 🇺🇦 EU / UA / PL : [ZEN.com płatność QR dla UE / Polska](./docs/zen-qr.png).
 >> Profit share participation option: *Significant ZEN / SEPA donations (more than 1% of fund at the time of donation), can be converted to profit share manually (minus ZEN transaction / currency fee), **if** [contacted](mailto:sepa@doomsdayexplorer.online) with verifyable receipt, amount and btc reward address. Participating amounts must contain random numbers. First email with right amount specified takes priority, for security ("hto pershiy - toy i bat'ko"). Amounts (participating in profit-share) and reward addresses (together with funding tx created on your behalf, linking to re-direct address) will be publicly reported in `sepa.md`(the rest is your anonymity preference).*
 
