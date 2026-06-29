@@ -500,6 +500,6 @@ Advertiser simulation:
 - [The White-Hat Message](#white-hat-project)
 - [Project transparency / tracking](#transparency)
 - [Project Fund](#fund)
-- [Project Revenue Simulations](#revenue-simulations--project-tracking)
+- [**Project Revenue Simulations**](#revenue-simulations--project-tracking)
 
 
