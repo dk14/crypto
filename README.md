@@ -1,5 +1,7 @@
 This repo contains research on RSA/DH/ECC cryptography, and more, and more.
 
+This root contains non-intro html pages for doomsdayexplorer.online website - the rest is in subfolders. It is exposed as [this repo](https://crypto.doomsdayexplorer.online/). Website's intro pages and FAQs are in this repo [https://github.com/dk14/doomsday-website](https://github.com/dk14/doomsday-website)
+
 ### Discrete logarithm problem
 
 html notebooks in [notebooks](./notebooks/README.md) folder are self-contained interactive experiments, presenting long-term research.
