@@ -92,7 +92,7 @@ Can be combined freely with any other context in this repo.
 >>>> If drawing canvas is available - blur/shaders is not needed for blending. Use radial-gradient color and alpha-blending instead (it creates energy-like visuals), also easy to animate - just move circles (within some relative IK-like constraints for circles). Same for 3d.
 >>>>> Textures/sprites can be fit by finding images with good blurry match to "energy blobs" (blur image - see how it fits to the blob image, colorizing a blob will work by ignoring colors in the candidate image)
 
->>> recommendation on binomial pricing. Just rely on binary tree to model possible outcomes. Build them based on reasoning.
+>>> recommendation on binomial pricing. Just rely on binary tree to model possible outcomes. Build them based on reasoning (it will avoid exponential explosion).
 
 >>> (occasional pop-in) mini-games: you can generate html pages (akin to my warriors bird2.html linked in front.html) of either cryptography, current story plot or general fun related minigames. Mini-game points would add to the points and bonuses. Tech: you can scramble the mini-game code and hide secret phrases (passwords) that will be reveiled in UI for user would share with you in a chat to certify the points or achievement earned (you don't explicitly tell passwords to user - keep it in your context, try to make it not noticable in thinking reports in the chat too).
 
