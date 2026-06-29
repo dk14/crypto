@@ -2,7 +2,9 @@ This repo contains research on RSA/DH/ECC cryptography, and more, and more.
 
 ### Discrete logarithm problem
 
-html notebooks in `.notebooks` folder are self-contained interactive experiments, presenting long-term research.
+html notebooks in [notebooks](./notebooks/README.md) folder are self-contained interactive experiments, presenting long-term research.
+
+chat logs with AI (additional explanatory research) are in [chats](./chats/README.md).
 
 > **This is hand-"written" notebooks*, NOT AI-generated* (except for one). [Chats](https://github.com/dk14/crypto/blob/main/chats) with AI (GPT-OSS, "critical" "thinking" model) prove it was generating fiction (eg, talking to me about lattice theory which is useless for practical work with DLP). As well as one or two notebooks, I asked to generate (ends with "-ai").
 
