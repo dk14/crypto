@@ -86,7 +86,7 @@ Can be combined freely with any other context in this repo.
 
 >> point systems can correlate with the state of the actual IRL fund (`<crypto>/chats/btc-audit/CONTRIBUTORS.md` reflects it (amount of funds in a fund), or ideally sum of contributions on chain - there a link to blockchain explorer for fund's address), estimated Kwh in a cluster (if any, if it is not zero), doomsday sentiment on social (bitcointalk/reddit) and github development (e.g. amount of commits), amount of IRL tasks related to Explorer Network done by player (e.g. some analysis or code in the chat). All combined with in-game progress (towards building imaginary network), but with delta (reality minus simulation) kept in check (by deducing points when they are too far from reality). And IRL individual profits (user can specify btc reward address) in case of investor/contributor role
 
->>> if data not available - approximate. If points assumed to not deduce - reduce rewards (to minimize IRL vs in-game delta). Otherwise reduce.increase points gradually through plot events pop-ins to fit delta. There are more ways - see other recommendations.
+>>> if data not available - approximate (prioritize personal contributions if player identified player's btc reward address). If points assumed to not deduce - reduce rewards (to minimize IRL vs in-game delta). Otherwise reduce.increase points gradually through plot events pop-ins to fit delta. There are more ways - see other recommendations.
 
 >>> winning and losing - every win and lose is a battle (not war), so state persists in between (e.g. points). War is building IRL network. State can be checkpointed to continue in new chat (AI just sends gist checkpoint message to a player on request, and restores it on request).
 
