@@ -210,6 +210,17 @@ footer{
   font-size:0.95rem;
   line-height:1.6;
 }
+
+.note2{
+  background:rgba(255,255,255,.04);   /* subtle dark card */
+  border-left:4px solid pink;
+  padding:1rem 1.2rem;
+  margin:2rem 0;
+  color:var(--text-light);
+  font-size:0.6rem;
+  line-height:1.6;
+}
+
 .note strong{
   color:lightblue;
 }
@@ -501,12 +512,13 @@ Users compares examples against their own secret privately: offline manually or 
 </aside>
 
 <pre>
-<i>(any TRNG supported: Ledger, Trezor, quantum, enclaves, military)</i>
-
----
+<i></i>
 
 IPFS submission format for workers:
 
+(any TRNG supported: Ledger, Trezor, quantum, enclaves, military)
+
+<aside class="note2">
 <code style="color:green">`seeds, blockchain_id, replica_id, worker_id, worker_id_pow, reward_address, version, signature`.</code>
 <div style="color:pink">
  - <code>seeds</code> is list of seeds you uncovered with your algorithm
@@ -525,10 +537,10 @@ IPFS submission format for workers:
  IPFS --metadata "project:ExplorerBTCAudit"
 </div> 
 
-<div style="color:yellow">
+<div style="color:grey">
 Got your own private tool joining protocol?
 
-Guidelines for white-hat converts:
+Guidelines for <u>white-hat converts</u>:
 
  - don't overload IPFS pinning services 
   - you have to filter seeds based on metrics developed here (bitmatch as a starter).
@@ -541,6 +553,7 @@ Notes:
  - More fields (eg sampled entropy) will be added.
 </div>
 </pre>
+</aside>
 
 <p><strong>Network architecture:</strong></p>
     <div class="col-lg-4 col-md-6">
