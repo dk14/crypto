@@ -1,0 +1,90 @@
+name: Create Unified Bundle
+
+on:
+  push:
+    branches:
+      - main
+  repository_dispatch:
+    types: [repo_updated]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  create-bundle:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout doomsday-hub to root
+        uses: actions/checkout@v4
+        with:
+          repository: dk14/doomsday-hub
+          path: doomsday-hub
+
+      - name: Checkout crypto repo
+        uses: actions/checkout@v4
+        with:
+          path: bundle/crypto
+
+      - name: Checkout q repo
+        uses: actions/checkout@v4
+        with:
+          repository: dk14/q
+          path: bundle/q
+
+      - name: Checkout warriors repo
+        uses: actions/checkout@v4
+        with:
+          repository: dk14/warriors
+          path: bundle/warriors
+
+      - name: Checkout doomsday-website repo
+        uses: actions/checkout@v4
+        with:
+          repository: dk14/doomsday-website
+          path: bundle/doomsday-website
+
+      - name: Checkout mega-peers repo
+        uses: actions/checkout@v4
+        with:
+          repository: dk14/mega-peers
+          path: bundle/mega-peers
+
+      - name: Create unified zip archive (full)
+        run: |
+          cd bundle
+          zip -r ../doomsday-unified-bundle.zip . -x "*/.*" "*/node_modules/*" "*/__pycache__/*" "*/dist/*" "*/build/*" "*.mp4"
+          cd ..
+          ls -lh doomsday-unified-bundle.zip
+
+      - name: Create minified zip archive (no media)
+        run: |
+          cd bundle
+          zip -r ../doomsday-unified-bundle-minified.zip . -x "*/.*" "*/node_modules/*" "*/__pycache__/*" "*/dist/*" "*/build/*" "*.mp4" "*.mp3" "*.wav" "*.png" "*.jpg" "*.jpeg" "*.gif" "*.webp" "*.svg" "*.ico"
+          cd ..
+          ls -lh doomsday-unified-bundle-minified.zip
+
+      - name: Create markdown-only zip archive
+        run: |
+          cd bundle
+          zip -r ../doomsday-unified-bundle-docs.zip . -x "*/.*" "*/node_modules/*" "*/__pycache__/*" "*/dist/*" "*/build/*" "*.mp4" "*.mp3" "*.wav" "*.png" "*.jpg" "*.jpeg" "*.gif" "*.webp" "*.svg" "*.ico" "*.js" "*.ts" "*.py" "*.java" "*.go" "*.rs" "*.cpp" "*.c" "*.h" "*.json" "*.yaml" "*.yml" "*.xml" "*.html" --include="*.md" --include="*.txt" --include="*.pdf" --include="*/" -q
+          cd ..
+          ls -lh doomsday-unified-bundle-docs.zip
+
+      - name: Create releases folder in doomsday-hub
+        run: |
+          mkdir -p doomsday-hub/releases
+          cp doomsday-unified-bundle.zip doomsday-hub/releases/
+          cp doomsday-unified-bundle-minified.zip doomsday-hub/releases/
+          cp doomsday-unified-bundle-docs.zip doomsday-hub/releases/
+
+      - name: Commit and push bundles to doomsday-hub
+        run: |
+          cd doomsday-hub
+          git config user.email "dk14@github.com"
+          git config user.name "dk14"
+          git add releases/doomsday-unified-bundle*.zip
+          git diff-index --quiet HEAD || git commit -m "Update unified bundles (triggered from crypto) - $(date +%Y-%m-%d\ %H:%M:%S)"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
