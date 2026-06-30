@@ -221,7 +221,7 @@ Only AI screenshots of links can be provided safely. Most DOI and presentations 
 >> """As of Btc - government itself might hire a kid, who watched too much Stargate SG-1, or just in love with young Amanda Tapping, or Michael Shanks or whatever modern-day blue-eyed Canadian actor in the military. And convince a kid to attack Bitcoin in revenge (like in the movies), so Btc takes priority in any case. Many drama can arise..."""
 >> <img src="./docs/simulations/copilot.png" width="400" height="300">
 >> 
->> *^ Credit: GitHub CoPilot*
+>> *^ Credit: GitHub CoPilot (Doomsday Explorer: Fun & Profit game)*
 >> 
 >> There is no safe way to publicly demonstrate the attack, even on a small scale, or prove existense of efficient tool (see above). But there are multitude of examples where simillar attacks were executed in real world, despite no safe verifiability available, e.g. in military contexts.
 
