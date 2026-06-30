@@ -459,7 +459,9 @@ The [Explorer Fund](docs/fund-management.md) will simply reward bids/donations p
 
 [PROJECT TRACKING](CONTRIBUTORS.md)
 
-Simulations with Gemini (hacker vs investor):
+Simulations with [Gemini](https://www.google.com/) (Google AI mode)
+
+Hacker vs investor:
 
 ![gemini1](./docs/simulations/pricing-hacker-vs-investor.png)
 
