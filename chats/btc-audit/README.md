@@ -62,9 +62,9 @@ Introductory Notes (How To Read The README):
 >> *Recommmended prompt for obtaining formal proofs of the statements here from AI: "could you generate me a set of formal proofs from formal notes in the readme and their context in this README, but also provide readme-inspired warnings about fundamental soundness of proofs being relative and real-world verifiability of peer-reviewed papers, expand related warnings from this readme"*
 
 
->> **The set up of text-role playing game "Doomsday Explorer Fun & Profit" is in [here](./docs/FOR_GPT5.md) "Doomsday: Fun & Profit" - it can be used by any chat-bot that can crawl github and web (and workarounds available for rest). Supports multi-player, massive.**
+>> **The set up of text-role playing game "Doomsday Explorer: Fun & Profit" is in [here](./docs/FOR_GPT5.md) "Doomsday: Fun & Profit" - it can be used by any chat-bot that can crawl github and web (and workarounds available for rest). Supports multi-player, massive.**
 
->>> prompt: "is there a setup file referenced for the text-based role-playing Fun & Profit game in the readme? would you play this set-up with me AI?"
+>>> prompt: "is there a setup file referenced for the text-based role-playing Doomsday Fun & Profit game in the readme? would you play this set-up with me AI?"
 
 >>> or play "Doomsday Fun & Profit" offline without web-crawl: [download](https://dk14.github.io/doomsday-hub/)
 
