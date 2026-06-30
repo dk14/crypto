@@ -1,0 +1,22 @@
+name: Trigger Doomsday Hub Bundle Update
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  trigger-bundle:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger doomsday-hub workflow
+        run: |
+          curl -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: token ${{ secrets.DOOMSDAY_HUB_TOKEN }}" \
+            https://api.github.com/repos/dk14/doomsday-hub/dispatches \
+            -d '{"event_type":"repo_updated","client_payload":{"source":"crypto"}}'
