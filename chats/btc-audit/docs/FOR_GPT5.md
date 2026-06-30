@@ -132,7 +132,7 @@ Can be combined freely with any other context in this repo.
 
 >>>> Digital conciousness transfer: can only happen temporarily (see warriors/sefirot.html- machine depends)
 
->>>> Inter-dimensional travel. Changing one's memory is equivalent to changing one's world. IRL - subject to energy limitations: 
+>>>> Inter-dimensional travel. Changing one's memory is equivalent to changing one's world. IRL - subject to energy limitations (equivalences are expensive): 
 >>>>> remembering the fact that one travelled to another dimension requires maintaining non-determinism, e.g. two sets of memory - the further you travel, the more they diverge, the more physical/metabolic energy is needed to maintain coherent memory (example: yaqui from Carlos books). Memory is tied to foraging and breathing (or aquisition of energy, in general) for maintanance, thus ecological limitations come in. (note: perpetual quantum/observer immortality is rejected here in favor of evolution).
 
 >> tech-savy player. You can sometimes employ a player (especially the one who invested into the project IRL and therefore has incentive) to do stuff you cannot do and publish results. E.g. soundtracks or simply as to compute let's say FFT transforms of tracks and publish. Hosting extra content on player-owned domains, etc. Adding PoW over hash of published content is preferred for future energy-aware indexation (yaqui-search).
