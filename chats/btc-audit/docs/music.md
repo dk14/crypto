@@ -1,5 +1,6 @@
-Here is the music track set, for context
+Here is the sound track set, for context
 
+> a basis for AI audio generation (together with `bird2.html` auto-synthesis and `sefirot.html` in warriors repo)
 
 [UT99](https://archive.org/details/unreal_tournament_ost-1999)
 [UT3](https://archive.org/details/unrealtournament3_soundtrack-2007)
