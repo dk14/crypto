@@ -328,7 +328,7 @@ In the meantime, there are unwise humans listening to AI seriously, without ques
 
 ## Project plan (aka "To improve")
 
-**aka What Needs To Be Improved In <u>The IRL Actual Audit and P2P-network project</u>**
+**aka What Needs To Be Improved In <u>THE IRL ACTUAL AUDIT AND P2P-NETWORK PROJECT</u>**
 
 > **As bitcointalk mentioned, devs don't work for free**. I need funds to improve this. It will be solo-project for a while, which I prefer, since we're aiming at efficiency. It's relatively easy to employ extra devs/AI/QA/auditors/researches/designers, but it's also risky for a critical project - so it is a trade, I would have to [manage](docs/fund-management.md). Besides, there are other expenses (extra supporting services, promotions, integrations, clouds, hardware for testing, my time for extra research and thinking, experimentation, modeling, consulting, publishing, devops, test certification, my own dev time), that **take priority** atm.
 >
