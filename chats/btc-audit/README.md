@@ -82,8 +82,13 @@ Introductory Notes (How To Read The README):
 
 >> (Jul 1, 2026) GPT5 can play the game (initial testing, not tested anonymously - yet), if you upload [zip file](https://dk14.github.io/doomsday-hub)
 >> <img src="docs/simulations/gpt5.png" width="1000" height="600">
+>>> The coolest part of GPT-5 gameplay is that it generates you HTML5 mini-games and shows them right in the chat
+
+>>> <img src="docs/simulations/gpt5-minigames.png" width="1000" height="600">
 
 
+>>
+>> ----
 
 >> (Jun 28, 2026) Github CoPilot plays well if you explain the game is hidden in this repo, can play right in chat. Compared to Gemini - better code comprehension - can play "a hacker" role nicely.
 
