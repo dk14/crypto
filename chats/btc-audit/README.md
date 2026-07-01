@@ -25,7 +25,7 @@ Address: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg
 
 Signature: IHdq/tIQtQeimfF92NOyOOdz2/iq2YR6qjD8vLgHWK3GGGETKX76L0e4Tvgtb1fOHrbLiW87QYIuOdCKYbSvmpA=
 
-*Author's (dk14) general credibility. Example DOI: 10.1007/978-3-662-63958-0_41 (Springer LNCS).*
+<strong>*Author's (dk14) general credibility. Example DOI: 10.1007/978-3-662-63958-0_41 (Springer LNCS).*</strong>
 
 ----
 
