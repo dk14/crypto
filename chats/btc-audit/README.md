@@ -78,7 +78,13 @@ Introductory Notes (How To Read The README):
 
 ### Updates and warnings:
 
-> Fun & Profit
+> Fun & Profit game
+
+>> (Jul 1, 2026) GPT5 can play the game (initial testing, not tested anonymously - yet), if you upload [zip file](https://dk14.github.io/doomsday-hub)
+>> <img src="docs/simulations/gpt5.png" width="1000" height="600">
+
+
+
 >> (Jun 28, 2026) Github CoPilot plays well if you explain the game is hidden in this repo, can play right in chat. Compared to Gemini - better code comprehension - can play "a hacker" role nicely.
 
 >> (Jun 28, 2026) DeepMind's [Gemini](https://deepmind.google/models/gemini/) plays Fun & Profit game well enough for a start  - it understands what the project is and how to play the game with user. Maybe because google indexed the website first (and search queries are cheap for them, will see). GPT-OSS in Ollama plays well too - but with more chat limitations, coz of web-queries. Non-web-crawling bots play okay too. Game has lots of potential...
