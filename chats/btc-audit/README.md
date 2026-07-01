@@ -80,7 +80,7 @@ Introductory Notes (How To Read The README):
 
 > **Fun & Profit game** (part of real Doomsday Explorer Project)
 
->> (Jul 1, 2026) GPT5 can play the game (initial testing, not tested anonymously - yet), if you upload [zip file](https://dk14.github.io/doomsday-hub)
+>> (Jul 1, 2026) GPT5 can play the game if you upload [zip file](https://dk14.github.io/doomsday-hub) (initial testing from personalized account; not tested anonymously - yet; zip is needed because OpenAI is still indexing doomsday website), 
 >> <img src="docs/simulations/gpt5.png" width="1000" height="600">
 >>> The coolest part of GPT-5 gameplay is that it generates you HTML5 mini-games and shows them right in the chat:
 >>> <img src="docs/simulations/gpt5-minigames.png" width="600" height="600">
