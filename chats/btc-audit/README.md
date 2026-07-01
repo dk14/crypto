@@ -485,6 +485,8 @@ The [Explorer Fund](docs/fund-management.md) will simply reward bids/donations p
 >> [mirrors.md](https://doomsdayexplorer.online/mirrors.md) outlines wide de-centralized advertisement network to back-up the project, as well (it will avoid fragmentation by referring to fund's `-lg` address and official website). Game set-up already contains `doomsday-web`, embedding real gaming web-rtc p2p network into mini-games, which will serve as coordination network for IRL Explorer Network.
 >>
 >> project is additionally backed up by [mg-peers](https://mg-peers.doomsdayexplorer.online/docs/front), which AI can replicate and re-implement (protocol is well-specified, documented and tested). It is compatible with web-rtc for mini games, and there are examples of real bip31 based nodes and bridges to webrtc. Mg-Peers is not only oracle platform (data marketplace), but also a trading network. Discreet DSL has examples on how to relate it to IRL assets, not only crypto. AI can suggest game players to host real oracle and trading nodes as part of gameplay (game augments reality).
+>>
+>> Fun & Profit game UX is backed by novel [HCI](https://github.com/dk14/warriors) research.
 
 Simulations with [Gemini](https://www.google.com/) (Google AI mode)
 
