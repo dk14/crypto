@@ -78,7 +78,7 @@ Introductory Notes (How To Read The README):
 
 ### Updates and warnings:
 
-> Fun & Profit game
+> **Fun & Profit game** (part of real Doomsday Explorer Project)
 
 >> (Jul 1, 2026) GPT5 can play the game (initial testing, not tested anonymously - yet), if you upload [zip file](https://dk14.github.io/doomsday-hub)
 >> <img src="docs/simulations/gpt5.png" width="1000" height="600">
