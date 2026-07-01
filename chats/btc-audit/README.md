@@ -478,7 +478,7 @@ The [Explorer Fund](docs/fund-management.md) will simply reward bids/donations p
 
 [PROJECT TRACKING](CONTRIBUTORS.md)
 
-> IRL note: simulations reflect reality - I asked AI to use IRL reasoning and binomial pricing (part of default game setup). Additionally, Fun & Profit game aplifies popularity of the IRL project, so the existing game itself already amplifies returns. Search Engine AIs already list it when asked about doomsday games (and this is without any promotion campaigns - AI simply recognizes IRL importance of the project).
+> IRL note: **simulations reflect reality** - I asked AI to use IRL reasoning and binomial pricing (part of default game setup). Additionally, Fun & Profit game aplifies popularity of the IRL project, so the existing game itself already amplifies returns. Search Engine AIs already list it when asked about doomsday games (and this is without any promotion campaigns - **AI simply recognizes IRL importance of the project**).
 
 Simulations with [Gemini](https://www.google.com/) (Google AI mode)
 
