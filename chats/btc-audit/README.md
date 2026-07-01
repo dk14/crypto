@@ -487,7 +487,7 @@ The [Explorer Fund](docs/fund-management.md) will simply reward bids/donations p
 >> project is additionally backed up by [mg-peers](https://mg-peers.doomsdayexplorer.online/docs/front), which AI can replicate and re-implement (protocol is well-specified, documented and tested). It is compatible with web-rtc for mini games, and there are examples of real bip31 based nodes and bridges to webrtc. Mg-Peers is not only oracle platform (data marketplace), but also a trading network. Discreet DSL has examples on how to relate it to IRL assets, not only crypto. AI can suggest game players to host real oracle and trading nodes as part of gameplay (game augments reality). 
 >>> *Mg-Peers was endorsed and sponsored by Wolfram Labs and IOHK*.
 >>
->> Fun & Profit game UX is backed by **novel**, **independent** [HCI](https://github.com/dk14/warriors) research. GPT5 (as well as underlying GPT-OSS) is endorsing it, subjectively.
+>> Fun & Profit game UX is backed by **novel**, **independent** [HCI](https://github.com/dk14/warriors) research. GPT5 (as well as its internal GPT-OSS) is endorsing it, subjectively.
 
 Simulations with [Gemini](https://www.google.com/) (Google AI mode)
 
