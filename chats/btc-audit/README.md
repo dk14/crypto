@@ -480,7 +480,7 @@ The [Explorer Fund](docs/fund-management.md) will simply reward bids/donations p
 
 [PROJECT TRACKING](CONTRIBUTORS.md)
 
-**Project backings:**
+**Project technological backings:**
 > **IRL** note: **simulations reflect reality** - I asked AI to use IRL reasoning and binomial pricing (part of default game setup). Additionally, Fun & Profit game aplifies popularity of the IRL project, so the existing game itself already amplifies returns. Search Engine AIs already list it when asked about doomsday games (and this is without any promotion campaigns - **AI simply recognizes IRL importance of the project**). 
 >> [mirrors.md](https://doomsdayexplorer.online/mirrors.md) outlines wide de-centralized advertisement network to back-up the project, as well (it will avoid fragmentation by referring to fund's `-lg` address and official website). Game set-up already contains `doomsday-web`, embedding real gaming web-rtc p2p network into mini-games, which will serve as coordination network for IRL Explorer Network.
 >>
