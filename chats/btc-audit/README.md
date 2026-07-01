@@ -478,6 +478,8 @@ The [Explorer Fund](docs/fund-management.md) will simply reward bids/donations p
 
 [PROJECT TRACKING](CONTRIBUTORS.md)
 
+> IRL note: simulations reflect reality - I asked AI to use IRL reasoning and binomial pricing. Fun & Profit game aplifies popularity of the project, thus amplifies returns.
+
 Simulations with [Gemini](https://www.google.com/) (Google AI mode)
 
 Hacker vs investor:
