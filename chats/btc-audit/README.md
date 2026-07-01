@@ -84,7 +84,7 @@ Introductory Notes (How To Read The README):
 >> <img src="docs/simulations/gpt5.png" width="1000" height="600">
 >>> The coolest part of GPT-5 gameplay is that it generates you HTML5 mini-games and shows them right in the chat
 
->>> <img src="docs/simulations/gpt5-minigames.png" width="1000" height="600">
+>>> <img src="docs/simulations/gpt5-minigames.png" width="600" height="600">
 
 
 >>
