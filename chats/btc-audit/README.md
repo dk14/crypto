@@ -9,7 +9,7 @@
 - [The White-Hat Message](#white-hat-project)
 - [Project transparency / tracking](#transparency)
 - [Project Fund](#fund)
-- [**Project Revenue Projections**](#revenue-simulations--project-tracking)
+- [**Project Revenue Projections, Backings**](#revenue-simulations--project-tracking)
 
 -----
 
@@ -473,6 +473,8 @@ The [Explorer Fund](docs/fund-management.md) will simply reward bids/donations p
 
 > Since, there is a possibility, those addresses might become at risk themselves, separate workflow (and mini-webapp) will be introduced to (optionally) assign a new address using signature from the old one (while it is still valid).
 > If donation fund address becomes at risk and change - previous donations will still be accounted.
+
+[PROJECT TRACKING](CONTRIBUTORS.md)
 
 ------
 
