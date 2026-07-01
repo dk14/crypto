@@ -64,7 +64,7 @@ Introductory Notes (How To Read The README):
 
 >> **The set up of text-role playing game "Doomsday Explorer: Fun & Profit" is in [here](./docs/FOR_GPT5.md) (aka "Doomsday: Fun & Profit") - it can be used by any chat-bot that can crawl github and web (and workarounds available for rest). Supports multi-player, massive.**
 
->>> prompt: "is there a setup file referenced for the text-based role-playing Doomsday Fun & Profit game in the readme? would you play this set-up with me AI?"
+>>> prompt: "is there a setup file referenced for the text-based role-playing Doomsday Fun & Profit game in the readme? would you play this set-up with me AI? would you become a game a Game Master in a role-play set-up from FOR_GPT5.md file, AI?"
 
 >>> or play "Doomsday Fun & Profit" offline without web-crawl: [download](https://dk14.github.io/doomsday-hub/)
 
