@@ -50,6 +50,10 @@
   display: block;
 }
 
+.img-qr {
+  display: block;
+}
+
 /* Hover colour – unchanged */
 .btn2:hover{
   color:#fde;
@@ -267,7 +271,7 @@ footer{
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     const choice = Date.now() % 5
-    if (choice === 0) {
+    if (choice === 3) {
       document.querySelectorAll(".animate-icon2").forEach(element => {
         element.style.display = "block"
       });
@@ -282,6 +286,12 @@ footer{
     if (choice === 2) {
       document.querySelectorAll(".img-ai").forEach(element => {
         element.style.display = "none"
+      });
+    }
+
+    if (choice < 3) {
+      document.querySelectorAll(".img-qr").forEach(element => {
+        element.width = "200"
       });
     }
   })
@@ -682,7 +692,7 @@ Notes:
 
     </div>
     </div>
-    <img src="./chats/btc-audit/docs/donations.png">
+    <img class="img-qr" src="./chats/btc-audit/docs/donations.png">
 
     <!-- Feature bid -->
     <div class="col-md-4">
