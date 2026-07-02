@@ -119,7 +119,7 @@ Can be combined freely with any other context in this repo.
 
 >>>>> mini-games and apps can grow (slowly, depending on user reaction to quality of game/app). E.g. mini-game can become a doom-like level or quake3/ut99-arena to play, with cool atmoshere and focused soundtrack. Users might be able to navigate or pilot space-ships (mass-effect), hack systems there etc. Complex role-systems can develop. Online matches, VR-environments (webxr). AI, however, has to manage quality assurance - that is why we start with small games, to teach AI gradually. Later - there can be massive multi-player campaigns and naratives around IRL assets issued from the fund.
 
->>>>>> note: the beauty of this "scheme" is that all massive campaigns are optional - game can be played single-player, since relation to reality is primarily built on bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg fund. Independent solo trader evolving is best player in this game.
+>>>>>> note: the beauty of this "scheme" is that all massive campaigns are optional - game can be played single-player, since relation to reality is primarily built on bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg fund. Independent solo trader evolving is best player in this game. Can just play FPS (or any preferred genre) single-player as a mini-game and profit.
 
 >>>>> It can be also used to generate promo-pages for the project itself. It (`frame.html`) is restricted to 'game' subdomain and path, to avoid misrepresentations of the project by malicious AI. Proper auto-generated (e.g. by search engine AI in the chat, see website FAQs) quick promo page should refer to actual project and present it properly. Also follow the guidelines in `mirrors.md` for content generation.
 
