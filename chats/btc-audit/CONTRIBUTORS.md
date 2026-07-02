@@ -47,7 +47,7 @@ Current fund pledge: 0 BTC
 - comment on donation #2: founder is learning to not use Ledger Live, but Electrum (with Ledger plugin) instead to keep some pledge in the fund.
   - keeping some pledge is preferred to avoid artificial inflation of the pool (whole pool or a group of participants) by the founder himself
   - pledge also incentivises development, since fund's wallet is on Ledger Nano, the device that is meant to be defended by the project
-- important note: early-investment is stronger guarantee than pledge, since it protects the fund from founder himself inflating his profit-share (by pretending to be an investor and re-investing same amounts over and over), especially if done by major investors and groups.
+- important note: early-investment is stronger guarantee than pledge, since it protects the fund from founder himself inflating his profit-share (by pretending to be an investor and re-investing same funds over and over), especially if done by major investors and groups.
 
 Current outstanding dev fund: ~ 900 USD
 - comment: small bids might be prioritized to keep spendings dynamic, and depending on relevance
