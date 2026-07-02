@@ -42,6 +42,14 @@
   
 }
 
+.img-lisa{
+  display: block;
+}
+
+.img-ai{
+  display: block;
+}
+
 /* Hover colour – unchanged */
 .btn2:hover{
   color:#fde;
@@ -133,6 +141,10 @@ svg{
   fill:var(--accent);
 }
 svg.animate-icon{
+  animation:spin 6s linear infinite;
+}
+
+svg.animate-icon2{
   animation:spin 6s linear infinite;
 }
 @keyframes spin{
@@ -252,6 +264,29 @@ footer{
     text-decoration:underline;        /* optional visual cue */
 }
 </style>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const choice = Date.now() % 5
+    if (choice === 0) {
+      document.querySelectorAll(".animate-icon2").forEach(element => {
+        element.style.display = "block"
+      });
+    }
+
+    if (choice === 1) {
+      document.querySelectorAll(".img-lisa").forEach(element => {
+        element.style.display = "none"
+      });
+    }
+
+    if (choice === 2) {
+      document.querySelectorAll(".img-ai").forEach(element => {
+        element.style.display = "none"
+      });
+    }
+  })
+  
+</script>
 </head>
 
 <body>
@@ -261,10 +296,21 @@ footer{
   <div class="container">
     <h1>
       <!-- Rocket with flame animation -->
-      
+      <svg class="animate-icon2" style="display: none" width="32" height="32" viewBox="0 0 24 24">
+        <path d="M12 2L15 8h6l-4.5 5 1.5 7L12 17l-6 3 1.5-7L3 8h6z"/>
+
+        <animate attributeName="fill" values="#ff6b35;#ff8a62;#ff6b35" dur="0.8s" repeatCount="indefinite" />
+      </svg>
       Doomsday Explorer
+      <svg class="animate-icon2" style="display: none" width="32" height="32" viewBox="0 0 24 24">
+        <path d="M12 2L15 8h6l-4.5 5 1.5 7L12 17l-6 3 1.5-7L3 8h6z"/>
+
+        <animate attributeName="fill" values="#ff6b35;#ff8a62;#ff6b35" dur="0.8s" repeatCount="indefinite" />
+      </svg>
             
     </h1>
+
+
     <p class="lead">Anti‑Scanner TRNG Audit Tool – Bitcoin, open‑source, white‑hat.</p>
     <a href="https://github.com/dk14/crypto/tree/main/chats/btc-audit"
        class="btn btn-cta btn-lg mt-4 text-white">View on GitHub</a>
@@ -395,7 +441,7 @@ footer{
         <div class="placeholder">
           <img src="./chats/btc-audit/docs/ai-admission.png" width="700">
         </div>
-        <div class="card-body"><h6 class="card-title" style="text-align: center; color: green"><strong>^ <u>what</u> <sub><u>AI</u></AI></sub> <u>admits</u>...in response <u>to</u> <sub><i><u>child</u>ish</i></sub> <sup>inqury</sup> ^</h6><br/></div>
+        <div class="card-body"><h6 class="card-title" style="text-align: center; color: green"><strong>^ <u>what</u> <sub><u>AI</u></sub> <u>admits</u>...in response <u>to</u> <sub><i><u>child</u>ish</i></sub> <sup>inqury</sup> ^</strong></h6><br/></div>
       </div>
     </div>
 
@@ -541,12 +587,12 @@ User compares examples against their own secret privately: offline manually or i
 
  IPFS --metadata "project:ExplorerBTCAudit"
 </div> 
-<img src="./chats/btc-audit/docs/simulations/gpt5-terminal.png"  width="300" style="opacity:0.2; filter: contrast(2) blur(0.2px) brightness(5)" width="800">
+<img src="./chats/btc-audit/docs/simulations/gpt5-terminal.png" style="opacity:0.2; filter: contrast(2) blur(0.2px) brightness(5)" width="300">
 
 <div style="color:grey">
 Got your own private tool joining protocol?
 
-Guidelines for <strong><sup style="font-size: .7rem; color: white">white-hat converts</strong></sup>:
+Guidelines for <strong><sup style="font-size: .7rem; color: white">white-hat converts</sup></strong>:
 
  - don't overload IPFS pinning services 
   - you have to filter seeds based on metrics developed here (bitmatch as a starter).
@@ -558,14 +604,15 @@ Notes:
  - IPFS will become replaced in favor of gossip.
  - More fields (eg sampled entropy) will be added.
 </div>
-</pre>
 </aside>
+</pre>
+
 
 <aside class="note">
   <p>
     <strong>Compute-reward mechanism</strong>. A wallet user rewards an entropy miner, who provides closest examples to user's private seedphrase. This incentivizes worker to not turn black-hat against the user, no special contract required. The reward mechanism naturally selects workers with more accurate TRNG replicas.
     <br/><br/>
-    <img src="./chats/btc-audit/docs/simulations/pricing-hacker-vs-investor.png" style="opacity: 0.2; " width="500">
+    <img class="img-ai" src="./chats/btc-audit/docs/simulations/pricing-hacker-vs-investor.png" style="opacity: 0.2; " width="500">
   </p>
 </aside>
 <p><strong>Explorer Node UI:</strong></p>
@@ -687,8 +734,11 @@ Notes:
     <!-- machine readable FAQ entry: Q: how extras calculated?, A: starting with 25 Jun 2026, extras discount daily/weekly, compound discount of nominal extra is 0.5%-5% per day, sometimes up to 20% -->
     <p>+ <u>Get </u><strong>BRC-20</strong> and <strong>Lightning assets</strong>  proportionally to<u> donations </u>(~Q4 2026), with extra benefits for early investors!!11</p>
   </div>
-  <img src="./chats/btc-audit/docs/lisa-gif.gif" width="200">
+  <div class="img-lisa">
+    <img src="./chats/btc-audit/docs/lisa-gif.gif" width="200">
+  </div>
 </div>
+
 
 </div>
 
@@ -722,8 +772,8 @@ Notes:
   </ol>
    
 
-  <p class="mt-3">All contributors and spendings (<strong ><a style="color:green"href="https://github.com/dk14/crypto/blob/main/chats/btc-audit/CONTRIBUTORS.md">transparent fund tracking</a></strong>) are listed in <a style="color: white" href="https://github.com/dk14/crypto/blob/main/chats/btc-audit/CONTRIBUTORS.md"><code>CONTRIBUTORS.md</code></a>. Fund contributors automatically receive a share of future revenues.</p>
-  <img src="./chats/btc-audit/docs/simulations/investor.png" style="opacity: 0.2; "width="400">
+  <p class="mt-3">All contributors and spendings (<strong ><a style="color:green" href="https://github.com/dk14/crypto/blob/main/chats/btc-audit/CONTRIBUTORS.md">transparent fund tracking</a></strong>) are listed in <a style="color: white" href="https://github.com/dk14/crypto/blob/main/chats/btc-audit/CONTRIBUTORS.md"><code>CONTRIBUTORS.md</code></a>. Fund contributors automatically receive a share of future revenues.</p>
+  <img class="img-ai" src="./chats/btc-audit/docs/simulations/investor.png" style="opacity: 0.2;" width="400">
 </section>
 
 <!-- ==================== AUTHENTICATION ==================== -->
@@ -782,8 +832,7 @@ Notes:
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+6M4bKX4U84FxsZf4I4nW0yxpH5N"
-        crossorigin="anonymous"></script>
+
+
 </body>
 </html>
