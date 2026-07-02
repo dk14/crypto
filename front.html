@@ -12,6 +12,27 @@
 
 <style>
 /* ── BOUNCY SEND BUTTON ── */
+
+
+.btn{
+  background:var(--c-accent);
+  border:none;
+  color:#fff;
+  font-weight:500;
+  padding:.2rem 1.0rem;
+  border-radius:6px;
+  /* keep the original hover‑lift (translateY) */
+  transition:background .2s ease,transform .15s ease;
+  display:inline-block;
+  text-decoration: none
+}
+
+.btn:hover{
+  background:var(--c-accent-dim);
+  transform:translateY(-2px);   /* original lift */
+  animation-play-state:paused;
+}
+
 .btn2{
   background:var(--c-accent);
   border:none;
@@ -352,7 +373,7 @@ footer{
     </h1>
 
 
-    <p class="lead"><u style="color: grey">Anti‑Scanner TRNG Audit Tool – Bitcoin, open‑source, white‑hat.</u></p>
+    <p class="lead"><u style="color: grey;">Anti‑Scanner TRNG Audit Tool – Bitcoin, open‑source, white‑hat.</u></p>
     <a href="https://github.com/dk14/crypto/tree/main/chats/btc-audit"
        class="btn btn-cta btn-lg mt-4 text-white">View code on GitHub</a>
 
