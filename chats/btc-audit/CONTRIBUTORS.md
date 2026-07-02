@@ -53,7 +53,7 @@ Current fund pledge: 0 BTC
          - nuance: assets, scheduled by the end of the year, are closer in spirit to Fun & Profit - thus extra exotic pro- and anti- market manipulation strategies can be appropriate, since founder's participation is minimized. 
          - Assets market balance. There are two counterweight to speculation pressure: 
              - Bitcoin community participating actively, thus naive web3 strategies will not work. All naive, lazy, "bro" inefficient """spoiled mama-boy "predation" """ can only go as far as web3-chains mirroring assets, and overall market dynamics will eventually take care of that. """Otaka huyn'a mal'ata (ukr.)""".
-             - Cardano/IOHK, despite multitude of flaws, is familliarized with classic quantitative finance (in part thanks to founder's influence during IOHK times - recommending experienced quants, and even after - through associated projects and forum posts), their partial participation (which assets very well allow for both, their blockchains and btc chain) would counterbalance wall-street naive strategies.
+             - Cardano/IOHK, despite multitude of flaws, is still familliarized with classic quantitative finance (in part thanks to founder's influence during IOHK times - recommending experienced quants, and even after - through associated projects and forum posts), their partial participation (which assets very well allow for both, their blockchains and btc chain) would counterbalance wall-street naive strategies.
 
 Current outstanding dev fund: ~ 900 USD
 - comment: small bids might be prioritized to keep spendings dynamic, and depending on relevance
