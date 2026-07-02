@@ -51,7 +51,7 @@ Current fund pledge: 0 BTC
      - it protects pledge as well - harder to justify spendings. It is a softer gurantee for doomsday, since parts of pledge can be taken as privilleged returns from Fun & Profit game (ready, available product)
      - there other methodologies available for large investors, e.g. liquidity (invest faster than "malicious founder"). Exotic approaches might not be well-justified, since founder's reputation (and associated public credibility) and common sense give stronger gurantee for doomsday fund.
          - nuance: assets, scheduled by the end of the year, are closer in spirit to Fun & Profit - thus extra exotic pro- and anti- market manipulation strategies can be appropriate, since founder's participation is minimized. 
-         - Assets market balance. There is, however, a counterweight of Bitcoin community participating actively, thus naive web3 strategies might not work. Cardano/IOHK (in part thanks to founder's influence during IOHK times) is familliarized with classic quantitative finance, their participation would counterbalance wall-street naive strategies.
+         - Assets market balance. There is, however, a counterweight of Bitcoin community participating actively, thus naive web3 strategies might not work. Cardano/IOHK (in part thanks to founder's influence during IOHK times, and even after) is familliarized with classic quantitative finance, their participation would counterbalance wall-street naive strategies.
 
 Current outstanding dev fund: ~ 900 USD
 - comment: small bids might be prioritized to keep spendings dynamic, and depending on relevance
