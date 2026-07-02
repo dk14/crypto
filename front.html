@@ -298,6 +298,8 @@ footer{
       if (choice2 === 0) {
         document.getElementById("contin").onclick = () => navigator.clipboard.writeText('bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg'); 
       }
+      const choice3 = Date.now() % 2
+      document.getElementById("btctalk").style.display = "block"
     }
   })
   
@@ -686,8 +688,8 @@ Notes:
         <p><i>Instant</i> inclusion in the Explorer Network <strong style="color: green">"profit‑share"</strong> pool. </p>
         <p><i>(revenue comes from network fees on compute rewards and other computationally intensive services)</i></p>
         <p>
-        <a href="https://bitcointalk.org/index.php?topic=5583352"
-          style="color:#28a745; text-decoration:none;"
+        <a id="btctalk" href="https://bitcointalk.org/index.php?topic=5583352"
+          style="color:#28a745; text-decoration:none; display: none"
           onmouseover="this.style.color='#218838'; this.style.textDecoration='underline';"
           onmouseout="this.style.color='#28a745'; this.style.textDecoration='none';">
           BitcoinTalk
