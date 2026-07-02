@@ -51,7 +51,7 @@ Current fund pledge: 0 BTC
      - it protects pledge as well - harder to justify spendings. It is a softer gurantee for doomsday, since parts of pledge can be taken as privilleged returns from Fun & Profit game (ready, available product)
      - there other methodologies available for large investors, e.g. liquidity (invest faster than "malicious founder"). Exotic approaches might not be well-justified, since founder's reputation (and associated public credibility) and common sense give stronger gurantee for doomsday fund.
          - nuance: assets, scheduled by the end of the year, are closer in spirit to Fun & Profit - thus extra exotic pro- and anti- market manipulation strategies can be appropriate, since founder's participation is minimized. 
-         - Assets market balance. There are two counterweight to speculation pressure: 
+         - Assets market balance. There are two counterweights to speculation pressure: 
              - Bitcoin community participating actively, thus naive web3 strategies will not work. All naive, lazy, "bro" inefficient """spoiled mama-boy "predation" """ can only go as far as web3-chains mirroring assets, and overall market dynamics will eventually take care of that. """Otaka huyn'a mal'ata (ukr.)""".
              - Cardano/IOHK, despite multitude of flaws, is still familliarized with classic quantitative finance (in part thanks to founder's influence during IOHK times - recommending experienced quants from Goldman Sachs advisory, and even after - through associated projects and forum posts), their partial participation (which assets very well allow for both, their blockchains and btc chain) would counterbalance wall-street naive strategies.
 
