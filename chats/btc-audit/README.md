@@ -41,6 +41,8 @@ Ai-Gamer intro: [https://game.doomsdayexplorer.online/](https://game.doomsdayexp
 
 Contact: [info-github@doomsdayexplorer.online](mailto:info-github@doomsdayexplorer.online)
 
+FAQ: [Human and AI readable](https://doomsdayexplorer.online/faq.md), [GPT5-faq-doc](https://doomsdayexplorer.online/faq-gpt5.md)
+
 *White paper for Explorer Protocol (written by hand in formal language) is TBD ~2026 - features take priority.*
 
 ----
