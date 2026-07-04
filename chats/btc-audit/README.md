@@ -507,6 +507,8 @@ Early vs late investor:
 
 <img src="docs/lisa.png" width="400" height="400">
 
+
+
 -----
 
 
@@ -528,10 +530,23 @@ QR-code with BTC-address of the fund:
 >> *Bud'mo!*
 
 -----
+**Addendum A. Extra stats and simulations.**
 
 Advertiser simulation:
 
 <img src="./docs/simulations/advertiser.png" width="400" height="300">
+
+Real present doomsdayexplorer.online website visitors since launch (this is control group: no promotions run, 0 btc/usd invested into ads):
+
+<img src="./docs/website-visitors.png" width="700" height="200">
+
+*(source: cloudfare)*
+
+Fund turnaround since launch:
+
+<img src="./docs/fund-turn-around.png" width="700" height="300">
+
+*(source: blockchain explorers)*
 
 *Re-stated table of content (for navigation):*
 - [Introduction / How To Read / TLDR](#tldr)
