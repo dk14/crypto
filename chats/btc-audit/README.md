@@ -546,7 +546,7 @@ Real present doomsdayexplorer.online website visitors since launch (this is cont
 
 *(source: cloudfare)*
 
-Fund turnaround since launch (0.03BTC):
+Fund turnaround since launch (**0.03BTC = 30 mBTC**):
 
 <img src="./docs/fund-turn-around.png" width="700" height="300">
 
