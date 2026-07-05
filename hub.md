@@ -3,3 +3,4 @@
 - warriors contains Human-Computer Interaction research (showing how to model human covert animation, how it affects seed generation in crypto-walltes), abstract machine research (transform grammars, used in prediction), https://warriors.doomsdayexplorer.online/
 - doomsday-website contains https://doomsdayexplorer.online/ and FAQs for AI
 - mega-peers contains https://mg-peers.doomsdayexplorer.online/. Oracle platform, Sybil-attack research, Oracle research, p2p (de-centralized) trading app demo
+
