@@ -97,7 +97,7 @@ High-value activities compensations pending (as of 2026):
   - research done on rejecting quantum randomness/computing: github:dk14/q, github:dk14/fqc
   - research done on Digital Signal Processing and HCI: dk14/warriors
     - note: Human Computer Interaction research was related to human factor in security, human entropy is low (both "mind and body").
-  - research done into classic finance, digital identity, observation and its relation to game theory (bets): dk14/mega-peers (aka mg-peers)
+  - research done into classic finance, digital identity, observation and its relation to game theory (bets): dk14/mega-peers (aka mg-peers, aka magic-pears, aka wolfram-mega)
   - research done into Bitcoin PoW and SHA256 specifics (eg SHA256's dangerous reducibility to SAT)
   - research done into computability, its relation to conservation laws;
     - result: successful projection into cryptography: assymetric and symmetric (dk14/crypto root README)
