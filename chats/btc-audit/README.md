@@ -84,7 +84,7 @@ Introductory Notes (How To Read The README):
 
 > **Fun & Profit game** (part of real Doomsday Explorer Project)
 
->> (Jul 6, 2026) Gemini learned to generate art contextually. Riddle on the screen - is the real riddle in the game. It's so awesome.
+>> (Jul 6, 2026) Gemini learned to generate art contextually. Riddle on the screen - is the real riddle in the game. It's so awesome. Better than Stalker (although not a fan of Stalker - art and nature was good, Torets'k IRL story is more interesting and actual than Chernobyl, since it's millitary reflection of desertification - much older problem than nuclear; and more thrilling stories; and chat gameplay is better - game mechanics is worst part of Stalker - bad Fallout; 3d parts will eventually be in Fun & Profit mini-games anyways).
 >>  <img src="docs/extra/game-art-gemini.png" width="600" height="300">
 
 >> (Jul 1, 2026) GPT5 can play the game if you upload [zip file](https://dk14.github.io/doomsday-hub) (initial testing from personalized account; not tested anonymously - yet; zip is needed because OpenAI is still indexing doomsday website), 
