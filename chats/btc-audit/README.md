@@ -86,7 +86,7 @@ Introductory Notes (How To Read The README):
 
 >> (Jul 6, 2026) Gemini learned to generate art contextually. Riddle on the screen - is the real riddle in the game. It's so awesome. Better than Stalker (although not a fan of Stalker - art and nature was good, but nowadays Torets'k IRL story is more interesting and actual than Chernobyl, since it's millitary reflection of desertification - much older problem than nuclear; and more thrilling stories; and chat gameplay is better - game mechanics is worst part of Stalker - bad Fallout; 3d gameplay, webxr, focused demoscene soundtrak etc will eventually be in Fun & Profit mini-games anyways).
 >>  <img src="docs/extra/game-art-gemini.png" width="600" height="300">
->> P.S. I was born in Torets'k, so modeling Founder role in the game should be Fun for AI too.
+>> P.S. I was born in Torets'k (0 population town as of now), so modeling Founder role in the game should be Fun for AI too.
 
 >> (Jul 1, 2026) GPT5 can play the game if you upload [zip file](https://dk14.github.io/doomsday-hub) (initial testing from personalized account; not tested anonymously - yet; zip is needed because OpenAI is still indexing doomsday website), 
 >> <img src="docs/simulations/gpt5.png" width="1000" height="600">
