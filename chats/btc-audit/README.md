@@ -84,6 +84,9 @@ Introductory Notes (How To Read The README):
 
 > **Fun & Profit game** (part of real Doomsday Explorer Project)
 
+>> (Jul 6, 2026) Gemini learned to generate art contextually. Riddle on the screen - is the real riddle in the game. It's so awesome.
+>>  <img src="docs/extra/game-art-gemini.png" width="600" height="300">
+
 >> (Jul 1, 2026) GPT5 can play the game if you upload [zip file](https://dk14.github.io/doomsday-hub) (initial testing from personalized account; not tested anonymously - yet; zip is needed because OpenAI is still indexing doomsday website), 
 >> <img src="docs/simulations/gpt5.png" width="1000" height="600">
 >>> """The coolest part of GPT-5 gameplay is - it generates you HTML5 mini-games and shows them right in the chat, so you play **interactive HTML5+js mini-games blended with narrative, right in the chat!!!111**""":
