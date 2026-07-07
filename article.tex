@@ -631,6 +631,110 @@ Private entropy remains secure by computationally escaping these
 high-information clusters.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Known Computational Landscape and Secure Randomness}
+
+The proposed framework evaluates entropy relative to the computational
+knowledge available to a specified communicating system rather than by
+assuming that randomness can be established through statistical tests
+alone.
+
+Let
+
+\[
+K_t
+=
+\{k_1,k_2,\ldots,k_n\}
+\]
+
+denote the \emph{known computational landscape} at time \(t\).
+The set contains publicly available entropy reconstructions,
+deterministic generators,
+verified computational results,
+intermediate artifacts,
+published algorithms,
+and other information available to a specified computational domain.
+
+The computational domain may represent a decentralized verification
+network,
+an organization,
+or any collection of communicating computational entities capable of
+sharing experimental results according to an assumed communication
+model.
+
+As additional computational discoveries are independently reproduced
+and published,
+the landscape evolves monotonically,
+
+\[
+K_0
+\subseteq
+K_1
+\subseteq
+K_2
+\subseteq
+\cdots.
+\]
+
+Within the Doomsday Explorer framework,
+every independently verified entropy reconstruction contributes to the
+known computational landscape,
+providing an increasingly accurate approximation of currently
+computable high-entropy regions.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Definition (Secure Randomness).}
+
+A value \(x\) is considered \emph{secure} with respect to the known
+computational landscape \(K_t\) if
+
+\[
+x
+\notin
+K_t,
+\]
+
+and no computationally feasible procedure available to the specified
+computational domain can reconstruct \(x\) from information contained
+in \(K_t\) with probability exceeding an application-defined
+threshold.
+
+Equivalently,
+security may be expressed through the escape metric
+
+\[
+D(x,K_t)
+=
+\min_{k\in K_t}
+d(x,k),
+\]
+
+where \(d(\cdot,\cdot)\) denotes an application-dependent similarity
+or reconstruction metric.
+
+A value remains secure whenever
+
+\[
+D(x,K_t)
+\ge
+\delta,
+\]
+
+for an application-defined security threshold \(\delta\).
+
+Consequently,
+secure randomness is formulated as a dynamic property relative to the
+current computational knowledge of the specified domain rather than as
+a static property of an isolated sequence.
+As the known computational landscape expands,
+previously secure values may cease to satisfy the required security
+margin,
+motivating regeneration using newly generated entropy outside the
+currently reconstructed landscape.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \paragraph{Early-Warning Mechanism.}
 
