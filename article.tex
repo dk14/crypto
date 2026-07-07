@@ -626,103 +626,156 @@ as additional data become available.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Experimental Methodology}
 
-The Doomsday Explorer framework is designed to investigate entropy
-sources through reproducible computational experiments rather than
-through reliance on a single validation methodology.
-Every experiment is defined by a publicly reproducible specification,
-executed independently by multiple participants,
-and published together with sufficient metadata to permit subsequent
-verification.
+Rather than treating entropy sources as fundamentally stochastic,
+the proposed framework formulates experimental verification
+as an iterative deterministic reconstruction problem.
+Each investigated entropy source is first represented by an idealized
+physical model, after which computational search is performed over
+successive deviations from that model.
+The objective is not to assume randomness,
+but to determine whether observed statistical behaviour can be reproduced
+by increasingly accurate deterministic descriptions.
 
-The experimental methodology intentionally treats
-existing certification standards,
-new statistical models,
-and newly proposed deterministic hypotheses
-as competing explanations of observed behavior.
-No distinction is made between established and unconventional models
-during execution.
-Each hypothesis is evaluated using identical computational procedures,
-allowing confidence to evolve as additional evidence becomes available.
+The verification protocol itself remains model-agnostic.
+Any computational model capable of generating synthetic observations
+may be evaluated using the same distributed execution,
+replication,
+and publication pipeline.
+Consequently,
+stochastic,
+deterministic,
+or hybrid physical models can be compared under identical experimental
+conditions,
+with all intermediate computations preserved for independent verification.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The iterative approximation process consists of four stages:
 
-\subsection{Classical Entropy Sources}
+\begin{enumerate}
 
-Classical entropy generators derive unpredictability from physical
-phenomena including thermal noise,
-oscillator jitter,
-avalanche noise,
-chaotic oscillation,
-and related analog processes.
+\item construction of an idealized physical model of the entropy source;
 
-Existing validation procedures typically evaluate
+\item deterministic generation of synthetic observations;
 
-\begin{itemize}
+\item greedy search over deviations between the generated and observed
+signals;
 
-\item statistical properties,
+\item publication of both reconstructed models and experimental evidence
+for independent replication.
 
-\item entropy estimates,
+\end{enumerate}
 
-\item implementation quality,
-
-\item environmental stability.
-
-\end{itemize}
-
-These methodologies have significantly improved the engineering
-quality of deployed entropy sources.
-However,
-they necessarily evaluate observable statistical behavior
-under specified experimental assumptions.
-
-Within the Doomsday Explorer framework,
-classical entropy generators are treated as experimental systems whose
-behavior may be examined using alternative computational models,
-large-scale statistical analysis,
-and independently replicated experimentation.
+Unlike statistical validation procedures that primarily evaluate output
+distributions,
+the proposed methodology evaluates the explanatory power of competing
+physical models.
+Statistical properties therefore emerge as consequences of reconstructed
+physical processes rather than as primary assumptions regarding the
+underlying entropy source.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Quantum Entropy Sources}
+\subsection{Classical Thermal Entropy Sources}
 
-Quantum random number generators are commonly justified through
-probabilistic interpretations of quantum measurement.
-Practical implementations employ physical processes including
-single-photon detection,
-beam splitters,
-vacuum fluctuations,
-or related quantum phenomena.
+For classical thermal generators,
+the initial approximation is constructed from deterministic physical
+representations of the measured signal.
+In current implementations,
+broadband thermal noise is represented as superpositions of elementary
+basis functions,
+including sinusoidal components,
+after which greedy optimization searches for progressively smaller
+deviations from the measured waveform.
 
-Certification generally combines
+The objective is not to reproduce every sample exactly,
+but to minimize unexplained structure through successive deterministic
+refinement.
+Residual discrepancies become explicit experimental objects,
+allowing alternative physical models to be proposed,
+evaluated,
+and compared using identical computational procedures.
+The corresponding implementation is documented by the Doomsday Explorer
+thermal entropy investigations~\cite{doomsdayThermal2026}.
 
-\begin{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\item physical device characterization,
+\subsection{Quantum Experimental Models}
 
-\item statistical testing,
+The same computational methodology extends to quantum experiments.
+Rather than assuming intrinsic stochasticity,
+the framework investigates deterministic signal models capable of
+reproducing experimentally observed statistical behaviour.
+Candidate representations include deterministic pulse-width modulation,
+wavelet reconstruction,
+and other physically motivated basis decompositions,
+followed by exhaustive or greedy search over model parameters.
 
-\item implementation analysis,
+Within the Doomsday Explorer quantum investigation,
+deterministic coincidence-detection models reproduce the CHSH statistics
+observed in representative Bell-type experiments.
+These computational reconstructions motivate the hypothesis that
+measurement-pipeline mechanisms,
+including coincidence detection,
+constitute viable deterministic explanations deserving systematic
+experimental evaluation alongside conventional probabilistic
+interpretations~\cite{doomsdayQuantum2026,doomsdayBell2026}.
 
-\item quantum-specific experimental validation.
-
-\end{itemize}
-
-The Doomsday Explorer methodology neither assumes nor rejects
-any particular interpretation of quantum mechanics.
+The proposed verification framework does not require adoption of any
+particular physical interpretation.
 Instead,
-QRNG implementations are treated as experimentally accessible systems
-whose observable behavior may be evaluated using the same
-reproducible computational framework applied to classical generators.
-
-This symmetry is intentional.
-The objective is not to privilege classical or quantum models,
-but to evaluate both using identical scientific procedures.
+it provides a reproducible computational protocol through which
+competing deterministic and stochastic models may be evaluated using
+identical experimental procedures and publicly verifiable evidence.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\subsection{Deterministic Reproduction of CHSH Statistics}
+
+The quantum case study demonstrates that experimentally reported
+CHSH statistics can be reproduced by a fully deterministic
+computational model without introducing communication between
+spatially separated particles.
+The objective is not to postulate a new interpretation of quantum
+mechanics, but to demonstrate that deterministic computational
+reconstructions constitute experimentally testable competing models.
+
+Instead of representing the quantum state through a complex-valued
+wave function, the implemented model constructs deterministic
+pulse-width modulated signal representations whose relative delay
+corresponds to the angular difference between measurement settings.
+Since Bell-type correlations depend only upon relative detector
+orientation, the computational model is formulated directly in terms
+of detector-angle differences rather than absolute orientations.
+Probabilities are represented as deterministic densities encoded by
+pulse-width modulation, producing reproducible signal trajectories
+throughout the simulation. :contentReference[oaicite:1]{index=1}
+
+Synthetic detector outputs are subsequently processed by a deterministic
+coincidence-detection procedure.
+Within this implementation, the coincidence-selection logic alone is
+sufficient to reproduce the characteristic CHSH correlations reported
+for representative Bell-type experiments, while no communication
+channel between the simulated particles is introduced.
+Consequently, the computational model provides a constructive
+deterministic reproduction of the target statistics using only local
+signal generation together with deterministic event-selection logic.
+The implementation is described in the accompanying quantum notebook
+and Scala reference implementation. :contentReference[oaicite:2]{index=2}
+
+Within the proposed verification framework, this result should be
+viewed as a reproducible computational hypothesis rather than a
+terminal conclusion.
+If deterministic coincidence-detection models reproduce the observed
+statistics, subsequent experimental investigation reduces to
+determining whether equivalent event-selection mechanisms are present
+within physical measurement pipelines.
+The framework therefore enables competing physical explanations to be
+evaluated through identical computational procedures, independent
+replication, and publicly reproducible evidence.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Evidence Accumulation}
 
 Unlike conventional certification,
