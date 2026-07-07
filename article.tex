@@ -1,362 +1,1136 @@
-\documentclass[letterpaper,10pt]{article}
-\usepackage[margin=1in]{geometry}
-\usepackage{hyperref}
-\usepackage{url}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Doomsday Explorer
+% Revision 1 (GPT-5.5)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt]{article}
+
+\usepackage{arxiv}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
 \usepackage{graphicx}
-\usepackage{amsmath, amssymb}
-\usepackage{enumitem}
-\usepackage{longtable}
-\usepackage{float}
 \usepackage{booktabs}
-\usepackage{microtype}
-\usepackage{bm}
-\usepackage{color}
-\usepackage{xspace}
-\usepackage{doi}
+\usepackage{multirow}
 \usepackage{tikz}
-\usetikzlibrary{positioning,arrows.meta,shapes.geometric,calc,fit,backgrounds}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 
+\usetikzlibrary{
+arrows.meta,
+positioning,
+shapes.geometric,
+fit,
+backgrounds
+}
 
-% ----------------------------------------------------------------------
-% Metadata (will be overwritten by arXiv on submission)
-% ----------------------------------------------------------------------
-\title{Entropy‑Escape: A Deterministic, Classical Solution to the Security Crisis \\ Caused by Refuted Quantum Randomness and Thermal-Noise Security Claims}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{
+Doomsday Explorer:
+A Decentralized Framework for Iterative Verification of
+Classical and Quantum Entropy Claims
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \author{
-    Dmytro~Kondratiuk\thanks{dk14 – GitHub: \url{https://github.com/dk14}}%
-    \ \  % add more authors if needed
-}
-\date{%
-    \today\\[1ex]
-    \small Draft version for arXiv submission (the final DOI will be assigned by arXiv)
+Anonymous Authors\\
+for peer review
 }
 
-% ----------------------------------------------------------------------
-% Custom commands
-% ----------------------------------------------------------------------
-\newcommand{\doiurl}[1]{\href{https://doi.org/#1}{doi:#1}}
-\newcommand{\github}[1]{\url{https://github.com/#1}}
-\newcommand{\website}[1]{\url{https://#1}}
-\newcommand{\arxiv}[1]{\url{https://arxiv.org/abs/#1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% ----------------------------------------------------------------------
 \begin{document}
-\maketitle
-\begin{abstract}
-The recent deterministic recreation of a CHSH‑type Bell experiment
-(\website{q.doomsdayexplorer.online}) demonstrates that the celebrated
-``non‑deterministic'' signature of quantum entanglement can be reproduced
-with a fully classical, deterministic model.  This observation undermines the
-foundation of many proposals that rely on quantum‑generated random numbers
-(e.g. NIST’s quantum‑RNG recommendations).  We introduce **Entropy‑Escape**, a
-provably‑secure classical construction that extracts high‑quality entropy from
-a network of public True Random Number Generator (TRNG) audit nodes – the
-*Entropy Explorer Network* (EEN) – and we show how it resolves the security
-issues introduced by the now‑refuted quantum randomness assumptions.
 
-The paper also presents the formal reasoning that underpins the *btc‑audit*
-sub‑project of the Doomsday Explorer ecosystem (see \github{dk14/crypto/
-chats/btc-audit/README.md}).  Together with the AI‑driven quantitative
-research platform and the immersive “Fun \& Profit” text‑game, the ecosystem
-offers a complete, open‑source stack for secure cryptocurrency operations,
-early‑warning wallet defense, and reproducible scientific investigation.
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{abstract}
+
+Entropy is a foundational assumption of modern cryptography.
+Secure key generation, authentication protocols,
+digital signatures, blockchain systems,
+and numerous distributed protocols ultimately rely on
+physical or computational processes that are assumed to be
+unpredictable.
+Current certification methodologies,
+including statistical randomness testing,
+entropy estimation,
+and quantum validation protocols,
+provide empirical evidence that observed sequences are
+consistent with expected random behavior under specified assumptions.
+However,
+no finite collection of statistical tests can establish the
+absence of hidden deterministic structure,
+implementation-specific vulnerabilities,
+or alternative physical explanations.
+
+This paper presents
+\emph{Doomsday Explorer},
+a decentralized framework for continuously evaluating
+competing entropy hypotheses through independently replicated
+experimentation.
+Rather than introducing another randomness test,
+the framework provides an open computational infrastructure
+for evaluating both established certification assumptions
+and newly proposed models using identical experimental procedures.
+
+Explorer Nodes formulate computational experiments,
+while Entropy Miners execute workloads independently.
+Selected tasks are replicated across multiple participants,
+allowing verification of published results,
+detection of inconsistent computations,
+and resistance to result withholding.
+The resulting body of evidence is publicly reproducible
+and evolves continuously as additional experiments are performed.
+
+The framework is intentionally agnostic regarding the correctness
+of any individual entropy model.
+Instead,
+it provides a methodology through which
+classical thermal-noise generators,
+quantum random number generators,
+and future entropy sources
+can be evaluated under a common decentralized process.
+Confidence is therefore accumulated through
+iterative approximation,
+independent replication,
+and publicly verifiable computation
+rather than centralized authority or one-time certification.
 
 \end{abstract}
 
-\section{Introduction}
-\label{sec:intro}
-The **Doomsday Explorer** project (\website{doomsdayexplorer.online}) aims to
-provide an \emph{open, composable, AI‑driven ecosystem} for
-cryptographic security, quantitative research, and interactive education.
-Its core components are:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{enumerate}[label=\arabic*)]
-  \item \textbf{Entropy Explorer Network (EEN)} – a peer‑to‑peer
-    network of publicly available TRNG audit nodes that collectively
-    generate provably‑secure entropy using \emph{proof‑of‑work} identities.
-  \item \textbf{Early‑Warning TRNG Audit Tool} – a lightweight scanner that
-    detects deterministic failures in hardware wallets (Bitcoin, Ledger,
-    Cardano, etc.) and reports them to the network.
-  \item \textbf{AI‑driven Quantitative Research Platform} – a set of
-    notebooks, matching engines and smart‑contract utilities that enable
-    reproducible finance‑oriented research.
-  \item \textbf{Fun \& Profit Text‑Game} – an immersive, AI‑mediated,
-    role‑playing adventure that encourages participants to explore the
-    ecosystem while learning about security, cryptography and game theory.
+\section{Introduction}
+
+Entropy occupies a unique position in modern information security.
+Unlike many cryptographic assumptions,
+the unpredictability of entropy sources cannot be established solely
+through mathematical proof.
+Instead,
+confidence is typically derived from
+physical models,
+engineering analysis,
+and statistical validation of experimentally observed output.
+
+Classical true random number generators (TRNGs)
+derive entropy from physical phenomena such as thermal noise,
+oscillator jitter,
+or electronic avalanche processes.
+Quantum random number generators (QRNGs)
+derive entropy from measurements commonly interpreted as
+intrinsically probabilistic quantum events.
+Both approaches have motivated extensive research,
+standardization,
+and certification procedures,
+culminating in widely adopted testing methodologies such as
+the NIST Statistical Test Suite,
+entropy estimation procedures,
+and complementary validation frameworks.
+
+These methodologies provide valuable evidence that
+observed output is statistically consistent with
+expected random behavior.
+However,
+statistical consistency alone cannot prove the absence of
+previously unknown deterministic mechanisms,
+implementation-specific artifacts,
+experimental bias,
+or incomplete physical models.
+Consequently,
+entropy validation remains an empirical scientific process
+rather than a mathematically complete proof of unpredictability.
+
+Recent work published through the Doomsday Explorer project
+investigates both classical and quantum entropy sources
+using large-scale computational analysis,
+interactive experimentation,
+and publicly reproducible workflows.
+Rather than presenting isolated experimental claims,
+the project seeks to establish a methodology through which
+competing explanations may be evaluated under identical
+experimental conditions.
+
+The central contribution of this paper is therefore
+methodological rather than adversarial.
+Instead of proposing another statistical randomness test,
+we present a decentralized framework
+for continuous experimental verification of entropy-related hypotheses.
+Independent participants execute computational workloads,
+replicate selected experiments,
+and publish reproducible evidence that may either reinforce
+or challenge existing assumptions.
+Importantly,
+the same infrastructure evaluates
+conventional certification methodologies,
+newly proposed entropy models,
+and the framework's own predictions
+using identical computational procedures.
+
+This perspective shifts entropy validation
+from one-time certification toward
+iterative scientific verification.
+Confidence emerges not from the authority of
+individual organizations,
+vendors,
+or research groups,
+but from reproducible evidence accumulated through
+independent experimentation.
+The proposed framework therefore complements existing standards
+by enabling continuous public evaluation of
+both established assumptions
+and unconventional hypotheses.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Motivation}
+
+Modern cryptographic systems increasingly depend upon
+entropy sources whose internal operation cannot be
+independently reproduced by every relying party.
+Certification procedures necessarily evaluate
+observable statistical behavior,
+physical implementation,
+and engineering assumptions.
+While these approaches have proven highly valuable,
+their conclusions remain conditional upon the correctness
+of the underlying models and experimental methodology.
+
+Scientific progress has historically emerged through
+continuous replication rather than permanent certification.
+As computational resources become globally distributed,
+it becomes practical to apply the same principle
+to entropy research itself.
+Instead of relying exclusively on centralized laboratories,
+independent participants may execute identical experiments,
+compare results,
+and collectively refine confidence in competing hypotheses.
+
+The Doomsday Explorer framework adopts this philosophy.
+Its objective is not to replace existing certification,
+nor to assume the correctness of any particular entropy model.
+Instead,
+it provides an open infrastructure
+through which empirical evidence may be accumulated,
+verified,
+and continuously re-evaluated
+as new theoretical models,
+experimental techniques,
+and computational capabilities emerge.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Contributions}
+
+The principal contributions of this work are summarized below.
+
+\begin{enumerate}[leftmargin=1.2cm]
+
+\item
+A decentralized computational framework
+for reproducible evaluation of entropy-related hypotheses.
+
+\item
+A replicated execution model
+that mitigates result withholding,
+enables independent verification,
+and supports public reproducibility.
+
+\item
+A unified experimental methodology
+applicable to both classical and quantum entropy sources.
+
+\item
+An iterative approximation process
+through which confidence in competing entropy models
+may evolve as additional evidence becomes available.
+
+\item
+An open scientific infrastructure
+designed to complement,
+rather than replace,
+existing statistical validation standards.
+
 \end{enumerate}
 
-All source code, documentation and chat logs are openly available at
-\github{dk14/crypto}.  The project is deliberately written “by hand” (see
-Section~\ref{sec:formal}) to avoid the pitfalls of AI‑generated
-specifications.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Background: Quantum‑Computing Hype and the CHSH Refutation}
-\label{sec:quantum}
-Quantum randomness has been championed as the ultimate source of entropy.
-NIST’s \emph{Quantum Random Number Generator} guidelines \cite{nist2023qrng}
-(and many commercial products) assume that quantum entanglement provides
-\emph{absolute non‑determinism}.  In October 2025, a deterministic recreation of a
-CHSH Bell test was published at \website{q.doomsdayexplorer.online}.  The
-experiment:
+\section{Related Work}
+
+Randomness evaluation has traditionally been approached through
+statistical hypothesis testing,
+entropy estimation,
+physical characterization,
+and implementation analysis.
+Widely adopted standards,
+including the NIST Statistical Test Suite,
+Dieharder,
+TestU01,
+and SP~800-90B entropy estimation,
+provide practical methods for evaluating statistical properties
+of generated sequences.
+These methodologies have substantially improved
+the engineering quality of deployed entropy sources
+and remain essential components of modern cryptographic practice.
+
+Quantum random number generators introduce additional
+validation techniques derived from quantum mechanical models,
+Bell-type experiments,
+and device characterization.
+While these approaches strengthen confidence in physical implementations,
+their conclusions remain dependent upon
+experimental assumptions,
+measurement fidelity,
+and the interpretation of observed phenomena.
+
+Distributed computation has likewise evolved considerably through
+volunteer computing,
+blockchain consensus,
+distributed verification,
+and decentralized scientific collaboration.
+These systems demonstrate that large-scale computational tasks
+can be executed reliably by independent participants,
+provided appropriate mechanisms exist
+for verification and fault tolerance.
+
+The present work combines these directions.
+Rather than proposing a new statistical randomness test
+or a replacement cryptographic primitive,
+Doomsday Explorer applies decentralized replicated computation
+to the scientific evaluation of entropy itself.
+The resulting framework treats both established assumptions
+and newly proposed hypotheses
+as experimentally testable models whose confidence
+may be continuously refined through publicly reproducible evidence.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{System Model}
+
+The Doomsday Explorer framework is organized as a decentralized
+scientific computation network whose purpose is the reproducible
+evaluation of entropy-related hypotheses.
+Unlike conventional distributed computation systems,
+the objective is not merely computational throughput,
+but independent replication,
+transparent verification,
+and continuous accumulation of empirical evidence.
+
+Three logical components participate in the framework:
 
 \begin{itemize}
-  \item Simulates the two measurement stations on a classical computer.
-  \item Uses a \emph{coincidence‑detector} that applies a post‑selection rule
-    (the usual “coincidence window”).
-  \item Shows that the observed CHSH violation is entirely a statistical
-    artifact of this selection, not a manifestation of genuine quantum
-    non‑locality.
+
+\item
+\textbf{Explorer Nodes}
+formulate experimental workloads,
+define computational parameters,
+and publish experiment descriptions.
+
+\item
+\textbf{Entropy Miners}
+independently execute computational tasks,
+produce experimental observations,
+and return reproducible results.
+
+\item
+The
+\textbf{Decentralized Verification Network}
+coordinates task distribution,
+selective replication,
+result aggregation,
+and publication of experimental evidence.
+
 \end{itemize}
 
-The key insight is that the \emph{coincidence detector’s comparison
-procedure creates skewed statistics}, while the underlying model contains
-\textbf{no communication} between the wings of the experiment.
-Consequently, the celebrated “magic” of quantum entanglement can be reproduced
-with a completely deterministic algorithm.  This finding directly challenges the
-assumption that quantum‑derived numbers are \emph{inherently} secure.
+No participant is assumed to be trusted.
+Every published result may be independently reproduced,
+verified,
+or challenged by additional participants.
 
-\section{Entropy‑Escape Construction}
-\label{sec:entropy}
-\subsection{Motivation}
-If quantum‑based randomness is not fundamentally non‑deterministic, any
-security guarantees that rely on it become questionable.  The Entropy‑Escape
-construction therefore replaces quantum entropy sources with a \emph{classical,
-public, verifiable} source of randomness.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{System Overview}
+\section{Network Architecture}
+
+Figure~\ref{fig:architecture}
+illustrates the logical organization of the framework.
+
+Explorer Nodes submit computational experiments
+to the decentralized verification network.
+The network distributes workloads among
+Entropy Miners,
+which execute assigned tasks independently.
+
+To reduce the possibility of result withholding,
+implementation bias,
+or computational faults,
+selected workloads are intentionally replicated
+across multiple independent miners.
+Returned observations are compared,
+aggregated,
+and published together with sufficient metadata
+to enable subsequent independent reproduction.
+
+This architecture separates
+experiment definition,
+experiment execution,
+and evidence publication,
+allowing individual participants
+to verify every stage of the computational workflow.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{figure}[t]
+
 \centering
+
 \begin{tikzpicture}[
-    node distance=1.4cm and 2.8cm,
-    box/.style={
-        draw,
-        rounded corners,
-        minimum width=3.5cm,
-        minimum height=0.8cm,
-        align=center
-    },
-    core/.style={
-        draw,
-        circle,
-        minimum size=1.5cm,
-        align=center
-    },
-    >=Stealth
+
+node distance=18mm,
+
+box/.style={
+draw,
+rounded corners,
+minimum width=36mm,
+minimum height=11mm,
+align=center
+},
+
+core/.style={
+draw,
+circle,
+minimum size=22mm,
+align=center
+},
+
+>=Latex
 ]
 
-% Explorer nodes
-\node[box] (e1) {Explorer Node};
-\node[box, below=of e1] (e2) {Explorer Node};
+\node[box] (exp1)
+{Explorer\\Node};
 
-% Network
-\node[core, right=3.5cm of e1.south east, yshift=-0.7cm] (net)
-{Decentralized\\Network};
+\node[box,
+below=of exp1]
+(exp2)
+{Explorer\\Node};
 
-% Miners
-\node[box, right=3.5cm of net] (m1) {Entropy Miner};
-\node[box, below=of m1] (m2) {Entropy Miner};
+\node[core,
+right=42mm of exp1.south east,
+yshift=-10mm]
+(net)
+{Verification\\Network};
 
-% Connections
-\draw[->] (e1.east) -- (net.west);
-\draw[->] (e2.east) -- (net.west);
+\node[box,
+right=42mm of net]
+(min1)
+{Entropy\\Miner};
 
-\draw[->] (net.east) -- (m1.west);
-\draw[->] (net.east) -- (m2.west);
+\node[box,
+below=of min1]
+(min2)
+{Entropy\\Miner};
 
-\draw[->] (m1.west) to[bend left=18] node[above,font=\small]{results} (net.east);
-\draw[->] (m2.west) to[bend right=18] (net.east);
+\draw[->]
+(exp1.east)
+--
+(net.west);
 
-% Labels
-\node[below=0.55cm of net,font=\small,align=center]
+\draw[->]
+(exp2.east)
+--
+(net.west);
+
+\draw[->]
+(net.east)
+--
+(min1.west);
+
+\draw[->]
+(net.east)
+--
+(min2.west);
+
+\draw[->]
+(min1.west)
+to[bend left=18]
+node[above,font=\small]
+{results}
+(net.east);
+
+\draw[->]
+(min2.west)
+to[bend right=18]
+(net.east);
+
+\node[
+below=8mm of net,
+align=center,
+font=\small
+]
 {
 Task distribution\\
-and replicated execution
+Selective work replication\\
+Public result aggregation
 };
 
 \end{tikzpicture}
+
 \caption{
-Architecture of the decentralized computation network.
-Explorer nodes submit computational tasks to the decentralized network,
-which distributes work among entropy miners.
-Selected tasks are replicated across multiple miners to detect result
-suppression or manipulation, ensuring integrity and availability of
-computation results.
+Logical architecture of the Doomsday Explorer framework.
+Explorer Nodes define computational experiments.
+The decentralized verification network distributes workloads,
+selectively replicates tasks,
+aggregates returned observations,
+and publishes reproducible evidence.
+Independent replication mitigates result withholding
+and enables verification of published computational results.
 }
+
 \label{fig:architecture}
-\end{figure}
-  %-------------------------------------------------
-  \caption{High‑level architecture of the Entropy Explorer
-           ecosystem.  Explorer nodes request entropy; the
-           entropy miners (running the TRNG‑audit) produce
-           entropy shares and broadcast them through a
-           fully‑connected data‑exchange network.  Each miner
-           replicates the work of every other miner (red
-           dashed links), guaranteeing that no result can be
-           concealed.}
-  \label{fig:entropy-arch}
+
 \end{figure}
 
-\begin{description}[style=unboxed,leftmargin=0cm]
-  \item[Nodes]  Each node runs a deterministic TRNG audit module (see
-    \github{dk14/crypto/chats/btc-audit}) and contributes the hash of its
-    \emph{proof‑of‑work} to a public mempool.
-  \item[Mempool]  A Merkle‑style mempool collects all node commitments.
-    The mempool root is periodically committed to the Bitcoin blockchain,
-    providing an immutable timestamp.
-  \item[Entropy Extraction]  From the ordered list of commitments we apply a
-    \emph{two‑source extractor} (e.g. a Trevisan extractor) which yields
-    uniform bits under the assumption that at least one node behaved
-    honestly.
-  \item[Verification]  Anyone can recompute the entire chain of commitments and
-    verify that the extracted bits match the published value.
-\end{description}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Security Proof Sketch}
-Let $C_i = H(\text{PoW}_i\Vert\text{state}_i)$ be the commitment of node $i$.
-Assume an adversary controls a fraction $\alpha<1$ of the nodes.
-Since each PoW is a random nonce, the set $\{C_i\}$ contains at least
-$ (1-\alpha)n $ independent, high‑entropy values.  Applying a
-$(k,\varepsilon)$‑two‑source extractor \cite{li2012extractor} yields
-$\varepsilon$‑close‑to‑uniform bits.  The security reduction is identical to
-the standard proof for distributed randomness beacons (e.g. Drand), but
-here the source is \emph{publicly auditable} and the extractor runs on the
-full mempool, not a secret beacon.
+\section{Replicated Experimental Execution}
 
-\section{Formal Reasoning from \texttt{btc‑audit} README}
-\label{sec:formal}
-The \texttt{btc‑audit} sub‑project contains a self‑contained, peer‑reviewed
-analysis of Bitcoin‑related entropy‑security issues.  The following points are
-directly extracted (and slightly re‑phrased) from the README
-(\github{dk14/crypto/chats/btc-audit/README.md}):
+Traditional distributed computation often assumes
+that each computational task requires only a single execution.
+In contrast,
+the Doomsday Explorer framework intentionally introduces
+controlled redundancy.
 
-\subsection{TL;DR Highlights}
-\begin{itemize}
-  \item The project provides a \textbf{TRNG audit tool} that detects
-    deterministic failures in hardware wallets (Section~2 of the README).
-  \item It describes a \textbf{Replay‑Noise attack} and supplies a full
-    mitigation strategy via the Entropy‑Escape network (Section~3).
-  \item A detailed \textbf{Project Plan} with specifications, code review
-    processes, and open‑source licensing is presented (Section~4).
-  \item The author supplies a cryptographic \textbf{Signature} and a
-    \emph{sample DOI} (Springer LNCS) to demonstrate scientific credibility
-    (lines~33‑38 of the README).
-\end{itemize}
+A configurable fraction of submitted workloads
+is executed independently by multiple miners.
+Returned observations are compared
+before publication,
+allowing inconsistent executions,
+implementation-specific behavior,
+or malicious result withholding
+to be detected.
 
-\subsection{Formal Language (Excerpt)}
-\begin{quote}
-``The bottom line: fastexp overhead is non‑monotonic. Asymmetric encryption has
-``cat‑in‑a‑bag'' security – the defender must spend at least as much energy as the
-attacker to ensure a given public‑key security level. No free lunch, but the
-illusion that there is.''
-\end{quote}
-This statement underpins the need for a \emph{distributed}, \emph{high‑entropy}
-source: any single deterministic RNG can be attacked, but a network of
-independent PoW‑based nodes forces the attacker to match the combined work
-factor.
-
-\subsection{Replay‑Noise Attack Analysis}
-The README details a ``Replay‑Noise'' attack in which an adversary records a
-TRNG output, re‑injects it into a hardware wallet, and thus bypasses the
-entropy check.  The mitigation proposed is exactly the Entropy‑Escape
-construction: each output is \emph{anchored} to a publicly verifiable mempool
-commitment, making replay infeasible without also reproducing the underlying
-PoW.
-
-\section{Security Implications for NIST and Quantum‑Derived Randomness}
-\label{sec:security}
-Given the deterministic CHSH refutation (Section~\ref{sec:quantum}) and the
-formal proof that a classical, PoW‑driven network yields provably‑secure
-entropy (Section~\ref{sec:entropy}), we obtain the following conclusions:
+The replication policy serves several purposes.
 
 \begin{enumerate}
-  \item \textbf{Quantum‑number based randomness} (e.g., QRNGs that rely on
-    the assumed \emph{absolute non‑determinism} of entanglement) cannot be
-    considered \emph{inherently} secure.
-  \item \textbf{NIST standards} that mandate or recommend such quantum sources
-    should be revised to require \emph{independent, verifiable entropy
-    extraction}, such as the Entropy‑Escape construction.
-  \item \textbf{Entropy‑Escape} provides a concrete, open‑source alternative
-    that is already deployed in the Doomsday Explorer ecosystem.
+
+\item
+Independent verification of published results.
+
+\item
+Detection of computational inconsistencies.
+
+\item
+Resistance to selective disclosure.
+
+\item
+Long-term measurement of experimental reproducibility.
+
 \end{enumerate}
 
-\section{AI‑Driven Quantitative Research \& the Fun \& Profit Text‑Game}
-\label{sec:ai}
-The Doomsday Explorer platform also hosts an AI‑mediated research environment
-(\website{ai.doomsdayexplorer.online}) and a text‑based RPG
-(\website{game.doomsdayexplorer.online}).  These components serve two
-purposes:
+Importantly,
+replication is treated as a scientific mechanism
+rather than a consensus protocol.
+Agreement between replicated executions
+does not establish correctness of an underlying hypothesis;
+instead,
+it establishes reproducibility of the computational experiment itself.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Iterative Approximation Framework}
+
+Entropy validation is formulated as
+an iterative approximation process
+rather than a binary certification decision.
+
+Let
+
+\[
+H
+=
+\{H_1,H_2,\ldots,H_n\}
+\]
+
+denote competing hypotheses
+regarding the behavior of an entropy source.
+
+These hypotheses may include
 
 \begin{itemize}
-  \item \emph{Education}: participants learn about entropy, cryptography and
-    game theory while interacting with an AI that can provide citations,
-    generate code snippets, and validate scientific claims.
-  \item \emph{Data Collection}: the game logs user decisions and strategy
-    outcomes, feeding anonymised data back into the research notebooks
-    (see \github{dk14/crypto/notebooks/}) for statistical analysis.
+
+\item
+existing statistical models,
+
+\item
+physical models,
+
+\item
+implementation-specific explanations,
+
+\item
+newly proposed deterministic mechanisms.
+
 \end{itemize}
 
-All interactions are stored under a permissive MIT license, ensuring full
-reproducibility.
+Explorer Nodes construct experiments
+capable of discriminating between one or more hypotheses.
 
-\section{Discussion and Future Work}
-\label{sec:future}
+Entropy Miners execute those experiments.
+
+Replicated execution establishes
+that reported observations
+are computationally reproducible.
+
+Published evidence then updates confidence
+associated with competing models.
+
+Unlike conventional certification,
+the framework never declares
+a hypothesis permanently verified or falsified.
+Instead,
+confidence evolves continuously
+as additional experiments become available.
+
+This methodology naturally accommodates
+
 \begin{itemize}
-  \item \textbf{Formal Verification}: While the extractor security proof is
-    standard, future work will implement machine‑checked proofs (Coq/Lean)
-    for the entire pipeline.
-  \item \textbf{Hardware Integration}: Port the audit tool to embedded
-    devices (e.g., STM32) to enable in‑field entropy verification.
-  \item \textbf{Policy Impact}: Work with NIST and IEC to incorporate
-    deterministic‑entropy‑escape as an approved alternative to quantum RNGs.
-  \item \textbf{Community Expansion}: Encourage more participants to run
-    public audit nodes, increasing the entropy pool and reducing the attack
-    surface.
+
+\item
+new entropy generators,
+
+\item
+new statistical techniques,
+
+\item
+alternative physical models,
+
+\item
+independent experimental reproduction.
+
 \end{itemize}
+
+Consequently,
+entropy assessment becomes
+a continuously evolving scientific process
+rather than a single certification event.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Threat Model}
+
+The framework considers
+both accidental
+and adversarial sources of error.
+
+Potential threats include
+
+\begin{enumerate}
+
+\item
+faulty computational implementations,
+
+\item
+selective publication of favorable results,
+
+\item
+malicious participants returning fabricated computations,
+
+\item
+implementation bias,
+
+\item
+incomplete physical models,
+
+\item
+statistical overfitting.
+
+\end{enumerate}
+
+The framework does not assume
+that replicated execution alone
+proves the correctness of a scientific hypothesis.
+Rather,
+replication provides evidence that
+published computational observations
+can be reproduced independently.
+
+Scientific conclusions remain subject
+to continued experimental evaluation
+as additional data become available.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Experimental Methodology}
+
+The Doomsday Explorer framework is designed to investigate entropy
+sources through reproducible computational experiments rather than
+through reliance on a single validation methodology.
+Every experiment is defined by a publicly reproducible specification,
+executed independently by multiple participants,
+and published together with sufficient metadata to permit subsequent
+verification.
+
+The experimental methodology intentionally treats
+existing certification standards,
+new statistical models,
+and newly proposed deterministic hypotheses
+as competing explanations of observed behavior.
+No distinction is made between established and unconventional models
+during execution.
+Each hypothesis is evaluated using identical computational procedures,
+allowing confidence to evolve as additional evidence becomes available.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Classical Entropy Sources}
+
+Classical entropy generators derive unpredictability from physical
+phenomena including thermal noise,
+oscillator jitter,
+avalanche noise,
+chaotic oscillation,
+and related analog processes.
+
+Existing validation procedures typically evaluate
+
+\begin{itemize}
+
+\item statistical properties,
+
+\item entropy estimates,
+
+\item implementation quality,
+
+\item environmental stability.
+
+\end{itemize}
+
+These methodologies have significantly improved the engineering
+quality of deployed entropy sources.
+However,
+they necessarily evaluate observable statistical behavior
+under specified experimental assumptions.
+
+Within the Doomsday Explorer framework,
+classical entropy generators are treated as experimental systems whose
+behavior may be examined using alternative computational models,
+large-scale statistical analysis,
+and independently replicated experimentation.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Quantum Entropy Sources}
+
+Quantum random number generators are commonly justified through
+probabilistic interpretations of quantum measurement.
+Practical implementations employ physical processes including
+single-photon detection,
+beam splitters,
+vacuum fluctuations,
+or related quantum phenomena.
+
+Certification generally combines
+
+\begin{itemize}
+
+\item physical device characterization,
+
+\item statistical testing,
+
+\item implementation analysis,
+
+\item quantum-specific experimental validation.
+
+\end{itemize}
+
+The Doomsday Explorer methodology neither assumes nor rejects
+any particular interpretation of quantum mechanics.
+Instead,
+QRNG implementations are treated as experimentally accessible systems
+whose observable behavior may be evaluated using the same
+reproducible computational framework applied to classical generators.
+
+This symmetry is intentional.
+The objective is not to privilege classical or quantum models,
+but to evaluate both using identical scientific procedures.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Evidence Accumulation}
+
+Unlike conventional certification,
+which typically culminates in a pass/fail decision,
+the proposed framework accumulates evidence continuously.
+
+Each completed experiment contributes
+
+\begin{itemize}
+
+\item reproducible computational observations,
+
+\item associated experimental parameters,
+
+\item replication statistics,
+
+\item independent verification records.
+
+\end{itemize}
+
+Together,
+these observations form an evolving public corpus
+through which competing entropy models may be evaluated.
+
+The framework therefore separates
+
+\begin{enumerate}
+
+\item experimental observation,
+
+\item statistical interpretation,
+
+\item scientific conclusion.
+
+\end{enumerate}
+
+This separation permits multiple researchers
+to interpret identical experimental data
+using different theoretical models
+without requiring modification of the underlying infrastructure.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Application to Entropy Research}
+
+The Doomsday Explorer project applies the proposed methodology
+to a broad collection of entropy-related investigations.
+
+Representative application domains include
+
+\begin{itemize}
+
+\item
+classical thermal-noise generators,
+
+\item
+hardware entropy devices,
+
+\item
+operating-system entropy sources,
+
+\item
+quantum random number generators,
+
+\item
+Bell-type experimental datasets,
+
+\item
+entropy estimation procedures,
+
+\item
+statistical validation methodologies.
+
+\end{itemize}
+
+Each investigation follows the same computational workflow.
+
+Explorer Nodes formulate reproducible experiments.
+
+Independent participants execute assigned workloads.
+
+Selected tasks are replicated.
+
+Returned observations are published together with sufficient metadata
+to permit subsequent independent verification.
+
+Consequently,
+all experimental evidence produced by the framework
+is intended to remain reproducible,
+extensible,
+and open to reinterpretation
+as new theoretical models emerge.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Relationship to Existing Standards}
+
+The proposed framework is intended to complement,
+rather than replace,
+existing certification methodologies.
+
+Statistical testing frameworks,
+including NIST SP~800 series recommendations,
+remain valuable engineering tools for detecting
+many classes of implementation defects,
+bias,
+and statistical anomalies.
+
+Similarly,
+physical characterization remains essential
+for understanding entropy-generating devices.
+
+The Doomsday Explorer framework addresses a different question.
+
+Rather than asking whether a generator satisfies
+a predefined statistical standard,
+the framework asks whether competing scientific explanations
+continue to remain consistent
+with an expanding body of independently reproducible evidence.
+
+This distinction transforms entropy validation
+from a finite certification procedure
+into a continuously evolving experimental process.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Discussion}
+
+Entropy research occupies an unusual position
+at the intersection of mathematics,
+physics,
+statistics,
+and engineering.
+
+No finite experimental program
+can conclusively establish
+the unpredictability of a physical process.
+Likewise,
+no individual statistical anomaly
+necessarily invalidates an existing physical model.
+
+Consequently,
+scientific progress requires
+continuous experimentation,
+independent replication,
+and transparent publication of evidence.
+
+The Doomsday Explorer framework
+is motivated by this philosophy.
+
+Its objective is not to replace established standards,
+nor to promote any specific interpretation
+of classical or quantum physics.
+Instead,
+it provides computational infrastructure
+through which competing hypotheses
+may be evaluated using identical,
+publicly reproducible experimental procedures.
+
+The framework therefore shifts emphasis
+from authority-based validation
+toward evidence-based refinement,
+allowing confidence in entropy models
+to evolve as additional computational
+and experimental observations become available.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Representative Investigations}
+
+The Doomsday Explorer project applies the proposed verification
+framework to a growing collection of entropy-related investigations.
+
+These investigations currently include analyses of
+
+\begin{itemize}
+
+\item
+classical thermal-noise entropy generators,
+
+\item
+hardware true random number generators,
+
+\item
+quantum random number generators,
+
+\item
+Bell-type experimental protocols,
+
+\item
+entropy estimation methodologies,
+
+\item
+statistical certification procedures.
+
+\end{itemize}
+
+Each investigation is expressed as a reproducible computational
+workflow rather than a single published result.
+Experimental specifications,
+analysis software,
+input datasets,
+and computational observations are intended to remain independently
+reproducible by future participants.
+
+This approach allows scientific conclusions to evolve naturally as
+additional evidence becomes available,
+rather than requiring previous publications to remain permanently
+authoritative.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Limitations}
+
+The proposed framework intentionally separates
+scientific methodology
+from scientific conclusion.
+
+Replicated computation does not,
+by itself,
+establish the correctness of any physical theory,
+statistical model,
+or entropy source.
+Instead,
+it establishes that published computational observations
+may be independently reproduced under identical experimental
+conditions.
+
+Likewise,
+statistical inconsistency does not necessarily imply
+deterministic behavior,
+nor does statistical consistency establish true unpredictability.
+
+Scientific interpretation therefore remains dependent upon
+theoretical analysis,
+experimental design,
+and continued independent investigation.
+
+The framework should consequently be viewed
+as infrastructure for entropy research
+rather than as a replacement for
+existing cryptographic standards
+or physical validation procedures.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Future Work}
+
+Several directions remain open for future investigation.
+
+First,
+the range of supported entropy sources
+may be expanded to include
+additional hardware devices,
+analog physical systems,
+hybrid entropy generators,
+and emerging quantum technologies.
+
+Second,
+the iterative approximation framework
+may incorporate additional statistical techniques,
+information-theoretic measures,
+and machine-learning-assisted anomaly detection
+while preserving complete experimental reproducibility.
+
+Third,
+public participation may substantially increase
+the scale of computational evidence available
+for evaluating competing entropy hypotheses.
+
+Finally,
+future work will investigate
+how decentralized experimental verification
+may be applied beyond entropy research,
+including broader questions involving
+computational reproducibility,
+scientific replication,
+and distributed verification of empirical claims.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Conclusion}
-The deterministic recreation of a CHSH experiment demonstrates that the
-``magic’’ of quantum entanglement does not guarantee randomness.  By
-replacing quantum‑derived entropy with a publicly auditable, PoW‑based
-Entropy‑Escape network, we restore provable security for cryptographic
-applications, including Bitcoin hardware‑wallet protection, NIST‑compliant RNG
-generation, and AI‑driven quantitative research.  The Doomsday Explorer
-ecosystem provides a complete, open‑source stack for implementation,
-verification and education.
+
+Entropy remains one of the most fundamental assumptions
+underlying modern cryptographic security.
+Although existing certification methodologies provide
+substantial confidence in deployed entropy sources,
+their conclusions necessarily depend upon
+experimental assumptions,
+physical models,
+and observable statistical behavior.
+
+This paper has presented
+Doomsday Explorer,
+a decentralized framework for
+iterative verification of entropy-related hypotheses.
+
+Rather than introducing another statistical randomness test,
+the framework establishes
+an open scientific infrastructure
+through which competing models
+may be evaluated using identical,
+publicly reproducible computational procedures.
+
+Explorer Nodes formulate reproducible experiments,
+Entropy Miners execute computational workloads,
+and selective replication enables
+independent verification of published observations.
+Confidence in competing hypotheses
+therefore evolves through
+continuous evidence accumulation
+rather than centralized authority
+or one-time certification.
+
+The framework is intentionally agnostic
+with respect to individual physical models.
+Classical entropy sources,
+quantum entropy sources,
+and future experimental systems
+are all treated as subjects
+of continuous scientific investigation.
+
+By combining
+decentralized computation,
+experimental replication,
+and transparent publication,
+the proposed methodology
+extends entropy research
+from isolated experimental studies
+toward an evolving,
+community-driven process
+of scientific verification.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Data Availability}
+
+The Doomsday Explorer project publishes
+experimental software,
+datasets,
+documentation,
+and computational results
+through publicly accessible repositories
+to enable independent reproduction
+of the experiments described in this work.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{Acknowledgements}
-The author thanks the contributors of the \github{dk14/crypto} repository,
-the developers of the deterministic CHSH simulator
-(\website{q.doomsdayexplorer.online}), and the volunteers who run public
-audit nodes.  Special thanks to the open‑source community for reviewing the
-formal README in \texttt{btc‑audit} and providing feedback on the Entropy‑Escape
-design.
 
-\begin{thebibliography}{99}
-  \bibitem{nist2023qrng}
-    National Institute of Standards and Technology.
-    \emph{Quantum Random Number Generator Guidelines},
-    NIST Special Publication 800‑90B, 2023.
-    \url{https://doi.org/10.6028/NIST.SP.800-90B}
+The authors thank
+members of the open scientific and cryptographic communities
+whose independent analysis,
+discussion,
+and replication efforts
+continue to improve
+the quality,
+reproducibility,
+and transparency
+of entropy research.
 
-  \bibitem{li2012extractor}
-    X. Li.
-    \emph{Improved Constructions of Two‑Source Extractors}.
-    Theory of Computing 8 (2012): 1–23.
-    \doiurl{10.4086/toc.2012.v008a001}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  \bibitem{entropynetwork}
-    Dmytro Kondratiuk (dk14).
-    \emph{Entropy Explorer Network – Design and Implementation}.
-    \url{https://github.com/dk14/crypto/blob/main/chats/btc-audit/README.md}
+\bibliographystyle{plain}
+\bibliography{references}
 
-  \bibitem{chshrefute}
-    D. K{\"o}nig (dk14).
-    \emph{Deterministic Re‑creation of a CHSH‑type Bell Experiment}.
-    \url{https://q.doomsdayexplorer.online/}
-  
-  \bibitem{btcproject}
-    D. K{\"o}nig (dk14).
-    \emph{DOOMSDAY EXPLORER: ANTI‑SCANNER TRNG AUDIT TOOL (PRESENTATION)}.
-    PDF, 2026. \url{https://github.com/dk14/crypto/raw/main/chats/btc-audit/PRESENTATION_PDF.pdf}
-
-\end{thebibliography}
 \end{document}
