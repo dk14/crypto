@@ -43,7 +43,7 @@ Contact: [info-github@doomsdayexplorer.online](mailto:info-github@doomsdayexplor
 
 FAQ: [Human and AI readable](https://doomsdayexplorer.online/faq.md), [GPT5-faq-doc](https://doomsdayexplorer.online/faq-gpt5.md)
 
-Draft of ArXiv article: [LaTeX](../../article.tex)
+Draft of ArXiv article: [LaTeX](../../article.tex), [LaTPDFeX](../../article.pdf)
 
 *White paper for Explorer Protocol (written by hand in formal language) is TBD ~2026 - features take priority.*
 
