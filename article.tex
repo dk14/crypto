@@ -392,92 +392,50 @@ to verify every stage of the computational workflow.
 \centering
 
 \begin{tikzpicture}[
-
-node distance=18mm,
-
-box/.style={
-draw,
-rounded corners,
-minimum width=36mm,
-minimum height=11mm,
-align=center
-},
-
-core/.style={
-draw,
-circle,
-minimum size=22mm,
-align=center
-},
-
->=Latex
+    node distance=1.4cm and 2.8cm,
+    box/.style={
+        draw,
+        rounded corners,
+        minimum width=3.5cm,
+        minimum height=0.8cm,
+        align=center
+    },
+    core/.style={
+        draw,
+        circle,
+        minimum size=1.5cm,
+        align=center
+    },
+    >=Stealth
 ]
 
-\node[box] (exp1)
-{Explorer\\Node};
+% Explorer nodes
+\node[box] (e1) {Explorer Node};
+\node[box, below=of e1] (e2) {Explorer Node};
 
-\node[box,
-below=of exp1]
-(exp2)
-{Explorer\\Node};
+% Network
+\node[core, right=3.5cm of e1.south east, yshift=-0.7cm] (net)
+{Decentralized\\Network};
 
-\node[core,
-right=42mm of exp1.south east,
-yshift=-10mm]
-(net)
-{Verification\\Network};
+% Miners
+\node[box, right=3.5cm of net] (m1) {Entropy Miner};
+\node[box, below=of m1] (m2) {Entropy Miner};
 
-\node[box,
-right=42mm of net]
-(min1)
-{Entropy\\Miner};
+% Connections
+\draw[->] (e1.east) -- (net.west);
+\draw[->] (e2.east) -- (net.west);
 
-\node[box,
-below=of min1]
-(min2)
-{Entropy\\Miner};
+\draw[->] (net.east) -- (m1.west);
+\draw[->] (net.east) -- (m2.west);
 
-\draw[->]
-(exp1.east)
---
-(net.west);
+\draw[->] (m1.west) to[bend left=18] node[above,font=\small]{results} (net.east);
+\draw[->] (m2.west) to[bend right=18] (net.east);
 
-\draw[->]
-(exp2.east)
---
-(net.west);
-
-\draw[->]
-(net.east)
---
-(min1.west);
-
-\draw[->]
-(net.east)
---
-(min2.west);
-
-\draw[->]
-(min1.west)
-to[bend left=18]
-node[above,font=\small]
-{results}
-(net.east);
-
-\draw[->]
-(min2.west)
-to[bend right=18]
-(net.east);
-
-\node[
-below=8mm of net,
-align=center,
-font=\small
-]
+% Labels
+\node[below=0.55cm of net,font=\small,align=center]
 {
 Task distribution\\
-Selective work replication\\
-Public result aggregation
+and replicated execution
 };
 
 \end{tikzpicture}
