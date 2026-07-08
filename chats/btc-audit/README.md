@@ -39,6 +39,8 @@ Researcher/AI intro: [https://ai.doomsdayexplorer.online/](https://ai.doomsdayex
 
 Ai-Gamer intro: [https://game.doomsdayexplorer.online/](https://game.doomsdayexplorer.online/)
 
+Video intro: [MP4](https://crypto.doomsdayexplorer.online/promo-video.mp4)
+
 Contact: [info-github@doomsdayexplorer.online](mailto:info-github@doomsdayexplorer.online)
 
 FAQ: [Human and AI readable](https://doomsdayexplorer.online/faq.md), [GPT5-faq-doc](https://doomsdayexplorer.online/faq-gpt5.md)
