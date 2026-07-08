@@ -517,7 +517,7 @@ The [Explorer Fund](docs/fund-management.md) will simply reward bids/donations p
 >>>> Q: Isn't it a pyramid? A: No, author does not take profits, does not take fee from contributor's profits.
 >>>>
 >>>> Q: It sounds like win-win for everyone, where is the catch? A: Not for everyone, win-win for every contributor, e.g. for those who did DYR on security of their own funds (delegated to vendors, effectively) and livelihoods.
->>>>> Q: how about you? A: I did more research than you, you wouldn't be asking otherwise. I'm not typing this for free either and not taking risks for free. **No one in this network does any util work for free.**
+>>>>> Q: how about you? A: I did more research than you, you wouldn't be asking otherwise. I'm not typing this for free either and not taking risks for free. **No one in this network does any util work for free.**. [No free lunch](https://en.wikipedia.org/wiki/No_free_lunch_theorem).
 >>>>>
 >>>>> Q: How to contribute code? A: Write your own tool and/or explorer nodes IRL, write your own doomsday-web clients in game with AI, contribution to profit-share - will give you auto-rewards, given that your code is used in real explorer nodes and real entropy mining nodes, or in real promo-game-backbone-doomsday-web (better approach than upwork inflated bids and corporate option offer scams, or guru midwestern time-stretch scams; **no explorer network IRL - no rewards, simple rule**). While here, when it comes to reference implementations - is either me, or serious code contributors on my discretion.
 >>>>>
