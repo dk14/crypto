@@ -524,7 +524,7 @@ The [Explorer Fund](docs/fund-management.md) will simply reward bids/donations p
 >>>>> Q: how to contribute mirrors/advertisement? A: 1) contribute to fund, 2) promote/specialize (or/and mirror on your own domain with different design/presentation and with reference to root, and subject to [mirrors.md](https://doomsdayexplorer.online/mirrors.md)) website's content to target audience, 3) thanks to you, Explorer Network grows, efficiency of mining tools improves -> wallet users reward entropy miners, 4) your share of network fee goes to your wallet as a reward.
 >>>>>
 >>>>> Q: why everyone is pooled in the same pool?  A: It ain't animal farm - profits auto-distributed according to monetary contributions and their timing. Every contributor, founder including, taking risks - rewards are proportional to risks taken. *Theory: monetary contributions reflect work done as supply, demand on Explorer Network grows proving work useful - demand/supply forms value.*
->>>>>> Q: how to tell which work is util/useful? A: novel work is useful - IRL "I human RL" entropy.
+>>>>>> Q: how to tell which work is util/useful? A: novel work is useful - IRL "I human RL" entropy. Novel is Fun -> Fun & Profit!
 
 >> grant applications pending
 
