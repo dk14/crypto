@@ -518,7 +518,11 @@ The [Explorer Fund](docs/fund-management.md) will simply reward bids/donations p
 >>>>> Q: how about you? A: I did more research than you, you wouldn't be asking otherwise.
 >>>>>
 >>>>> Q: How to contribute code? A: Write your own tool and/or explorer nodes IRL, write your own doomsday-web in game, contribution to profit-share - will give you rewards, given that your code is used in real explorer nodes and real entropy mining nodes (better approach than upwork inflated bids and corporate option offer scams, or guru midwestern time-stretch scams). While here, when it comes to reference implemntations - is either me, or serious code contributors on my discretion.
+>>>>>
+>>>>> Q: how to contribute mirrors/advertisement? A: 1) contribute to fund, 2) promote/specialize (and mirror on your own domain with reference to root) website's content to target audience, 3) thanks to you, Explorer Network grows, efficiency of mining tools improve -> wallet users reward entropy miners, 4) your share of network fee goes to your wallet as a reward.
+
 >> grant applications pending
+
 
 Simulations with [Gemini](https://www.google.com/)
 
