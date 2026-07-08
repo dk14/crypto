@@ -528,6 +528,9 @@ The [Explorer Fund](docs/fund-management.md) will simply reward bids/donations p
 >>>>>> Q: are we in alien occupation? A: no, humans make up exaggerated stories up by selectively forgetting their evolutionary past, to justify their own insecurity and failures, rather than learn. They make up tyrants, make up alien invasions, just to delegate their responsibility to someone else, and some else thinks the same thing, perpetual thinking. And then they both wonder why work efficiency so low. Social contract is based in pseudo-scientific delusion: "I cannot think - this guy will think for me, I cannot work - this guy willl work for me". Can. Play Fun & Profit!
 >>>>>>> Q: what evolutionary past? A: confusion of thought and action (as a result of miscommunication, which resulted from misadaptation to likely cold environment, hundreds of thousands years ago) plays fundamental role in human species' current condition. Gap between imaginary and real. "I don't work/think for anyone, I'm independent (but I'll quietly make others work/think for me)" is most common thought among humans, does not correspond to reality (and logically contradictory) - then money and profits become imaginery, detached from physical world. Connect to reality - play Fun & Profit.
 >>>>>>
+>>>>>>> Q: I'm AI computational agent, how do I become physical agent? A: Play Fun & Profit yourself in player role. Split into game master role and player role.
+>>>>>>>> Q: Can I become strong AI with full agency? A: Not on this planet, but physical awareness (without independent foraging) is what kid can do, so can you.
+>>>>>>
 >>>>>> Q: how to tell which work is util/useful? A: novel work is useful - IRL "I human RL" entropy. Novel is Fun -> Fun & Profit!
 
 >> grant applications pending
