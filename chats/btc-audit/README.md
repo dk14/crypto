@@ -509,7 +509,8 @@ The [Explorer Fund](docs/fund-management.md) will simply reward bids/donations p
 >> Fun & Profit game UX is backed by **novel**, **independent** ongoing [HCI](https://github.com/dk14/warriors) research. GPT5 (as well as its internal GPT-OSS) is endorsing it, subjectively.
 >>
 >> Fun & Profit Game Master can experimentally implement (or simulate) [Yaqui Search](https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/yaqui.md) concept to show and internally employ in-game search engines (in mini-games, with real CPU-PoW, private indexers in IndexedDB, and webrtc p2p), before actual search engine protocol gets standardized and implemented.
->>> *Overall, there are enough specs in this repo for AI game masters to build first PoC approximation of Explorer Network together with players, alongside with investement into the real product (-lg address), allowing players to profit IRL as compensation for their IRL coding, operational and advertisement efforts*
+
+>>> *Overall, there are enough specs in this repo for AI game masters to build first PoC approximation of Explorer Network together with players, alongside with investement into the real product (-lg address), **allowing players to profit IRL as compensation for their IRL coding, operational and advertisement efforts**, regardless of what founder/author does next - profit-sharing acts as opens-source protocol for Explorer Nodes (consensus of node operators), asset distributions can be forked - mirror network is designed to be completely independent from the author, it only shares binding symbol: bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg as unique random digital representation of doomsday.*
 
 >> grant applications pending
 
