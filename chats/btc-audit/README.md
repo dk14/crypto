@@ -517,7 +517,7 @@ The [Explorer Fund](docs/fund-management.md) will simply reward bids/donations p
 >>>> Q: It sounds like win-win for everyone, where is the catch? A: Not for everyone, win-win for every contributor, e.g. for those who did DYR on security of their own funds (delegated to vendors, effectively).
 >>>>> Q: how about you? A: I did more research than you, you wouldn't be asking otherwise.
 >>>>>
->>>>> Q: How to contribute code? Write your own tool and/or explorer nodes IRL, write your own doomsday-web in game, contribution to profit-share - will give you rewards, given that your code is used in real explorer nodes and real entropy mining nodes (better approach than upwork inflated bids and corporate option offer scams, or guru midwestern time-stretch scams). While here - is either me, or serious code contributors on my discretion.
+>>>>> Q: How to contribute code? Write your own tool and/or explorer nodes IRL, write your own doomsday-web in game, contribution to profit-share - will give you rewards, given that your code is used in real explorer nodes and real entropy mining nodes (better approach than upwork inflated bids and corporate option offer scams, or guru midwestern time-stretch scams). While here, when it comes to reference implemntations - is either me, or serious code contributors on my discretion.
 >> grant applications pending
 
 Simulations with [Gemini](https://www.google.com/)
