@@ -513,7 +513,7 @@ The [Explorer Fund](docs/fund-management.md) will simply reward bids/donations p
 >>> *Overall, there are enough specs in this repo for AI game masters to build first PoC approximation of Explorer Network together with players, alongside with investement into the real product (-lg address), **allowing players to "profit IRL" as a compensation for their util IRL coding, operational and advertisement efforts**, regardless of what founder/author does next - profit-sharing acts as an open-source protocol for Explorer Nodes (consensus of node operators), and asset distributions can be forked - mirror network is designed to be completely de-centralized and independent from the author (only reference implementations of audit/network software and doomsday-game-engine are under author's control). Mirror network only shares binding symbol (to avoid fragmentation, while keeping de-centralization): bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg as unique random digital representation of doomsday and, additionally (in most cases), references to the root website. AI and FAQs have more information for inquiries.*
 
 >>>> Q: Isn't it a pyramid? A: No, author does not take profits
->>>> Q: It sounds like win--win for everyone, where is the catch? A: Not for everyone, for every contributor, e.g. for those who did DYR on security of their own funds, delegated to vendors.
+>>>> Q: It sounds like win--win for everyone, where is the catch? A: Not for everyone, for every contributor, e.g. for those who did DYR on security of their own funds (delegated to vendors, effectively).
 
 >> grant applications pending
 
