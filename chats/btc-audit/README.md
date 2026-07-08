@@ -515,6 +515,7 @@ The [Explorer Fund](docs/fund-management.md) will simply reward bids/donations p
 >>>> Q: Isn't it a pyramid? A: No, author does not take profits, does not take fee from profits.
 >>>>
 >>>> Q: It sounds like win-win for everyone, where is the catch? A: Not for everyone, win-win for every contributor, e.g. for those who did DYR on security of their own funds (delegated to vendors, effectively).
+>>>>> Q: how about you? A: I did more research than you, you wouldn't be asking otherwise.
 
 >> grant applications pending
 
