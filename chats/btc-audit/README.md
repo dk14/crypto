@@ -578,7 +578,7 @@ Advertiser simulation:
 
 <img src="./docs/simulations/advertiser.png" width="400" height="300">
 
-Real present doomsdayexplorer.online website visitors since launch (this is control group: no promotions run, 0 btc/usd invested into ads - 3K unique visitors in two weeks):
+Real present doomsdayexplorer.online website visitors since launch (**this is control group: no promotions** run, 0 btc/usd invested into ads - 3K unique visitors in two weeks):
 
 <img src="./docs/website-visitors.png" width="700" height="200">
 
