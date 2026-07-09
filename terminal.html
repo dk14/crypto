@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Matrix‑style JS terminal + eng.js predictor</title>
+<style>
+    html,body{
+        height:100%;margin:0;background:#000;
+        color:#0f0;font-family:"Courier New",Courier,monospace;
+        overflow:hidden;
+    }
+    #terminal{
+        padding:10px;box-sizing:border-box;
+        height:100%;width:100%;
+        overflow-y:auto;white-space:pre-wrap;
+    }
+    .line{
+        display:flex;align-items:flex-start;margin-bottom:2px;
+    }
+    .prompt{flex-shrink:0;margin-right:4px;}
+    .input{
+        flex:1;background:none;border:none;color:#0f0;
+        font:inherit;outline:none;
+    }
+    .command{flex:1;color:#0f0;word-break:break-all;}
+    .prediction{
+        flex:0 0 auto;color:#777;pointer-events:none;
+        user-select:none;
+    }
+    .cursor{
+        display:inline-block;width:8px;height:1em;
+        background:#0f0;animation:blink .8s steps(1) infinite;
+        vertical-align:bottom;
+    }
+    @keyframes blink{0%,50%{opacity:1}100%{opacity:0}}
+    .output{margin-left:2ch;}
+</style>
+</head>
+<body>
+
+<div id="terminal"></div>
+
+<script>
+(() => {
+    const term = document.getElementById('terminal');
+
+    /* -----------------------------------------------------------------
+       1️⃣  Helper for coloured output – <c=red>text</c> → grey‑red text
+       ----------------------------------------------------------------- */
+    function termPrint(txt){
+        const html = txt.replace(/<c=([^>]+)>([\s\S]*?)<\/c>/gi,
+                                 '<span style="color:$1;">$2</span>');
+        const out = document.createElement('div');
+        out.className = 'output';
+        out.innerHTML = html;
+        term.appendChild(out);
+        term.scrollTop = term.scrollHeight;
+    }
+    window.print = termPrint;
+    window.termPrint = termPrint;
+
+    /* -----------------------------------------------------------------
+       2️⃣  Hijack console.log so it prints in the terminal
+       ----------------------------------------------------------------- */
+    const oldLog = console.log;
+    console.log = (...a)=>{ termPrint(a.join(' ')); oldLog.apply(console,a); };
+
+    /* -----------------------------------------------------------------
+       3️⃣  Built‑in commands (help, clear, predict‑control)
+       ----------------------------------------------------------------- */
+    const builtIns = {
+        help: () => termPrint(
+            'Matrix‑JS terminal with <b>eng.js</b> predictor.<br/>' +
+            '- Type any JavaScript → <Enter>.<br/>' +
+            '- <b>console.log()</b> and <b>print()</b> write here.<br/>' +
+            '- Colour markup: <code>&lt;c=red&gt;red&lt;/c&gt;</code>.<br/>' +
+            '- <b>clear()</b> wipes the screen.<br/>' +
+            '- <b>predict on|off</b> – toggle the predictor.<br/>' +
+            '- <b>predict config interval ms</b> – change refresh rate.'
+        ),
+        clear: () => { term.innerHTML=''; },
+    };
+
+    /* -----------------------------------------------------------------
+       4️⃣  Predictor state
+       ----------------------------------------------------------------- */
+    const predictor = {
+        enabled:true,
+        intervalMs:500,
+        timer:null,
+        ctx:{}               // persistent context across calls
+    };
+
+    function startPredictorTimer(){
+        stopPredictorTimer();
+        predictor.timer = setInterval(()=>updatePrediction(), predictor.intervalMs);
+    }
+    function stopPredictorTimer(){ if(predictor.timer){clearInterval(predictor.timer); predictor.timer=null;} }
+
+    /* -----------------------------------------------------------------
+       5️⃣  eng.js – only the parts we need for prediction
+       ----------------------------------------------------------------- */
+    // ---------- helpers for rendering ----------
+    const MAX_UNICODE = 0x10FFFFn;
+    function entityToBigInt(f){ const d=/^&#(\d+);$/.exec(f); if(d)return BigInt(d[1]); const h=/^&#x([0-9a-fA-F]+);$/.exec(f); if(h)return BigInt('0x'+h[1]); return null; }
+    function cpToString(cp){ return cp<=MAX_UNICODE?String.fromCodePoint(Number(cp)):`&#${cp};`; }
+    function tokenToBigInt(tok){
+        const e = entityToBigInt(tok);
+        if(e!==null) return e;
+        return BigInt(tok.codePointAt(0));
+    }
+    function render(input){
+        const out=[]; let pos=0,i=0;
+        while(i<input.length){
+            if(input[i]==='&'){
+                const semi=input.indexOf(';',i+1);
+                if(semi!==-1){
+                    const cand=input.slice(i,semi+1);
+                    const big=entityToBigInt(cand);
+                    if(big!==null){ out.push([big,pos++]); i=semi+1; continue; }
+                }
+            }
+            const cp=input.codePointAt(i);
+            out.push([BigInt(cp),pos++]);
+            i+= cp>0xFFFF?2:1;
+        }
+        return out;
+    }
+    function parse(state){
+        if(!state||!state.length) return '';
+        return state.map(([cp])=>cpToString(cp)).join('');
+    }
+
+    // ---------- essential prediction engine ----------
+    function countOccurrences(hay, needle){
+        const n=hay.length,m=needle.length; if(m===0) return 0;
+        let c=0;
+        for(let i=0;i+m<=n;i++){
+            let j=0;
+            while(j<m && hay[i+j]===needle[j]) j++;
+            if(j===m) c++;
+        }
+        return c;
+    }
+    function find(state, pattern, ctx={}, fuzzy=false){
+        if(!ctx.transform) ctx.transform=new Map();
+        if(!ctx.simillarity) ctx.simillarity=0;
+        if(!ctx.transformStr) ctx.transformStr=new Map();
+
+        ctx.masks=ctx.masks||{};
+        let sMask=ctx.masks.stateMask;
+        let pMask=ctx.masks.patternMask;
+        const result=[]; ctx.scores=[];
+
+        for(let start=0; start<=state.length-pattern.length; start++){
+            let sim = fuzzy
+                ? (()=>{ const inf=pattern.map((x,i)=>x!==state[start+i][0]?i:undefined).filter(v=>v!==undefined);
+                        pMask=sMask=inf.length?new Set(inf):undefined;
+                        return pattern.length-inf.length; })()
+                : (pattern.every((x,i)=>x===state[start+i][0])?pattern.length:0);
+            if(sim===0) continue;
+
+            const next = state[start+pattern.length];
+            if(next){
+                ctx.scores.push(sim);
+                result.push(next);
+            }
+        }
+        return result.filter((x,i)=>ctx.scores[i]===ctx.simillarity);
+    }
+    function predict(state, ctx={}){
+        if(state.length===0) return undefined;
+        let prev, best=[];
+        ctx.simillarity=0; ctx.fuzzyBound=undefined;
+        for(let len=1; len<=state.length; len++){
+            const matches = find(state.slice(0,-len), state.slice(-len), ctx);
+            if(matches.length===0){
+                if(!ctx.fuzzyBound) ctx.fuzzyBound=prev?.length||0;
+                if(len>ctx.simillarity+ctx.fuzzyBound) return best;
+                const fuzzy = find(state.slice(0,-len), state.slice(-len), ctx, true);
+                if(!prev) return fuzzy;
+                if(fuzzy.length>prev.length) return prev;
+                return fuzzy;
+            }
+            prev=matches; best=matches;
+        }
+        return best;
+    }
+
+    // ---------- deterministic wrapper (used by the demo) ----------
+    function predictDeterministic(state, ctx={}){
+        let r=predict(state,ctx);
+        ctx.nores = !r||r.length===1;
+        if(r && r.length>1){
+            while(Array.isArray(r) && r.length>1){
+                const refined=predict(r,ctx);
+                if(!refined) break;
+                if(refined.length===1){ r=refined; break; }
+                r=refined;
+            }
+            ctx.roll = Array.isArray(r) && r.length>1;
+        }
+        return r?.[0]||r;
+    }
+
+    // ---------- expose a tiny API ----------
+    window.eng = {render, parse, predictDeterministic};
+
+    /* -----------------------------------------------------------------
+       6️⃣  Prediction UI handling
+       ----------------------------------------------------------------- */
+    let activeInput=null, predictionSpan=null;
+
+    function updatePrediction(){
+        if(!predictor.enabled || !activeInput) return;
+        const txt = activeInput.value;
+        const state = render(txt);
+        const next = predictDeterministic(state, predictor.ctx);
+        const display = next ? parse([next]) : '';
+        predictionSpan.textContent = display;
+    }
+
+    function attachPredictionHandlers(input){
+        activeInput = input;
+        predictionSpan = document.createElement('span');
+        predictionSpan.className='prediction';
+        input.parentNode.appendChild(predictionSpan);
+
+        input.addEventListener('input',()=>{ if(predictor.enabled) updatePrediction(); });
+        input.addEventListener('focus',()=>{ if(predictor.enabled) updatePrediction(); });
+        if(predictor.enabled) startPredictorTimer();
+    }
+
+    function detachPredictionHandlers(){
+        if(predictionSpan) predictionSpan.remove();
+        predictionSpan=null; activeInput=null;
+        stopPredictorTimer();
+    }
+
+    /* -----------------------------------------------------------------
+       7️⃣  Prompt line creation
+       ----------------------------------------------------------------- */
+    function newPrompt(){
+        const line=document.createElement('div'); line.className='line';
+        const prompt=document.createElement('span'); prompt.className='prompt'; prompt.textContent='> ';
+        const input=document.createElement('input'); input.type='text'; input.className='input';
+        line.appendChild(prompt); line.appendChild(input);
+        term.appendChild(line);
+        input.focus();
+
+        // attach prediction UI
+        attachPredictionHandlers(input);
+
+        input.addEventListener('keydown',e=>{
+            if(e.key!=='Enter') return;
+            const cmd=input.value;
+
+            // lock current line
+            detachPredictionHandlers();
+            input.readOnly=true;
+            input.classList.remove('input');
+
+            const cmdSpan=document.createElement('span'); cmdSpan.className='command'; cmdSpan.textContent=cmd;
+            input.replaceWith(cmdSpan);
+
+            processCommand(cmd);
+        });
+    }
+
+    /* -----------------------------------------------------------------
+       8️⃣  Command processing (including predictor control)
+       ----------------------------------------------------------------- */
+    function processCommand(raw){
+        const cmd = raw.trim();
+
+        // empty line
+        if(!cmd){ newPrompt(); return; }
+
+        // built‑ins (help, clear, predict …)
+        if(/^predict\s/.test(cmd)){
+            const args=cmd.split(/\s+/).slice(1);
+            if(args[0]==='on'){
+                predictor.enabled=true;
+                termPrint('<c=lime>Predictor enabled</c>');
+                startPredictorTimer();
+            }else if(args[0]==='off'){
+                predictor.enabled=false;
+                termPrint('<c=yellow>Predictor disabled</c>');
+                stopPredictorTimer();
+            }else if(args[0]==='config' && args[1]==='interval' && args[2]){
+                const ms = Number(args[2]);
+                if(!isNaN(ms) && ms>0){
+                    predictor.intervalMs=ms;
+                    termPrint(`Prediction interval set to ${ms} ms`);
+                    if(predictor.enabled) startPredictorTimer();
+                }
+            }else{
+                termPrint('<c=red>Unknown predict command</c>');
+            }
+            newPrompt(); return;
+        }
+        if(builtIns.hasOwnProperty(cmd)){
+            try{ builtIns[cmd](); }catch(e){ termPrint('<c=red>'+e+'</c>'); }
+            newPrompt(); return;
+        }
+
+        // JavaScript evaluation
+        try{
+            const res=eval(cmd);
+            if(res!==undefined) termPrint(String(res));
+        }catch(e){
+            termPrint('<c=red>'+e+'</c>');
+        }
+        newPrompt();
+    }
+
+    /* -----------------------------------------------------------------
+       9️⃣  Initialise terminal
+       ----------------------------------------------------------------- */
+    termPrint('Welcome to <c=lime>Matrix‑JS</c> terminal with <b>eng.js</b> predictor.');
+    termPrint('Type <b>help</b> for instructions.');
+    newPrompt();
+
+    // start predictive loop (if enabled at start)
+    if(predictor.enabled) startPredictorTimer();
+
+    // keep focus on the active input when clicking elsewhere
+    document.body.addEventListener('click',()=>{ if(activeInput) activeInput.focus(); });
+
+})();
+</script>
+
+</body>
+</html>
