@@ -89,7 +89,7 @@ Introductory Notes (How To Read The README):
 
 > **Fun & Profit game** (part of real Doomsday Explorer Project)
 
->> (Jul 9, 2026) GPT-OSS120b in Ollama ([MP3](https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/audio/cryptocallypse.mp3) - No AI, I only had an hour and GarageBand, GPT-OSS):
+>> (Jul 9, 2026) GPT-OSS120b in Ollama ([MP3](https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/audio/cryptocallypse.mp3) - old school w/o AI, I only had an hour and GarageBand, GPT-OSS):
 
 >> <img src="docs/simulations/gpt-oss.png" width="600" height="600">
 
