@@ -88,6 +88,14 @@ Introductory Notes (How To Read The README):
 
 > **Fun & Profit game** (part of real Doomsday Explorer Project)
 
+>> (Jul 9, 2026) GPT-OSS120b in Ollama:
+
+>> <img src="docs/simulations/gpt-oss.png" width="400" height="400">
+
+>> 
+>>.
+
+
 >> (Jul 6, 2026) Gemini learned to generate art contextually. Riddle *(XOR ridddle I guess, like in [IQ tests](./docs/extra/matt-iq-2022-in-lt-eu.png) - but should be fun for kids; alternative non-XOR answers can be accepted btw - and use of alternative answers by player should affect the plot)* on the screen - **is the real riddle in the game**. It's so awesome. Better than Stalker (although not a fan of Stalker - art and nature was good, but nowadays Torets'k IRL story is more interesting and actual than Chernobyl, since it's millitary reflection of desertification - much older problem than nuclear; and more thrilling stories; and chat gameplay is better - game mechanics is worst part of Stalker - bad Fallout; 3d gameplay, webxr, focused/suspensful/dynamic/adaptive *(to player's movement overall/holistic measured kinetic energy as well)* demoscene soundtrak etc will eventually be in Fun & Profit mini-games anyways).
 >>  <img src="docs/extra/game-art-gemini.png" width="600" height="300">
 >>
