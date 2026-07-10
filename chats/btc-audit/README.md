@@ -40,6 +40,7 @@ Researcher/AI intro: [https://ai.doomsdayexplorer.online/](https://ai.doomsdayex
 Ai-Gamer intro: [https://game.doomsdayexplorer.online/](https://game.doomsdayexplorer.online/)
 
 Video intro: [MP4](https://crypto.doomsdayexplorer.online/promo-video.mp4)
+, Audio intro: [MP3](https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/audio/cryptocallypse.mp3)
 
 Contact: [info-github@doomsdayexplorer.online](mailto:info-github@doomsdayexplorer.online)
 
