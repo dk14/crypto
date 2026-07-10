@@ -90,7 +90,7 @@ Introductory Notes (How To Read The README):
 
 >> (Jul 9, 2026) GPT-OSS120b in Ollama:
 
->> <img src="docs/simulations/gpt-oss.png" width="400" height="400">
+>> <img src="docs/simulations/gpt-oss.png" width="600" height="600">
 
 >> 
 >>.
