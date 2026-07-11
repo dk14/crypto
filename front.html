@@ -350,6 +350,82 @@ footer{
     color:var(--text-muted);               /* optional: highlight with accent on hover */
     text-decoration:underline;        /* optional visual cue */
 }
+
+
+/* -------------------------------------------------------
+   1️⃣  Compact size & dark container
+   ------------------------------------------------------- */
+audio {
+    /* size – change these values if you need it even smaller */
+    display: block;                     /* needed for width/height to apply */
+    width: 260px;                        /* total width of the bar   */
+    height: 24px;                        /* enough for the built‑in controls */
+    max-width: 100%;                    /* stay responsive on tiny screens */
+    margin: 1rem auto;                  /* centre on the page */
+
+    /* dark “matrix” background – replaces the default grey strip */
+    background:#111;                     /* dark panel */
+    border-radius:5px;
+    box-shadow:0 0 8px rgba(0,255,0,.12);
+    text-align: left;
+    opacity: 0.1;
+    float: left;
+
+    /* ---------------------------------------------------
+       2️⃣  Colour‑filter – turn the native UI green
+       --------------------------------------------------- */
+    filter:
+        invert(12%)      /* start from the browser’s light UI */
+        sepia(20%)
+        saturate(70%)
+        grayscale(1)
+        contrast(99%);
+}
+
+/* -------------------------------------------------------
+   4️⃣  Fallback for Firefox / Edge (no WebKit pseudo‑elements)
+   ------------------------------------------------------- */
+audio {
+    color-scheme: dark;            /* forces a dark UI where the UA supports it */
+}
+
+/* -------------------------------------------------------
+   5️⃣  Matrix‑rain “animation” without ::after
+   ------------------------------------------------------- */
+/* We use a repeating‑linear‑gradient that moves vertically.
+   The gradient lives on the <audio> element itself, so no extra
+   pseudo‑element is required. */
+@keyframes matrix‑rain {
+    0%   { background-position:0 0; }
+    100% { background-position:0 100%; }
+}
+
+/* The gradient gives a subtle green “code rain” that scrolls
+   underneath the native controls. */
+audio {
+    /* keep the dark solid colour as the base, then layer the gradient */
+    background:
+        /* 1️⃣ solid dark base */
+        #111,
+        /* 2️⃣ moving translucent green stripes */
+        repeating-linear-gradient(
+            to bottom,
+            rgba(0,255,0,.02) 0%,
+            rgba(0,255,0,.07) 1%,
+            rgba(0,255,0,.02) 2%
+        );
+    background-blend-mode: overlay;   /* blend the two layers */
+    background-size: auto 100%;        /* height of the pattern = 100% */
+    animation: matrix‑rain 8s linear infinite;
+}
+
+/* -----------------------------------------------------------------
+   OPTIONAL: respect users who request reduced motion
+   ----------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    audio { animation:none; }
+}
+
 </style>
 <script>
   document.addEventListener("DOMContentLoaded", function() {
@@ -714,7 +790,8 @@ User compares examples against their own secret privately: offline manually or i
  IPFS --metadata "project:ExplorerBTCAudit"
 </div> 
 <a href="https://hub.doomsdayexplorer.online/" style="text-decoration: none; color:white" title="Download Fun & Profit AI-Game! Play interactive HTML mini-games 📱 . GPT-5 🌀 supported (beta)"><img src="./chats/btc-audit/docs/simulations/gpt5-terminal.png" style="opacity:0.2; filter: contrast(2) blur(0.2px) brightness(5)" width="300"></a><br/><a href="https://hub.doomsdayexplorer.online/" style="text-decoration: none; color:white" title="Download Fun & Profit AI-Game! Contextual art 🌵👩‍🎨🌵 . Gemini, GPT5 (beta) supported"><img src="./chats/btc-audit/docs/extra/game-art-gemini.png" style="opacity:0.2; filter: contrast(2) blur(0.2px) brightness(5)" width="300"></a>
-
+<audio controls loop src="https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/audio/cryptocallypse.mp3"></audio>
+<br/>
 <div style="color:grey">
 Got your own private tool joining protocol?
 
