@@ -1160,17 +1160,24 @@ audioEl.addEventListener('play', async () => {
   if (!audioCtx) initAudioGraph();               // first‑time setup
   if (audioCtx.state === 'suspended') await audioCtx.resume();
 
+  document.getElementById('contin').innerText="Escape Entropy"
+
+
   requestAnimationFrame(updateBrightness);        // start the visual loop
 });
 
 audioEl.addEventListener('pause', () => {
   // Optional: reset to the default (no filter) when paused
   // noteEls.forEach(el => el.style.filter = '');
+  document.getElementById('contin').innerText="Enter"
+
 });
 
 audioEl.addEventListener('ended', () => {
   // Reset when the track finishes (optional)
   noteEls.forEach(el => el.style.filter = '');
+    document.getElementById('contin').innerText="Enter"
+
 });
 
 /* -----------------------------------------------------------------
