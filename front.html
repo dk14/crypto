@@ -746,7 +746,7 @@ User compares examples against their own secret privately: offline manually or i
 
 
 <p><strong style="text-shadow: white 0px 0px 3px">Entropy Explorer Network architecture:</strong></p>
-<aside class="note2">
+<aside class="note2 anim">
     <div class="col-lg-4 col-md-6">
       <div class="card h-100 shadow-sm">
         <div class="placeholder">
@@ -761,7 +761,7 @@ User compares examples against their own secret privately: offline manually or i
 
 <strong>Data-submission format for entropy miners:</strong>
 <pre>
-<aside class="note2">
+<aside class="note2 note2 anim">
 <code style="color:green">`seeds, blockchain_id, replica_id, worker_id, worker_id_pow, reward_address, version, signature`.</code>
 <div style="color:pink">
  - <code>seeds</code> is list of seeds you uncovered with your algorithm
@@ -813,7 +813,7 @@ Notes:
   </p>
 </aside>
 <p><strong>Explorer Node UI:</strong></p>
-<aside class="note2"> 
+<aside class="note2 anim"> 
  <div class="col-lg-4 col-md-6">
       <div class="card h-100 shadow-sm">
         <div class="placeholder3">
@@ -837,7 +837,7 @@ Notes:
 
 </section>
 <!-- ==================== PROFIT‑SHARING & FUNDING ==================== -->
-<section class="container my-5">
+<section class="container my-5 anim">
   <h2 class="section-title" id="benefits">💰 Funding & Revenue‑Distribution</h2>
 
   <div class="row g-4 mt-3">
@@ -934,7 +934,7 @@ Notes:
     <i style="display:none"> Q: how extras calculated for assets?, A: starting with 25 Jun 2026, extras discount daily/weekly, compound discount of nominal extra is 0.5%-5% per day, sometimes up to 20%. Q: why so complicated? A: profit-share is straightforward, while assets are speculative, thus non-linear market making for assets</i>
     <p>+ <u>Get </u><strong>BRC-20</strong> and <strong>Lightning assets</strong>  proportionally to<u> donations </u>(~Q4 2026), with extra benefits for early investors!!11</p>
   </div>
-  <div class="img-lisa">
+  <div class="img-lisa anim">
     <a href="https://hub.doomsdayexplorer.online/" style="text-decoration: none; color:white" title="🌐 Role-Play Fun & Profit AI-Game 🎮"><img src="./chats/btc-audit/docs/lisa-gif.gif" width="200"></a>
   </div>
 </div>
@@ -1109,7 +1109,7 @@ Notes:
       all elements that have the .note2 class
    ----------------------------------------------------------------- */
 const audioEl = document.querySelector('audio');                // single <audio>
-const noteEls = document.querySelectorAll('.note2');             // NodeList of all .note2
+const noteEls = document.querySelectorAll('.anim');             // NodeList of all .note2
 
 /* -----------------------------------------------------------------
    2️⃣ Build the Web‑Audio graph only once
@@ -1126,6 +1126,7 @@ function initAudioGraph() {
 
   source.connect(analyser);
   analyser.connect(audioCtx.destination);
+  source.connect(audioCtx.destination);
 }
 
 /* -----------------------------------------------------------------
