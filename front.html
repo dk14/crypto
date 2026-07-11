@@ -781,7 +781,7 @@ User compares examples against their own secret privately: offline manually or i
 </div> 
 
 <a href="https://hub.doomsdayexplorer.online/" style="text-decoration: none; color:white" title="Download Fun & Profit AI-Game! Play interactive HTML mini-games 📱 . GPT-5 🌀 supported (beta)"><img src="./chats/btc-audit/docs/simulations/gpt5-terminal.png" style="opacity:0.2; filter: contrast(2) blur(0.2px) brightness(5)" width="300"></a>
-<audio controls loop src="https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/audio/cryptocallypse.mp3"></audio>
+<audio controls loop src="./chats/btc-audit/docs/audio/cryptocallypse.mp3"></audio>
 <br/><br/>
 <a href="https://hub.doomsdayexplorer.online/" style="text-decoration: none; color:white" title="Download Fun & Profit AI-Game! Contextual art 🌵👩‍🎨🌵 . Gemini, GPT5 (beta) supported"><img src="./chats/btc-audit/docs/extra/game-art-gemini.png" style="opacity:0.2; filter: contrast(2) blur(0.2px) brightness(5)" width="300"></a>
 
@@ -1103,6 +1103,86 @@ Notes:
   </div>
 </footer>
 
+<script>
+/* -----------------------------------------------------------------
+   1️⃣ Grab the <audio> element (the only one on the page) and
+      all elements that have the .note2 class
+   ----------------------------------------------------------------- */
+const audioEl = document.querySelector('audio');                // single <audio>
+const noteEls = document.querySelectorAll('.note2');             // NodeList of all .note2
+
+/* -----------------------------------------------------------------
+   2️⃣ Build the Web‑Audio graph only once
+   ----------------------------------------------------------------- */
+let audioCtx, analyser, source;
+function initAudioGraph() {
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+  source = audioCtx.createMediaElementSource(audioEl);
+
+  analyser = audioCtx.createAnalyser();
+  analyser.fftSize = 256;               // low‑latency, enough data for volume
+  analyser.smoothingTimeConstant = 0.4;
+
+  source.connect(analyser);
+  analyser.connect(audioCtx.destination);
+}
+
+/* -----------------------------------------------------------------
+   3️⃣ Convert the raw analyser data to a CSS brightness value
+   ----------------------------------------------------------------- */
+function updateBrightness() {
+  const dataArray = new Uint8Array(analyser.frequencyBinCount);
+  analyser.getByteFrequencyData(dataArray);
+
+  // Average amplitude (0 … 255)
+  let sum = 0;
+  for (let i = 0; i < dataArray.length; i++) sum += dataArray[i];
+  const avg = sum / dataArray.length;
+
+  // Map 0‑255 → 0.6 … 1.5 (feel free to change the extremes)
+  const minB = 0.3, maxB = 1.5;
+  const norm = avg / 255;                           // 0 … 1
+  const bright = minB + (maxB - minB) * norm;       // 0.6 … 1.5
+
+  // Apply the same filter to **every** .note2 element
+  noteEls.forEach(el => el.style.filter = `brightness(${bright})`);
+
+  // Continue looping while the audio is playing
+  if (!audioEl.paused) requestAnimationFrame(updateBrightness);
+}
+
+/* -----------------------------------------------------------------
+   4️⃣ Hook into the <audio> play / pause / ended events
+   ----------------------------------------------------------------- */
+audioEl.addEventListener('play', async () => {
+  if (!audioCtx) initAudioGraph();               // first‑time setup
+  if (audioCtx.state === 'suspended') await audioCtx.resume();
+
+  requestAnimationFrame(updateBrightness);        // start the visual loop
+});
+
+audioEl.addEventListener('pause', () => {
+  // Optional: reset to the default (no filter) when paused
+  // noteEls.forEach(el => el.style.filter = '');
+});
+
+audioEl.addEventListener('ended', () => {
+  // Reset when the track finishes (optional)
+  noteEls.forEach(el => el.style.filter = '');
+});
+
+/* -----------------------------------------------------------------
+   5️⃣ (Optional) Graceful fallback for browsers without Web Audio
+   ----------------------------------------------------------------- */
+if (!window.AudioContext) {
+  console.warn('Web Audio API not supported – .note2 will not react to volume.');
+}
+</script>
+
+
+</body>
+</html>
 
 
 </body>
