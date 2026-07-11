@@ -364,22 +364,22 @@ audio {
     margin: 1rem auto;                  /* centre on the page */
 
     /* dark “matrix” background – replaces the default grey strip */
-    background:#111;                     /* dark panel */
+    background:#f40101;                     /* dark panel */
     border-radius:5px;
-    box-shadow:0 0 8px rgba(0,255,0,.12);
+    box-shadow:0 0 8px rgba(255, 0, 0, 0.908);
     text-align: left;
-    opacity: 0.1;
+    opacity: 0.05;
     float: left;
 
     /* ---------------------------------------------------
        2️⃣  Colour‑filter – turn the native UI green
        --------------------------------------------------- */
     filter:
-        invert(12%)      /* start from the browser’s light UI */
+        invert(0)      /* start from the browser’s light UI */
         sepia(20%)
         saturate(70%)
         grayscale(1)
-        contrast(99%);
+        contrast(70);
 }
 
 /* -------------------------------------------------------
@@ -404,16 +404,6 @@ audio {
    underneath the native controls. */
 audio {
     /* keep the dark solid colour as the base, then layer the gradient */
-    background:
-        /* 1️⃣ solid dark base */
-        #111,
-        /* 2️⃣ moving translucent green stripes */
-        repeating-linear-gradient(
-            to bottom,
-            rgba(0,255,0,.02) 0%,
-            rgba(0,255,0,.07) 1%,
-            rgba(0,255,0,.02) 2%
-        );
     background-blend-mode: overlay;   /* blend the two layers */
     background-size: auto 100%;        /* height of the pattern = 100% */
     animation: matrix‑rain 8s linear infinite;
@@ -789,9 +779,12 @@ User compares examples against their own secret privately: offline manually or i
 
  IPFS --metadata "project:ExplorerBTCAudit"
 </div> 
-<a href="https://hub.doomsdayexplorer.online/" style="text-decoration: none; color:white" title="Download Fun & Profit AI-Game! Play interactive HTML mini-games 📱 . GPT-5 🌀 supported (beta)"><img src="./chats/btc-audit/docs/simulations/gpt5-terminal.png" style="opacity:0.2; filter: contrast(2) blur(0.2px) brightness(5)" width="300"></a><br/><a href="https://hub.doomsdayexplorer.online/" style="text-decoration: none; color:white" title="Download Fun & Profit AI-Game! Contextual art 🌵👩‍🎨🌵 . Gemini, GPT5 (beta) supported"><img src="./chats/btc-audit/docs/extra/game-art-gemini.png" style="opacity:0.2; filter: contrast(2) blur(0.2px) brightness(5)" width="300"></a>
+
+<a href="https://hub.doomsdayexplorer.online/" style="text-decoration: none; color:white" title="Download Fun & Profit AI-Game! Play interactive HTML mini-games 📱 . GPT-5 🌀 supported (beta)"><img src="./chats/btc-audit/docs/simulations/gpt5-terminal.png" style="opacity:0.2; filter: contrast(2) blur(0.2px) brightness(5)" width="300"></a>
 <audio controls loop src="https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/audio/cryptocallypse.mp3"></audio>
-<br/>
+<br/><br/>
+<a href="https://hub.doomsdayexplorer.online/" style="text-decoration: none; color:white" title="Download Fun & Profit AI-Game! Contextual art 🌵👩‍🎨🌵 . Gemini, GPT5 (beta) supported"><img src="./chats/btc-audit/docs/extra/game-art-gemini.png" style="opacity:0.2; filter: contrast(2) blur(0.2px) brightness(5)" width="300"></a>
+
 <div style="color:grey">
 Got your own private tool joining protocol?
 
