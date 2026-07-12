@@ -792,7 +792,7 @@ audio {
       video.onplay = () => {
         audioEl.play()
         audioCtx.resume()
-        equestFullScreen(video)
+        requestFullScreen(video)
       }
 
       video.onpause = () => {
