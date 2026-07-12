@@ -7,6 +7,35 @@
     <link rel="icon" type="image/x-icon" href="https://crypto.doomsdayexplorer.online/chats/btc-audit/docs/game-icon.png">
 
     <style>
+
+      ::-webkit-scrollbar {
+  width: 12px;               /* vertical bar width   */
+  height: 12px;              /* horizontal bar height */
+  background: transparent; /* keep the track invisible */
+}
+::-webkit-scrollbar-track {
+  background: #111;                         /* same dark colour as your page bg */
+}
+::-webkit-scrollbar-thumb {
+  background-color: #2a2a2a;                /* dark thumb */
+  border-radius: 6px;
+  border: 3px solid #111;                     /* creates a small “gap” so the thumb doesn’t blend with the track */
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #3c3c3c;                /* a little lighter on hover */
+}
+
+/* Firefox – uses the standardized scrollbar properties */
+* {
+  scrollbar-width: thin;                     /* “thin” = ~12 px, “auto” = default */
+  scrollbar-color: #2a2a2a #111;             /* thumb colour, then track colour */
+}
+
+/* Optional: keep the thumb dark when the page is scrolled */
+html, body {
+  background: #0a0e27; 
+  overflow: overlay;   /* ensures scrollbars overlay content (optional) */
+}
         * {
             margin: 0;
             padding: 0;
@@ -388,6 +417,7 @@ audio {
             <br/>
             <br/>
              <audio controls loop src="./music/cryptocallypse.mp3"></audio>
+             <p id="tracks" style="text-align: center; display: none"> <a target="_blank" href="https://crypto.doomsdayexplorer.online/front#benefits">next</a>  | <a href="https://crypto.doomsdayexplorer.online/front#benefits" target="_blank">previous</a><br/><br/></p>
             <p style="text-align: center">"old school <s>not</s> cool" 90s cryptogeddon intro</p>
             
         </div>
@@ -476,28 +506,108 @@ audio {
     </script>
     <script>
 (async () => {
-  // ------- 1️⃣  Get the (only) audio element on the page -----------------
-  const audio = document.querySelector('audio');
-  if (!audio) return;   // nothing to visualise
 
-  // ------- 2️⃣  Create a full‑screen canvas that lives behind everything ---
+  const showHintThenCountdown = () => {
+    hint.style.opacity = '1';
+    setTimeout(() => {
+      hint.style.opacity = '0';
+      startCountdown();
+    }, 3000);                         // hint visible 3 s
+  };
+
+  const startCountdown = () => {
+    timer.style.opacity = '1';
+    const endOfYear = new Date(new Date().getFullYear() + 1, 0, 1); // Jan 1 next year 00:00
+    const update = () => {
+      const now = new Date();
+      let diff = Math.max(0, endOfYear - now);
+      const h = String(Math.floor(diff / 36e5)).padStart(2, '0');
+      diff %= 36e5;
+      const m = String(Math.floor(diff / 6e4)).padStart(2, '0');
+      diff %= 6e4;
+      const s = String(Math.floor(diff / 1000)).padStart(2, '0');
+      timer.textContent = `${h}:${m}:${s}`;
+    };
+    update();                         // immediate first display
+    const id = setInterval(update, 1000);
+    // stop when we hit the new year (diff = 0) – optional
+    const stop = () => clearInterval(id);
+    setTimeout(stop, endOfYear - new Date());
+  };
+
+
+    const lockMeta = document.createElement('meta');
+  lockMeta.name = 'darkreader-lock';
+  document.head.appendChild(lockMeta);
+
+    document.documentElement.style.background = 'linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%)';
+  // Remove the body background that was hiding the canvas
+  document.body.style.background = 'transparent';
+  // Ensure the page content stays above the canvas
+  document.body.style.position = 'relative';
+  document.body.style.zIndex = '1';
+
+  /* --------------------------------------------------------------
+     1️⃣  Grab the single <audio> element (no id needed)
+     -------------------------------------------------------------- */
+  const audioEl = document.querySelector('audio');
+  if (!audioEl) return;               // nothing to visualise
+
+  /* --------------------------------------------------------------
+     2️⃣  Insert a full‑screen canvas that sits behind all content
+     -------------------------------------------------------------- */
   const canvas = document.createElement('canvas');
   Object.assign(canvas.style, {
     position: 'fixed',
     inset: 0,
     width: '100%',
     height: '100%',
-    zIndex: '-1',          // behind the page content
-    pointerEvents: 'none'  // never block clicks
+    zIndex: '-1',            // behind page elements
+    pointerEvents: 'none',   // never block clicks
+    background: 'linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%)'
   });
   document.body.appendChild(canvas);
+  
+  const hint = document.createElement('div');
+  hint.textContent = '💡 Click on the background to change preset';
+  hint.style.cssText = `
+    position:fixed; top:10px; right:10px; padding:6px 12px;
+    background:#111c; color:#66ff66; font-family:monospace;
+    border-radius:4px; font-size:0.9rem; z-index:2;
+    opacity:0; transition:opacity .3s;
+  `;
+  document.body.appendChild(hint);
 
-  // ------- 3️⃣  Load Butterchurn (the Milkdrop WebGL visualiser) ----------
- const butterchurnModule = await import(
+  const timer = document.createElement('div');
+  timer.style.cssText = `
+    position:fixed; top:10px; right:10px; padding:6px 12px;
+    background:#111c; color:pink; font-family:monospace;
+    border-radius:4px; font-size:0.9rem; z-index:2;
+    opacity:0; transition:opacity .3s;
+  `;
+  document.body.appendChild(timer);
+
+  const presetInfo = document.createElement('div');
+  presetInfo.style.cssText = `
+    position:fixed; left:10px; bottom:10px; padding:4px 8px;
+    background:#111c; color:#66ff66; font-family:monospace;
+    border-radius:4px; font-size:0.85rem; z-index:2;
+  `;
+  document.body.appendChild(presetInfo);
+
+
+  /* --------------------------------------------------------------
+     3️⃣  Load Butterchurn (the Milkdrop WebGL visualiser) as an ES‑module
+         – note that the default export contains `createVisualizer`
+     -------------------------------------------------------------- */
+  const {default: butterchurn} = await import(
     'https://unpkg.com/butterchurn@3.0.0-beta.5/dist/butterchurn.js'
   );
-  const butterchurn = butterchurnModule.default; 
-  // ------- 4️⃣  Load preset bundles (base + extra) ------------------------
+
+  /* --------------------------------------------------------------
+     4️⃣  Load the preset bundles (base + extra)
+         – they attach `window.base` and `window.extra`
+     -------------------------------------------------------------- */
   const loadScript = src =>
     new Promise(resolve => {
       const s = document.createElement('script');
@@ -509,63 +619,184 @@ audio {
   await loadScript('https://unpkg.com/butterchurn-presets@3.0.0-beta.4/dist/base.min.js');
   await loadScript('https://unpkg.com/butterchurn-presets@3.0.0-beta.4/dist/extra.min.js');
 
-  // Combine all presets that were attached to the global `window` object
   const presets = {
     ...(window.base?.default || {}),
     ...(window.extra?.default || {})
   };
   const presetKeys = Object.keys(presets);
-  const randomPreset = presets[presetKeys[Math.floor(Math.random() * presetKeys.length)]];
+  let presetIdx = -1;
 
-  // ------- 5️⃣  Build a tiny Web‑Audio graph --------------------------------
-  const AudioContext = window.AudioContext || window.webkitAudioContext;
-  const audioCtx = new AudioContext();
+  /* --------------------------------------------------------------
+     5️⃣  Variables that will be created on the first user‑action (play)
+     -------------------------------------------------------------- */
+  let audioCtx = null;          // AudioContext – created lazily
+  let visualizer = null;        // Butterchurn visualiser
+  let sourceNode = null;        // MediaElementSource from <audio>
+  let rendering = false;       // render‑loop flag
+  let initialized = false;      // have we built the graph yet?
 
-  // MediaElementSource lets Butterchurn analyse the <audio> element directly
-  const sourceNode = audioCtx.createMediaElementSource(audio);
-  // Connect to speakers (so we still hear the music)
-  sourceNode.connect(audioCtx.destination);
-
-  // ------- 6️⃣  Initialise the Butterchurn visualiser --------------------
-  const visualizer = butterchurn.createVisualizer(audioCtx, canvas, {
-    width: window.innerWidth,
-    height: window.innerHeight,
-    pixelRatio: window.devicePixelRatio,
-    // optional: reduce GPU load on very low‑end devices
-    // useRenderQueue: false,
-  });
-  // Feed the audio source to the visualiser
-  visualizer.connectAudio(sourceNode);
-  // Load a random preset (you can replace this with any preset name)
-  visualizer.loadPreset(randomPreset, 0);
-
-  // ------- 7️⃣  Render loop (runs only while music is playing) ----------
-  let rendering = false;
+  /* --------------------------------------------------------------
+     6️⃣  Helper: start / stop the render loop
+     -------------------------------------------------------------- */
   const render = () => {
     if (!rendering) return;
     visualizer.render();
     requestAnimationFrame(render);
   };
 
-  const startRendering = async () => {
-    // Some browsers keep the AudioContext suspended until a user gesture
+  const setCanvasSize = () => {
+    const dpr = window.devicePixelRatio || 1;
+    const w   = window.innerWidth;
+    const h   = window.innerHeight;
+
+    // physical pixel buffer
+    canvas.width  = w * dpr;
+    canvas.height = h * dpr;
+
+    // CSS size (keeps the canvas filling the viewport)
+    canvas.style.width  = `${w}px`;
+    canvas.style.height = `${h}px`;
+
+    // Tell Butterchurn the **pixel** dimensions (not the CSS size)
+    if (visualizer) visualizer.setRendererSize(w * dpr, h * dpr);
+  };
+
+  const startRender = async () => {
+    // --------- create AudioContext on first interaction -----------------
+    if (!initialized) {
+      document.getElementById("tracks").style.display="block"
+
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      audioCtx = new AudioCtx();
+
+      // MediaElementSource lets Butterchurn analyse the <audio> element
+      sourceNode = audioCtx.createMediaElementSource(audioEl);
+      sourceNode.connect(audioCtx.destination); // keep the sound audible
+
+      // ---- create the visualiser ------------------------------------
+      visualizer = butterchurn.createVisualizer(audioCtx, canvas, {
+        width: window.innerWidth,
+        height: window.innerHeight,
+        pixelRatio: window.devicePixelRatio
+      });
+
+      setCanvasSize()
+
+      // Feed audio into Butterchurn
+      visualizer.connectAudio(sourceNode);
+      // Load a preset (feel free to replace this with any preset you like)
+
+      if (presetIdx === -1) {
+        visualizer.loadPreset(presets['Flexi - alien web bouncer [26]'], 0);
+        presetInfo.textContent = 'Flexi - alien web bouncer [26]'
+        
+      } else {
+         visualizer.loadPreset(presets[presetKeys[presetIdx]], 0);
+         presetInfo.textContent = presetKeys[presetIdx];   // show initial name
+      }
+     
+
+
+      // Resize handling – Butterchurn uses setRendererSize()
+      const onResize = () =>
+        setCanvasSize()
+      window.addEventListener('resize', onResize);
+
+      console.log("init-ok")
+      initialized = true;
+    }
+
+    // Browsers may keep the context suspended until a user gesture
     if (audioCtx.state === 'suspended') await audioCtx.resume();
+
     if (!rendering) {
       rendering = true;
-      render();
+      render();               // kick‑off the animation loop
+    }
+
+    overlay.style.cursor = 'crosshair'
+
+    if (!canvas.dataset.hintShown) {
+      canvas.dataset.hintShown = 'yes';
+      showHintThenCountdown();
+      overlay.style.cursor = 'pointer'
     }
   };
-  const stopRendering = () => (rendering = false);
 
-  // ------- 8️⃣  Hook into the native audio controls --------------------
-  audio.addEventListener('play', startRendering);
-  audio.addEventListener('pause', stopRendering);
-  audio.addEventListener('ended', stopRendering);
+  const stopRender = () => (rendering = false);
 
-  // ------- 9️⃣  Keep canvas size in sync with the viewport ---------------
-  window.addEventListener('resize', () => {
-    visualizer.setSize(window.innerWidth, window.innerHeight);
+    const nextPreset = (blend = 2.5) => {
+      overlay.style.cursor = 'crosshair'
+    presetIdx = (presetIdx + 1) % presetKeys.length;
+    const preset = presets[presetKeys[presetIdx]];
+    visualizer.loadPreset(preset, blend);
+    presetInfo.textContent = presetKeys[presetIdx];
+  };
+
+
+    const overlay = document.createElement('div');
+  Object.assign(overlay.style, {
+    position: 'fixed',
+    inset: 0,
+    zIndex: '-1',               // above body (z‑index 1) but still allows UI that
+                               // have a higher z‑index (audio controls) to be clickable
+    background: 'transparent',
+    cursor: 'crosshair'
   });
+  document.body.appendChild(overlay);
+  overlay.addEventListener('click', () => {
+    // show hint only the very first time the user discovers the feature
+
+    nextPreset();               // change the visualisation
+  });
+
+  audioEl.addEventListener('pause', stopRender);
+  audioEl.addEventListener('ended', stopRender);
+
+
+  function isMobile() {
+    // simple UA check – good enough for iOS / Android only
+    return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  }
+
+  function requestFullScreen(videoEl) {
+    // Chrome / Android
+    if (videoEl.requestFullscreen) {
+      videoEl.requestFullscreen();
+    }
+    // Safari on iOS (older & current versions)
+    else if (videoEl.webkitEnterFullscreen) {
+      videoEl.webkitEnterFullscreen();
+    }
+  }
+
+  audioEl.addEventListener('play', async () => {
+    startRender();
+    if (!isMobile()) return;                 // desktop – do nothing
+
+    // ---- 4a. Create (or reuse) the hidden video element -----------------
+    let video = document.getElementById('fsVideo');
+    if (!video) {
+      video = document.createElement('video');
+      video.style.display = 'none';
+      video.id = 'fsVideo';
+      video.autoplay = true;
+      video.muted    = true;        // we don’t need sound from this video
+      video.playsInline = true;    // iOS Safari inline‑play flag
+      document.body.appendChild(video);
+    }
+
+    // ---- 4b. Capture the canvas stream (30 fps is fine for most phones) --
+    const stream = canvas.captureStream(30);   // 30 FPS
+    video.srcObject = stream;
+
+    // ---- 4c. Small delay to let the video start (required on iOS) -----
+    await new Promise(r => setTimeout(r, 100)); // give the video a moment
+
+    // ---- 4d. Ask the video to go fullscreen -------------------------
+    requestFullScreen(video);
+  });
+
 })();
 </script>
 
