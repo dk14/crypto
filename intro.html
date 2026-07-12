@@ -791,6 +791,7 @@ audio {
 
       video.onplay = () => {
         audioEl.play()
+        audioCtx.resume()
         requestFullScreen(video)
       }
 
