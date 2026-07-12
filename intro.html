@@ -418,7 +418,9 @@ audio {
             <br/>
              <audio controls loop src="./music/cryptocallypse.mp3"></audio>
              <p id="tracks" style="text-align: center; display: none"> <a target="_blank" href="https://crypto.doomsdayexplorer.online/front#benefits">next</a>  | <a href="https://crypto.doomsdayexplorer.online/front#benefits" target="_blank">previous</a><br/><br/></p>
-            <p style="text-align: center">"old school <s>not</s> cool" 90s cryptogeddon intro</p>
+             <p style="display: flex;justify-content: center;"><video style="display: none;
+     justify-content: center;" controls width=300 height = 300 id="fsVideo"></video></p>
+             <p style="text-align: center">"old school <s>not</s> cool" 90s cryptogeddon intro</p>
             
         </div>
 
@@ -772,66 +774,37 @@ audio {
 
   audioEl.addEventListener('play', async () => {
     startRender();
-    if (!isMobile()) return;                 // desktop – do nothing
+  })
 
 
-    new Promise(async () => {
-      // ---- 4a. Create (or reuse) the hidden video element -----------------
-      let video = document.getElementById('fsVideo');
-      if (!video) {
-        video = document.createElement('video');
-        video.id = 'fsVideo';
-        video.autoplay = true;
-        video.muted    = true;        // we don’t need sound from this video
-        video.playsInline = true;    // iOS Safari inline‑play flag
-        document.body.appendChild(video);
+  const video = document.getElementById('fsVideo');
 
-        video.onplay = () => {
-          audioEl.play()
-          audioCtx.resume()
-        }
+  if (isMobile()){
 
-        video.onpause = () => {
-          audioEl.pause()
-        }
+      video.id = 'fsVideo';
+      video.style.width = 300;
+      video.style.height = 300
+      video.style.display = 'block'
+      video.autoplay = false;
+      video.muted    = false;        // we don’t need sound from this video
+      video.playsInline = true;    // iOS Safari inline‑play flag
 
-        new Promise(() => audioCtx.resume());
-
+      video.onplay = () => {
+        audioEl.play()
+        audioCtx.resume()
+        equestFullScreen(video)
       }
 
-      // ---- 4b. Capture the canvas stream (30 fps is fine for most phones) --
+      video.onpause = () => {
+        audioEl.pause()
+      }
+
       const stream = canvas.captureStream(30);   // 30 FPS
       video.srcObject = stream;
 
-      // ---- 4c. Small delay to let the video start (required on iOS) -----
-      await new Promise(r => setTimeout(r, 100)); // give the video a moment
-
-      // ---- 4d. Ask the video to go fullscreen -------------------------
-      requestFullScreen(video);
-
-    })
-    
-  });
-
-
-
-  function removeVideoElem() {
-    document.getElementById('fsVideo').remove();
   }
+    
 
-  document.addEventListener('fullscreenchange', () => {
-    if (!document.fullscreenElement && typeof webkitCancelFullScreen !== 'undefined') {
-      removeVideoElem()
-    }
-  });
-
-  document.addEventListener('webkitfullscreenchange', () => {
-    // iOS Safari went out of fullscreen – stop the hidden video stream
-    const video = document.getElementById('fsVideo');
-    if (video && !video.webkitDisplayingFullscreen) {
-      removeVideoElem()
-    }
-  });
 
 })();
 </script>
