@@ -783,6 +783,16 @@ audio {
       video.muted    = true;        // we don’t need sound from this video
       video.playsInline = true;    // iOS Safari inline‑play flag
       document.body.appendChild(video);
+
+      video.onplay = () => {
+        audioEl.play()
+        audioCtx.resume()
+      }
+
+      video.onpause = () => {
+        audioEl.pause()
+      }
+
     }
 
     // ---- 4b. Capture the canvas stream (30 fps is fine for most phones) --
@@ -794,6 +804,26 @@ audio {
 
     // ---- 4d. Ask the video to go fullscreen -------------------------
     requestFullScreen(video);
+  });
+
+
+
+  function removeVideoElem() {
+    document.getElementById('fsVideo').remove();
+  }
+
+  document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement && typeof webkitCancelFullScreen !== 'undefined') {
+      removeVideoElem()
+    }
+  });
+
+  document.addEventListener('webkitfullscreenchange', () => {
+    // iOS Safari went out of fullscreen – stop the hidden video stream
+    const video = document.getElementById('fsVideo');
+    if (video && !video.webkitDisplayingFullscreen) {
+      removeVideoElem()
+    }
   });
 
 })();
