@@ -774,38 +774,43 @@ audio {
     startRender();
     if (!isMobile()) return;                 // desktop – do nothing
 
-    // ---- 4a. Create (or reuse) the hidden video element -----------------
-    let video = document.getElementById('fsVideo');
-    if (!video) {
-      video = document.createElement('video');
-      video.id = 'fsVideo';
-      video.autoplay = true;
-      video.muted    = true;        // we don’t need sound from this video
-      video.playsInline = true;    // iOS Safari inline‑play flag
-      document.body.appendChild(video);
 
-      video.onplay = () => {
-        audioEl.play()
-        audioCtx.resume()
+    new Promise(async () => {
+      // ---- 4a. Create (or reuse) the hidden video element -----------------
+      let video = document.getElementById('fsVideo');
+      if (!video) {
+        video = document.createElement('video');
+        video.id = 'fsVideo';
+        video.autoplay = true;
+        video.muted    = true;        // we don’t need sound from this video
+        video.playsInline = true;    // iOS Safari inline‑play flag
+        document.body.appendChild(video);
+
+        video.onplay = () => {
+          audioEl.play()
+          audioCtx.resume()
+        }
+
+        video.onpause = () => {
+          audioEl.pause()
+        }
+
+        new Promise(() => audioCtx.resume());
+
       }
 
-      video.onpause = () => {
-        audioEl.pause()
-      }
+      // ---- 4b. Capture the canvas stream (30 fps is fine for most phones) --
+      const stream = canvas.captureStream(30);   // 30 FPS
+      video.srcObject = stream;
 
-      audioCtx.resume()
+      // ---- 4c. Small delay to let the video start (required on iOS) -----
+      await new Promise(r => setTimeout(r, 100)); // give the video a moment
 
-    }
+      // ---- 4d. Ask the video to go fullscreen -------------------------
+      requestFullScreen(video);
 
-    // ---- 4b. Capture the canvas stream (30 fps is fine for most phones) --
-    const stream = canvas.captureStream(30);   // 30 FPS
-    video.srcObject = stream;
-
-    // ---- 4c. Small delay to let the video start (required on iOS) -----
-    await new Promise(r => setTimeout(r, 100)); // give the video a moment
-
-    // ---- 4d. Ask the video to go fullscreen -------------------------
-    requestFullScreen(video);
+    })
+    
   });
 
 
