@@ -689,12 +689,16 @@ audio {
       // Load a preset (feel free to replace this with any preset you like)
 
       if (presetIdx === -1) {
-        if (Date.now() % 2 === 0) {
+        const choice = Date.now() % 3
+        if (choice === 0) {
           visualizer.loadPreset(presets['$$$ Royal - Mashup (197)'], 0);
           presetInfo.textContent = '$$$ Royal - Mashup (197)'
-        } else {
+        } else if (choice === 1){
           visualizer.loadPreset(presets['Flexi - alien web bouncer [26]'], 0);
           presetInfo.textContent = 'Flexi - alien web bouncer [26]'
+        } else {
+          visualizer.loadPreset(presets['fiShbRaiN + Flexi - witchcraft 2.0'], 0);
+          presetInfo.textContent = 'fiShbRaiN + Flexi - witchcraft 2.0'
         }
         
         
