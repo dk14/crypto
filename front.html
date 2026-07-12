@@ -465,11 +465,11 @@ audio {
 
     const choice4 = Date.now() % 7
 
-    if (choice4 !== 0) {
+    if (choice4 === 0) {
       document.getElementById('contin').innerText="Escape Entropy"
     }
 
-    if (choice4 !== 1) {
+    if (choice4 === 1) {
       document.getElementById('contin').innerText="Enter Entropy"
     }
     
