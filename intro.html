@@ -689,9 +689,15 @@ audio {
       // Load a preset (feel free to replace this with any preset you like)
 
       if (presetIdx === -1) {
-        visualizer.loadPreset(presets['$$$ Royal - Mashup (197)'], 0);
-        //visualizer.loadPreset(presets['Flexi - alien web bouncer [26]'], 0);
-        presetInfo.textContent = 'Flexi - alien web bouncer [26]'
+        if (Date.now() % 2 === 0) {
+          visualizer.loadPreset(presets['$$$ Royal - Mashup (197)'], 0);
+          presetInfo.textContent = '$$$ Royal - Mashup (197)'
+        } else {
+          visualizer.loadPreset(presets['Flexi - alien web bouncer [26]'], 0);
+          presetInfo.textContent = 'Flexi - alien web bouncer [26]'
+        }
+        
+        
         
       } else {
          visualizer.loadPreset(presets[presetKeys[presetIdx]], 0);
