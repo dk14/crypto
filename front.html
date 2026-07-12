@@ -457,8 +457,11 @@ audio {
       
       
     }
+    const choice3 = Date.now() % 7
     
-    document.getElementById("btctalk").style.display = "block"
+    if (choice3 !== 0) {
+      document.getElementById("btctalk").style.display = "block"
+    }
     
   })
   
