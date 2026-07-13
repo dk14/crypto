@@ -945,7 +945,7 @@
                             visualizer.render();
                         } else {
                             const gl = winampCanvas.getContext("webgl2")
-                            gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
+                            gl?.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
                         }
                     }
                    
