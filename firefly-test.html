@@ -1144,10 +1144,6 @@
             location.reload()
         }
 
-        videoElem.onpause = () => {
-            reset()
-        }
-
         function exitHandler(){
             if (!document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement){
                 reset()
@@ -1164,6 +1160,10 @@
         });
 
         init()
+        
+        videoElem.onpause = () => {
+            reset()
+        }
     });
 
 
