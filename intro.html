@@ -1014,6 +1014,10 @@ function restoreState() {
 
 /* ---------- drag handling ---------- */
 dragStrip.addEventListener('mousedown', e => {
+  if (dragging) {
+    dragging = false;
+    return
+  }
   dragging = true;
   startX   = e.clientX;
   startY   = e.clientY;
@@ -1129,6 +1133,10 @@ function restoreStateVid() {
 
 /* ---------- drag handling ---------- */
 dragStripVid.addEventListener('mousedown', e => {
+  if (draggingVid) {
+    draggingVid = false;
+    return;
+  }
   draggingVid = true;
   startXVid   = e.clientX;
   startYVid   = e.clientY;
