@@ -939,9 +939,66 @@
     allow="accelerometer; ambient-light-sensor; autoplay; camera; clipboard-read; clipboard-write; encrypted-media; fullscreen; geolocation; gyroscope; magnetometer; microphone; midi; payment; picture-in-picture; sync-xhr; usb; vr; xr-spatial-tracking"
     loading="lazy"
   ></iframe>
+  <div id="drag‑strip"
+       style="
+         position:absolute;
+         top:0; left:0; right:0; height:1px;
+         background:rgba(0,0,0,0);   /* invisible */
+         cursor:move;            /* optional hint */
+       "></div>
 </div>
 
-  
+  <script>
+const wrapper   = document.getElementById('hciwrapper');
+const dragStrip = document.getElementById('drag‑strip');
+
+let dragging = false;
+let startX = 0, startY = 0;
+let origLeft = 0, origTop = 0;
+
+dragStrip.addEventListener('mousedown', e => {
+  dragging  = true;
+  startX    = e.clientX;
+  startY    = e.clientY;
+  origLeft  = wrapper.offsetLeft;
+  origTop   = wrapper.offsetTop;
+});
+
+window.addEventListener('mousemove', e => {
+  if (!dragging) return;
+  const dx = e.clientX - startX;
+  const dy = e.clientY - startY;
+  wrapper.style.left = (origLeft + dx) + 'px';
+  wrapper.style.top  = (origTop  + dy) + 'px';
+});
+
+window.addEventListener('mouseup', () => {
+  dragging = false;
+});
+
+/* ---- Touch support (optional) ---- */
+dragStrip.addEventListener('touchstart', e => {
+  const t = e.touches[0];
+  dragging  = true;
+  startX    = t.clientX;
+  startY    = t.clientY;
+  origLeft  = wrapper.offsetLeft;
+  origTop   = wrapper.offsetTop;
+}, {passive:true});
+
+window.addEventListener('touchmove', e => {
+  if (!dragging) return;
+  const t = e.touches[0];
+  const dx = t.clientX - startX;
+  const dy = t.clientY - startY;
+  wrapper.style.left = (origLeft + dx) + 'px';
+  wrapper.style.top  = (origTop  + dy) + 'px';
+}, {passive:true});
+
+window.addEventListener('touchend',   () => { dragging = false; });
+window.addEventListener('touchcancel',()=>{ dragging = false; });
+
+  </script>
     </div>
   </div>
 
@@ -1149,7 +1206,7 @@ btn.addEventListener('click', e => {
     });
 
   }
-  
+
 
 if (Date.now() % 2 == 0) {
   switchToFireflyDemo()
@@ -1165,6 +1222,7 @@ window.addEventListener('message', e => {
 
     // ...
 },false);
+
   
 </script>
 
