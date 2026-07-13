@@ -1289,7 +1289,7 @@
 
 
             window.vingetteBuffer = null
-            const drawVingette = () => {
+            window.drawVingette = () => {
                 if (!vingetteBuffer) {
                     vingetteBuffer = document.createElement("canvas")
                     vingetteBuffer.width = canvas.width
@@ -1322,7 +1322,7 @@
             }
 
 
-            const drawCircle = (x, y, r, c, op) => {
+            window.drawCircle = (x, y, r, c, op) => {
                 context.beginPath();
                 
                 
