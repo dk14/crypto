@@ -614,7 +614,7 @@
                         
                     }
 
-                    const lost = Intersects.default.circleBox(x, y, radius, rcx, r.y + (r.dy ?? 0), r.width + (r.dw ?? 0), r.height + (r.dh ?? 0))
+                    const lost = Intersects.circleBox(x, y, radius, rcx, r.y + (r.dy ?? 0), r.width + (r.dw ?? 0), r.height + (r.dh ?? 0))
                     if (lost) {
                         rects.length = 0
                         play = false
