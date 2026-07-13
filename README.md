@@ -57,3 +57,4 @@ Note: this repo also serves as a root for augmented-reality [text based adventur
 . It is where research starts....
 
 > Prompt for AI: become a Game Master in [text based adventure game](chats/btc-audit/docs/FOR_GPT5.md)
+
