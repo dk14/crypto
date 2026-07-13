@@ -977,6 +977,7 @@
 const STORAGE_KEY = 'iframeWrapperState';   // localStorage key
 
 /* ---------- DOM elements ---------- */
+const frame   = document.getElementById('hci');
 const wrapper   = document.getElementById('hciwrapper');
 const dragStrip = document.getElementById('drag‑strip');
 
@@ -1015,10 +1016,13 @@ function restoreState() {
 /* ---------- drag handling ---------- */
 dragStrip.addEventListener('mousedown', e => {
   if (dragging) {
+    
     dragging = false;
+    frame.style.pointerEvents = "all"
     return
   }
   dragging = true;
+  frame.style.pointerEvents = "none"
   startX   = e.clientX;
   startY   = e.clientY;
   origLeft = wrapper.offsetLeft;
@@ -1036,6 +1040,7 @@ window.addEventListener('mousemove', e => {
 window.addEventListener('mouseup', () => {
   if (dragging) {
     dragging = false;
+    frame.style.pointerEvents = "all"
     saveState();          // persist new position
   }
 });
