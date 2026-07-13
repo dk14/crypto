@@ -1,0 +1,1348 @@
+<html>
+    <head>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="user-scalable=no, minimal-ui, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="icon" href="./favicon.png">
+     <title>Firefly</title>
+    </head>
+    <body bgcolor="black" style="overflow: hidden; user-select: none;">
+       <button  id ="start" style="font-family:'Crafty Girls'; border: 0px solid green; background-color: rgba(0,0,0,0); color: black; z-index: 100; font-size: 40px;"  onclick="console.log('hello'); DeviceMotionEvent.requestPermission()">START</button>
+      
+       <div style = "display: none; text-align: center;" id="settings">
+        <font style="color: hsla(120, 100%, 25%, 1)">ball speed: </font><input type="number" min="1" max="1000" value="800" id="speed" style = "color:green; border: 1px solid  green; background-color: black;"> <br><br>
+        <font style="color: hsla(120, 100%, 25%, 1)">ball gravity: </font><input type="number" min="1" max="1000" value="700" id="gravity" style = "color:green; border: 1px solid green; background-color: black;"> <br><br>
+        <font style="color: hsla(120, 100%, 25%, 1)">refresh cycle: </font><input type="number" min="1" max="1000" value="20" id="refresh" style = "color:green; border: 1px solid green; background-color: black;"> <br><br>
+        <font style="color: hsla(120, 100%, 25%, 1)"><pre id="fps"></pre></font>
+
+       </div>
+       <canvas id="canvas" style="position: absolute; top: 0; left: 0; z-index:-20">
+
+       </canvas>
+       
+       <svg id="cont" style="font-family:'Crafty Girls'; font-size:50px;
+      fill:yellow; position: absolute; top: 0; left: 0; z-index:-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g id="scene">
+
+            </g>
+            
+        </svg>
+        <script>
+
+            var prevX = 0
+            var prevY = 0
+
+            onmousemove = (event) => {                
+                ev = {}
+                ev.acceleration = {}
+                const x = event.clientX / 1000
+                const y = event.clientY / 1000
+                ev.acceleration.x = event.clientX - prevX
+                ev.acceleration.y = event.clientY - prevY
+                ev.acceleration.z = 0
+                prevX = x
+                prevY = y
+                ondevicemotion(ev, true)
+            }
+
+            window.addEventListener('message', ev => {
+                if (!ev.data || ev.data.type !== 'parent-mousemove') return;
+                const { x, y } = ev.data;
+            
+                ev = {}
+                ev.acceleration = {}
+                const xx = x * 1000
+                const yy = y * 1000
+                ev.acceleration.x = x - prevX
+                ev.acceleration.y = x - prevY
+                ev.acceleration.z = 0
+                prevX = xx
+                prevY = yy
+            
+                // Dispatch the event on the element you want (e.g., document)
+                ondevicemotion(ev, true);
+                
+            });
+
+            var prev = [0,0,0]
+            var energy = 0.001
+            
+            var energyThreshold = 0.06
+            var minEnergy = 0.0
+            var energyScale = 1.0
+            
+            ondevicemotion = (event, mouse = false) => {
+                setInterval(() => {
+                    document.getElementById("start").style.display = 'none'
+                }, 100)
+                var [x, y, z] = [event.acceleration.x, event.acceleration.y, event.acceleration.z]
+                var [dx, dy, dz] = [x - prev[0], y - prev[1], z - prev[2]]
+                prev = [x, y, z]
+                var [x, y, z] = [dx, dy, dz]
+                energy = energyScale * (dx * dx + dy * dy + dz * dz)
+                if (energy > energyThreshold) {
+                    energy = energyThreshold
+                }
+
+                if (mouse !== true) {
+                    energy *= 1.3
+                }
+                console.log(energy)
+                
+            }
+
+            
+
+            setInterval(() => {
+                energy = 0
+            }, 300)
+
+        </script>
+        
+
+
+        <script src="https://unpkg.com/intersects/umd/intersects.min.js"></script>
+        <script id="worklet1">
+            if (window.isWorkletContext) {
+                registerProcessor('clipper', class clipper extends AudioWorkletProcessor {
+                    process(inputList, outputList, parameters) {
+                        const sourceLimit = Math.min(inputList.length, outputList.length);
+                        //console.log('\n'.repeat(100) + "*" + ('\n'.repeat(Math.floor(inputList[0][0][1] * 5) + 5)))
+                        for (let inputNum = 0; inputNum < sourceLimit; inputNum++) {
+                            const input = inputList[inputNum];
+                            const output = outputList[inputNum];
+                            const channelCount = Math.min(input.length, output.length);
+                            const thresholdParam = parameters.threshold
+
+                            for (let channelNum = 0; channelNum < channelCount; channelNum++) {
+                                input[channelNum].forEach((sample, i) => {
+                                    const threshold = 10.90 //thresholdParam.length === 1 ? thresholdParam[0] : thresholdParam[i]  
+                                    let out = sample
+                                    if (Math.abs(sample) > 0.98 && Math.abs(sample) < 0.999) {
+                                        out = 0.0 * Math.abs(sample)
+                                        if (sample < 0) {
+                                            out = -out
+                                        }
+                                    }
+                                    output[channelNum][i] = out // * sample * sample //sample < 0 ? -threshold : threshold
+
+                                });
+                            }
+                        }
+                        return true;
+                    }
+                    static get parameterDescriptors() {
+                        return [
+                            {
+                                name: "threshold",
+                                defaultValue: 0.8,
+                                minValue: 0,
+                                maxValue: 1,
+                            },
+                        ];
+                    }
+                });
+            }
+            
+        </script>
+        
+        <script>
+
+ window.initAll = (async () => {
+
+        
+        window.screenWidth = document.body.clientWidth
+        window.screenHeight = document.body.clientHeight
+
+        if (screenHeight < 600) {
+            window.black = true
+            window.winamp = true
+        } else {
+            window.winamp = false
+            window.black = false
+        }
+
+
+        document.getElementById("start").style.position = "absolute"
+        document.getElementById("start").style.top = screenHeight / 2
+        document.getElementById("start").style.left = screenWidth / 2 - 70
+        
+         var play = false
+         var score = 0
+         var highscore = 0
+         highscore = localStorage.getItem('highscore') ?? 0
+         
+         const svgns = "http://www.w3.org/2000/svg"
+         const container = document.getElementById( 'cont' ).getElementById( 'scene' );
+
+         const scoreText = document.createElementNS(svgns, "text");
+
+         container.appendChild(scoreText);
+
+         const retryText = document.createElementNS(svgns, "text");
+         const retryRect = document.createElementNS(svgns, "rect");
+         scoreText.textContent = "00"
+
+         window.retryWindowSetup = () => {
+            document.getElementById( 'cont' ).setAttributeNS(null, "width", screenWidth)
+            document.getElementById( 'cont' ).setAttributeNS(null, "height", screenHeight)
+
+            scoreText.setAttributeNS(null, 'x', 20);
+            scoreText.setAttributeNS(null, 'y', 78);
+            
+            scoreText.setAttributeNS(null, 'style', `fill: ${window.winamp ? 'pink' : 'cyan'}; font-size: 80px; font-style: italic; opacity: 0.3;`);
+        
+            retryText.setAttributeNS(null, 'x', screenWidth / 2 - 200);
+            retryText.setAttributeNS(null, 'y', screenHeight / 2);
+            retryText.setAttributeNS(null, 'style', "fill: #FFC1CC;font-size: 30px;font-style: italic; font-weight:bolder; opacity: 0.5");
+            
+            retryRect.setAttributeNS(null, 'x', 0);
+            retryRect.setAttributeNS(null, 'y', 0);
+            retryRect.setAttributeNS(null, 'width', screenWidth);
+            retryRect.setAttributeNS(null, 'height', screenHeight);
+            retryRect.setAttributeNS(null, 'style', "fill: black; opacity: 0.5");
+        
+         }
+
+         retryWindowSetup()
+         
+         setInterval(() => {
+            scoreText.textContent = score
+            retryText.textContent = "HIGH SCORE: " + highscore
+            retryText.setAttributeNS(null, 'x', screenWidth / 2 - retryText.getBoundingClientRect().width / 2);
+            retryText.setAttributeNS(null, 'y', screenHeight / 2);
+         }, 200)
+
+
+         window.drawings = []
+
+         const draw = () => {
+            if (!window.redraw) {
+                requestAnimationFrame(draw)
+                return
+            }
+            window.redraw = false
+            context.clearRect(0, 0, screenWidth, screenHeight)
+            
+            if (!window.winamp) {
+                if (videoElem.style.display === 'block') {
+                    context.fillStyle = `black`
+                    context.beginPath();
+                    context.rect(0, 0, screenWidth, screenHeight);
+                    context.fill()
+                    for (let j = 0; j < 30; j++) {
+                        var seed = window.seed
+                        context.beginPath();
+                        context.fillStyle = "white"
+                        const x = Math.random()
+                        const y = Math.random()
+                        context.arc(x * screenWidth, y * screenHeight, 2, 0, 2 * Math.PI, true);
+                        
+                        context.fill();
+
+                        context.fillStyle = "hsla(60, 10%, 5%, 0.01)"
+                        context.rect(0, 0, screenWidth, screenHeight);
+                        
+                        context.fill();
+                    }
+
+                    if (score % 150 > -1) {
+                    context.fillStyle = `hsla(60, 10%, 5%, ${Math.random()})`
+                    context.rect(0, screenHeight / 2, screenWidth, screenHeight);
+                        
+                    context.fill();
+                        
+                    } else {
+                        
+                    }
+
+                } else {
+                    drawVingette()
+                }
+
+            } else {
+                context.fillStyle = `rgba(0,0,0,0.1)`
+                context.rect(0, 0, screenWidth, screenHeight)
+            }
+            
+
+           
+
+            
+            
+            drawings.forEach(d => {
+                context.globalCompositeOperation = d.blend ?? "source-over"
+                if (d.opacity !== undefined) {
+                    if (d.stroke) {
+                        d.stroke[3] = d.opacity
+                    }
+                    if (d.fill !== "gradient") {
+                        d.fill[3] = d.opacity
+                    }
+                    
+                }
+                
+                if (d.type === 'rect') {
+                    context.fillStyle = `rgba(${d.fill[0]}, ${d.fill[1]}, ${d.fill[2]}, ${d.fill[3]})`
+                    
+
+                    context.lineWidth = d.strokeWidth ?? 0;
+                    context.beginPath();
+                    context.rect(d.x + (d.dx ?? 0), d.y + (d.dy ?? 0), d.width + (d.dw ?? 0), d.height + (d.dh ?? 0));
+                    
+                    context.fill();
+                    if (d.strokeWidth) {
+                        context.strokeStyle = `rgba(${d.stroke[0]}, ${d.stroke[1]}, ${d.stroke[2]}, ${d.stroke[3]})`
+                        context.stroke();
+                    }
+                    
+                } else if (d.type === 'circle') {
+                    if (d.fill === 'gradient') {
+                        const gradient = context.createRadialGradient(d.cx + (d.dcx ?? 0),  d.cy + (d.dcy ?? 0), 0, d.cx + (d.dcx ?? 0), d.cy + (d.dcy ?? 0), d.r);
+                        if (d.simplegrad) {
+                            gradient.addColorStop(0, `rgba(228,228,0,${1.0 * d.opacity})`);
+                            gradient.addColorStop(1,  `rgba(220,220,0,0`);
+
+                        } else {
+                            gradient.addColorStop(0, `rgba(228,228,0,${1.0 * d.opacity})`);
+                            gradient.addColorStop(0.95,  `rgba(0,30,0,${0.05 * d.opacity})`);
+                            gradient.addColorStop(1,  `rgba(220,220,0,0`);
+                        }
+                        
+                        context.fillStyle = gradient
+                    } else {
+                        context.fillStyle = `rgba(${d.fill[0]}, ${d.fill[1]}, ${d.fill[2]}, ${d.fill[3]})`
+                    }
+                    
+                    
+                    context.lineWidth = d.strokeWidth ?? 0;
+                    context.beginPath();
+                    context.arc(d.cx + (d.dcx ?? 0), d.cy + (d.dcy ?? 0), d.r * 2, 0, 2 * Math.PI, true);
+                    
+                    context.fill();
+
+                    if (d.strokeWidth) {
+                        context.strokeStyle = `rgba(${d.stroke[0]}, ${d.stroke[1]}, ${d.stroke[2]}, ${d.stroke[3]})`
+                        context.stroke();
+                    }
+                }
+
+            })
+            requestAnimationFrame(draw)
+
+        }
+        
+        draw()
+
+        const initx = screenWidth / 3
+        const inity = 300  * screenHeight / 755
+        const radius = 30 * screenHeight / 755
+
+        const createCircle = () => {
+
+            const circle = {
+                type: 'circle'
+            }
+
+            circle.cx = x
+            circle.cy = y
+            circle.dcx = 0
+            circle.dcy = 0
+            circle.r = radius * 1.3 * 755 / screenHeight;
+        
+            circle.opacity = 0.5
+
+            circle.blend = "lighter";
+            
+            circle.fill = "gradient"
+
+            drawings.push(circle)
+            return circle
+
+        }
+
+        window.speed = 1.0
+
+        const start = async () => {
+            if (window.fpsprecise < 29) {
+                await window.reset()
+            }
+            fullscreen.style.display = 'none'
+            winampActivate.style.display = 'none'
+            play = true
+            score = 0
+            window.x = initx
+            window.y = inity
+            drawings.length = 0
+            window.i = 0
+            window.i_precise = 0
+
+            window.rects = []
+            window.seed = performance.now() % 300
+
+            while (container.firstChild) {
+                container.removeChild(container.lastChild);
+            }
+            
+            try {
+                container.appendChild(scoreText);
+                container.removeChild(retryText);
+            } catch {}
+
+            window.circle = createCircle()
+            window.circles = []
+
+            for (let ii = 0; ii < 10; ii++) {
+                circles.push(createCircle())
+            }
+
+            if (window.winamp) {
+                window.awarenessCircle = createCircle();
+                awarenessCircle.r = 4 * radius * 1.3 * 755 / screenHeight
+                awarenessCircle.opacity = 0.2
+                awarenessCircle.simplegrad = true
+            }
+
+        }
+
+        const init = () => {
+
+            start()
+           
+            const random1 = () => {
+                return Math.abs(Math.sin(seed * 6599 + i * y + 109309 * energy * y + y + Math.sin(y)))
+            }
+
+            const random2 = () => {
+                return Math.abs(Math.cos(seed * 6599 + i * y + 604089 * energy + y - 10))
+            }
+
+            const createRect = (x, y, id) => {
+
+                
+                const bias = screenHeight * 0.1
+                const gate =  Math.max(200, 400 * random1()) * screenHeight / 755
+                const h = (screenHeight - gate)  * random2()
+
+                const rect = {
+                    type: 'rect'
+                }
+                rect.x = x
+                rect.y = screenHeight - h
+                rect.width = 50 * screenHeight / 755
+                rect.height = h + 10
+                rect.fill = [0,0,0,1.0]
+                rect.stroke = [255, 192, 203, 1.0]
+                rect.opacity = 0.0
+                rect.strokeWidth = 10
+                rect.id = id + "1"
+
+                drawings.push(rect)
+                rects.push(rect)
+
+                
+                const rect2 = {
+                    type: 'rect'
+                }
+
+                rect2.x = x
+                rect2.y = -10
+
+                rect2.width = 50 * screenHeight / 755
+                rect2.height =  ((screenHeight - h) - gate)
+                rect2.fill = [0,0,0,1.0]
+                rect2.stroke = [0, 255, 255, 1.0]
+                rect2.strokeWidth = 10
+                rect2.opacity = 0.0
+                rect2.id = id + "2"
+
+                rects.push(rect2)
+                drawings.push(rect2)
+
+                if (window.winamp) {
+                    rect.opacity += 0.4
+                    rect.stroke[0] -= 200
+                    rect.stroke[1] -= 200
+                    rect.stroke[2] -= 200
+
+                    rect2.opacity += 0.4
+                    rect2.stroke[0] -= 200
+                    rect2.stroke[1] -= 200
+                    rect2.stroke[2] -= 200
+                }
+
+                container.removeChild(scoreText);
+                container.appendChild(scoreText);
+            }
+
+
+            window.i = 0
+            
+            var time = performance.now()
+
+            window.speedFactor = document.getElementById("speed").value
+            window.gravityFactor = document.getElementById("gravity").value
+            window.refresh = document.getElementById("refresh").value
+
+            window.redraw = true
+            
+            const loop = () => setTimeout(() => {
+                
+
+                if (!play) {
+                    loop()
+                    return
+                }
+
+                window.redraw = true
+                
+                if (videoElem.style.display !== 'block') {
+                    canvas.width = document.body.clientWidth
+                    canvas.height = document.body.clientHeight
+                    if (window.winampCanvas) {
+                        winampCanvas.width = document.body.clientWidth
+                        winampCanvas.height = document.body.clientHeight
+                    }
+                }
+                
+                const delta = (performance.now().toFixed() - time) / 10
+                window.i_precise += delta
+                window.i = Math.round(i_precise)
+                time = performance.now()
+                
+
+                const gravity = 0.3 * (gravityFactor / 1000) * delta * ((10 + 7 * y / screenHeight)) / 10
+                const shift = (y - (delta * ((speedFactor / 1000)) * energy * energy * 10000 * screenHeight / 600) / 10)
+                y1 = Math.max(0, Math.min(screenHeight, (shift + gravity)))
+                if (y1 < 30) {
+                    y1 = screenHeight
+                }
+                if (y1 < y) {
+                    y = y1 
+                } else {
+                    y = y1 + gravity * (0.3 * 1000 / shift)
+                }
+                circle.cx = x;
+                circle.cy = y;
+
+                if (window.winamp) {
+                    window.awarenessCircle.cx = x
+                    window.awarenessCircle.cy = y
+                    if (window.black) {
+                        if (energy < 0.01) {
+                            window.awarenessCircle.r = (5 + 0.5 * (screenHeight - y) / screenHeight) * radius * 1.3 * 755 / screenHeight
+                        } else {
+                            window.awarenessCircle.r = 4.5 * radius * 1.3 * 755 / screenHeight
+                        }
+                        
+                    } else {
+                        window.awarenessCircle.r = 4 * radius * 1.3 * 755 / screenHeight
+                    }
+                }
+
+                circles.forEach((c, ii) => {
+                     const cx = c.cx
+                    const cy = c.cy
+                    const dx =  10 * (1 + 5 * energy + 0.1 * (screenHeight - y) / y) * (screenHeight / 755)  * (Math.sin(ii % 7 + i / 90 + 0.01 * cy) + Math.sin(90 - 0.01 * cy + 0.0001 * cx * c.dcy + (y % 20) / 60))
+                    const dy = 15 * (1 + 10 * energy) * (screenHeight / 755)  * (Math.cos(ii % 5 + i / (20 + 20 * energy) + energy) + Math.sin(30 + 0.00001 * cx * c.dcy + i / 100 + (y % 20) / 60) + Math.sin(0.1 * (y * y % 20) / 10));  
+                    c.dcx = dx
+                    c.dcy = dy
+                    c.cy = y
+                    c.r = radius + 9 + 500 * energy * energy + 0.1 * (screenHeight - y) / y + 5 *  Math.sin(0.1 * (y * y % (1 + 40 * energy)) / 10 + 10 * energy)
+
+                })
+
+
+
+                if (i % 200 < 10 && rects.length < 12 && !rects.find(r => r.x > screenWidth + i - 10)) {
+                    createRect(screenWidth + i, screenHeight - 200 + 30, i)
+                }
+
+ 
+
+                rects.forEach((r, ii) => {
+
+                    r.dx = - speed * i
+                                
+                    const rcx = r.x + (r.dx ?? 0)
+
+                    const edge =  r.y + (r.dy ?? 0) < 30 ? r.height : r.y + (r.dy ?? 0)
+                    r.opacity = 0.15 - (y - edge) / (5 * screenHeight) - 0.2 * Math.abs((rcx - x) / screenHeight)
+
+                    const rectEdge = rcx
+                    speed += 0.0000001
+
+                    if (window.winamp) {
+                        r.opacity += 0.4
+                        r.stroke[0] -= 5
+                        r.stroke[1] -= 5
+                        r.stroke[2] -= 5
+
+                        if (!window.black && x - 50 > rectEdge) {
+                            r.stroke[0] = 255
+                            r.stroke[1] = 192
+                            r.stroke[2] = 203
+                            r.opacity = 0.1 + energy * (screenHeight - y) / screenHeight
+                        }
+
+                        if (!window.black) {
+                            if (r.y + (r.dy ?? 0) < 30) {
+                                r.height += 2 * energy
+                                r.dh = gameRatio * (window.waveform[2 * ii] - 100)
+                            } else {
+                                r.y += 2 * energy
+                                r.dy = gameRatio * window.spectra[2 * ii] / 5 ?? 0           
+                            }
+                        }
+                    }
+                    
+                    if (rcx < -50) {
+                        rects.splice(rects.findIndex(x => x.id === r.id), 1)
+                        drawings.splice(drawings.findIndex(x => x.id === r.id), 1)
+ 
+                    }
+
+
+                    
+                    if (x > rectEdge + 30 && r["counted"] !== true) {
+                        r["counted"] = true
+                        score += 5
+                        
+                    }
+
+                    const lost = Intersects.circleBox(x, y, radius, rcx, r.y + (r.dy ?? 0), r.width + (r.dw ?? 0), r.height + (r.dh ?? 0))
+                    if (lost) {
+                        rects.length = 0
+                        play = false
+                        if (score > highscore) {
+                            highscore = score
+                            localStorage.setItem('highscore', highscore)
+                        }
+                        
+                        retryWindowSetup()
+                        container.appendChild(retryRect);
+                        container.appendChild(retryText);
+                        if (!window.winamp) {
+                            fullscreen.style.display = 'block'
+                        } else {
+                            try {
+
+                                
+                                const npresets = window.presetKeys.length
+                                const presetn = Math.floor((score + Math.abs(((10 * y / screenHeight) % 10)))) % npresets
+                                
+                                const name = window.presetKeys[presetn]
+                                winampViz.loadPreset(window.presets[name], 1.0)
+
+                            } catch {
+
+                            }
+                            
+                        }
+                        
+                        //winampActivate.style.display = 'block'
+                        //window.winamp = false
+
+                        setTimeout(() => {
+                            if (!play && (videoElem.style.display === 'block' || window.winamp)) {
+                                start()
+                            }
+                        }, 1000)
+                        
+                        setTimeout(() => {
+                            if (!play) {
+                                start()
+                            }
+                        }, 2000)
+                    }
+
+                })
+                
+                loop()
+                
+            }, refresh)
+            loop()
+         }
+         init()
+
+         var audioActive = false
+         const audio = async () => {
+            audioActive = true
+            window.audioCtx = new AudioContext()
+            const streamNode = audioCtx.createMediaStreamDestination();
+            
+            const workletSource = "const window = {}; window.isWorkletContext = true;" + document.getElementById("worklet1").innerText
+            const workletBlob = new Blob([workletSource], {type: "application/javascript"});
+
+            const analyser = audioCtx.createAnalyser();
+            analyser.fftSize = 2048;
+
+            const bufferLength = analyser.frequencyBinCount;
+            window.spectra = new Uint8Array(bufferLength);
+            window.waveform = new Uint8Array(bufferLength);
+
+            await audioCtx.audioWorklet.addModule(URL.createObjectURL(workletBlob))
+
+            window.masterNode = audioCtx.createGain()
+            masterNode.gain.value = 1
+
+            masterNode.connect(streamNode)
+            masterNode.connect(audioCtx.destination)
+            masterNode.connect(analyser)
+
+            const amFm = (f1, f2, high, low, type = 'saw', conv = 0.015, decay = 30.0, delayAmount = 0.0, feedbackAmount = 0.0, masterlow = 30000, clipperWorklet = null) => {
+
+                const oscillator = audioCtx.createOscillator()
+                
+                    
+                oscillator.type = type;
+                oscillator.frequency.value = f1; // or 2
+
+                const modulator = audioCtx.createOscillator()
+                modulator.type = 'sine'
+                modulator.frequency.value = f2
+
+                const fmGain = audioCtx.createGain()
+                fmGain.gain.value = 10
+
+                const amGain = audioCtx.createGain()
+                amGain.gain.value = 1
+                oscillator.connect(amGain)             
+
+                let clipper = null
+
+                if (clipperWorklet) {
+                    clipper = new AudioWorkletNode(audioCtx, clipperWorklet);
+                    clipper.parameters.get("threshold").value = 0.9
+                    modulator.connect(clipper).connect(fmGain)
+                } else {
+                    modulator.connect(fmGain)
+                }
+                
+                fmGain.connect(oscillator.frequency)
+                
+
+                const filter = audioCtx.createBiquadFilter();
+            
+                filter.type = "highpass"
+                filter.frequency.setTargetAtTime(high, audioCtx.currentTime, 0);
+                
+                const filter2 = audioCtx.createBiquadFilter();
+            
+                filter2.type = "lowpass"
+                filter2.frequency.setTargetAtTime(low, audioCtx.currentTime, 0);
+                
+                
+                
+                const compressor = audioCtx.createDynamicsCompressor();
+                compressor.threshold.setValueAtTime(-0.5, audioCtx.currentTime);
+                compressor.knee.setValueAtTime(0, audioCtx.currentTime);
+                compressor.ratio.setValueAtTime(40, audioCtx.currentTime);
+                compressor.attack.setValueAtTime(0.0, audioCtx.currentTime);
+                compressor.release.setValueAtTime(0.0, audioCtx.currentTime);
+                
+
+                const convolver = audioCtx.createConvolver()
+
+                //oscillator.connect(audioCtx.destination);
+                
+
+                 if (type === 'square') {
+
+                    const precompressor = audioCtx.createDynamicsCompressor();
+                    precompressor.threshold.setValueAtTime(-15, audioCtx.currentTime);
+                    precompressor.knee.setValueAtTime(5, audioCtx.currentTime);
+                    precompressor.ratio.setValueAtTime(20, audioCtx.currentTime);
+                    precompressor.attack.setValueAtTime(6.0, audioCtx.currentTime);
+                    precompressor.release.setValueAtTime(0.01, audioCtx.currentTime);
+                   
+                    const smooth = audioCtx.createBiquadFilter();
+                    smooth.type = "notch"
+                    smooth.frequency.setTargetAtTime(2350, audioCtx.currentTime, 0);
+                    //smooth.gain.value = 20
+                    smooth.Q.value = 1
+
+                    const postGain = audioCtx.createGain()
+                    postGain.gain.value = 1
+                    postGain.gain.linearRampToValueAtTime(1, audioCtx.currentTime + 3.0)
+
+                    amGain.connect(postGain)
+                    //precompressor.connect(postGain)
+                    postGain.connect(smooth)
+                    smooth.connect(convolver)
+                } else {
+                    amGain.connect(convolver)
+                }
+                
+
+                const filter3 = audioCtx.createBiquadFilter();
+            
+                filter3.type = "lowpass"
+                filter3.frequency.setTargetAtTime(masterlow, audioCtx.currentTime, 0);
+
+                filter.connect(filter2)
+                filter2.connect(filter3)
+                filter3.connect(compressor)
+
+                const delay = audioCtx.createDelay();
+                delay.delayTime.value = delayAmount;
+                const feedback = audioCtx.createGain();
+                feedback.gain.value = feedbackAmount;
+
+                delay.connect(feedback);
+                feedback.connect(delay);
+
+                convolver.connect(delay)
+                delay.connect(filter);
+
+
+                function impulseResponse( duration, decay, reverse ) {
+                    var sampleRate = audioCtx.sampleRate;
+                    var length = sampleRate * duration;
+                    var impulse = audioCtx.createBuffer(2, length, sampleRate);
+                    var impulseL = impulse.getChannelData(0);
+                    var impulseR = impulse.getChannelData(1);
+
+                    if (!decay)
+                        decay = 2.0;
+                    for (var i = 0; i < length; i++){
+                    var n = reverse ? length - i : i;
+                    impulseL[i] = (Math.random() * 2 - 1) * Math.pow(1 - n / length, decay);
+                    impulseR[i] = (Math.random() * 2 - 1) * Math.pow(1 - n / length, decay);
+                    }
+                    return impulse;
+                }
+                convolver.normalize = false
+                convolver.buffer = impulseResponse(conv, decay, true)
+                compressor.connect(masterNode)
+                
+                oscillator.start();
+                modulator.start();
+                return [amGain, fmGain, delay, feedback, modulator, clipper]
+            }
+
+            const [amGain, fmGain] = amFm(20, 7000, 14000, 300, 'square')
+
+           // const [amGain2, fmGain2] = amFm(2, 200, 13000, 1000)
+
+            //const [amGain2, fmGain2] = amFm(1, 5, 13000, 1000)
+
+            const [amGain2, fmGain2, delay, feedback, modulator, clipper] = 
+                amFm(5, 93, 13000, 450, 'square', 0.15, 100.0, 0.0, 0.9, 20000, "clipper")
+
+            const [amGain3, fmGain3] = amFm(5, 20, 15000, 100, 'square')
+
+            window.gameRatio = 1.8 * screenHeight / 755
+
+            amGain2.gain.value = 0
+            //onst [amGain3, fmGain3] = amFm(1, 200, 13000, 400, )
+
+            //amGain3.gain.value = 30
+
+            const audioloop = setInterval(() => {
+
+                analyser.getByteFrequencyData(spectra);
+                analyser.getByteTimeDomainData(waveform);
+                
+                const base = (200 + screenHeight - y) / screenHeight
+
+                fmGain.gain.linearRampToValueAtTime(
+                    1000 + 10 * energy + 1000 * (200  + screenHeight - y) / screenHeight, audioCtx.currentTime + 0.1)
+                amGain.gain.linearRampToValueAtTime(
+                    3.0 + 100 * energy, audioCtx.currentTime + 0.2) //
+
+                    if (base > 0.1) {
+                        delay.delayTime.value -= 0.01 * gameRatio
+                    } else {
+                        //feedback.gain.value += 0.05
+                         delay.delayTime.value += 0.1 * gameRatio
+                    }
+                    
+                    if (delay.delayTime.value < - 3.5) {
+                        //delay.delayTime.value = -3.5
+                    }
+                    if (energy > 0.01) {
+                        delay.delayTime.value -= 0.001 * gameRatio
+                        feedback.gain.value += 0.008 * gameRatio
+                    }
+                    feedback.gain.value -= 0.005
+
+                    feedback.gain.value = Math.max(feedback.gain.value, 0.1)
+                    delay.delayTime.value = Math.max(delay.delayTime.value, 0.01)
+                    feedback.gain.value = Math.min(feedback.gain.value, 0.6)
+                    //feedback.gain.value = 0
+                    //delay.delayTime.value = 0 
+                
+                if (window.winamp && !window.black) {
+
+                    const modulatorGainBase = 17
+                    const modulatorGain = modulatorGainBase + 3 * (screenHeight - y) / screenHeight
+
+                    fmGain2.gain.linearRampToValueAtTime(modulatorGain
+                    , audioCtx.currentTime + 0.1)
+                    
+
+                    clipper.parameters.get("threshold").value = 0.6 // * (1.0 - (modulatorGain - modulatorGainBase) / 3)
+                    //modulator.frequency
+                    //17
+                    //15
+                    amGain2.gain.linearRampToValueAtTime(
+                     40, audioCtx.currentTime + 0.1) //
+
+                    
+                } else {
+                    amGain2.gain.value = 0
+                }
+
+                 //amGain3.gain.value = 0 + 200 * energy
+                    //fmGain3.gain.value = 100 + 800 * (0.5 + base)
+
+                 
+
+               
+
+            
+                //oscillator.frequency.linearRampToValueAtTime(
+                    //40, 
+                    //audioCtx.currentTime + 10)
+                
+            }, 100)
+
+            
+            const initWinampViz = (canvas) => {
+
+                visualizer = butterchurn.default.createVisualizer(audioCtx, canvas, {
+                    width: canvas.width,
+                    height: canvas.height
+                });
+                
+                const mediaSource = audioCtx.createMediaStreamSource(streamNode.stream)
+                visualizer.connectAudio(mediaSource);
+                
+                
+                window.presets = butterchurnPresets.getPresets();
+                window.presetKeys = Array.from(Object.keys(presets))
+                
+                const preseti = Math.floor((highscore / 10)) % presetKeys.length
+                const name = presetKeys[preseti]
+                const preset = presets[name];
+                
+               
+                
+
+                visualizer.loadPreset(preset, 0.0); // 2nd argument is the number of seconds to blend presets
+        
+                const renderer = () => {
+                    if (window.winamp) {
+                        if (!window.black) {
+                            visualizer.render();
+                        } else {
+                            const gl = canvas.getContext("webgl2")
+                            gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
+                        }
+                    }
+                   
+                    requestAnimationFrame(renderer)
+                }
+                renderer()
+
+                return visualizer
+                
+            }
+            window.winampCanvas = document.createElement("canvas")
+            winampCanvas.width = canvas.width
+            winampCanvas.height = canvas.height
+            winampCanvas.style = "position: fixed; top:0; left:0; z-index:-300"
+            document.body.appendChild(winampCanvas)
+
+            window.winampViz = initWinampViz(winampCanvas)
+         }
+
+         
+         document.addEventListener("touchend", (ev) => {
+
+            try {
+                const touch = event.changedTouches[0]; // Get the first touch point
+                const x = touch.clientX; // X coordinate
+                const y = touch.clientY; // Y coordinate
+
+                if (y < 100 && x < 100) {
+                    const settings = document.getElementById("settings")
+                    settings.style.display = settings.style.display === 'block' ? 'none' : 'block'
+                }
+                navigator.wakeLock.request() 
+
+            } catch {
+
+            }
+            
+            if (!play) {
+               start()
+            }
+
+            if (play && window.winamp && audioActive) {
+                window.black = !window.black
+            }
+
+            if (!audioActive) {
+                audio()
+            }
+
+            
+         });
+
+         window.onclick = () => {
+            if (!play) {
+               start()
+            }
+
+            if (play && window.winamp && audioActive) {
+                window.black = !window.black
+            }
+
+            if (!audioActive) {
+                audio()
+            }
+
+            navigator.wakeLock.request() 
+         }
+
+        setInterval(() => {  
+            if (document.getElementById("speed").value > 0 && document.getElementById("gravity").value > 0) {
+                window.speedFactor = document.getElementById("speed").value
+                window.gravityFactor = document.getElementById("gravity").value
+                window.refresh = document.getElementById("refresh").value
+
+            }
+
+        }, 1000)
+
+        window.onresize = function() {
+            setTimeout(() => {
+                reset()
+            }, 300)
+            reset()
+        };
+
+
+        setInterval(() => {
+            if (window.screenHeight !== document.body.clientHeight || window.screenWidth !== document.body.clientWidth) {
+                setTimeout(() => {
+                    reset()
+                }, 300)
+                reset()
+            }
+        }, 100)
+
+        if (document.addEventListener) {
+            document.addEventListener('fullscreenchange', exitHandler, false);
+            document.addEventListener('mozfullscreenchange', exitHandler, false);
+            document.addEventListener('MSFullscreenChange', exitHandler, false);
+            document.addEventListener('webkitfullscreenchange', exitHandler, false);
+        }
+
+        const wait = async (time) => {
+            return await new Promise(resolve => {
+                setTimeout(() => resolve(null), time)
+            })
+        }
+
+        window.startup = async () => {
+            const boot = document.createElement("canvas")
+            boot.style.zIndex = "500"
+            boot.style.position = "fixed"
+            boot.style.top = 0
+            boot.style.left = 0
+            boot.style.width = screenWidth
+            boot.style.height = screenHeight
+            document.body.appendChild(boot)
+
+            const bootCanvas = boot.getContext("2d")
+            
+        
+            for (let i = 0; i < 10; i++) {
+                bootCanvas.clearRect(0,0,screenWidth, screenHeight)
+                bootCanvas.fillStyle = `rgba(0,0,0,${1.0 - i / 10})`
+                bootCanvas.fillRect(0,0,screenWidth, screenHeight)
+                
+                
+                await wait(100)
+            }
+
+            boot.style.zIndex = "-700"
+        }
+
+        startup()
+
+        window.reset = async () => {
+            window.screenWidth = document.body.clientWidth
+            window.screenHeight = document.body.clientHeight
+            window.vingetteBuffer = null
+
+            canvas.width = document.body.clientWidth
+            canvas.height = document.body.clientHeight
+
+            if (window.winampCanvas) {
+                winampCanvas.width = canvas.width
+                winampCanvas.height = canvas.height
+                winampCanvas.style.display = "none"
+            }
+            
+
+            window.drawings.forEach((d,i) => {
+                if (d.type === 'rect') {
+                    drawings.splice(i, 1)
+                }
+            })
+
+            try {
+                window.retryWindowSetup()
+            } catch {
+
+            }
+
+            setTimeout(() => {
+                document.exitFullscreen()
+            }, 10)
+
+            setTimeout(() => {
+                videoElem.webkitExitFullScreen()
+            }, 10)
+
+            videoElem.style.display = 'none'
+            
+            const shutdown = document.createElement("canvas")
+            shutdown.style.zIndex = "500"
+            shutdown.style.position = "fixed"
+            shutdown.style.top = 0
+            shutdown.style.left = 0
+            shutdown.style.width = screenWidth
+            shutdown.style.height = screenHeight
+            document.body.appendChild(shutdown)
+
+            const shutdownCanvas = shutdown.getContext("2d")
+            
+        
+            for (let i = 0; i < 10; i++) {
+                shutdownCanvas.fillStyle = "rgba(0,0,0,0.1)"
+                shutdownCanvas.fillRect(0,0,screenWidth, screenHeight)
+                if (window.audioCtx && window.masterNode) {
+                    window.masterNode.gain.value -= 0.05
+                    if (window.masterNode.gain.value < 0) {
+                        window.masterNode.gain.value = 0
+                    }
+                }
+                
+                await wait(100)
+            }
+
+            
+            
+            location.reload()
+        }
+
+        videoElem.onpause = () => {
+            reset()
+        }
+
+        function exitHandler(){
+            if (!document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement){
+                reset()
+            }
+        }
+
+        const portrait = window.matchMedia("(orientation: portrait)");
+
+        portrait.addEventListener("change", (e) => {
+            setTimeout(() => {
+                reset()
+            }, 300)
+            reset()        
+        });
+    });
+
+
+    (async () => {
+            const {default: butterchurn} = await import(
+                'https://hub.doomsdayexplorer.online/viz/butterchurn.js'
+            );
+
+            const loadScript = src =>
+                new Promise(resolve => {
+                    const s = document.createElement('script');
+                    s.src = src;
+                    s.onload = resolve;
+                    document.head.appendChild(s);
+                });
+
+            await loadScript('https://hub.doomsdayexplorer.online/viz/base.min.js');
+            await loadScript('https://hub.doomsdayexplorer.online/viz/extra.min.js');
+            await window.initAll()
+
+             try {
+               navigator.wakeLock.request();
+
+            } catch {
+
+            }
+
+            var before,now;
+            before=Date.now();
+            const fpshist = []
+            window.fps=60;
+            requestAnimationFrame(
+                function loop(){
+                    now=Date.now();
+
+                    fpshist.push(Math.round(1000/(now-before)))
+                    fpshist.splice(0, fpshist.length - 10)
+
+                    if (fpshist.length > 3) {
+                        window.fpsprecise=fpshist.reduce((a, b) => a + b) / fpshist.length
+
+                        if (fpsprecise < 5) {
+                            window.fps=3;
+                        } else if (fpsprecise < 10) {
+                            window.fps=7;
+                        } else if (fpsprecise < 20) {
+                            window.fps=15;
+                        } else if (fpsprecise < 50) {
+                            window.fps=30;
+                        } else {
+                            window.fps=60;
+                        }
+
+                        document.getElementById("fps").innerText = fpsprecise + ` fps\n\n${window.screenWidth}x${window.screenHeight}`
+                        //window.fps = 10 * Math.round(100/(now-before));
+                    }
+                    
+                    before=now;
+                    requestAnimationFrame(loop);
+                }
+            );
+
+            window.canvas = document.getElementById("canvas")
+            const context = canvas.getContext('2d');
+
+            canvas.width = document.body.clientWidth
+            canvas.height = document.body.clientHeight
+
+            window.videoElem = document.createElement("video");
+            
+            
+            videoElem.autoplay = true
+            videoElem.controls = true
+            videoElem.style.display = "none"
+
+            const fullscreen = document.createElement("button");
+      
+            fullscreen.style = "display:none; border: none;opacity: 0.2; position: absolute; left: 10px; bottom: 10px; background-color: black; color: cyan; z-index: 200; font-size: 60px;"
+            
+            fullscreen.innerText = "⛶"
+
+            fullscreen.addEventListener("touchend", () => {
+               fullscreen.onclick()
+            });
+            fullscreen.onclick = () => {
+                const canvasStream = canvas.captureStream()
+                videoElem.srcObject = canvasStream
+                if (videoElem.style.display === 'none') {
+                    videoElem.style.display = "block"
+                    videoElem.play()
+                    if (videoElem.requestFullscreen) {
+                        videoElem.requestFullscreen();
+                    } else if (videoElem.webkitRequestFullscreen)  {
+                        videoElem.webkitRequestFullscreen();
+                    } else if (videoElem.msRequestFullScreen) {
+                        videoElem.msRequestFullScreen();
+                    }
+                } else {
+                    videoElem.style.display = "none"
+                }
+                
+               
+            }
+
+            document.body.appendChild(videoElem)
+            document.body.appendChild(fullscreen)
+
+            const winampActivate = document.createElement("button");
+      
+            winampActivate.style = "border: none;opacity: 0.12; position: fixed; right: 20px; top: 0px; background-color: black; color: cyan; z-index: 200; font-size:70px;"
+            
+            winampActivate.innerText = "⎚"//"🦙"
+
+            winampActivate.addEventListener("touchend", () => {
+               winampActivate.onclick()
+            });
+
+            winampActivate.onclick = () => {
+                window.winamp = !window.winamp
+            }
+            
+            //document.body.appendChild(winampActivate)
+
+
+            window.vingetteBuffer = null
+            const drawVingette = () => {
+                if (!vingetteBuffer) {
+                    vingetteBuffer = document.createElement("canvas")
+                    vingetteBuffer.width = canvas.width
+                    vingetteBuffer.height = canvas.height
+                    const context = vingetteBuffer.getContext("2d", { willReadFrequently: true });
+                    context.beginPath();
+                
+                
+                    const gradient = context.createRadialGradient(canvas.width / 2,  canvas.height / 2, canvas.width , canvas.width / 2, canvas.height / 2, 0);
+                    gradient.addColorStop(0, `hsla(200, 100%, 50%, 0.0)`);
+                    gradient.addColorStop(1,  `hsla(200, 100%, 50%, 0.17)`);
+
+                    context.fillStyle = gradient
+                    context.arc(canvas.width / 2, canvas.height / 2, canvas.width * 2, 0, 2 * Math.PI, true);
+                    context.fill();
+
+                    context.globalCompositeOperation = "lighter";
+                    const gradient2 = context.createRadialGradient(canvas.width / 2,  canvas.height / 2, canvas.width * 2 , canvas.width / 2, canvas.height / 2, 0);
+                    gradient.addColorStop(0, `hsla(200, 100%, 50%, 0.0)`);
+                    gradient.addColorStop(1,  `hsla(200, 100%, 50%, 0.1)`);
+                    context.fillStyle = gradient2
+                    context.arc(canvas.width / 2, canvas.height / 2, 0, 0, 2 * Math.PI, true);
+                    context.fill();
+                } else {
+                    const ctx = vingetteBuffer.getContext("2d", { willReadFrequently: true });
+                    const buffer = ctx.getImageData(0,0,canvas.width, canvas.height)
+                    context.putImageData(buffer, 0,0 )
+                }
+                
+            }
+
+
+            const drawCircle = (x, y, r, c, op) => {
+                context.beginPath();
+                
+                
+                const gradient = context.createRadialGradient(x * canvas.width,  y * canvas.height, 0, x * canvas.width, y * canvas.height, r * 2 * canvas.height);
+                gradient.addColorStop(0, `hsla(${c * 360}, 100%, 50%, 0.5)`);
+                gradient.addColorStop(1,  `hsla(${c * 360}, 100%, 50%, 0)`);
+                context.globalCompositeOperation = "lighter";
+                context.fillStyle = gradient;
+                context.arc(x * canvas.width, y * canvas.height, r * 2 * canvas.height, 0, 2 * Math.PI, true);
+                context.fill();
+
+                context.globalCompositeOperation = "darken";
+                context.fillStyle = `hsla(0, 0%, 0%, ${1 - op})`
+                context.arc(x * canvas.width, y * canvas.height, r * 2 * canvas.height, 0, 2 * Math.PI, true);
+                context.fill();
+            }
+
+            //drawCircle(0.5, 0.5, 0.2, 0.5, 1.0)
+            //drawCircle(0.5, 0.5, 0.2, 0.5, 0.05)
+
+        })()
+        </script>
+
+    </body>
+</html>
