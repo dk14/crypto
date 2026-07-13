@@ -1227,7 +1227,7 @@
             );
 
             window.canvas = document.getElementById("canvas")
-            const context = canvas.getContext('2d');
+            window.context = canvas.getContext('2d');
 
             canvas.width = document.body.clientWidth
             canvas.height = document.body.clientHeight
