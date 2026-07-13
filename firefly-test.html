@@ -408,9 +408,9 @@
 
         }
 
-        const init = () => {
+        const init = async () => {
 
-            start()
+            await start()
            
             const random1 = () => {
                 return Math.abs(Math.sin(seed * 6599 + i * y + 109309 * energy * y + y + Math.sin(y)))
@@ -1074,8 +1074,11 @@
 
             boot.style.zIndex = "-700"
         }
+        
+        
+        await init()
 
-        startup()
+        await startup()
 
         window.reset = async () => {
             window.screenWidth = document.body.clientWidth
@@ -1158,8 +1161,6 @@
             }, 300)
             reset()        
         });
-
-        init()
         
         videoElem.onpause = () => {
             reset()
