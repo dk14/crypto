@@ -923,7 +923,10 @@
                 visualizer.connectAudio(mediaSource);
                 
                 
-                window.presets = butterchurnPresets.getPresets();
+                window.presets = {
+                    ...(window.base?.default || {}),
+                    ...(window.extra?.default || {})
+                };
                 window.presetKeys = Array.from(Object.keys(presets))
                 
                 const preseti = Math.floor((highscore / 10)) % presetKeys.length
