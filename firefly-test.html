@@ -1167,7 +1167,7 @@
 
     (async () => {
             const {default: butterchurn} = await import(
-                'https://hub.doomsdayexplorer.online/viz/butterchurn.js'
+                './viz/butterchurn.js'
             );
 
             const loadScript = src =>
@@ -1178,8 +1178,8 @@
                     document.head.appendChild(s);
                 });
 
-            await loadScript('https://hub.doomsdayexplorer.online/viz/base.min.js');
-            await loadScript('https://hub.doomsdayexplorer.online/viz/extra.min.js');
+            await loadScript('./viz/base.min.js');
+            await loadScript('./viz/extra.min.js');
             await window.initAll()
 
              try {
@@ -1241,7 +1241,7 @@
       
             fullscreen.style = "display:none; border: none;opacity: 0.2; position: absolute; left: 10px; bottom: 10px; background-color: black; color: cyan; z-index: 200; font-size: 60px;"
             
-            fullscreen.innerText = "⛶"
+            fullscreen.innerText = "â›¶"
 
             fullscreen.addEventListener("touchend", () => {
                fullscreen.onclick()
@@ -1273,7 +1273,7 @@
       
             winampActivate.style = "border: none;opacity: 0.12; position: fixed; right: 20px; top: 0px; background-color: black; color: cyan; z-index: 200; font-size:70px;"
             
-            winampActivate.innerText = "⎚"//"🦙"
+            winampActivate.innerText = "âŽš"//"ðŸ¦™"
 
             winampActivate.addEventListener("touchend", () => {
                winampActivate.onclick()
