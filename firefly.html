@@ -1,5 +1,6 @@
 <html>
     <head>
+        <meta charset="utf-8">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="viewport" content="user-scalable=no, minimal-ui, initial-scale=1.0">
@@ -30,168 +31,6 @@
             </g>
             
         </svg>
-        <script>
-
-            try {
-               navigator.wakeLock.request();
-
-            } catch {
-
-            }
-
-            var before,now;
-            before=Date.now();
-            const fpshist = []
-            window.fps=60;
-            requestAnimationFrame(
-                function loop(){
-                    now=Date.now();
-
-                    fpshist.push(Math.round(1000/(now-before)))
-                    fpshist.splice(0, fpshist.length - 10)
-
-                    if (fpshist.length > 3) {
-                        window.fpsprecise=fpshist.reduce((a, b) => a + b) / fpshist.length
-
-                        if (fpsprecise < 5) {
-                            window.fps=3;
-                        } else if (fpsprecise < 10) {
-                            window.fps=7;
-                        } else if (fpsprecise < 20) {
-                            window.fps=15;
-                        } else if (fpsprecise < 50) {
-                            window.fps=30;
-                        } else {
-                            window.fps=60;
-                        }
-
-                        document.getElementById("fps").innerText = fpsprecise + ` fps\n\n${window.screenWidth}x${window.screenHeight}`
-                        //window.fps = 10 * Math.round(100/(now-before));
-                    }
-                    
-                    before=now;
-                    requestAnimationFrame(loop);
-                }
-            );
-
-            window.canvas = document.getElementById("canvas")
-            const context = canvas.getContext('2d');
-
-            canvas.width = document.body.clientWidth
-            canvas.height = document.body.clientHeight
-
-            window.videoElem = document.createElement("video");
-            
-            
-            videoElem.autoplay = true
-            videoElem.controls = true
-            videoElem.style.display = "none"
-
-            const fullscreen = document.createElement("button");
-      
-            fullscreen.style = "display:none; border: none;opacity: 0.2; position: absolute; left: 10px; bottom: 10px; background-color: black; color: cyan; z-index: 200; font-size: 60px;"
-            
-            fullscreen.innerText = "⛶"
-
-            fullscreen.addEventListener("touchend", () => {
-               fullscreen.onclick()
-            });
-            fullscreen.onclick = () => {
-                const canvasStream = canvas.captureStream()
-                videoElem.srcObject = canvasStream
-                if (videoElem.style.display === 'none') {
-                    videoElem.style.display = "block"
-                    videoElem.play()
-                    if (videoElem.requestFullscreen) {
-                        videoElem.requestFullscreen();
-                    } else if (videoElem.webkitRequestFullscreen)  {
-                        videoElem.webkitRequestFullscreen();
-                    } else if (videoElem.msRequestFullScreen) {
-                        videoElem.msRequestFullScreen();
-                    }
-                } else {
-                    videoElem.style.display = "none"
-                }
-                
-               
-            }
-
-            document.body.appendChild(videoElem)
-            document.body.appendChild(fullscreen)
-
-            const winampActivate = document.createElement("button");
-      
-            winampActivate.style = "border: none;opacity: 0.12; position: fixed; right: 20px; top: 0px; background-color: black; color: cyan; z-index: 200; font-size:70px;"
-            
-            winampActivate.innerText = "⎚"//"🦙"
-
-            winampActivate.addEventListener("touchend", () => {
-               winampActivate.onclick()
-            });
-
-            winampActivate.onclick = () => {
-                window.winamp = !window.winamp
-            }
-            
-            //document.body.appendChild(winampActivate)
-
-
-            window.vingetteBuffer = null
-            const drawVingette = () => {
-                if (!vingetteBuffer) {
-                    vingetteBuffer = document.createElement("canvas")
-                    vingetteBuffer.width = canvas.width
-                    vingetteBuffer.height = canvas.height
-                    const context = vingetteBuffer.getContext("2d", { willReadFrequently: true });
-                    context.beginPath();
-                
-                
-                    const gradient = context.createRadialGradient(canvas.width / 2,  canvas.height / 2, canvas.width , canvas.width / 2, canvas.height / 2, 0);
-                    gradient.addColorStop(0, `hsla(200, 100%, 50%, 0.0)`);
-                    gradient.addColorStop(1,  `hsla(200, 100%, 50%, 0.17)`);
-
-                    context.fillStyle = gradient
-                    context.arc(canvas.width / 2, canvas.height / 2, canvas.width * 2, 0, 2 * Math.PI, true);
-                    context.fill();
-
-                    context.globalCompositeOperation = "lighter";
-                    const gradient2 = context.createRadialGradient(canvas.width / 2,  canvas.height / 2, canvas.width * 2 , canvas.width / 2, canvas.height / 2, 0);
-                    gradient.addColorStop(0, `hsla(200, 100%, 50%, 0.0)`);
-                    gradient.addColorStop(1,  `hsla(200, 100%, 50%, 0.1)`);
-                    context.fillStyle = gradient2
-                    context.arc(canvas.width / 2, canvas.height / 2, 0, 0, 2 * Math.PI, true);
-                    context.fill();
-                } else {
-                    const ctx = vingetteBuffer.getContext("2d", { willReadFrequently: true });
-                    const buffer = ctx.getImageData(0,0,canvas.width, canvas.height)
-                    context.putImageData(buffer, 0,0 )
-                }
-                
-            }
-
-
-            const drawCircle = (x, y, r, c, op) => {
-                context.beginPath();
-                
-                
-                const gradient = context.createRadialGradient(x * canvas.width,  y * canvas.height, 0, x * canvas.width, y * canvas.height, r * 2 * canvas.height);
-                gradient.addColorStop(0, `hsla(${c * 360}, 100%, 50%, 0.5)`);
-                gradient.addColorStop(1,  `hsla(${c * 360}, 100%, 50%, 0)`);
-                context.globalCompositeOperation = "lighter";
-                context.fillStyle = gradient;
-                context.arc(x * canvas.width, y * canvas.height, r * 2 * canvas.height, 0, 2 * Math.PI, true);
-                context.fill();
-
-                context.globalCompositeOperation = "darken";
-                context.fillStyle = `hsla(0, 0%, 0%, ${1 - op})`
-                context.arc(x * canvas.width, y * canvas.height, r * 2 * canvas.height, 0, 2 * Math.PI, true);
-                context.fill();
-            }
-
-            //drawCircle(0.5, 0.5, 0.2, 0.5, 1.0)
-            //drawCircle(0.5, 0.5, 0.2, 0.5, 0.05)
-
-        </script>
         <script>
 
             var prevX = 0
@@ -264,12 +103,9 @@
 
         </script>
         
-        <script type="text/javascript" src="https://unpkg.com/butterchurn"></script>
-        <script type="text/javascript" src="https://unpkg.com/butterchurn-presets"></script>
-        <script type="text/javascript" src="https://unpkg.com/butterchurn-presets/lib/butterchurnPresetsExtra.min.js"></script>
-  
 
-        <script src="https://unpkg.com/intersects/umd/intersects.min.js"></script>
+
+    
         <script id="worklet1">
             if (window.isWorkletContext) {
                 registerProcessor('clipper', class clipper extends AudioWorkletProcessor {
@@ -315,6 +151,10 @@
         </script>
         
         <script>
+
+ window.initAll = (async () => {
+
+        
         window.screenWidth = document.body.clientWidth
         window.screenHeight = document.body.clientHeight
 
@@ -358,7 +198,7 @@
         
             retryText.setAttributeNS(null, 'x', screenWidth / 2 - 200);
             retryText.setAttributeNS(null, 'y', screenHeight / 2);
-            retryText.setAttributeNS(null, 'style', "fill: #FFC1CC;font-size: 30px;font-style: italic; font-weight:bolder; opacity: 0.5");
+            retryText.setAttributeNS(null, 'style', "fill: pink;font-size: 30px;font-style: italic; font-weight:bolder; opacity: 0.5");
             
             retryRect.setAttributeNS(null, 'x', 0);
             retryRect.setAttributeNS(null, 'y', 0);
@@ -569,9 +409,9 @@
 
         }
 
-        const init = () => {
+        const init = async () => {
 
-            start()
+            await start()
            
             const random1 = () => {
                 return Math.abs(Math.sin(seed * 6599 + i * y + 109309 * energy * y + y + Math.sin(y)))
@@ -827,7 +667,7 @@
             }, refresh)
             loop()
          }
-         init()
+
 
          var audioActive = false
          const audio = async () => {
@@ -1075,7 +915,7 @@
             
             const initWinampViz = (canvas) => {
 
-                visualizer = butterchurn.default.createVisualizer(audioCtx, canvas, {
+                visualizer = butterchurn.createVisualizer(audioCtx, canvas, {
                     width: canvas.width,
                     height: canvas.height
                 });
@@ -1084,7 +924,10 @@
                 visualizer.connectAudio(mediaSource);
                 
                 
-                window.presets = butterchurnPresets.getPresets();
+                window.presets = {
+                    ...(window.base?.default || {}),
+                    ...(window.extra?.default || {})
+                };
                 window.presetKeys = Array.from(Object.keys(presets))
                 
                 const preseti = Math.floor((highscore / 10)) % presetKeys.length
@@ -1101,8 +944,8 @@
                         if (!window.black) {
                             visualizer.render();
                         } else {
-                            const gl = canvas.getContext("webgl2")
-                            gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
+                            const gl = winampCanvas.getContext("webgl2")
+                            gl?.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
                         }
                     }
                    
@@ -1235,8 +1078,11 @@
 
             boot.style.zIndex = "-700"
         }
+        
+        
+        await init()
 
-        startup()
+        await startup()
 
         window.reset = async () => {
             window.screenWidth = document.body.clientWidth
@@ -1305,10 +1151,6 @@
             location.reload()
         }
 
-        videoElem.onpause = () => {
-            reset()
-        }
-
         function exitHandler(){
             if (!document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement){
                 reset()
@@ -1323,8 +1165,194 @@
             }, 300)
             reset()        
         });
+        
+        videoElem.onpause = () => {
+            reset()
+        }
+    });
 
 
+    (async () => {
+            const {default: butterchurn} = await import(
+                './viz/butterchurn.js'
+            );
+
+            window.butterchurn = butterchurn
+
+            const loadScript = src =>
+                new Promise(resolve => {
+                    const s = document.createElement('script');
+                    s.src = src;
+                    s.onload = resolve;
+                    document.head.appendChild(s);
+                });
+
+            await loadScript('./viz/base.min.js');
+            await loadScript('./viz/extra.min.js');
+            await loadScript('./viz/intersects.min.js');
+
+             try {
+               navigator.wakeLock.request();
+
+            } catch {
+
+            }
+
+            var before,now;
+            before=Date.now();
+            const fpshist = []
+            window.fps=60;
+            requestAnimationFrame(
+                function loop(){
+                    now=Date.now();
+
+                    fpshist.push(Math.round(1000/(now-before)))
+                    fpshist.splice(0, fpshist.length - 10)
+
+                    if (fpshist.length > 3) {
+                        window.fpsprecise=fpshist.reduce((a, b) => a + b) / fpshist.length
+
+                        if (fpsprecise < 5) {
+                            window.fps=3;
+                        } else if (fpsprecise < 10) {
+                            window.fps=7;
+                        } else if (fpsprecise < 20) {
+                            window.fps=15;
+                        } else if (fpsprecise < 50) {
+                            window.fps=30;
+                        } else {
+                            window.fps=60;
+                        }
+
+                        document.getElementById("fps").innerText = fpsprecise + ` fps\n\n${window.screenWidth}x${window.screenHeight}`
+                        //window.fps = 10 * Math.round(100/(now-before));
+                    }
+                    
+                    before=now;
+                    requestAnimationFrame(loop);
+                }
+            );
+
+            window.canvas = document.getElementById("canvas")
+            window.context = canvas.getContext('2d');
+
+            canvas.width = document.body.clientWidth
+            canvas.height = document.body.clientHeight
+
+            window.videoElem = document.createElement("video");
+            
+            
+            videoElem.autoplay = true
+            videoElem.controls = true
+            videoElem.style.display = "none"
+
+            window.fullscreen = document.createElement("button");
+      
+            fullscreen.style = "display:none; border: none;opacity: 0.2; position: absolute; left: 10px; bottom: 10px; background-color: black; color: cyan; z-index: 200; font-size: 60px;"
+            
+            fullscreen.innerText = "⛶"
+
+            fullscreen.addEventListener("touchend", () => {
+               fullscreen.onclick()
+            });
+            fullscreen.onclick = () => {
+                const canvasStream = canvas.captureStream()
+                videoElem.srcObject = canvasStream
+                if (videoElem.style.display === 'none') {
+                    videoElem.style.display = "block"
+                    videoElem.play()
+                    if (videoElem.requestFullscreen) {
+                        videoElem.requestFullscreen();
+                    } else if (videoElem.webkitRequestFullscreen)  {
+                        videoElem.webkitRequestFullscreen();
+                    } else if (videoElem.msRequestFullScreen) {
+                        videoElem.msRequestFullScreen();
+                    }
+                } else {
+                    videoElem.style.display = "none"
+                }
+                
+               
+            }
+
+            document.body.appendChild(videoElem)
+            document.body.appendChild(fullscreen)
+
+            window.winampActivate = document.createElement("button");
+      
+            winampActivate.style = "border: none;opacity: 0.12; position: fixed; right: 20px; top: 0px; background-color: black; color: cyan; z-index: 200; font-size:70px;"
+            
+            winampActivate.innerText = "âŽš"//"ðŸ¦™"
+
+            winampActivate.addEventListener("touchend", () => {
+               winampActivate.onclick()
+            });
+
+            winampActivate.onclick = () => {
+                window.winamp = !window.winamp
+            }
+            
+            //document.body.appendChild(winampActivate)
+
+
+            window.vingetteBuffer = null
+            window.drawVingette = () => {
+                if (!vingetteBuffer) {
+                    vingetteBuffer = document.createElement("canvas")
+                    vingetteBuffer.width = canvas.width
+                    vingetteBuffer.height = canvas.height
+                    const context = vingetteBuffer.getContext("2d", { willReadFrequently: true });
+                    context.beginPath();
+                
+                
+                    const gradient = context.createRadialGradient(canvas.width / 2,  canvas.height / 2, canvas.width , canvas.width / 2, canvas.height / 2, 0);
+                    gradient.addColorStop(0, `hsla(200, 100%, 50%, 0.0)`);
+                    gradient.addColorStop(1,  `hsla(200, 100%, 50%, 0.17)`);
+
+                    context.fillStyle = gradient
+                    context.arc(canvas.width / 2, canvas.height / 2, canvas.width * 2, 0, 2 * Math.PI, true);
+                    context.fill();
+
+                    context.globalCompositeOperation = "lighter";
+                    const gradient2 = context.createRadialGradient(canvas.width / 2,  canvas.height / 2, canvas.width * 2 , canvas.width / 2, canvas.height / 2, 0);
+                    gradient.addColorStop(0, `hsla(200, 100%, 50%, 0.0)`);
+                    gradient.addColorStop(1,  `hsla(200, 100%, 50%, 0.1)`);
+                    context.fillStyle = gradient2
+                    context.arc(canvas.width / 2, canvas.height / 2, 0, 0, 2 * Math.PI, true);
+                    context.fill();
+                } else {
+                    const ctx = vingetteBuffer.getContext("2d", { willReadFrequently: true });
+                    const buffer = ctx.getImageData(0,0,canvas.width, canvas.height)
+                    context.putImageData(buffer, 0,0 )
+                }
+                
+            }
+
+
+            window.drawCircle = (x, y, r, c, op) => {
+                context.beginPath();
+                
+                
+                const gradient = context.createRadialGradient(x * canvas.width,  y * canvas.height, 0, x * canvas.width, y * canvas.height, r * 2 * canvas.height);
+                gradient.addColorStop(0, `hsla(${c * 360}, 100%, 50%, 0.5)`);
+                gradient.addColorStop(1,  `hsla(${c * 360}, 100%, 50%, 0)`);
+                context.globalCompositeOperation = "lighter";
+                context.fillStyle = gradient;
+                context.arc(x * canvas.width, y * canvas.height, r * 2 * canvas.height, 0, 2 * Math.PI, true);
+                context.fill();
+
+                context.globalCompositeOperation = "darken";
+                context.fillStyle = `hsla(0, 0%, 0%, ${1 - op})`
+                context.arc(x * canvas.width, y * canvas.height, r * 2 * canvas.height, 0, 2 * Math.PI, true);
+                context.fill();
+            }
+
+            await window.initAll()
+
+            //drawCircle(0.5, 0.5, 0.2, 0.5, 1.0)
+            //drawCircle(0.5, 0.5, 0.2, 0.5, 0.05)
+
+        })()
         </script>
 
     </body>
