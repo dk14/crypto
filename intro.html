@@ -138,11 +138,15 @@
     z-index:10;                    /* above the canvas */
 }
 
-video:fullscreen,
-video:-webkit-full-screen,
-video:-moz-full-screen,
-video:-ms-fullscreen {
-    opacity: 1;        /* fully opaque */
+.video-wrapper {
+   width: 320px;
+   height: 240px;
+
+  display: inline-block;       /* makes the wrapper shrink‑wrap its content */
+  resize: both;                /* enables the resize grip */
+  overflow: hidden;              /* required for resize to take effect */
+  max-width: 100%;             /* optional – prevent it from growing past the page width */
+  border: 1px solid #ccc0;      /* optional – visual cue */
 }
 
 
@@ -932,13 +936,26 @@ video:-ms-fullscreen {
       
      <h3>Early‑warning Security System for True Random Number Generators<br/><i style="opacity: 0.1; font-family: 'Courier New', Courier, monospace;text-shadow: rgba(255, 162, 0, 0.9) 0px 0px 10px;">Human-Computer Interface Portal for Artificial Intelligence</i></h3>
      <a href="https://official.doomsdayexplorer.online/" id="enterBtn">Enter →</a><br/>
-      <video controls poster width="320" height="240"  loop muted autoplay style="opacity: 0.1; position:absolute;
-   top:0; pointer-events:all;
-   right:10px;filter: drop-shadow(0px 0px 10px yellow);">
+      <div id="div-vid" class="video-wrapper" style="opacity: 0.1; position:absolute;
+   top:0; pointer-events:all; object-fit: cover; 
+   right:10px;filter: drop-shadow(0px 0px 10px yellow);" >
+   
+   <video controls poster  loop muted autoplay width="100%" height="100%" tyle="object-fit: cover;"> 
   <source src="https://crypto.doomsdayexplorer.online/promo-video.mp4" type="video/mp4" />
 
 
-</video><br/> 
+</video>
+  <div id="drag-strip-vid"
+       style="
+         position:absolute;
+         pointer-events: all;
+         z-index: 10;
+         top:-1px; left:0; right:0; height:3px;
+         background:rgba(0,0,0,0);   /* invisible */
+         cursor:move;            /* optional hint */
+       "></div>
+
+</div><br/> 
   <div id="hciwrapper" class="iframe‑wrapper" style="pointer-events:all;opacity: 0.1; filter: drop-shadow(0px 0px 10px yellow);">
   <iframe
     id="hci"
@@ -1041,8 +1058,8 @@ restoreState();   // put wrapper back where the user left it
   </div>
 
   <script>
-    const vid = document.querySelector('video');   // or document.getElementById('myVideo')
-
+    const video = document.querySelector('video');   // or document.getElementById('myVideo')
+const vid = document.getElementById('div-vid');
 function handleFullScreenChange() {
     const isFullScreen =
         document.fullscreenElement ||
@@ -1052,13 +1069,15 @@ function handleFullScreenChange() {
 
     // When the video is the fullscreen element, set opacity to 1.
     // Otherwise restore the dimmed opacity you want for the normal view.
-    if (isFullScreen === vid) {
+    if (isFullScreen === video) {
         vid.style.opacity = '1';
         vid.style.filter = "drop-shadow(0px 0px 10px #FFFFFF50)"
+        video.style.filter = "drop-shadow(0px 0px 10px #FFFFFF50)"
         
     } else {
         vid.style.opacity = '0.3';   // same value as in the CSS rule
         vid.style.filter = "drop-shadow(0px 0px 10px yellow)"
+        video.style.filter = ""
     }
 }
 
@@ -1067,6 +1086,89 @@ document.addEventListener('fullscreenchange',       handleFullScreenChange);
 document.addEventListener('webkitfullscreenchange', handleFullScreenChange);
 document.addEventListener('mozfullscreenchange',    handleFullScreenChange);
 document.addEventListener('MSFullscreenChange',    handleFullScreenChange);
+
+
+/* ---------- constants ---------- */
+const STORAGE_KEY_VID = 'iframeWrapperStateVid';   // localStorage key
+
+/* ---------- DOM elements ---------- */
+
+const dragStripVid = document.getElementById('drag-strip-vid');
+
+/* ---------- state variables ---------- */
+let draggingVid = false;
+let startXVid = 0, startYVid = 0;
+let origLeftVid = 0, origTopVid = 0;
+
+/* ---------- helper: save current geometry ---------- */
+function saveStateVid() {
+  const rect = vid.getBoundingClientRect();
+  const state = {
+    left:   Math.round(rect.left),
+    top:    Math.round(rect.top),
+    width:  Math.round(rect.width),
+    height: Math.round(rect.height)
+  };
+  localStorage.setItem(STORAGE_KEY_VID, JSON.stringify(state));
+}
+
+/* ---------- restore geometry on page load ---------- */
+function restoreStateVid() {
+  const raw = localStorage.getItem(STORAGE_KEY_VID);
+  if (!raw) return;                         // nothing saved yet
+  try {
+    const {left, top, width, height} = JSON.parse(raw);
+    vid.style.left   = left   + 'px';
+    vid.style.top    = top    + 'px';
+    vid.style.width  = width  + 'px';
+    vid.style.height = height + 'px';
+  } catch (_) {
+    // malformed JSON – ignore
+  }
+}
+
+/* ---------- drag handling ---------- */
+dragStripVid.addEventListener('mousedown', e => {
+  draggingVid = true;
+  startXVid   = e.clientX;
+  startYVid   = e.clientY;
+  origLeftVid = vid.offsetLeft;
+  origTopVid  = vid.offsetTop;
+});
+
+window.addEventListener('mousemove', e => {
+  if (!draggingVid) return;
+  const dx = e.clientX - startXVid;
+  const dy = e.clientY - startYVid;
+  vid.style.left = (origLeftVid + dx) + 'px';
+  vid.style.top  = (origTopVid  + dy) + 'px';
+});
+
+window.addEventListener('mouseup', () => {
+  if (draggingVid) {
+    draggingVid = false;
+    saveStateVid();          // persist new position
+  }
+});
+
+/* ---------- resize handling ---------- */
+/* The CSS `resize` gives us a UI, but we need to know when it finishes.
+   The simplest cross‑browser way is to listen for the `mouseup` event on the
+   window after a `mousedown` on the wrapper (the user is likely dragging the
+   resize handle). */
+vid.addEventListener('mousedown', e => {
+  // ignore the drag‑strip mousedown – it’s already handled above
+  if (e.target === dragStripVid) return;
+  const onUp = () => {
+    saveStateVid();          // persist new size (and possibly new position)
+    window.removeEventListener('mouseup', onUp);
+  };
+  window.addEventListener('mouseup', onUp);
+});
+
+/* ---------- init ---------- */
+restoreStateVid();   // put wrapper back where the user left it
+
 
   </script>
 
