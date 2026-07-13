@@ -105,7 +105,7 @@
         
 
 
-        <script src="https://unpkg.com/intersects/umd/intersects.min.js"></script>
+    
         <script id="worklet1">
             if (window.isWorkletContext) {
                 registerProcessor('clipper', class clipper extends AudioWorkletProcessor {
@@ -614,7 +614,7 @@
                         
                     }
 
-                    const lost = Intersects.circleBox(x, y, radius, rcx, r.y + (r.dy ?? 0), r.width + (r.dw ?? 0), r.height + (r.dh ?? 0))
+                    const lost = Intersects.default.circleBox(x, y, radius, rcx, r.y + (r.dy ?? 0), r.width + (r.dw ?? 0), r.height + (r.dh ?? 0))
                     if (lost) {
                         rects.length = 0
                         play = false
@@ -1189,6 +1189,7 @@
 
             await loadScript('./viz/base.min.js');
             await loadScript('./viz/extra.min.js');
+            await loadScript('./viz/intersects.min.js');
 
              try {
                navigator.wakeLock.request();
