@@ -1528,3 +1528,92 @@ label:
      * 
      * 
      */
+
+
+    function* enumerateTuringMachines() {
+    let length = 0
+
+    while (true) {
+        yield* enumerateLength(length)
+        length++
+    }
+}
+
+
+function* enumerateLength(n) {
+
+    if (n === 0) {
+        yield []
+        return
+    }
+
+    const instr = []
+
+    for (const x of enumerateInstructionSequences(n, n)) {
+        yield x
+    }
+}
+
+
+function* enumerateInstructionSequences(length, programLength, prefix=[]) {
+
+    if (prefix.length === length) {
+        yield prefix
+        return
+    }
+
+    const pos = prefix.length
+
+    for (let mem = 0n; mem < BigInt(programLength); mem++) {
+
+        // OUT
+        yield* enumerateInstructionSequences(
+            length,
+            programLength,
+            [...prefix, [mem, TURING_OUT]]
+        )
+
+        // DEC
+        yield* enumerateInstructionSequences(
+            length,
+            programLength,
+            [...prefix, [mem, TURING_DEC]]
+        )
+
+        // INC
+        yield* enumerateInstructionSequences(
+            length,
+            programLength,
+            [...prefix, [mem, TURING_INC]]
+        )
+
+        // JMPNZ
+        for (let target = 0; target < programLength; target++) {
+
+            yield* enumerateInstructionSequences(
+                length,
+                programLength,
+                [...prefix, [
+                    mem,
+                    TURING_OFFSET + BigInt(target)
+                ]]
+            )
+        }
+    }
+}
+
+
+const outputs = []
+
+for (const tm of enumerateTuringMachines()) {
+
+    const out = executeTuring(tm)
+
+    outputs.push(out)
+
+    if (predicate(outputs)) {
+        console.log("FOUND", tm)
+        break
+    }
+}
+
