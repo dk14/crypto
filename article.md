@@ -1,0 +1,1073 @@
+# Introduction
+
+Entropy occupies a unique position in modern information security.
+Unlike many cryptographic assumptions, the unpredictability of entropy
+sources cannot be established solely through mathematical proof.
+Instead, confidence is typically derived from physical models,
+engineering analysis, and statistical validation of experimentally
+observed output.
+
+Classical true random number generators (TRNGs) derive
+entropy [@shannon1949] from physical phenomena such as thermal noise,
+oscillator jitter, or electronic avalanche processes. Quantum random
+number generators (QRNGs) derive entropy from measurements [@bell1964]
+commonly interpreted as intrinsically probabilistic quantum events. Both
+approaches have motivated extensive research, standardization, and
+certification procedures, culminating in widely adopted testing
+methodologies such as the NIST Statistical Test Suite, entropy
+estimation procedures, and complementary validation frameworks.
+
+These methodologies provide valuable evidence that observed output is
+statistically consistent with expected random behavior. However,
+statistical consistency alone cannot prove the absence of previously
+unknown deterministic mechanisms, implementation-specific artifacts,
+experimental bias, or incomplete physical models. Consequently, entropy
+validation remains an empirical scientific process rather than a
+mathematically complete proof of unpredictability.
+
+Recent work published through the Doomsday Explorer project investigates
+both classical and quantum entropy sources using large-scale
+computational analysis, interactive experimentation, and publicly
+reproducible workflows. Rather than presenting isolated experimental
+claims, the project seeks to establish a methodology through which
+competing explanations may be evaluated under identical experimental
+conditions.
+
+The central contribution of this paper is therefore methodological
+rather than adversarial. Instead of proposing another statistical
+randomness test, we present a decentralized framework for continuous
+experimental verification of entropy-related hypotheses. Independent
+participants execute computational workloads, replicate selected
+experiments, and publish reproducible evidence that may either reinforce
+or challenge existing assumptions. Importantly, the same infrastructure
+evaluates conventional certification methodologies, newly proposed
+entropy models, and the framework's own predictions using identical
+computational procedures.
+
+This perspective shifts entropy validation from one-time certification
+toward iterative scientific verification. Confidence emerges not from
+the authority of individual organizations, vendors, or research groups,
+but from reproducible evidence accumulated through independent
+experimentation. The proposed framework therefore complements existing
+standards by enabling continuous public evaluation of both established
+assumptions and unconventional hypotheses.
+
+## Motivation
+
+Modern cryptographic systems increasingly depend upon entropy sources
+whose internal operation cannot be independently reproduced by every
+relying party. Certification procedures necessarily evaluate observable
+statistical behavior, physical implementation, and engineering
+assumptions. While these approaches have proven highly valuable, their
+conclusions remain conditional upon the correctness of the underlying
+models and experimental methodology.
+
+Scientific progress has historically emerged through continuous
+replication rather than permanent certification. As computational
+resources become globally distributed, it becomes practical to apply the
+same principle to entropy research itself. Instead of relying
+exclusively on centralized laboratories, independent participants may
+execute identical experiments, compare results, and collectively refine
+confidence in competing hypotheses.
+
+The Doomsday Explorer framework adopts this philosophy. Its objective is
+not to replace existing certification, nor to assume the correctness of
+any particular entropy model. Instead, it provides an open
+infrastructure through which empirical evidence may be accumulated,
+verified, and continuously re-evaluated as new theoretical models,
+experimental techniques, and computational capabilities emerge.
+
+## Contributions
+
+The principal contributions of this work are summarized below.
+
+1.  A decentralized computational framework for reproducible evaluation
+    of entropy-related hypotheses.
+
+2.  A replicated execution model that mitigates result withholding,
+    enables independent verification, and supports public
+    reproducibility.
+
+3.  A unified experimental methodology applicable to both classical and
+    quantum entropy sources.
+
+4.  An iterative approximation process through which confidence in
+    competing entropy models may evolve as additional evidence becomes
+    available.
+
+5.  An open scientific infrastructure designed to complement, rather
+    than replace, existing statistical validation standards, by enabling
+    investigation of unresolved questions concerning the physical and
+    computational origin origin of entropy rather than statistical
+    properties of observed output.
+
+    The proposed framework intentionally separates engineering
+    certification from ongoing scientific investigation. Existing
+    statistical validation standards remain valuable for evaluating
+    observable properties of generated sequences, whereas the present
+    methodology focuses on unresolved questions concerning the physical
+    and computational mechanisms capable of producing those
+    observations.
+
+# Related Work
+
+Randomness evaluation has traditionally been approached through
+statistical hypothesis testing, entropy estimation, physical
+characterization, and implementation analysis. Widely adopted standards,
+including the NIST Statistical Test Suite, Dieharder, TestU01, and
+SP 800-90B entropy estimation [@nist80090b], provide practical methods
+for evaluating statistical properties of generated sequences. These
+methodologies have substantially improved the engineering quality of
+deployed entropy sources and remain essential components of modern
+cryptographic practice.
+
+Quantum random number generators introduce additional validation
+techniques derived from quantum mechanical models, Bell-type
+experiments, and device characterization. While these approaches
+strengthen confidence in physical implementations, their conclusions
+remain dependent upon experimental assumptions, measurement fidelity,
+and the interpretation of observed phenomena.
+
+Distributed computation has likewise evolved considerably through
+volunteer computing, blockchain consensus, distributed verification, and
+decentralized scientific collaboration. These systems demonstrate that
+large-scale computational tasks can be executed reliably by independent
+participants, provided appropriate mechanisms exist for verification and
+fault tolerance.
+
+The present work combines these directions. Rather than proposing a new
+statistical randomness test or a replacement cryptographic primitive,
+Doomsday Explorer applies decentralized replicated competitive
+computation to the scientific evaluation of entropy itself. The
+resulting framework treats both established assumptions and newly
+proposed hypotheses as experimentally testable models whose confidence
+may be continuously refined through publicly reproducible evidence.
+
+# System Model
+
+The Doomsday Explorer framework is organized as a decentralized
+scientific computation network whose purpose is the reproducible
+evaluation of entropy-related hypotheses. Unlike conventional
+distributed computation systems, the objective is not merely
+computational throughput, but independent replication, transparent
+verification, and continuous accumulation of empirical evidence.
+
+Three logical components participate in the framework:
+
+-   **Explorer Nodes** formulate experimental workloads, define
+    computational parameters, and publish experiment descriptions.
+
+-   **Entropy Miners** independently execute computational tasks,
+    produce experimental observations, and return reproducible results.
+
+-   The **Decentralized Verification Network** coordinates task
+    distribution, selective replication, result aggregation, and
+    publication of experimental evidence.
+
+No participant is assumed to be trusted. Every published result may be
+independently reproduced, verified, or challenged by additional
+participants.
+
+# Network Architecture
+
+Figure [1](#fig:architecture){reference-type="ref"
+reference="fig:architecture"} illustrates the logical organization of
+the framework.
+
+Explorer Nodes submit computational experiments to the decentralized
+verification network. The network distributes workloads among Entropy
+Miners, which execute assigned tasks independently.
+
+To reduce the possibility of result withholding, implementation bias, or
+computational faults, selected workloads are intentionally replicated
+across multiple independent miners. Returned observations are compared,
+aggregated, and published together with sufficient metadata to enable
+subsequent independent reproduction.
+
+This architecture separates experiment definition, experiment execution,
+and evidence publication, allowing individual participants to verify
+every stage of the computational workflow.
+
+<figure id="fig:architecture">
+
+<figcaption> Logical architecture of the Doomsday Explorer framework.
+Explorer Nodes define computational experiments. The decentralized
+verification network distributes workloads, selectively replicates
+tasks, aggregates returned observations, and publishes reproducible
+evidence. Independent replication mitigates result withholding and
+enables verification of published computational results. </figcaption>
+</figure>
+
+# Replicated Experimental Execution
+
+Traditional distributed computation often assumes that each
+computational task requires only a single execution. In contrast, the
+Doomsday Explorer framework intentionally introduces controlled
+redundancy.
+
+A configurable fraction of submitted workloads is executed independently
+by multiple miners. Returned observations are compared before
+publication, allowing inconsistent executions, implementation-specific
+behavior, or malicious result withholding to be detected.
+
+The replication policy serves several purposes.
+
+1.  Independent verification of published results.
+
+2.  Detection of computational inconsistencies.
+
+3.  Resistance to selective disclosure.
+
+4.  Long-term measurement of experimental reproducibility.
+
+Importantly, replication is treated as a scientific mechanism rather
+than a consensus protocol. Agreement between replicated executions does
+not establish correctness of an underlying hypothesis; instead, it
+establishes reproducibility of the computational experiment itself.
+
+# Iterative Approximation Framework
+
+Entropy validation is formulated as an iterative approximation process
+rather than a binary certification decision.
+
+Let
+
+$$H
+=
+\{H_1,H_2,\ldots,H_n\}$$
+
+denote competing hypotheses regarding the behavior of an entropy source.
+
+These hypotheses may include
+
+-   existing statistical models,
+
+-   physical models,
+
+-   implementation-specific explanations,
+
+-   newly proposed deterministic mechanisms.
+
+Explorer Nodes construct experiments capable of discriminating between
+one or more hypotheses.
+
+Entropy Miners execute those experiments.
+
+Replicated execution establishes that reported observations are
+computationally reproducible.
+
+Published evidence then updates confidence associated with competing
+models.
+
+Unlike conventional certification, the framework never declares a
+hypothesis permanently verified or falsified. Instead, confidence
+evolves continuously as additional experiments become available.
+
+This methodology naturally accommodates
+
+-   new entropy generators,
+
+-   new statistical techniques,
+
+-   alternative physical models,
+
+-   independent experimental reproduction.
+
+Consequently, entropy assessment becomes a continuously evolving
+scientific process rather than a single certification event.
+
+## Entropy-Escape Methodology
+
+The proposed protocol treats entropy verification as an optimization
+problem rather than a binary certification procedure. Instead of
+attempting to prove that a private entropy source is "sufficiently
+random," the framework continuously constructs increasingly accurate
+public approximations of currently computable high-entropy regions.
+Private entropy is subsequently protected by maximizing its
+computational distance from those publicly reconstructed examples.
+
+Let
+
+$$\mathcal{E}
+=
+\{e_1,e_2,\ldots,e_n\}$$
+
+denote the publicly verifiable set of reconstructed entropy examples
+generated by independent entropy miners. For a private entropy value
+$x$, the protocol defines the escape metric
+
+$$D(x,\mathcal{E})
+=
+\min_{e_i\in\mathcal{E}}
+d(x,e_i),$$
+
+where $d(\cdot,\cdot)$ represents an application-dependent similarity
+metric. Security is therefore formulated as the optimization problem
+
+$$\max_x D(x,\mathcal{E}),$$
+
+subject to computational and implementation constraints.
+
+Unlike traditional entropy certification, the protocol does not assume
+that published examples are harmful. Instead, they serve as
+experimentally verified approximations of regions containing maximal
+utility entropy under currently available models. Private entropy
+remains secure by computationally escaping these high-information
+clusters.
+
+#### Known Computational Landscape and Secure Randomness
+
+The proposed framework evaluates entropy relative to the computational
+knowledge available to a specified communicating system rather than by
+assuming that randomness can be established through statistical tests
+alone.
+
+Let
+
+$$K_t
+=
+\{k_1,k_2,\ldots,k_n\}$$
+
+denote the *known computational landscape* at time $t$. The set contains
+publicly available entropy reconstructions, deterministic generators,
+verified computational results, intermediate artifacts, published
+algorithms, and other information available to a specified computational
+domain.
+
+The computational domain may represent a decentralized verification
+network, an organization, or any collection of communicating
+computational entities capable of sharing experimental results according
+to an assumed communication model.
+
+As additional computational discoveries are independently reproduced and
+published, the landscape evolves monotonically,
+
+$$K_0
+\subseteq
+K_1
+\subseteq
+K_2
+\subseteq
+\cdots.$$
+
+Within the Doomsday Explorer framework, every independently verified
+entropy reconstruction contributes to the known computational landscape,
+providing an increasingly accurate approximation of currently computable
+high-entropy regions.
+
+#### Definition (Secure Randomness).
+
+A value $x$ is considered *secure* with respect to the known
+computational landscape $K_t$ if
+
+$$x
+\notin
+K_t,$$
+
+and no computationally feasible procedure available to the specified
+computational domain can reconstruct $x$ from information contained in
+$K_t$ with probability exceeding an application-defined threshold.
+
+Equivalently, security may be expressed through the escape metric
+
+$$D(x,K_t)
+=
+\min_{k\in K_t}
+d(x,k),$$
+
+where $d(\cdot,\cdot)$ denotes an application-dependent similarity or
+reconstruction metric.
+
+A value remains secure whenever
+
+$$D(x,K_t)
+\ge
+\delta,$$
+
+for an application-defined security threshold $\delta$.
+
+Consequently, secure randomness is formulated as a dynamic property
+relative to the current computational knowledge of the specified domain
+rather than as a static property of an isolated sequence. As the known
+computational landscape expands, previously secure values may cease to
+satisfy the required security margin, motivating regeneration using
+newly generated entropy outside the currently reconstructed landscape.
+
+#### Early-Warning Mechanism.
+
+Entropy miners continuously improve deterministic reconstructions of
+physical entropy sources and publish representative examples together
+with reproducible computational evidence. Wallet software (or offline
+user verification) compares a private secret against these published
+examples locally without disclosing the secret itself. Whenever the
+measured escape distance falls below an application-defined security
+threshold, the user migrates funds to newly generated entropy.
+Consequently, improvements in entropy reconstruction become defensive
+signals rather than offensive capabilities.
+
+#### Compute-Reward Mechanism.
+
+Let
+
+$$R_i
+=
+f(D_i,C_i,V_i)$$
+
+denote the reward assigned to entropy miner $i$, where $D_i$ measures
+reconstruction accuracy, $C_i$ denotes independently replicated
+computational work, and $V_i$ represents successful public verification.
+
+Rewards increase with experimentally useful reconstructions rather than
+raw computational throughput. Workers capable of producing more accurate
+deterministic models receive greater compensation, creating an economic
+incentive to disclose improved entropy reconstructions publicly instead
+of exploiting them privately. The protocol therefore aligns scientific
+publication, independent verification, and participant incentives
+without requiring trusted intermediaries or application-specific
+contractual mechanisms.
+
+#### Scientific Interpretation.
+
+Conceptually, the entropy-escape methodology adopts an approach
+analogous to computational proof-of-work[@bitcoin2008]. Proof-of-work
+expends computational effort to establish consensus and Sybil
+resistance, whereas entropy escape expends computational effort to
+maximize separation from publicly reconstructed high-entropy regions in
+an effort to maximize separation from the known computational landscape.
+Both mechanisms derive security from measurable computational work
+rather than secrecy of the underlying algorithms.
+
+Because reconstructed entropy examples remain publicly reproducible, the
+methodology preserves long-term scientific value independent of any
+particular application domain. Improved physical models, whether
+deterministic or stochastic, naturally refine the public entropy
+landscape, while private entropy continuously adapts by maximizing
+computational distance from these experimentally verified
+approximations.
+
+## Replica-Driven Iterative Approximation
+
+The proposed framework relies upon multiple independent replicas of each
+computational experiment rather than a single authoritative execution.
+Replica diversity serves two purposes. First, independent
+implementations reduce the likelihood that published results arise from
+implementation errors, undocumented assumptions, or computational
+faults. Second, multiple deterministic models provide competing
+approximations of the same physical entropy source, allowing
+experimental evidence to converge through iterative refinement.
+
+Let
+
+$$M_1,M_2,\ldots,M_n$$
+
+denote independent deterministic models constructed by participating
+entropy miners. Each model produces reconstructed observations
+
+$$O_i=M_i(P),$$
+
+for a common experimental protocol $P$. The verification network
+aggregates the resulting evidence according to
+
+$$\mathcal{A}(P)
+=
+\operatorname{Aggregate}
+\left(
+O_1,O_2,\ldots,O_n
+\right),$$
+
+while preserving every intermediate computation required for independent
+reproduction.
+
+Unlike majority voting, aggregation does not imply that the most
+frequently reproduced model is necessarily correct. Instead, replicated
+execution establishes reproducible evidence from which alternative
+physical explanations may be evaluated. As improved deterministic models
+become available, previous reconstructions remain permanently
+verifiable, allowing the approximation process to converge incrementally
+rather than replacing earlier scientific results.
+
+Consequently, the verification framework treats scientific progress as a
+sequence of publicly reproducible approximations instead of isolated
+experimental claims.
+
+## Safe Proof Demonstration Paradox
+
+Certain classes of computational discoveries admit complete private
+verification while simultaneously resisting safe public demonstration.
+The difficulty does not arise from limitations of computation, but from
+the relationship between reproducibility and disclosure.
+
+Suppose a computational procedure $S$ demonstrates the existence of
+previously unrecognized vulnerabilities within a deployed entropy
+generation mechanism. Public verification of $S$ requires sufficient
+information for independent reproduction. However, providing a complete
+implementation may itself enable immediate offensive use of the
+demonstrated capability, whereas withholding essential implementation
+details prevents independent verification.
+
+The protocol therefore identifies a class of *safely unverifiable public
+demonstrations*, for which no practical disclosure simultaneously
+satisfies
+
+1.  independent reproducibility,
+
+2.  public verifiability,
+
+3.  and preservation of public safety.
+
+This paradox is independent of any specific implementation. A
+demonstration lacking sufficient algorithmic detail cannot be
+distinguished from an unverifiable anecdotal claim, while a fully
+reproducible demonstration may substantially increase operational risk.
+Consequently, responsible disclosure becomes fundamentally constrained
+by the absence of a disclosure protocol satisfying all three properties
+simultaneously.
+
+The proposed framework addresses this limitation through iterative,
+distributed private verification. Independent participants reproduce
+computational results locally, without requiring publication of
+operational implementations. Consensus therefore emerges through
+repeated private reproductions performed by mutually independent
+participants rather than through a single publicly executable
+proof-of-concept.
+
+Within the verification network, participants express confidence not
+only through replicated computational work, but also by voluntarily
+allocating computational resources and economic incentives toward
+defensive mitigation. Although such consensus cannot establish
+scientific truth by itself, it provides a practical mechanism for
+coordinating defensive action among independently verifying participants
+while avoiding unnecessary public dissemination of operational attack
+capabilities.
+
+## Artificial Intelligence and the Replication Paradox
+
+Recent advances in large language models substantially reduce the
+practical cost of constructing deterministic computational models.
+Although current systems rarely produce complete implementations from a
+single prompt, iterative interaction allows increasingly accurate
+reconstructions through successive refinement, hypothesis testing, and
+algorithmic correction.
+
+Consequently, the computational difficulty of reproducing complex
+entropy-generation mechanisms shifts from algorithm design toward
+computational verification. Artificial intelligence therefore acts as an
+accelerator for both defensive research and offensive capability,
+reducing the expertise required to construct deterministic replicas of
+deployed systems.
+
+Within the proposed framework, this observation is independent of any
+particular entropy source. Whenever a physical system admits an
+efficient deterministic approximation, iterative AI-assisted refinement
+may progressively reduce the search space required for practical
+reconstruction. The resulting methodology applies equally to embedded
+security devices, industrial control systems, scientific
+instrumentation, and other computationally observable processes.
+
+This development creates a practical replication paradox. The same
+computational techniques capable of improving defensive verification
+also reduce the cost of constructing offensive tools. Consequently,
+responsible disclosure becomes increasingly difficult as AI systems
+improve their ability to synthesize executable implementations from
+high-level scientific descriptions.
+
+Rather than treating artificial intelligence as an external threat, the
+proposed framework incorporates AI directly into the scientific
+workflow. Language models may assist entropy miners in constructing
+improved deterministic replicas, exploring alternative physical models,
+and identifying previously overlooked implementation assumptions.
+Independent replication and public evidence remain the primary
+verification mechanisms, while AI functions as an accelerator of the
+iterative approximation process rather than as an authoritative source
+of scientific truth.
+
+The same educational mechanisms naturally extend to participant
+training. Gamified computational challenges encourage researchers,
+engineers, and security practitioners to transform offensive
+capabilities into publicly verifiable defensive contributions. By
+rewarding improved deterministic models through open scientific
+evaluation rather than undisclosed exploitation, the framework seeks to
+align AI-assisted research with responsible disclosure and public
+security.
+
+From a societal perspective, the emergence of increasingly capable AI
+systems suggests that large-scale automated analysis of critical
+infrastructure, cryptographic implementations, and public security
+systems will become progressively more practical. The resulting "AI
+races" motivate proactive development of reproducible defensive
+verification frameworks capable of evaluating competing computational
+models before equivalent offensive capabilities become commonplace.
+
+#### AI-Assisted Gamification.
+
+The proposed framework extends beyond automated experimentation by
+introducing an AI-assisted gamification layer. The *Fun & Profit*
+platform transforms entropy research, distributed verification, and
+deterministic model construction into interactive computational
+challenges executed directly through conversational AI assistants.
+
+Unlike conventional educational games, participants contribute
+computationally meaningful work. Gameplay naturally introduces concepts
+including entropy modelling, iterative approximation, distributed
+replication, and reproducible scientific evidence while simultaneously
+encouraging deployment of independent verification nodes within the
+Explorer Network.
+
+Artificial intelligence therefore serves both as an educational
+interface and as a scientific assistant. Players iteratively improve
+deterministic models, evaluate competing hypotheses, and construct
+increasingly accurate entropy replicas through guided interaction rather
+than requiring prior expertise in cryptography, signal processing, or
+distributed systems.
+
+This combination of gamification, AI-assisted reasoning, and
+reproducible scientific computation creates positive incentives for
+participants to transform potentially offensive computational
+capabilities into publicly verifiable defensive research. Consequently,
+community growth directly strengthens the verification network while
+simultaneously improving public understanding of entropy modelling and
+computational reproducibility.
+
+The platform continuously evolves together with its AI assistants.
+Interactive scenarios may construct augmented representations of
+real-world environments, allowing participants to model physical,
+technical, economic, and regulatory contexts within which entropy
+replicas and verification protocols operate. Consequently, educational
+gameplay becomes a practical mechanism for developing reproducible
+scientific models rather than merely illustrating completed research.
+
+Economic incentives form an integral part of the learning process.
+Financial decision-making, including incentive alignment and
+risk--reward trade-offs inspired by option-pricing methodologies, is
+incorporated directly into gameplay to demonstrate how rational economic
+mechanisms can encourage disclosure, replication, and defensive
+collaboration. These educational components build upon previous work on
+regulatory frameworks and financial modelling [@Kondratiuk2021].
+
+By combining conversational AI, reproducible experimentation, economic
+reasoning, and interactive world modelling, the platform encourages
+participants to transform offensive computational capabilities into
+publicly verifiable scientific contributions. The resulting community
+simultaneously strengthens the Explorer Network, improves deterministic
+entropy models, and promotes responsible disclosure through
+collaborative learning rather than adversarial
+competition [@funAndProfit2026].
+
+The current implementation of the engine is publicly available through
+the *Fun & Profit* platform [@funAndProfit2026].
+
+# Threat Model
+
+The framework considers both accidental and adversarial sources of
+error.
+
+Potential threats include
+
+1.  faulty computational implementations,
+
+2.  selective publication of favorable results,
+
+3.  malicious participants returning fabricated computations,
+
+4.  implementation bias,
+
+5.  incomplete physical models,
+
+6.  statistical overfitting.
+
+The framework does not assume that replicated execution alone proves the
+correctness of a scientific hypothesis. Rather, replication provides
+evidence that published computational observations can be reproduced
+independently.
+
+Scientific conclusions remain subject to continued experimental
+evaluation as additional data become available.
+
+# Experimental Methodology
+
+Rather than treating entropy sources as fundamentally stochastic, the
+proposed framework formulates experimental verification as an iterative
+deterministic reconstruction problem. Each investigated entropy source
+is first represented by an idealized physical model, after which
+computational search is performed over successive deviations from that
+model. The objective is not to assume randomness, but to determine
+whether observed statistical behaviour can be reproduced by increasingly
+accurate deterministic descriptions.
+
+The verification protocol itself remains model-agnostic. Any
+computational model capable of generating synthetic observations may be
+evaluated using the same distributed execution, replication, and
+publication pipeline. Consequently, stochastic, deterministic, or hybrid
+physical models can be compared under identical experimental conditions,
+with all intermediate computations preserved for independent
+verification.
+
+The iterative approximation process consists of four stages:
+
+1.  construction of an idealized physical model of the entropy source;
+
+2.  deterministic generation of synthetic observations;
+
+3.  greedy search over deviations between the generated and observed
+    signals;
+
+4.  publication of both reconstructed models and experimental evidence
+    for independent replication.
+
+Unlike statistical validation procedures that primarily evaluate output
+distributions, the proposed methodology evaluates the explanatory power
+of competing physical models. Statistical properties therefore emerge as
+consequences of reconstructed physical processes rather than as primary
+assumptions regarding the underlying entropy source.
+
+## Classical Thermal Entropy Sources
+
+For classical thermal generators, the initial approximation is
+constructed from deterministic physical representations of the measured
+signal. In current implementations, broadband thermal noise is
+represented as superpositions of elementary basis functions, including
+sinusoidal components, after which greedy optimization searches for
+progressively smaller deviations from the measured waveform.
+
+The objective is not to reproduce every sample exactly, but to minimize
+unexplained structure through successive deterministic refinement.
+Residual discrepancies become explicit experimental objects, allowing
+alternative physical models to be proposed, evaluated, and compared
+using identical computational procedures. The corresponding
+implementation is documented by the Doomsday Explorer thermal entropy
+investigations [@doomsdayThermal2026].
+
+## Quantum Experimental Models
+
+The same computational methodology extends to quantum experiments.
+Rather than assuming intrinsic stochasticity, the framework investigates
+deterministic signal models capable of reproducing experimentally
+observed statistical behaviour. Candidate representations include
+deterministic pulse-width modulation, wavelet reconstruction, and other
+physically motivated basis decompositions, followed by exhaustive or
+greedy search over model parameters.
+
+Within the Doomsday Explorer quantum investigation, deterministic
+coincidence-detection models reproduce the CHSH statistics observed in
+representative Bell-type experiments. These computational
+reconstructions motivate the hypothesis that measurement-pipeline
+mechanisms, including coincidence detection, constitute viable
+deterministic explanations deserving systematic experimental evaluation
+alongside conventional probabilistic
+interpretations [@doomsdayQuantum2026; @doomsdayBell2026].
+
+The proposed verification framework does not require adoption of any
+particular physical interpretation. Instead, it provides a reproducible
+computational protocol through which competing deterministic and
+stochastic models may be evaluated using identical experimental
+procedures and publicly verifiable evidence.
+
+## Deterministic Reproduction of CHSH Statistics
+
+The quantum case study [@doomsdayBell2026; @doomsdayQuantum2026]
+demonstrates that experimentally reported CHSH statistics can be
+reproduced by a fully deterministic computational model without
+introducing communication between spatially separated particles. The
+objective is not to postulate a new interpretation of quantum mechanics,
+but to demonstrate that deterministic computational reconstructions
+constitute experimentally testable competing models.
+
+Instead of representing the quantum state through a complex-valued wave
+function, the implemented model constructs deterministic pulse-width
+modulated signal representations whose relative delay corresponds to the
+angular difference between measurement settings. Since Bell-type
+correlations depend only upon relative detector orientation, the
+computational model is formulated directly in terms of detector-angle
+differences rather than absolute orientations. Probabilities are
+represented as deterministic densities encoded by pulse-width
+modulation, producing reproducible signal trajectories throughout the
+simulation.
+
+Synthetic detector outputs are subsequently processed by a deterministic
+coincidence-detection procedure. Within this implementation, the
+coincidence-selection logic alone is sufficient to reproduce the
+characteristic CHSH correlations reported for representative Bell-type
+experiments, while no communication channel between the simulated
+particles is introduced. Consequently, the computational model provides
+a constructive deterministic reproduction of the target statistics using
+only local signal generation together with deterministic event-selection
+logic. The implementation is described in the accompanying quantum
+notebook and Scala reference implementation.
+
+Within the proposed verification framework, this result should be viewed
+as a reproducible computational hypothesis rather than a terminal
+conclusion. If deterministic coincidence-detection models reproduce the
+observed statistics, subsequent experimental investigation reduces to
+determining whether equivalent event-selection mechanisms are present
+within physical measurement pipelines. The framework therefore enables
+competing physical explanations to be evaluated through identical
+computational procedures, independent replication, and publicly
+reproducible evidence.
+
+# Evidence Accumulation
+
+Unlike conventional certification, which typically culminates in a
+pass/fail decision, the proposed framework accumulates evidence
+continuously.
+
+Each completed experiment contributes
+
+-   reproducible computational observations,
+
+-   associated experimental parameters,
+
+-   replication statistics,
+
+-   independent verification records.
+
+Together, these observations form an evolving public corpus through
+which competing entropy models may be evaluated.
+
+The framework therefore separates
+
+1.  experimental observation,
+
+2.  statistical interpretation,
+
+3.  scientific conclusion.
+
+This separation permits multiple researchers to interpret identical
+experimental data using different theoretical models without requiring
+modification of the underlying infrastructure.
+
+# Relationship to Existing Standards
+
+The proposed framework is intended to complement, rather than replace,
+existing certification methodologies.
+
+Statistical testing frameworks, including NIST SP 800[@nist80022] series
+recommendations, remain valuable engineering tools for detecting many
+classes of implementation defects, bias, and statistical anomalies.
+
+Similarly, physical characterization remains essential for understanding
+entropy-generating devices.
+
+The Doomsday Explorer framework addresses a different question.
+
+Rather than asking whether a generator satisfies a predefined
+statistical standard, the framework asks whether competing scientific
+explanations continue to remain consistent with an expanding body of
+independently reproducible evidence.
+
+This distinction transforms entropy validation from a finite
+certification procedure into a continuously evolving experimental
+process.
+
+The framework is designed to remain useful regardless of whether
+existing entropy models are ultimately confirmed, refined, or replaced,
+since every hypothesis is evaluated through the same reproducible
+computational methodology.
+
+# Discussion
+
+Entropy research occupies an unusual position at the intersection of
+mathematics, physics, statistics, and engineering.
+
+No finite experimental program can conclusively establish the
+unpredictability of a physical process. Likewise, no individual
+statistical anomaly necessarily invalidates an existing physical model.
+
+Consequently, scientific progress requires continuous experimentation,
+independent replication, and transparent publication of evidence.
+
+The Doomsday Explorer framework is motivated by this philosophy.
+
+Its objective is not to replace established standards, nor to promote
+any specific interpretation of classical or quantum physics. Instead, it
+provides computational infrastructure through which competing hypotheses
+may be evaluated using identical, publicly reproducible experimental
+procedures.
+
+The framework therefore shifts emphasis from authority-based validation
+toward evidence-based refinement, allowing confidence in entropy models
+to evolve as additional computational and experimental observations
+become available.
+
+# Applications and Representative Investigations
+
+The Doomsday Explorer project applies the proposed verification
+framework to a growing collection of entropy-related investigations.
+Rather than publishing isolated experimental results, each investigation
+is expressed as a reproducible computational workflow that can be
+independently replicated, extended, and re-evaluated as new theoretical
+models and experimental evidence become available.
+
+Representative application domains currently include
+
+-   classical thermal-noise entropy generators,
+
+-   hardware true random number generators,
+
+-   operating-system entropy sources,
+
+-   quantum random number generators,
+
+-   Bell-type experimental protocols,
+
+-   entropy estimation methodologies,
+
+-   statistical certification procedures.
+
+Explorer Nodes formulate reproducible computational experiments, while
+independent participants execute assigned workloads. Selected tasks are
+intentionally replicated, and returned observations are published
+together with sufficient experimental metadata to permit independent
+verification and future reproduction.
+
+Experimental specifications, analysis software, input datasets, and
+computational observations are intended to remain publicly reproducible
+wherever appropriate, allowing competing scientific interpretations to
+be evaluated using the same underlying body of evidence.
+
+Consequently, scientific conclusions evolve through continued
+experimentation and independent replication rather than through isolated
+publications or one-time certification.
+
+# Limitations
+
+The proposed framework intentionally separates scientific methodology
+from scientific conclusion.
+
+Replicated computation does not, by itself, establish the correctness of
+any physical theory, statistical model, or entropy source. Instead, it
+establishes that published computational observations may be
+independently reproduced under identical experimental conditions.
+
+Likewise, statistical inconsistency does not necessarily imply
+deterministic behavior, nor does statistical consistency establish true
+unpredictability.
+
+Scientific interpretation therefore remains dependent upon theoretical
+analysis, experimental design, and continued independent investigation.
+
+The framework should consequently be viewed as infrastructure for
+entropy research rather than as a replacement for existing cryptographic
+standards or physical validation procedures.
+
+# Future Work
+
+The present work establishes a decentralized computational framework for
+iterative verification of entropy-related hypotheses. Its primary
+contribution is methodological, providing common infrastructure through
+which competing computational models may be evaluated using reproducible
+experimentation and independent replication.
+
+Several directions naturally emerge from this foundation.
+
+First, the framework may be extended to additional entropy sources,
+including emerging hardware entropy devices, hybrid physical systems,
+large-scale distributed infrastructures, and future quantum
+technologies. Improved experimental protocols, replication strategies,
+and verification mechanisms may further increase both computational
+efficiency and scientific reproducibility.
+
+Second, the deterministic reconstruction methodology introduced by the
+framework motivates specialized investigations into the physical nature
+of entropy, randomness, and scientific observation. Future publications
+may evaluate competing physical models, measurement procedures, and
+experimental methodologies using the common computational infrastructure
+presented here, while remaining agnostic with respect to any particular
+physical interpretation.
+
+Third, the security implications of continuously evolving computational
+knowledge warrant dedicated investigation. Future work may formalize the
+relationship between known computational landscapes, entropy
+reconstruction, adaptive key generation, and long-term cryptographic
+security under progressively improving computational capabilities.
+
+Fourth, the framework motivates further research in human--computer
+interaction, particularly with respect to AI-assisted scientific
+exploration. The *Fun & Profit* platform demonstrates how conversational
+AI, interactive simulation, and gamified experimentation may enable
+participants to contribute meaningful scientific computation while
+simultaneously improving their understanding of distributed
+verification, entropy modelling, and reproducible research. Future work
+will investigate collaborative workflows involving both human
+participants and AI agents operating as scientific assistants within
+decentralized verification networks.
+
+Finally, the interdisciplinary nature of the project naturally motivates
+growth into specialized research programs spanning distributed systems,
+cryptography, experimental physics, artificial intelligence, and
+human--computer interaction. The present work establishes a common
+computational foundation upon which these investigations may evolve
+independently while sharing a reproducible verification infrastructure.
+
+As the underlying methodologies mature and individual components become
+sufficiently separated from security-sensitive investigations, future
+publications may increasingly focus on domain-specific theoretical,
+experimental, and engineering contributions. Such work naturally lends
+itself to broader collaboration among researchers with complementary
+expertise, while the underlying verification framework continues to
+provide a common basis for reproducible scientific evaluation.
+
+# Conclusion
+
+Entropy remains one of the most fundamental assumptions underlying
+modern cryptographic security. Although existing certification
+methodologies provide substantial confidence in deployed entropy
+sources, their conclusions necessarily depend upon experimental
+assumptions, physical models, and observable statistical behavior.
+
+This paper has presented Doomsday Explorer, a decentralized framework
+for iterative verification of entropy-related hypotheses.
+
+Rather than introducing another statistical randomness test, the
+framework establishes an open scientific infrastructure through which
+competing models may be evaluated using identical, publicly reproducible
+computational procedures.
+
+Explorer Nodes formulate reproducible experiments, Entropy Miners
+execute computational workloads, and selective replication enables
+independent verification of published observations. Confidence in
+competing hypotheses therefore evolves through continuous evidence
+accumulation rather than centralized authority or one-time
+certification.
+
+The framework is intentionally agnostic with respect to individual
+physical models. Classical entropy sources, quantum entropy sources, and
+future experimental systems are all treated as subjects of continuous
+scientific investigation.
+
+By combining decentralized computation, independent replication,
+reproducible scientific methodology, and transparent publication, the
+proposed methodology extends entropy research from isolated experimental
+studies toward an evolving, community-driven process of scientific
+verification.
+
+# Data Availability {#data-availability .unnumbered}
+
+The Doomsday Explorer project publishes experimental software, datasets,
+documentation, and computational results through publicly accessible
+repositories to enable independent reproduction of the experiments
+described in this work.
+
+# Project Identity 
+
+The Doomsday Explorer project[@doomsdayThermal2026] is identified by the
+following Bitcoin Taproot address:
+
+::: center
+`bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg`
+
+`Message: "Doomsday Explorer Project for Bitcoin: https://github.com/dk14/crypto/tree/main/chats/btc-audit"`
+
+`Signature: IHdq/tIQtQeimfF92NOyOOdz2/iq2YR6qjD8vLgHWK3GGGETKX76L0e4Tvgtb1fOHrbLiW87QYIuOdCKYbSvmpA=`
+:::
+
+This address provides a persistent cryptographic identifier for the
+project. Public software releases, experimental reports, and related
+announcements may be authenticated using signatures generated by the
+corresponding private key.
+
+# Acknowledgements 
+
+The authors thank members of the open scientific and cryptographic
+communities whose independent analysis, discussion, and replication
+efforts continue to improve the quality, reproducibility, and
+transparency of entropy research.
