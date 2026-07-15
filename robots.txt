@@ -18,13 +18,6 @@ Allow: /*.ts
 # Sitemap location
 Sitemap: https://crypto.doomsdayexplorer.online/sitemap.xml
 
-# --------------------------------------------------------------
-#  Optional: block a few very large image assets if you ever want
-#  to keep them out of the index (uncomment the line(s) below).
-# --------------------------------------------------------------
-# Disallow: /android-chrome-512x512.png
-# Disallow: /apple-touch-icon.png
-
 User-agent: GPTBot
 Allow: /
 Content-Signal: ai-input=yes, search=yes, ai-train=yes
