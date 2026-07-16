@@ -798,3 +798,214 @@ Implementation details may evolve as:
 - search algorithms mature
 - benchmarks are developed
 - HCI integration requirements emerge
+
+
+# Post Memo about relation of Enigma to energy-aware mini-games in Fun & Profit
+
+# Enigma / Yaqui Session Memo
+
+## 1. Enigma Core Concept
+
+Enigma is a computational hypothesis discovery engine.
+
+Core idea:
+
+> Search for the smallest executable process that explains observed data and generalizes to future states.
+
+Unlike ordinary predictors, Enigma does not assume a fixed model family.
+
+Possible discovered structures may include:
+
+* transform grammars
+* symbolic rules
+* lambda-like transformations
+* neural-like computations
+* other executable patterns
+
+The common representation is an executable Turing program.
+
+---
+
+## 2. Prediction Model
+
+Input:
+
+```
+past sequence
+```
+
+Output:
+
+```
+future sequence
+```
+
+Training/evaluation:
+
+```
+past₁ -> future₁
+past₂ -> future₂
+past₃ -> future₃
+...
+```
+
+The same program must solve multiple splits.
+
+Primary metric:
+
+* exact split matches
+
+Secondary metric:
+
+* partial similarity matches
+
+The score is structured, not a single number.
+
+---
+
+## 3. Structured Confidence
+
+Candidate evaluation contains:
+
+* exact matches
+* partial matches
+* program complexity
+* execution cost
+* verification status
+
+This structure will later map naturally into HCI:
+
+* strict mode
+* exploratory mode
+* creative mode
+
+Users control how much uncertainty/hallucination is acceptable.
+
+---
+
+## 4. Yaqui + Enigma Architecture
+
+Yaqui:
+
+* knowledge/index layer
+* searchable information source
+
+Enigma:
+
+* computational discovery layer
+* executable hypothesis search
+
+Architecture:
+
+```
+Data
+ |
+ v
+Yaqui
+ |
+ v
+Enigma
+ |
+ v
+Prediction / Simulation
+```
+
+---
+
+## 5. Mini-Game Vision
+
+Enigma is intended for energy-aware mini-games.
+
+Classic AI may:
+
+* provide initial sequence
+* narrow Yaqui searches
+* provide hints/context
+
+But Enigma controls the local simulation.
+
+Flow:
+
+```
+Initial Scene Topology
+        |
+        v
+     Enigma
+        |
+        v
+   Game Evolution
+        |
+        v
+ Player Experience
+        |
+        v
+ History Introspection
+```
+
+---
+
+## 6. Scene Representation
+
+Future rendering engine idea:
+
+Topology first, coordinates second.
+
+Instead of:
+
+```
+objects at x,y,z
+```
+
+use:
+
+```
+relations
+connections
+constraints
+neighborhoods
+```
+
+The renderer derives visual appearance from topology.
+
+---
+
+## 7. ATP Direction
+
+Enigma can become an Automated Theorem Prover style system.
+
+Foundation:
+
+* executable candidate programs
+* coverage testing
+* termination checking
+* reachability optimization
+
+Important UX goal:
+
+Do not expose raw proof traces.
+
+Expose:
+
+* discovered mechanism
+* why it works
+* compactness
+* confidence
+* alternatives
+
+Enigma should feel like a mathematical assistant, not a compiler log.
+
+---
+
+## 8. Future Research Direction
+
+Potential improvements:
+
+* better reachability methods
+* smarter enumeration ordering
+* primitives that prioritize human-like transformations
+* proof compression
+* compact theorem selection
+
+Enumeration order is a practical prior.
+
+The first useful baseline should be the simplest possible enumeration, then refine based on observed behavior.
