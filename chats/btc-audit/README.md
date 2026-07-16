@@ -90,7 +90,7 @@ Introductory Notes (How To Read The README):
 > **Fun & Profit game** (part of real Doomsday Explorer Project)
 
 
->> (Jul 16, 2026) [Hugging face](https://huggingface.co/chat/) out of the box, follows script, tracks points, reminds reality, awesome mini-games...
+>> (Jul 16, 2026) [Hugging face](https://huggingface.co/chat/) out of the box from web, follows script, tracks points, reminds reality, awesome mini-games...
 
 >> <img src="docs/simulations/hugging_face.png" width="600" height="400">
 
