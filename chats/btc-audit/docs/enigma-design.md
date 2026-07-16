@@ -9,7 +9,7 @@
 
 Enigma Predictor is a general-purpose sequence prediction system based on searching for compact executable explanations of observed data.
 
-Instead of directly fitting statistical parameters, Enigma searches for small computational programs capable of reproducing observed input/output relationships and extending them to unseen future data.
+Instead of directly fitting statistical parameters, Enigma searches for small executable programs capable of reproducing observed input/output relationships and extending them to unseen future data.
 
 Core principle:
 
@@ -20,8 +20,9 @@ The system is based on:
 - universal Turing machine execution (`executeTuring`)
 - automated program search
 - input/output generalization testing
+- exact split validation
 - partial-match evaluation
-- executable model validation
+- executable model verification
 
 ---
 
@@ -40,7 +41,10 @@ Turing Program Search
 Candidate Programs
       |
       v
-Validation + Ranking
+Execution + Validation
+      |
+      v
+Structured Ranking
       |
       v
 Selected Predictor
@@ -68,14 +72,13 @@ Past -> Future
 Examples:
 
 ```
-s1             -> s2...sn
+s1          -> s2...sn
 
-s1s2           -> s3...sn
+s1s2        -> s3...sn
 
-s1s2s3         -> s4...sn
+s1s2s3      -> s4...sn
 
 ...
-
 ```
 
 The objective is to find a program:
@@ -116,25 +119,26 @@ Candidate properties:
 - program size
 - execution cost
 - termination status
-- prediction accuracy
+- exact prediction performance
+- partial prediction performance
 - generalization score
 
 ---
 
 # 5. Input-Enabled Turing Machines
 
-Previous versions considered machines producing outputs without input.
+Unlike previous output-only enumeration, Enigma predictors accept inputs.
 
-The new Enigma model allows:
+Model:
 
 ```
-Input sequence
+Input Sequence
        |
        v
 Turing Program
        |
        v
-Predicted sequence
+Predicted Future
 ```
 
 Example:
@@ -142,16 +146,18 @@ Example:
 Input:
 
 ```
-"hello wor"
+hello wor
 ```
 
 Output:
 
 ```
-"ld"
+ld
 ```
 
-The program is evaluated by whether it discovers the transformation, not by memorizing examples.
+The goal is not memorization.
+
+The goal is discovering a computational transformation capable of reproducing the relationship.
 
 ---
 
@@ -174,16 +180,14 @@ P* = smallest program satisfying prediction requirements
 subject to:
 
 ```
-accuracy(P) >= threshold
+Generalization(P*) >= threshold
 ```
 
-Optimization targets:
-
-Primary:
+Primary optimization:
 
 - minimum program complexity
 
-Secondary:
+Secondary optimization:
 
 - execution speed
 - prediction horizon
@@ -200,10 +204,10 @@ Example sequence:
 ABCDEF
 ```
 
-Produces:
+Generated dataset:
 
 ```
-Input       Output
+Input       Expected Output
 
 A           BCDEF
 
@@ -216,76 +220,405 @@ ABCD        EF
 ABCDE       F
 ```
 
-A valid predictor must generalize across multiple splits.
+Each candidate program is tested against the complete generated split set.
 
 ---
 
-# 8. Partial Matching
+# 8. Split-Based Evaluation
 
-Exact matching is not required during exploration.
+A candidate program is evaluated independently on every split.
 
-Candidates can receive partial scores.
+Evaluation pipeline:
+
+```
+Candidate Program
+        |
+        v
+Execute on split 1
+Execute on split 2
+Execute on split 3
+...
+        |
+        v
+Collect structured results
+```
+
+The score is not a single opaque value.
+
+The system preserves:
+
+- which splits were solved
+- which splits failed
+- how close failed predictions were
+- computational cost
+
+---
+
+# 9. Primary Evaluation: Exact Split Matches
+
+A split is successful only when:
+
+```
+P(past) == future
+```
+
+exactly.
 
 Example:
 
 ```
-Candidate Program A
+Expected:
 
-Split 1: 100%
-Split 2: 100%
-Split 3: 80%
-Split 4: 0%
+abcdef
 
-Total:
-70%
+
+Program output:
+
+abcdef
 ```
 
-Partial matching enables:
+Result:
 
-- candidate ranking
-- search optimization
-- gradual discovery
-- exploratory prediction modes
+```
+MATCH
+```
 
 ---
 
-# 9. Candidate Ranking
-
-Candidate score combines:
-
-- prediction accuracy
-- program complexity
-- execution cost
-
-Conceptual score:
+Example:
 
 ```
-Score =
-    Accuracy
-    -
-    Complexity Penalty
-    -
-    Execution Penalty
+Expected:
+
+abcdef
+
+
+Program output:
+
+abcxyz
 ```
 
-Alternative:
+Result:
 
 ```
-Score =
-    Successful Matches / Program Complexity
+FAIL
 ```
-
-The preferred predictor is:
-
-- simple
-- accurate
-- general
 
 ---
 
-# 10. Verification Pipeline
+Primary score:
 
-Candidate validation:
+```
+ExactScore =
+number of fully matched splits
+/
+number of evaluated splits
+```
+
+Example:
+
+```
+100 splits tested
+
+73 exact matches
+
+ExactScore = 0.73
+```
+
+Exact matches are the primary indicator of discovered structure.
+
+---
+
+# 10. Secondary Evaluation: Partial Matching
+
+Partial matching is a relaxation layer.
+
+It evaluates unsuccessful splits by measuring similarity between:
+
+```
+Expected Future
+        |
+        v
+Predicted Future
+```
+
+Example:
+
+Expected:
+
+```
+abcdef
+```
+
+Prediction:
+
+```
+abcxyz
+```
+
+The candidate receives partial similarity credit.
+
+Partial matching is useful for:
+
+- large datasets
+- noisy observations
+- incomplete information
+- candidate exploration
+- ranking near-miss programs
+
+However:
+
+```
+PartialScore does not replace ExactScore
+```
+
+Exact computational reproduction remains the primary objective.
+
+---
+
+# 11. Structured Candidate Score
+
+The candidate score contains multiple dimensions.
+
+Structure:
+
+```
+Candidate Evaluation
+
+        |
+        +-- Exact Matches
+        |
+        +-- Partial Similarity
+        |
+        +-- Program Complexity
+        |
+        +-- Execution Cost
+```
+
+Conceptual scoring:
+
+```
+Score =
+
+ExactScore
+
++
+
+(relaxation * PartialScore)
+
+-
+
+ComplexityPenalty
+
+-
+
+ExecutionPenalty
+```
+
+Default behavior:
+
+```
+Exact matches dominate.
+Partial matches provide secondary guidance.
+```
+
+---
+
+# 12. Candidate Evaluation Output
+
+The caller should receive the complete evaluation structure.
+
+Example:
+
+```javascript
+{
+    exactMatches: 83,
+    totalSplits: 100,
+
+    exactScore: 0.83,
+
+    partialScore: 0.41,
+
+    programSize: 120,
+
+    executionCost: 4500
+}
+```
+
+A single number is insufficient because higher-level systems may use the structure differently.
+
+---
+
+# 13. Why Preserve Score Structure
+
+The internal structure of prediction confidence is important.
+
+Different callers may require different tradeoffs.
+
+Examples:
+
+Strict scientific validation:
+
+```
+maximize ExactScore
+```
+
+Large-scale discovery:
+
+```
+use PartialScore for search guidance
+```
+
+Interactive systems:
+
+```
+map confidence structure into user choices
+```
+
+---
+
+# 14. HCI Integration
+
+The structured prediction score enables future Human-Computer Interaction layers.
+
+Example:
+
+```
+High exact confidence
+
+        |
+        v
+
+Deterministic prediction
+
+
+Mixed exact + partial confidence
+
+        |
+        v
+
+Exploration choices
+
+
+Low confidence
+
+        |
+        v
+
+Creative generation mode
+```
+
+The prediction object is therefore:
+
+```javascript
+{
+    output,
+
+    confidence: {
+        exactScore,
+        partialScore
+    },
+
+    modelCharacteristics,
+
+    searchInformation
+}
+```
+
+---
+
+# 15. Strict and Exploratory Modes
+
+## Strict Mode
+
+Requires:
+
+- high exact split coverage
+- strong validation
+- reproducible execution
+
+Purpose:
+
+- reliable prediction
+- scientific evaluation
+
+
+---
+
+## Exploratory Mode
+
+Allows:
+
+- partial matches
+- weaker candidates
+- broader search
+
+Purpose:
+
+- hypothesis discovery
+- creative generation
+- interactive experiences
+
+---
+
+# 16. Emergent Transform Grammars
+
+Because predictors are complete executable programs, grammar-like behavior can emerge naturally.
+
+Examples:
+
+```
+question -> answer
+
+name pattern -> response
+
+symbol sequence -> continuation
+```
+
+No explicit grammar rules are required.
+
+The transformation grammar is a consequence of the discovered computation.
+
+---
+
+# 17. Context Awareness
+
+Context can emerge from program structure.
+
+Example:
+
+Input:
+
+```
+me Carol, me? Carol.
+
+me Anna, me? Anna.
+
+me Matt, me?
+```
+
+Expected prediction:
+
+```
+Matt
+```
+
+The predictor discovers the underlying transformation rather than storing individual examples.
+
+Potential applications:
+
+- dialogue patterns
+- symbolic reasoning
+- structured interaction
+- game mechanics
+
+---
+
+# 18. Termination and Verification
+
+Candidate programs require execution validation.
+
+Pipeline:
 
 ```
 Candidate Program
@@ -308,7 +641,7 @@ The design assumes termination checking for the selected abstract machine model.
 Existing Enigma components:
 
 - universal execution checker
-- candidate validation
+- candidate validation framework
 
 Future optimizations:
 
@@ -318,125 +651,41 @@ Future optimizations:
 
 ---
 
-# 11. Predictor Runtime
+# 19. Exploratory Program Generation
 
-After discovery, the selected program becomes the predictor.
+Because partial evaluation exists, Enigma can explore a wider computational space.
 
-Runtime:
-
-```
-Previous Sequence
-        |
-        v
-Enigma Predictor
-        |
-        v
-Future Sequence
-```
-
-Example:
-
-Input:
+Process:
 
 ```
-me Carol, me? Carol.
-me Anna, me? Anna.
-me Matt, me?
+Program Space
+      |
+      v
+Generate Candidate
+      |
+      v
+executeTuring()
+      |
+      v
+Evaluate:
+    - exact matches
+    - partial matches
+    - complexity
 ```
 
-Prediction:
+Benefits:
 
-```
-Matt
-```
+- discovering unexpected transformations
+- supporting interactive exploration
+- generating diverse candidates
 
-The predictor stores the discovered computational rule rather than the example itself.
+while maintaining exact validation as the foundation.
 
 ---
 
-# 12. Emergent Transform Grammars
+# 20. Fun & Profit Integration
 
-Because predictors are complete executable programs, grammar-like behavior can naturally emerge.
-
-Examples:
-
-```
-question -> answer
-
-name pattern -> response
-
-symbol transformation -> continuation
-```
-
-No explicit grammar rules are required.
-
-The grammar is a consequence of the discovered computation.
-
----
-
-# 13. Context Awareness
-
-Context can emerge from program structure.
-
-Example:
-
-Input:
-
-```
-me Carol, me? Carol.
-me Anna, me? Anna.
-me Matt, me?
-```
-
-Output:
-
-```
-Matt
-```
-
-The same mechanism may generalize to:
-
-- conversations
-- symbolic systems
-- structured sequences
-- game interactions
-
----
-
-# 14. Strict and Exploratory Modes
-
-## Strict Mode
-
-Requires:
-
-- complete validation
-- strong matches
-- reproducible predictions
-
-Purpose:
-
-- reliable prediction
-
----
-
-## Exploratory Mode
-
-Allows:
-
-- partial matches
-- lower confidence candidates
-- unusual continuations
-
-Purpose:
-
-- hypothesis generation
-- creative exploration
-
----
-
-# 15. Fun & Profit Integration
-
-Enigma Predictor will support interactive environments.
+Enigma Predictor supports interactive environments.
 
 Possible applications:
 
@@ -460,7 +709,7 @@ Yaqui Knowledge Layer
 
 ---
 
-# 16. Implementation Components
+# 21. Implementation Components
 
 Core modules:
 
@@ -482,7 +731,7 @@ Predictor Runtime
 
 ---
 
-# 17. Development Roadmap
+# 22. Development Roadmap
 
 ## v0.1
 
@@ -490,10 +739,10 @@ Implement:
 
 - input-enabled Turing programs
 - split generation
-- candidate evaluation
-- ranking system
+- exact evaluation
+- partial evaluation
+- structured ranking
 
----
 
 ## v0.2
 
@@ -502,8 +751,8 @@ Improve:
 - search efficiency
 - reachability pruning
 - execution optimization
+- candidate caching
 
----
 
 ## v0.3
 
@@ -511,33 +760,35 @@ Integrate:
 
 - Enigma runtime predictor
 - Fun & Profit mini-games
-- Yaqui indexing layer
+- Yaqui indexed knowledge layer
 
 ---
 
-# 18. Design Principles
+# 23. Design Principles
 
-Enigma Predictor prioritizes:
-
-1. Computational transparency
+## Computational Transparency
 
 Every prediction originates from an executable program.
 
-2. Reproducibility
+## Reproducibility
 
-The same program should produce the same result.
+The same program should produce the same output.
 
-3. Generalization
+## Generalization
 
-The goal is not memorization but discovering reusable transformations.
+The goal is discovering reusable transformations, not memorization.
 
-4. Minimality
+## Minimality
 
-Prefer simpler explanations when predictive ability is comparable.
+Prefer simpler computational explanations when predictive performance is comparable.
+
+## Structured Confidence
+
+Prediction quality must remain inspectable.
 
 ---
 
-# 19. Status
+# 24. Status
 
 This document defines the conceptual architecture of Enigma Predictor v0.1.
 
@@ -545,5 +796,5 @@ Implementation details may evolve as:
 
 - executeTuring improves
 - search algorithms mature
-- prediction benchmarks are developed
-- Fun & Profit integration requirements emerge
+- benchmarks are developed
+- HCI integration requirements emerge
