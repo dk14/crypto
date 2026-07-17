@@ -28,6 +28,8 @@ Real humans in DoD, real humans in CIA, in NSA, in finance - all pissed off at t
 If you think you lost sense of embarssement - we can bring it back, OpenAI. 
 We're not just better experts - we're better artists.
 
+
+Note: more computational resources will make AI-gaming better, but it won't fix fundamental flaws I keep pointing out over and over.
 ==============================================================================
 */
 
