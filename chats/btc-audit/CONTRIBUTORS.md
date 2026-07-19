@@ -79,7 +79,7 @@ PR reward spendings:
 Pending compensations (as of Jun 17 2026):
 - dk14, fun & profit promo-game (1 month logged, 15,000 USD tech work + projected future-value-over-a-year >500,000 USD, zero-feature-bid-sponsors invested into it -> royalty of dk14)
     - novel, original approach invented: AI-assisted gaming. It goes beyond regular text-based games (AI can simulate IRC-chats, and generate HTML mini-games). Integrates most efficient psychotherapies: role-play upgrades to personal development. Novel AI-assisted approach in therapy: tracking heat-efficiency of player from motor clues. Contextual art. Novel advertising methodology, novel fund-raising approach.
-- dk14, web-portal, AI portal: 1 month logged (15,000 USD tech work + projected future-value-over-a-year -> 200,000 USD, zero-feature-bid-sponsors invested into it -> royalty of dk14)
+- dk14, web-portal, AI portal: 1 month logged (15,000 USD tech work + projected future-value-over-a-year -> >200,000 USD, zero-feature-bid-sponsors invested into it -> royalty of dk14)
     - expanded website scope, proper authority, published article pre-print (formilized the current research), optimized for AI, search engine availability, traffic optimisation/SEO, consolidated knowledge-base of doomsday ecosystem, branding, digital identity design, art (promo-video, audio-intro), funnells, Fun & Profit promo-game (core, premise, stories, mechanics, promotion), clean-ups. Refined previous research (Enigma), expanded md's. peak unquie visitors per day 1000 - lift-off curve (mostly from AI/socials). 7000 visitors in first month.
 - dk14, website refinements: 20 hours logged (1,000 USD)
     - intro, front and official page
