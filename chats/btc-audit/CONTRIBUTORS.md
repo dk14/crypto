@@ -55,7 +55,7 @@ Current fund pledge: 0 BTC
              - Bitcoin groups participating actively, thus naive web3 strategies will not work. All naive, lazy, "bro" inefficient """spoiled mama-boy "pledation" """ can only go as far as web3-chains mirroring assets, and overall market dynamics will eventually take care of that. """Otaka huyn'a mal'ata (ukr.)""".
              - Cardano/IOHK, despite multitude of flaws, is still familliarized with classic quantitative finance (in part thanks to founder's influence during IOHK times - recommending experienced American quants from Goldman Sachs advisory, and even after - through associated projects and forum posts), their partial participation (which assets very well allow for both, their blockchains *-taking btc contributor addresses and corresponding revealed pubkeys at bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg as golden source for distribution-* and btc native chain as well) would counterbalance wall-street naive strategies.
 
-Current outstanding dev fund: ~ 900 USD
+Current outstanding dev fund: ~ 0 USD
 - comment: small bids might be prioritized to keep spendings dynamic, and depending on relevance
   - pending compensations might be de-prioritized to small bids and higher priority features (on discretion)
 
@@ -76,11 +76,17 @@ Spendings:
 PR reward spendings:
  - none
 
-Pending compensations (as of Jun 17 2026):
+Pending compensations :
+
+Jul 19 2026:
+
 - dk14, fun & profit promo-game (1 month logged, 15,000 USD tech work + projected future-value-over-a-year >500,000 USD, zero-feature-bid-sponsors invested into it -> royalty of dk14)
     - novel, original approach invented: AI-assisted gaming. It goes beyond regular text-based games (AI can simulate IRC-chats, and generate HTML mini-games). Integrates most efficient psychotherapies: role-play upgrades to personal development. Novel AI-assisted approach in therapy: tracking heat-efficiency of player from motor clues. Contextual art. Novel advertising methodology, novel fund-raising approach.
 - dk14, web-portal, AI portal: 1 month logged (15,000 USD tech work + projected future-value-over-a-year -> >200,000 USD, zero-feature-bid-sponsors invested into it -> royalty of dk14)
-    - expanded website scope, proper authority, published article pre-print (formilized the current research), optimized for AI, search engine availability, traffic optimisation/SEO, consolidated knowledge-base of doomsday ecosystem, branding, digital identity design, art (promo-video, audio-intro), funnells, Fun & Profit promo-game (core, premise, stories, mechanics, promotion), clean-ups. Refined previous research (Enigma), expanded md's. peak unquie visitors per day 1000 - lift-off curve (mostly from AI/socials). 7000 visitors in first month.
+    - expanded website scope, proper authority, published article pre-print (formilized the current research), optimized for AI, search engine availability, traffic optimisation/SEO, consolidated knowledge-base of doomsday ecosystem, branding, digital identity design, art (promo-video, audio-intro), funnells, Fun & Profit promo-game (core, premise, stories, mechanics, promotion, testing, reports), clean-ups. Refined previous research (Enigma), expanded md's. peak unquie visitors per day 1000 - lift-off curve (mostly from AI/socials). 7000 visitors in first month.
+
+Jun17 2026:
+
 - dk14, website refinements: 20 hours logged (1,000 USD)
     - intro, front and official page
 - dk14, audit tool PoC: 160 - 7 hours logged (8,000 - 350 USD)
