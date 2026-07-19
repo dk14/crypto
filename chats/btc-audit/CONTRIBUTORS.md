@@ -40,7 +40,7 @@ Incoming contributions:
       - note: since refunds keep in the profit share pool (which can be exploited) - refunds are on founder's discretion (will be reported here for public fund audit).
         - note: as a result - bids can be anonymous, but content of the bid (feature requested) cannot be private
   - date: 6/19/2026
-  - spent: partially
+  - spent: yes
   - comment: partner is learning the concept of self-custody :) and preparing more donations to send.
 
 Current fund pledge: 0 BTC
