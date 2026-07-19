@@ -55,7 +55,7 @@ Current fund pledge: 0 BTC
              - Bitcoin groups participating actively, thus naive web3 strategies will not work. All naive, lazy, "bro" inefficient """spoiled mama-boy "pledation" """ can only go as far as web3-chains mirroring assets, and overall market dynamics will eventually take care of that. """Otaka huyn'a mal'ata (ukr.)""".
              - Cardano/IOHK, despite multitude of flaws, is still familliarized with classic quantitative finance (in part thanks to founder's influence during IOHK times - recommending experienced American quants from Goldman Sachs advisory, and even after - through associated projects and forum posts), their partial participation (which assets very well allow for both, their blockchains *-taking btc contributor addresses and corresponding revealed pubkeys at bc1qekvmkczge3hxrvwdf2lj3yyvgjnparn3fdf9lg as golden source for distribution-* and btc native chain as well) would counterbalance wall-street naive strategies.
 
-Current outstanding dev fund: ~ 0 USD
+Current outstanding dev fund: ~ 0 USD (minimum pending tech-work-only compensations 37,650 USD)
 - comment: small bids might be prioritized to keep spendings dynamic, and depending on relevance
   - pending compensations might be de-prioritized to small bids and higher priority features (on discretion)
 
