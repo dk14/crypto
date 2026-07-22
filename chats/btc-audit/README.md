@@ -597,6 +597,8 @@ Old-school WU-MTCN (pure) donations can be sent to Canada, France, Chile and Per
 
 🐕 Doge donate: DL6HGZH6xza35Tts2guxezo2RDghTEbj8s
 
+Paypal Donate: https://www.paypal.com/ncp/payment/BJYMUTH3YXUV6
+
 
 
 -----
