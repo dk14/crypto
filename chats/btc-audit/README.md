@@ -595,6 +595,10 @@ QR-code with BTC-address of the fund:
 
 Old-school WU-MTCN (pure) donations can be sent to Canada, France, Chile and Peru in "Dmytro Kondratiuk"'s name, notify MTCN at wu@doomsdayexplorer.online.
 
+🐕 Doge donate: DL6HGZH6xza35Tts2guxezo2RDghTEbj8s
+
+
+
 -----
 **Addendum A. Extra stats and simulations.**
 
